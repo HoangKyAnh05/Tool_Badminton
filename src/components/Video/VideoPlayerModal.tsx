@@ -13,7 +13,9 @@ import {
   CheckCircle2, 
   AlertTriangle, 
   ShieldAlert,
-  Award
+  Award,
+  Scan,
+  Tv
 } from 'lucide-react';
 
 interface VideoPlayerModalProps {
@@ -40,6 +42,7 @@ export const VideoPlayerModal: React.FC<VideoPlayerModalProps> = ({
   const [isMuted, setIsMuted] = useState<boolean>(false);
   const [playbackRate, setPlaybackRate] = useState<number>(1);
   const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
+  const [zoomMode, setZoomMode] = useState<'fill' | 'zoom2' | 'original'>('fill');
   
   // Status and Alerts
   const [isCompleted, setIsCompleted] = useState<boolean>(() => storageService.isVideoWatched(video.id));
@@ -290,7 +293,13 @@ export const VideoPlayerModal: React.FC<VideoPlayerModalProps> = ({
           <video
             ref={videoRef}
             src={video.videoUrl}
-            className="theater-video-element"
+            className={`theater-video-element ${
+              zoomMode === 'fill' 
+                ? 'is-fill-crop' 
+                : zoomMode === 'zoom2' 
+                  ? 'is-zoom2' 
+                  : 'is-original'
+            }`}
             playsInline
             onTimeUpdate={handleTimeUpdate}
             onSeeking={handleSeeking}
@@ -403,6 +412,32 @@ export const VideoPlayerModal: React.FC<VideoPlayerModalProps> = ({
                     {speed}x
                   </button>
                 ))}
+              </div>
+
+              {/* Zoom & Letterbox Cropping Selector */}
+              <div className="ctrl-zoom-selector" title="Tùy chỉnh tỷ lệ hiển thị video">
+                <button
+                  className={`speed-pill zoom-pill ${zoomMode === 'fill' ? 'active-fill' : ''}`}
+                  onClick={() => setZoomMode('fill')}
+                  title="Phóng to tràn màn hình (Tự động cắt viền đen TikTok để video to rõ nhất)"
+                >
+                  <Scan size={14} />
+                  <span>Toàn màn hình</span>
+                </button>
+                <button
+                  className={`speed-pill zoom-pill ${zoomMode === 'zoom2' ? 'active-fill' : ''}`}
+                  onClick={() => setZoomMode('zoom2')}
+                  title="Phóng to 2.0x"
+                >
+                  <span>2x</span>
+                </button>
+                <button
+                  className={`speed-pill zoom-pill ${zoomMode === 'original' ? 'active-fill' : ''}`}
+                  onClick={() => setZoomMode('original')}
+                  title="Kích thước gốc TikTok (Có viền đen trên dưới)"
+                >
+                  <span>Khung gốc</span>
+                </button>
               </div>
 
               {/* Fullscreen */}

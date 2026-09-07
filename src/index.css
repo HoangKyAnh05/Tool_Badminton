@@ -2851,21 +2851,21 @@ button {
   background: #0d131f;
   border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: var(--radius-xl);
-  width: 100%;
-  max-width: 960px;
-  max-height: 94vh;
+  width: 96vw;
+  max-width: 1260px;
+  max-height: 96vh;
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(0, 240, 255, 0.15);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85), 0 0 50px rgba(0, 240, 255, 0.2);
 }
 
 .theater-header {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  padding: 18px 24px;
-  background: rgba(15, 23, 42, 0.9);
+  padding: 16px 24px;
+  background: rgba(15, 23, 42, 0.95);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
@@ -2951,7 +2951,7 @@ button {
   position: relative;
   width: 100%;
   aspect-ratio: 16 / 9;
-  max-height: 55vh;
+  max-height: 72vh;
   background: #000000;
   display: flex;
   align-items: center;
@@ -2959,11 +2959,31 @@ button {
   overflow: hidden;
 }
 
+:fullscreen .theater-screen-wrap,
+:-webkit-full-screen .theater-screen-wrap {
+  max-height: 86vh;
+}
+
 .theater-video-element {
   width: 100%;
   height: 100%;
   object-fit: contain;
   cursor: pointer;
+  transition: transform 0.35s cubic-bezier(0.2, 0, 0.2, 1);
+  transform-origin: center center;
+}
+
+/* Smart Zoom Modes for TikTok letterboxed clips */
+.theater-video-element.is-fill-crop {
+  transform: scale(3.16);
+}
+
+.theater-video-element.is-zoom2 {
+  transform: scale(2.0);
+}
+
+.theater-video-element.is-original {
+  transform: scale(1);
 }
 
 .theater-center-play {
@@ -3241,6 +3261,29 @@ button {
 .speed-pill.active {
   background: var(--color-cyan);
   color: #000000;
+}
+
+.ctrl-zoom-selector {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(0, 240, 255, 0.08);
+  border: 1px solid rgba(0, 240, 255, 0.25);
+  padding: 3px;
+  border-radius: 6px;
+}
+
+.zoom-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.zoom-pill.active-fill {
+  background: var(--color-cyan) !important;
+  color: #000000 !important;
+  font-weight: 800;
+  box-shadow: 0 0 10px rgba(0, 240, 255, 0.6);
 }
 
 /* Modal Footer Info */

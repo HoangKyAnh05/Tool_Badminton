@@ -25,7 +25,7 @@ echo.
 set /p COMMIT_MSG="Nhap noi dung commit (Hoac an Enter de dung mac dinh): "
 
 if "%COMMIT_MSG%"=="" (
-    set "COMMIT_MSG=feat: complete badminton reaction and training app with electron, 9-grid, and theory quiz"
+    set "COMMIT_MSG=update: update badminton trainer features and configs"
 )
 
 echo.

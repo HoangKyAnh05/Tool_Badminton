@@ -24,30 +24,28 @@ export interface GridPosition {
   courtSide: 'left' | 'center' | 'right';
   
   // Visual & movement data
-  handMovement: {
-    title: string;
-    subTitle: string;
-    description: string;
-    coachingTip: string;
-    imageSvg?: string;
-    imageUrl?: string;
-  };
-  footMovement: {
-    title: string;
-    subTitle: string;
-    description: string;
-    coachingTip: string;
-    imageSvg?: string;
-    imageUrl?: string;
-  };
-  combinedMovement: {
-    title: string;
-    subTitle: string;
-    description: string;
-    coachingTip: string;
-    imageSvg?: string;
-    imageUrl?: string;
-  };
+  handMovement: MovementDetail;
+  footMovement: MovementDetail;
+  combinedMovement: MovementDetail;
+  variations?: MovementVariation[];
+}
+
+export interface MovementDetail {
+  title: string;
+  subTitle: string;
+  description: string;
+  coachingTip: string;
+  imageSvg?: string;
+  imageUrl?: string;
+}
+
+export interface MovementVariation {
+  id: string;
+  shotName: string;
+  shotType: string;
+  handMovement: MovementDetail;
+  footMovement: MovementDetail;
+  combinedMovement: MovementDetail;
 }
 
 export interface QuestionOption {
@@ -94,6 +92,8 @@ export interface ActiveRoundData {
   totalRounds: number;
   actualMode: 'TAY' | 'CHÂN' | 'TAY + CHÂN' | 'LÝ THUYẾT';
   position?: GridPosition;
+  variation?: MovementVariation;
+  variationIndex?: number;
   question?: TheoryQuestion;
   startTime: number;
   userAnswer?: 'A' | 'B' | 'C' | 'D';

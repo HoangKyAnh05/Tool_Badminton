@@ -342,12 +342,18 @@ export function useTraining() {
 
     // Physical round: pick position first so player sees target position on 9-grid!
     const pos = randomizer.getNextPosition();
+    const variations = pos.variations && pos.variations.length > 0 ? pos.variations : [];
+    const varIdx = variations.length > 0 ? Math.floor(Math.random() * variations.length) : 0;
+    const chosenVar = variations.length > 0 ? variations[varIdx] : undefined;
+
     const now = performance.now();
     const roundData: ActiveRoundData = {
       roundNumber: roundNum,
       totalRounds: configRef.current.totalRounds,
       actualMode,
       position: pos,
+      variation: chosenVar,
+      variationIndex: varIdx,
       startTime: now
     };
     setActiveData(roundData);

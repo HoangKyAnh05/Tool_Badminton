@@ -1,10 +1,12 @@
 import React from 'react';
-import { GridPosition } from '../../types';
+import { GridPosition, MovementVariation } from '../../types';
 import { MovementIllustration } from './MovementIllustration';
-import { Timer, Zap, Lightbulb, ArrowRight, CheckCircle, Infinity as InfinityIcon } from 'lucide-react';
+import { Timer, Zap, Lightbulb, ArrowRight, CheckCircle, Infinity as InfinityIcon, Target, Sparkles, Activity } from 'lucide-react';
 
 interface MovementOverlayProps {
   position: GridPosition;
+  variation?: MovementVariation;
+  variationIndex?: number;
   mode: 'TAY' | 'CHÂN' | 'TAY + CHÂN';
   remainingTime: number;
   totalDuration: number;
@@ -16,6 +18,8 @@ interface MovementOverlayProps {
 
 export const MovementOverlay: React.FC<MovementOverlayProps> = ({
   position,
+  variation,
+  variationIndex = 0,
   mode,
   remainingTime,
   totalDuration,
@@ -24,11 +28,19 @@ export const MovementOverlay: React.FC<MovementOverlayProps> = ({
   isUnlimited = false,
   onCompleteAction
 }) => {
-  const movementData = mode === 'TAY'
-    ? position.handMovement
-    : mode === 'CHÂN'
-      ? position.footMovement
-      : position.combinedMovement;
+  const activeVar = variation || (position.variations && position.variations[0]);
+
+  const movementData = activeVar
+    ? (mode === 'TAY' 
+        ? activeVar.handMovement 
+        : mode === 'CHÂN' 
+          ? activeVar.footMovement 
+          : activeVar.combinedMovement)
+    : (mode === 'TAY'
+        ? position.handMovement
+        : mode === 'CHÂN'
+          ? position.footMovement
+          : position.combinedMovement);
 
   const modeTitle = mode === 'TAY' ? 'TAY' : mode === 'CHÂN' ? 'CHÂN' : 'TAY + CHÂN';
   const progressPercent = isUnlimited 
@@ -41,12 +53,19 @@ export const MovementOverlay: React.FC<MovementOverlayProps> = ({
         className="movement-overlay-modal animate-pop"
         onClick={() => onCompleteAction?.()}
       >
-        {/* Top bar with round and timer */}
+        {/* Top bar with round, variation, and timer */}
         <div className="overlay-header">
           <div className="header-badge mode-badge">
             <Zap size={18} className="icon-pulse" />
             <span>CHẾ ĐỘ {modeTitle}</span>
           </div>
+
+          {activeVar && (
+            <div className="header-badge variation-badge">
+              <Target size={16} className="text-cyan animate-pulse" />
+              <span>KIỂU ĐÁNH <strong>{variationIndex + 1}/3</strong>: {activeVar.shotName}</span>
+            </div>
+          )}
 
           <div className="header-badge round-badge">
             <span>LƯỢT {roundNumber} / {totalRounds}</span>
@@ -80,6 +99,8 @@ export const MovementOverlay: React.FC<MovementOverlayProps> = ({
         <div className="overlay-visual-arena">
           <MovementIllustration
             position={position}
+            variation={activeVar}
+            variationIndex={variationIndex}
             mode={mode}
             className="overlay-illustration"
           />
@@ -94,10 +115,50 @@ export const MovementOverlay: React.FC<MovementOverlayProps> = ({
           </div>
         </div>
 
-        {/* Large readable instructions for athlete standing 2-4m away */}
+        {/* Detailed instructions for athlete standing 2-4m away */}
         <div className="overlay-instruction-card">
-          <h2 className="movement-title">{movementData.title}</h2>
-          <p className="movement-subtitle">{movementData.subTitle}</p>
+          <div className="instruction-title-row">
+            <div>
+              <div className="instruction-tag-row">
+                <span className="shot-type-pill">
+                  <Sparkles size={13} />
+                  {activeVar?.shotType || 'Kỹ thuật thi đấu'}
+                </span>
+                <span className="shot-num-pill">
+                  Biến thể {variationIndex + 1}/3
+                </span>
+              </div>
+              <h2 className="movement-title">{movementData.title}</h2>
+              <p className="movement-subtitle">{movementData.subTitle}</p>
+            </div>
+          </div>
+
+          {/* Detailed Breakdown: Hand + Foot technique steps */}
+          <div className="technique-breakdown-grid">
+            <div className="technique-mini-card hand-card">
+              <div className="mini-card-header">
+                <Activity size={14} className="text-cyan" />
+                <span>KỸ THUẬT VỢT / TAY</span>
+              </div>
+              <div className="mini-card-body">
+                {activeVar?.handMovement.subTitle || position.handMovement.subTitle}
+              </div>
+            </div>
+
+            <div className="technique-mini-card foot-card">
+              <div className="mini-card-header">
+                <Zap size={14} className="text-lime" />
+                <span>BỘ PHÁP DI CHUYỂN</span>
+              </div>
+              <div className="mini-card-body">
+                {activeVar?.footMovement.subTitle || position.footMovement.subTitle}
+              </div>
+            </div>
+          </div>
+
+          {movementData.description && (
+            <p className="movement-full-desc">{movementData.description}</p>
+          )}
 
           <div className="coaching-callout">
             <Lightbulb size={18} className="callout-icon" />

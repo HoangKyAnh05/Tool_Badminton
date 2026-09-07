@@ -1255,22 +1255,47 @@ button {
   width: 100%;
   height: 100%;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
+.illustration-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+}
+
+.illustration-display-stage {
+  width: 100%;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+  position: relative;
+}
+
 .illustration-svg {
   width: 100%;
-  max-height: 520px;
+  max-width: 860px;
+  height: 100%;
+  max-height: 480px;
   object-fit: contain;
+  margin: 0 auto;
   filter: drop-shadow(0 0 25px rgba(0, 240, 255, 0.2));
 }
 
 .illustration-img {
   max-width: 100%;
-  max-height: 520px;
+  max-height: 500px;
   object-fit: contain;
   border-radius: var(--radius-md);
+  margin: 0 auto;
 }
 
 .position-floating-pill {
@@ -1312,40 +1337,138 @@ button {
   color: var(--text-muted);
 }
 
+/* Variation Header Badge */
+.variation-badge {
+  color: var(--accent-cyan);
+  background: rgba(0, 240, 255, 0.1);
+  padding: 5px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(0, 240, 255, 0.35);
+  font-size: 0.88rem;
+  font-weight: 800;
+  max-width: 440px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .overlay-instruction-card {
-  padding: 24px 32px;
+  padding: 20px 30px;
   background: var(--bg-card);
   border-top: 1px solid var(--border-subtle);
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
+}
+
+.instruction-tag-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.shot-type-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(57, 255, 20, 0.15);
+  border: 1px solid #39ff14;
+  color: #39ff14;
+  font-size: 0.75rem;
+  font-weight: 800;
+  padding: 3px 10px;
+  border-radius: 999px;
+}
+
+.shot-num-pill {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(0, 240, 255, 0.12);
+  border: 1px solid var(--accent-cyan);
+  color: var(--accent-cyan);
+  font-size: 0.75rem;
+  font-weight: 800;
+  padding: 3px 10px;
+  border-radius: 999px;
 }
 
 .movement-title {
   font-family: var(--font-heading);
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   font-weight: 900;
   color: #fff;
   letter-spacing: 0.5px;
+  margin: 2px 0 0 0;
 }
 
 .movement-subtitle {
-  font-size: 1.05rem;
+  font-size: 1rem;
   color: var(--accent-cyan);
+  font-weight: 600;
+  margin: 0;
+}
+
+.technique-breakdown-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.technique-mini-card {
+  background: rgba(10, 20, 35, 0.75);
+  border: 1px solid rgba(51, 65, 85, 0.7);
+  border-radius: var(--radius-sm);
+  padding: 8px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.technique-mini-card.hand-card {
+  border-left: 3px solid var(--accent-cyan);
+}
+
+.technique-mini-card.foot-card {
+  border-left: 3px solid var(--accent-lime);
+}
+
+.mini-card-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  color: var(--text-muted);
+}
+
+.mini-card-body {
+  font-size: 0.84rem;
+  color: var(--text-primary);
+  line-height: 1.35;
   font-weight: 600;
 }
 
+.movement-full-desc {
+  font-size: 0.86rem;
+  color: #94a3b8;
+  line-height: 1.4;
+  margin: 0;
+}
+
 .coaching-callout {
-  margin-top: 4px;
+  margin-top: 2px;
   background: rgba(255, 183, 3, 0.08);
   border: 1px solid rgba(255, 183, 3, 0.25);
   border-radius: var(--radius-sm);
-  padding: 10px 14px;
+  padding: 8px 12px;
   display: flex;
   align-items: flex-start;
   gap: 10px;
   color: #ffd166;
-  font-size: 0.9rem;
+  font-size: 0.88rem;
 }
 
 .callout-icon {
@@ -2196,34 +2319,252 @@ button {
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .hero-title {
     font-size: 1.8rem;
   }
-  .grid-9-board {
+
+  /* Top Arena Controls - wrap cleanly on small screens */
+  .arena-top-controls {
+    padding: 8px 10px;
+    flex-wrap: wrap;
+    gap: 6px;
+    justify-content: center;
+  }
+
+  .arena-meta-group {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px;
+    width: 100%;
+  }
+
+  .arena-chip {
+    padding: 4px 8px;
+    font-size: 0.75rem;
+    gap: 5px;
+  }
+
+  .arena-buttons-group {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    width: 100%;
+  }
+
+  .btn-arena-control {
+    padding: 6px 10px;
+    font-size: 0.78rem;
+    gap: 4px;
+  }
+
+  /* Non-intrusive Guide on Mobile Court */
+  .arena-corner-guide {
+    top: 6px;
+    left: 8px;
+    right: 8px;
+    max-width: calc(100% - 16px);
+    padding: 8px 12px;
     gap: 8px;
   }
+
+  .corner-guide-title {
+    font-size: 0.92rem;
+  }
+
+  .corner-guide-sub {
+    font-size: 0.7rem;
+  }
+
+  /* 3x3 Court and Cells - prevent any overflow/cutoffs */
+  .arena-stage {
+    padding: 8px 4px;
+  }
+
+  .grid-stage-wrapper {
+    max-width: 100vw;
+  }
+
+  .grid-9-board {
+    gap: 6px;
+    padding: 6px;
+  }
+
+  .grid-cell {
+    padding: 6px 2px 4px;
+    min-height: 80px;
+    overflow: visible;
+  }
+
   .circle-target {
     width: 52px;
     height: 52px;
   }
+
   .circle-inner {
     width: 36px;
     height: 36px;
   }
+
   .pos-number {
     font-size: 1.1rem;
   }
+
+  /* CRITICAL: Active countdown target circle on mobile */
+  .circle-target.target-counting-down,
+  .circle-target.target-arrived {
+    width: 58px !important;
+    height: 58px !important;
+    border-width: 3px !important;
+  }
+
+  .circle-target.target-counting-down .circle-inner,
+  .circle-target.target-arrived .circle-inner {
+    width: 44px !important;
+    height: 44px !important;
+  }
+
+  .dot-countdown-digit {
+    font-size: 1.5rem !important;
+  }
+
+  .dot-countdown-sub {
+    font-size: 0.5rem !important;
+  }
+
+  /* Hide redundant tag inside the cell on mobile to prevent blocking cell name and bottom */
+  .cell-active-indicator-tag {
+    display: none !important;
+  }
+
+  .cell-label {
+    font-size: 0.7rem !important;
+    margin-top: 3px;
+    white-space: nowrap;
+    line-height: 1.1;
+  }
+
+  /* Movement Overlay on Mobile */
+  .movement-overlay-backdrop {
+    padding: 8px;
+  }
+
   .movement-overlay-modal {
-    max-height: 96vh;
+    width: 100%;
+    max-height: 98vh;
   }
+
+  .overlay-header {
+    padding: 8px 12px;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .header-badge {
+    font-size: 0.8rem;
+  }
+
+  .variation-badge {
+    order: 4;
+    width: 100%;
+    max-width: 100%;
+    font-size: 0.76rem;
+    padding: 3px 8px;
+    text-align: center;
+  }
+
+  .overlay-visual-arena {
+    min-height: 220px;
+    max-height: 320px;
+    padding: 8px;
+  }
+
+  .illustration-view-tabs {
+    gap: 6px;
+    margin-bottom: 6px;
+  }
+
+  .view-tab-btn {
+    padding: 4px 10px;
+    font-size: 0.72rem;
+    gap: 4px;
+  }
+
+  .position-floating-pill {
+    top: 8px;
+    left: 8px;
+    padding: 4px 10px 4px 6px;
+    gap: 6px;
+  }
+
+  .pill-circle {
+    width: 26px;
+    height: 26px;
+    font-size: 0.95rem;
+  }
+
+  .pill-text strong {
+    font-size: 0.75rem;
+  }
+
+  .pill-text small {
+    display: none;
+  }
+
+  .overlay-instruction-card {
+    padding: 10px 14px;
+    gap: 6px;
+  }
+
   .movement-title {
-    font-size: 1.2rem;
+    font-size: 1.15rem;
   }
+
+  .movement-subtitle {
+    font-size: 0.82rem;
+  }
+
+  .technique-breakdown-grid {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .technique-mini-card {
+    padding: 6px 10px;
+  }
+
+  .mini-card-header {
+    font-size: 0.68rem;
+  }
+
+  .mini-card-body {
+    font-size: 0.78rem;
+  }
+
+  .coaching-callout {
+    padding: 6px 10px;
+    font-size: 0.78rem;
+    gap: 6px;
+  }
+
+  .overlay-action-trigger {
+    padding: 10px 14px;
+  }
+
+  .trigger-hint-text {
+    font-size: 0.75rem;
+  }
+
+  .trigger-pill-btn {
+    padding: 4px 10px;
+    font-size: 0.75rem;
+  }
+
   .camera-floating-container {
     bottom: 12px;
     right: 12px;
   }
+
   .camera-preview-panel {
     width: 180px;
   }

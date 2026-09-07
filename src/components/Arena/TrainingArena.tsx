@@ -161,6 +161,9 @@ export const TrainingArena: React.FC<TrainingArenaProps> = ({
               </div>
               <div className="corner-guide-title">
                 Ô {activeData.position.id} – {activeData.position.zoneName}
+                {activeData.variation && (
+                  <span className="corner-guide-variation-tag"> • {activeData.variation.shotName}</span>
+                )}
               </div>
               <div className="corner-guide-sub">
                 {isArrived 
@@ -175,6 +178,8 @@ export const TrainingArena: React.FC<TrainingArenaProps> = ({
         {isActive && isPhysical && activeData.position && (
           <MovementOverlay
             position={activeData.position}
+            variation={activeData.variation}
+            variationIndex={activeData.variationIndex}
             mode={activeData.actualMode as 'TAY' | 'CHÂN' | 'TAY + CHÂN'}
             remainingTime={remainingTime}
             totalDuration={config.actionDuration}

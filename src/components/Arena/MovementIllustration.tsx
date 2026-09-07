@@ -1,15 +1,19 @@
 import React, { useState } from 'react';
-import { GridPosition } from '../../types';
+import { GridPosition, MovementVariation } from '../../types';
 import { User, Compass, Upload, Image as ImageIcon } from 'lucide-react';
 
 interface MovementIllustrationProps {
   position: GridPosition;
+  variation?: MovementVariation;
+  variationIndex?: number;
   mode: 'TAY' | 'CHÂN' | 'TAY + CHÂN';
   className?: string;
 }
 
 export const MovementIllustration: React.FC<MovementIllustrationProps> = ({
   position,
+  variation,
+  variationIndex,
   mode,
   className = ''
 }) => {
@@ -110,12 +114,20 @@ export const MovementIllustration: React.FC<MovementIllustrationProps> = ({
         <text x="50" y="65" fill="#334155" fontSize="48" fontWeight="900" opacity="0.6">
           Ô {posId}
         </text>
-        <text x="130" y="55" fill="#94a3b8" fontSize="14" fontWeight="bold">
+        <text x="130" y="52" fill="#94a3b8" fontSize="14" fontWeight="bold">
           {position.zoneName}
         </text>
-        <text x="130" y="75" fill={primaryColor} fontSize="13" fontWeight="600">
+        <text x="130" y="72" fill={primaryColor} fontSize="13" fontWeight="600">
           {position.directionLabel}
         </text>
+        {variation && (
+          <g>
+            <rect x="130" y="80" width="320" height="24" rx="6" fill="rgba(0, 240, 255, 0.12)" stroke={primaryColor} strokeWidth="1" />
+            <text x="140" y="96" fill="#ffffff" fontSize="11" fontWeight="800">
+              🎯 KIỂU {((variationIndex ?? 0) + 1)}/3: {variation.shotName.length > 38 ? variation.shotName.slice(0, 38) + '...' : variation.shotName}
+            </text>
+          </g>
+        )}
 
         {/* Render Specific Athlete Posture Archetype */}
         {renderPostureByPosition(posId, primaryColor)}

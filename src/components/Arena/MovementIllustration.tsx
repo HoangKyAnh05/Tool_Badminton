@@ -81,18 +81,25 @@ export const MovementIllustration: React.FC<MovementIllustrationProps> = ({
       >
         <defs>
           <linearGradient id="bgAthleteGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stopColor="#0b1726" />
-            <stop offset="100%" stopColor="#040910" />
+            <stop offset="0%" stopColor="#0b1728" />
+            <stop offset="60%" stopColor="#071220" />
+            <stop offset="100%" stopColor="#040914" />
+          </linearGradient>
+
+          <linearGradient id="courtFloorGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stopColor="#093028" />
+            <stop offset="100%" stopColor="#051c17" />
           </linearGradient>
 
           <linearGradient id="athleteJersey" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor={primaryColor} />
+            <stop offset="0%" stopColor="#00f0ff" />
             <stop offset="100%" stopColor="#0284c7" />
           </linearGradient>
 
           <linearGradient id="glowRacket" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#ffffff" />
-            <stop offset="100%" stopColor={primaryColor} />
+            <stop offset="0%" stopColor="#fef08a" />
+            <stop offset="50%" stopColor="#00f0ff" />
+            <stop offset="100%" stopColor="#38bdf8" />
           </linearGradient>
 
           <filter id="glowEffect" x="-20%" y="-20%" width="140%" height="140%">
@@ -101,54 +108,44 @@ export const MovementIllustration: React.FC<MovementIllustrationProps> = ({
           </filter>
         </defs>
 
-        {/* Stadium Athletic Background */}
+        {/* Stadium Athletic Court Background */}
         <rect x="20" y="15" width="600" height="370" rx="20" fill="url(#bgAthleteGrad)" stroke="#1e3a5f" strokeWidth="2.5" />
 
-        {/* Dynamic Stadium Floor Perspective Lines */}
-        <line x1="20" y1="310" x2="620" y2="310" stroke="#00f0ff" strokeWidth="2" strokeOpacity="0.4" />
-        <line x1="120" y1="385" x2="200" y2="310" stroke="#1e293b" strokeWidth="1.5" />
-        <line x1="320" y1="385" x2="320" y2="310" stroke="#1e293b" strokeWidth="1.5" />
-        <line x1="520" y1="385" x2="440" y2="310" stroke="#1e293b" strokeWidth="1.5" />
+        {/* Realistic Green Badminton Court Floor */}
+        <polygon points="20,270 620,270 620,385 20,385" fill="url(#courtFloorGrad)" />
+        <line x1="20" y1="270" x2="620" y2="270" stroke="#39ff14" strokeWidth="3" strokeOpacity="0.8" filter="url(#glowEffect)" />
+        <line x1="120" y1="385" x2="200" y2="270" stroke="#ffffff" strokeWidth="2.5" strokeOpacity="0.6" />
+        <line x1="320" y1="385" x2="320" y2="270" stroke="#ffffff" strokeWidth="2.5" strokeOpacity="0.6" />
+        <line x1="520" y1="385" x2="440" y2="270" stroke="#ffffff" strokeWidth="2.5" strokeOpacity="0.6" />
 
-        {/* Position & Stance Watermark Badge */}
-        <text x="50" y="65" fill="#334155" fontSize="48" fontWeight="900" opacity="0.6">
-          Ô {posId}
-        </text>
-        <text x="130" y="52" fill="#94a3b8" fontSize="14" fontWeight="bold">
-          {position.zoneName}
-        </text>
-        <text x="130" y="72" fill={primaryColor} fontSize="13" fontWeight="600">
-          {position.directionLabel}
-        </text>
-        {variation && (
-          <g>
-            <rect x="130" y="80" width="320" height="24" rx="6" fill="rgba(0, 240, 255, 0.12)" stroke={primaryColor} strokeWidth="1" />
-            <text x="140" y="96" fill="#ffffff" fontSize="11" fontWeight="800">
-              🎯 KIỂU {((variationIndex ?? 0) + 1)}/3: {variation.shotName.length > 38 ? variation.shotName.slice(0, 38) + '...' : variation.shotName}
-            </text>
-          </g>
-        )}
+        {/* Non-overlapping Sleek Top Corner Badge */}
+        <g transform="translate(36, 28)">
+          <rect width="190" height="32" rx="16" fill="rgba(10, 20, 35, 0.9)" stroke="#00f0ff" strokeWidth="1.5" />
+          <circle cx="18" cy="16" r="10" fill="#00f0ff" />
+          <text x="18" y="20" fill="#020812" fontSize="12" fontWeight="900" textAnchor="middle">{posId}</text>
+          <text x="36" y="20" fill="#ffffff" fontSize="12" fontWeight="800">{position.zoneName}</text>
+        </g>
 
         {/* Render Specific Athlete Posture Archetype */}
         {renderPostureByPosition(posId, primaryColor)}
 
-        {/* Key Coaching Technical Cues Floating Overlay */}
-        <g transform="translate(40, 240)">
-          <rect width="210" height="58" rx="8" fill="#0f172a" fillOpacity="0.9" stroke="#334155" />
-          <text x="14" y="24" fill={primaryColor} fontSize="12" fontWeight="bold">
+        {/* Key Technical Cues Floating Overlay - High Contrast */}
+        <g transform="translate(36, 310)">
+          <rect width="255" height="56" rx="10" fill="rgba(6, 15, 28, 0.95)" stroke="#00f0ff" strokeWidth="1.5" />
+          <text x="12" y="23" fill="#00f0ff" fontSize="12" fontWeight="900">
             🎯 ĐIỂM TIẾP XÚC CẦU:
           </text>
-          <text x="14" y="44" fill="#f8fafc" fontSize="12">
-            {posId <= 3 ? 'Đỉnh lưới, đón cầu trước mặt' : posId <= 6 ? 'Ngang sườn hông, đè cầu phẳng' : 'Vị trí cao nhất trên không'}
+          <text x="12" y="43" fill="#ffffff" fontSize="12" fontWeight="700">
+            {posId <= 3 ? 'Đón cầu đỉnh lưới trước mặt' : posId <= 6 ? 'Ngang sườn hông, đè cầu phẳng' : 'Vị trí cao nhất trên không'}
           </text>
         </g>
 
-        <g transform="translate(390, 240)">
-          <rect width="210" height="58" rx="8" fill="#0f172a" fillOpacity="0.9" stroke="#334155" />
-          <text x="14" y="24" fill="#39ff14" fontSize="12" fontWeight="bold">
+        <g transform="translate(349, 310)">
+          <rect width="255" height="56" rx="10" fill="rgba(6, 15, 28, 0.95)" stroke="#39ff14" strokeWidth="1.5" />
+          <text x="12" y="23" fill="#39ff14" fontSize="12" fontWeight="900">
             🦶 BỘ PHÁP FOOTWORK:
           </text>
-          <text x="14" y="44" fill="#f8fafc" fontSize="12">
+          <text x="12" y="43" fill="#ffffff" fontSize="12" fontWeight="700">
             {posId <= 3 ? 'Lunge chân thuận, gối vững 90°' : posId === 5 ? 'Nhún bật Split-step đàn hồi' : posId <= 6 ? 'Bước ngang chassé xoay hông' : 'Bật nhảy cắt kéo (Scissor-kick)'}
           </text>
         </g>
@@ -275,27 +272,31 @@ export const MovementIllustration: React.FC<MovementIllustrationProps> = ({
       case 4:
         return (
           <g transform="translate(180, 50)">
-            {/* Low defensive drive line */}
-            <line x1="0" y1="130" x2="240" y2="130" stroke="#f59e0b" strokeWidth="2" strokeDasharray="6 6" />
-            <g transform="translate(80, 130) rotate(80)">
-              <ellipse cx="0" cy="0" rx="6" ry="9" fill="#ffffff" />
-              <polygon points="-6,2 -11,16 11,16 6,2" fill="#e2e8f0" stroke="#94a3b8" />
+            {/* Defensive drive horizontal flight path */}
+            <line x1="0" y1="130" x2="260" y2="130" stroke="#f59e0b" strokeWidth="3" strokeDasharray="6 6" filter="url(#glowEffect)" />
+            <g transform="translate(75, 130) rotate(85)">
+              <ellipse cx="0" cy="0" rx="7" ry="11" fill="#ffffff" />
+              <polygon points="-7,2 -13,18 13,18 7,2" fill="#e2e8f0" stroke="#94a3b8" />
             </g>
 
-            {/* Low athletic squat stance */}
-            <circle cx="140" cy="85" r="18" fill="#fbcfe8" stroke="#f43f5e" strokeWidth="2" />
-            <ellipse cx="140" cy="140" rx="22" ry="32" fill="url(#athleteJersey)" />
+            {/* Low athletic squat stance - high contrast */}
+            <circle cx="140" cy="85" r="20" fill="#fde047" stroke="#ca8a04" strokeWidth="2.5" />
+            <path d="M 120 83 Q 140 75 160 83" stroke="#00f0ff" strokeWidth="4" strokeLinecap="round" />
+            <ellipse cx="140" cy="140" rx="25" ry="35" fill="url(#athleteJersey)" stroke="#38bdf8" strokeWidth="2.5" />
 
             {/* Arms crossed in front for backhand punch drive */}
-            <path d="M 130 130 L 105 135 L 85 130" fill="none" stroke="#fbcfe8" strokeWidth="8" strokeLinecap="round" />
-            <line x1="85" y1="130" x2="65" y2="130" stroke="#94a3b8" strokeWidth="3.5" />
-            <ellipse cx="50" cy="130" rx="14" ry="20" fill="none" stroke="url(#glowRacket)" strokeWidth="3" transform="rotate(-15 50 130)" />
+            <path d="M 130 130 L 105 135 L 85 130" fill="none" stroke="#fed7aa" strokeWidth="10" strokeLinecap="round" />
+            <line x1="85" y1="130" x2="65" y2="130" stroke="#cbd5e1" strokeWidth="4.5" />
+            <ellipse cx="48" cy="130" rx="16" ry="22" fill="none" stroke="url(#glowRacket)" strokeWidth="3.5" transform="rotate(-15 48 130)" />
+            {/* Racket Strings Net */}
+            <line x1="48" y1="110" x2="48" y2="150" stroke="#38bdf8" strokeWidth="1.5" strokeOpacity="0.7" />
+            <line x1="34" y1="130" x2="62" y2="130" stroke="#38bdf8" strokeWidth="1.5" strokeOpacity="0.7" />
 
             {/* Wide stable defensive feet */}
-            <path d="M 150 170 L 180 205 L 185 260" fill="none" stroke="#0284c7" strokeWidth="12" strokeLinecap="round" strokeLinejoin="round" />
-            <rect x="175" y="255" width="28" height="12" rx="4" fill="#ffffff" />
-            <path d="M 130 170 L 95 205 L 90 260" fill="none" stroke="#0369a1" strokeWidth="12" strokeLinecap="round" strokeLinejoin="round" />
-            <rect x="80" y="255" width="28" height="12" rx="4" fill="#ffffff" />
+            <path d="M 150 170 L 185 205 L 190 260" fill="none" stroke="#0284c7" strokeWidth="14" strokeLinecap="round" strokeLinejoin="round" />
+            <rect x="180" y="255" width="32" height="14" rx="5" fill="#ffffff" stroke="#39ff14" strokeWidth="2" />
+            <path d="M 130 170 L 95 205 L 90 260" fill="none" stroke="#0369a1" strokeWidth="14" strokeLinecap="round" strokeLinejoin="round" />
+            <rect x="78" y="255" width="32" height="14" rx="5" fill="#ffffff" stroke="#39ff14" strokeWidth="2" />
           </g>
         );
 

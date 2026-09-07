@@ -39,7 +39,8 @@ export const Navbar: React.FC<NavbarProps> = ({
         {isTraining && (
           <div className="navbar-training-pill animate-pulse">
             <span className="live-dot" />
-            <span>ĐANG TẬP: <strong>{currentMode}</strong></span>
+            <span className="pill-text-desktop">ĐANG TẬP: <strong>{currentMode}</strong></span>
+            <span className="pill-text-mobile"><strong>{currentMode}</strong></span>
           </div>
         )}
 

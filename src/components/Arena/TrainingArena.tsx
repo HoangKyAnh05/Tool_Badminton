@@ -233,7 +233,7 @@ export const TrainingArena: React.FC<TrainingArenaProps> = ({
       </div>
 
       {/* Camera PIP Preview Float */}
-      <div className="camera-floating-container">
+      <div className={`camera-floating-container ${isActive && isPhysical && activeData?.position ? 'has-active-modal' : ''}`}>
         <CameraPreview
           stream={cameraStream}
           isActive={cameraActive}

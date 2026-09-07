@@ -556,8 +556,9 @@ export const MovementIllustration: React.FC<MovementIllustrationProps> = ({
             setActiveTab('ATHLETE');
           }}
         >
-          <User size={15} />
-          <span>HÌNH ẢNH ĐỘNG TÁC BÀI TẬP</span>
+          <User size={14} />
+          <span className="tab-full-label">HÌNH ẢNH ĐỘNG TÁC</span>
+          <span className="tab-mobile-label">Động tác</span>
         </button>
 
         <button
@@ -567,14 +568,16 @@ export const MovementIllustration: React.FC<MovementIllustrationProps> = ({
             setActiveTab('COURT');
           }}
         >
-          <Compass size={15} />
-          <span>SƠ ĐỒ DI CHUYỂN SÂN</span>
+          <Compass size={14} />
+          <span className="tab-full-label">SƠ ĐỒ DI CHUYỂN</span>
+          <span className="tab-mobile-label">Sơ đồ sân</span>
         </button>
 
         {/* Upload Custom Image Button */}
-        <label className="view-tab-btn upload-tab-btn" title="Tải ảnh bài tập riêng từ máy tính">
-          <Upload size={14} />
-          <span>Tải ảnh riêng</span>
+        <label className="view-tab-btn upload-tab-btn" title="Tải ảnh bài tập riêng">
+          <Upload size={13} />
+          <span className="tab-full-label">Tải ảnh riêng</span>
+          <span className="tab-mobile-label">Tải ảnh</span>
           <input 
             type="file" 
             accept="image/*" 

@@ -217,8 +217,9 @@ export const CameraPreview: React.FC<CameraPreviewProps> = ({
                     onClick={startRecording}
                     title="Bắt đầu quay video lại buổi tập của bạn"
                   >
-                    <Circle size={15} fill="#ef4444" color="#ef4444" />
-                    <span>Quay video bài tập</span>
+                    <Circle size={14} fill="#ef4444" color="#ef4444" />
+                    <span className="rec-text-full">Quay video bài tập</span>
+                    <span className="rec-text-mobile">Quay video</span>
                   </button>
                 ) : (
                   <button 
@@ -226,8 +227,9 @@ export const CameraPreview: React.FC<CameraPreviewProps> = ({
                     onClick={stopRecording}
                     title="Dừng quay và xem lại clip"
                   >
-                    <Square size={14} fill="#ffffff" color="#ffffff" />
-                    <span>Dừng & Lưu video ({formatTimer(recordingSeconds)})</span>
+                    <Square size={13} fill="#ffffff" color="#ffffff" />
+                    <span className="rec-text-full">Dừng & Lưu video ({formatTimer(recordingSeconds)})</span>
+                    <span className="rec-text-mobile">Lưu ({formatTimer(recordingSeconds)})</span>
                   </button>
                 )}
               </div>

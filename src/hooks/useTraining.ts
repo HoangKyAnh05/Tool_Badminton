@@ -189,43 +189,108 @@ export function useTraining() {
       // Play "GO!" sound for movement
       playGoSound();
 
-      // Precision countdown loop for physical movement action duration
-      const durationMs = configRef.current.actionDuration * 1000;
-      setRemainingTime(configRef.current.actionDuration);
+      const isUnlimited = configRef.current.speedPreset === 'unlimited' || configRef.current.actionDuration <= 0;
 
-      const loop = (timestamp: number) => {
-        const elapsed = timestamp - now;
-        const left = Math.max(0, (durationMs - elapsed) / 1000);
-        setRemainingTime(Number(left.toFixed(2)));
-
-        if (elapsed >= durationMs) {
-          // Action time elapsed
-          const recordedRound: ActiveRoundData = {
-            ...roundData,
-            responseTime: Number((configRef.current.actionDuration).toFixed(2))
-          };
-          roundsHistoryRef.current.push(recordedRound);
-
-          // Rest phase or straight next
-          if (configRef.current.restDuration > 0) {
-            setState('REST');
-            setRemainingTime(configRef.current.restDuration);
-            setTimeout(() => {
-              if (stateRef.current !== 'IDLE' && stateRef.current !== 'PAUSED') {
-                startNextRoundOrFinish();
-              }
-            }, configRef.current.restDuration * 1000);
-          } else {
-            startNextRoundOrFinish();
-          }
-        } else {
+      if (isUnlimited) {
+        // Unlimited mode: timer counts up elapsed seconds and does not auto-abort
+        setRemainingTime(0);
+        const loop = (timestamp: number) => {
+          const elapsed = (timestamp - now) / 1000;
+          setRemainingTime(Number(elapsed.toFixed(1)));
           timerLoopRef.current = requestAnimationFrame(loop);
-        }
-      };
+        };
+        timerLoopRef.current = requestAnimationFrame(loop);
+      } else {
+        // Precision countdown loop for physical movement action duration
+        const durationMs = configRef.current.actionDuration * 1000;
+        setRemainingTime(configRef.current.actionDuration);
 
-      timerLoopRef.current = requestAnimationFrame(loop);
+        const loop = (timestamp: number) => {
+          const elapsed = timestamp - now;
+          const left = Math.max(0, (durationMs - elapsed) / 1000);
+          setRemainingTime(Number(left.toFixed(2)));
+
+          if (elapsed >= durationMs) {
+            // Action time elapsed
+            const recordedRound: ActiveRoundData = {
+              ...roundData,
+              responseTime: Number((configRef.current.actionDuration).toFixed(2))
+            };
+            roundsHistoryRef.current.push(recordedRound);
+
+            // Rest phase or straight next
+            if (configRef.current.restDuration > 0) {
+              setState('REST');
+              setRemainingTime(configRef.current.restDuration);
+              setTimeout(() => {
+                if (stateRef.current !== 'IDLE' && stateRef.current !== 'PAUSED') {
+                  startNextRoundOrFinish();
+                }
+              }, configRef.current.restDuration * 1000);
+            } else {
+              startNextRoundOrFinish();
+            }
+          } else {
+            timerLoopRef.current = requestAnimationFrame(loop);
+          }
+        };
+
+        timerLoopRef.current = requestAnimationFrame(loop);
+      }
     }
   }, [playGoSound, startNextRoundOrFinish]);
+
+  // Manually finish current physical action round (triggered by Space key or screen tap)
+  const completeCurrentAction = useCallback(() => {
+    if (stateRef.current !== 'ACTIVE') return;
+    if (!activeDataRef.current || activeDataRef.current.actualMode === 'LÝ THUYẾT') return;
+
+    if (timerLoopRef.current) cancelAnimationFrame(timerLoopRef.current);
+
+    const now = performance.now();
+    const elapsedSec = Number(Math.max(0.1, (now - startTimeRef.current) / 1000).toFixed(2));
+
+    const recordedRound: ActiveRoundData = {
+      ...activeDataRef.current,
+      responseTime: elapsedSec
+    };
+    roundsHistoryRef.current.push(recordedRound);
+
+    // Play confirm tone
+    playGoSound();
+
+    if (configRef.current.restDuration > 0) {
+      setState('REST');
+      setRemainingTime(configRef.current.restDuration);
+      setTimeout(() => {
+        if (stateRef.current !== 'IDLE' && stateRef.current !== 'PAUSED') {
+          startNextRoundOrFinish();
+        }
+      }, configRef.current.restDuration * 1000);
+    } else {
+      startNextRoundOrFinish();
+    }
+  }, [playGoSound, startNextRoundOrFinish]);
+
+  // Spacebar hotkey listener to advance exercises
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      // If focused inside an input or textarea, ignore
+      const target = e.target as HTMLElement | null;
+      if (target && ['INPUT', 'TEXTAREA', 'SELECT'].includes(target.tagName)) {
+        return;
+      }
+      if (e.code === 'Space' || e.key === ' ') {
+        e.preventDefault();
+        if (stateRef.current === 'ACTIVE' && activeDataRef.current?.actualMode !== 'LÝ THUYẾT') {
+          completeCurrentAction();
+        }
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [completeCurrentAction]);
 
   // Round sequence with countdown 3-2-1
   const startRoundSequence = useCallback((roundNum: number) => {
@@ -332,6 +397,7 @@ export function useTraining() {
     startSession,
     abortSession,
     togglePause,
+    completeCurrentAction,
     submitAnswer,
     nextTheoryQuestion,
     finishSession

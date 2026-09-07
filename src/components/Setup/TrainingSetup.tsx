@@ -24,12 +24,13 @@ export const TrainingSetup: React.FC<TrainingSetupProps> = ({
   ];
 
   const speedPresets: { id: SpeedPreset; label: string; duration: number }[] = [
+    { id: 'unlimited', label: '♾️ Không giới hạn (Tự do)', duration: 0 },
     { id: 'very_slow', label: 'Rất chậm (3.0s)', duration: 3.0 },
     { id: 'slow', label: 'Chậm (2.0s)', duration: 2.0 },
     { id: 'normal', label: 'Bình thường (1.5s)', duration: 1.5 },
     { id: 'fast', label: 'Nhanh (1.0s)', duration: 1.0 },
     { id: 'very_fast', label: 'Rất nhanh (0.5s)', duration: 0.5 },
-    { id: 'custom', label: 'Tùy chỉnh', duration: config.actionDuration }
+    { id: 'custom', label: 'Tùy chỉnh', duration: config.actionDuration > 0 ? config.actionDuration : 1.5 }
   ];
 
   const roundOptions = [10, 20, 30, 50, 100];
@@ -85,7 +86,7 @@ export const TrainingSetup: React.FC<TrainingSetupProps> = ({
           <div className="section-label-row">
             <label className="section-label">2. TỐC ĐỘ PHẢN XẠ</label>
             <span className="current-speed-tag">
-              <Clock size={14} /> Thời gian hành động: <strong>{config.actionDuration.toFixed(2)}s</strong>
+              <Clock size={14} /> Thời gian hành động: <strong>{config.speedPreset === 'unlimited' ? 'Không giới hạn (∞)' : `${config.actionDuration.toFixed(2)}s`}</strong>
             </span>
           </div>
 
@@ -101,25 +102,35 @@ export const TrainingSetup: React.FC<TrainingSetupProps> = ({
             ))}
           </div>
 
-          {/* Custom Duration Slider */}
-          <div className="slider-wrapper">
-            <span className="slider-bound">0.4s</span>
-            <input
-              type="range"
-              min="0.4"
-              max="4.0"
-              step="0.1"
-              value={config.actionDuration}
-              onChange={(e) =>
-                onUpdateConfig({
-                  speedPreset: 'custom',
-                  actionDuration: parseFloat(e.target.value)
-                })
-              }
-              className="range-slider"
-            />
-            <span className="slider-bound">4.0s</span>
-          </div>
+          {config.speedPreset === 'unlimited' ? (
+            <div className="unlimited-notice-card animate-fade-in">
+              <Sparkles size={18} className="notice-icon" />
+              <div>
+                <strong>Chế độ không giới hạn thời gian đã chọn:</strong>
+                <p>Bài tập sẽ giữ nguyên cho đến khi bạn sẵn sàng. Khi hoàn thành động tác, chỉ cần <strong>bấm phím CÁCH</strong> hoặc <strong>chạm vào màn hình</strong> để chuyển ngay sang bài khác!</p>
+              </div>
+            </div>
+          ) : (
+            /* Custom Duration Slider */
+            <div className="slider-wrapper">
+              <span className="slider-bound">0.4s</span>
+              <input
+                type="range"
+                min="0.4"
+                max="4.0"
+                step="0.1"
+                value={config.actionDuration > 0 ? config.actionDuration : 1.5}
+                onChange={(e) =>
+                  onUpdateConfig({
+                    speedPreset: 'custom',
+                    actionDuration: parseFloat(e.target.value)
+                  })
+                }
+                className="range-slider"
+              />
+              <span className="slider-bound">4.0s</span>
+            </div>
+          )}
         </div>
 
         {/* 3. Number of rounds & Rest times */}

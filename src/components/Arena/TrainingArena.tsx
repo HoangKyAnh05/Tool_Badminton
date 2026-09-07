@@ -26,6 +26,7 @@ interface TrainingArenaProps {
   remainingTime: number;
   onAbort: () => void;
   onTogglePause: () => void;
+  onCompleteAction?: () => void;
   onSubmitAnswer: (opt: 'A' | 'B' | 'C' | 'D') => void;
   onNextTheory: () => void;
 
@@ -47,6 +48,7 @@ export const TrainingArena: React.FC<TrainingArenaProps> = ({
   remainingTime,
   onAbort,
   onTogglePause,
+  onCompleteAction,
   onSubmitAnswer,
   onNextTheory,
   cameraStream,
@@ -63,6 +65,7 @@ export const TrainingArena: React.FC<TrainingArenaProps> = ({
 
   const isPhysical = activeData && activeData.actualMode !== 'LÝ THUYẾT' && activeData.position;
   const isTheory = activeData && activeData.actualMode === 'LÝ THUYẾT' && activeData.question;
+  const isUnlimited = config.speedPreset === 'unlimited' || config.actionDuration <= 0;
 
   return (
     <div className="training-arena-wrapper">
@@ -76,7 +79,7 @@ export const TrainingArena: React.FC<TrainingArenaProps> = ({
 
           <div className="arena-chip speed-chip">
             <TimerIcon size={16} />
-            <span>Tốc độ: <strong>{config.actionDuration}s</strong></span>
+            <span>Tốc độ: <strong>{isUnlimited ? 'Không giới hạn (∞)' : `${config.actionDuration}s`}</strong></span>
           </div>
 
           {activeData && (
@@ -88,6 +91,17 @@ export const TrainingArena: React.FC<TrainingArenaProps> = ({
         </div>
 
         <div className="arena-buttons-group">
+          {isActive && isPhysical && (
+            <button 
+              className="btn-arena-control next-action-btn animate-pulse"
+              onClick={onCompleteAction}
+              title="Chuyển sang bài tiếp theo (hoặc bấm phím CÁCH)"
+            >
+              <Zap size={18} />
+              <span>BÀI TIẾP (CÁCH)</span>
+            </button>
+          )}
+
           <button 
             className={`btn-arena-control ${isPaused ? 'resume' : 'pause'}`}
             onClick={onTogglePause}
@@ -138,6 +152,8 @@ export const TrainingArena: React.FC<TrainingArenaProps> = ({
             totalDuration={config.actionDuration}
             roundNumber={currentRound}
             totalRounds={config.totalRounds}
+            isUnlimited={isUnlimited}
+            onCompleteAction={onCompleteAction}
           />
         )}
 

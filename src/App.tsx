@@ -93,6 +93,7 @@ export const App: React.FC = () => {
             remainingTime={training.remainingTime}
             onAbort={handleAbort}
             onTogglePause={training.togglePause}
+            onCompleteAction={training.completeCurrentAction}
             onSubmitAnswer={training.submitAnswer}
             onNextTheory={training.nextTheoryQuestion}
             cameraStream={camera.stream}

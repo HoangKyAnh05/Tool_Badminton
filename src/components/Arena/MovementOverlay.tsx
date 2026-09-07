@@ -1,7 +1,7 @@
 import React from 'react';
 import { GridPosition } from '../../types';
 import { MovementIllustration } from './MovementIllustration';
-import { Timer, Zap, Lightbulb } from 'lucide-react';
+import { Timer, Zap, Lightbulb, ArrowRight, CheckCircle, Infinity as InfinityIcon } from 'lucide-react';
 
 interface MovementOverlayProps {
   position: GridPosition;
@@ -10,6 +10,8 @@ interface MovementOverlayProps {
   totalDuration: number;
   roundNumber: number;
   totalRounds: number;
+  isUnlimited?: boolean;
+  onCompleteAction?: () => void;
 }
 
 export const MovementOverlay: React.FC<MovementOverlayProps> = ({
@@ -18,7 +20,9 @@ export const MovementOverlay: React.FC<MovementOverlayProps> = ({
   remainingTime,
   totalDuration,
   roundNumber,
-  totalRounds
+  totalRounds,
+  isUnlimited = false,
+  onCompleteAction
 }) => {
   const movementData = mode === 'TAY'
     ? position.handMovement
@@ -27,11 +31,16 @@ export const MovementOverlay: React.FC<MovementOverlayProps> = ({
       : position.combinedMovement;
 
   const modeTitle = mode === 'TAY' ? 'TAY' : mode === 'CHÂN' ? 'CHÂN' : 'TAY + CHÂN';
-  const progressPercent = Math.max(0, Math.min(100, (remainingTime / totalDuration) * 100));
+  const progressPercent = isUnlimited 
+    ? 100 
+    : Math.max(0, Math.min(100, (remainingTime / totalDuration) * 100));
 
   return (
     <div className="movement-overlay-backdrop">
-      <div className="movement-overlay-modal animate-pop">
+      <div 
+        className="movement-overlay-modal animate-pop"
+        onClick={() => onCompleteAction?.()}
+      >
         {/* Top bar with round and timer */}
         <div className="overlay-header">
           <div className="header-badge mode-badge">
@@ -43,17 +52,26 @@ export const MovementOverlay: React.FC<MovementOverlayProps> = ({
             <span>LƯỢT {roundNumber} / {totalRounds}</span>
           </div>
 
-          {/* Large countdown timer */}
-          <div className="header-badge timer-badge">
-            <Timer size={20} />
-            <span className="timer-number">{remainingTime.toFixed(2)}s</span>
+          {/* Large countdown / stopwatch timer */}
+          <div className={`header-badge timer-badge ${isUnlimited ? 'is-unlimited-badge' : ''}`}>
+            {isUnlimited ? (
+              <>
+                <InfinityIcon size={20} className="icon-pulse" />
+                <span className="timer-number">{remainingTime.toFixed(1)}s (Tự do)</span>
+              </>
+            ) : (
+              <>
+                <Timer size={20} />
+                <span className="timer-number">{remainingTime.toFixed(2)}s</span>
+              </>
+            )}
           </div>
         </div>
 
         {/* Progress indicator bar */}
         <div className="timer-bar-track">
           <div 
-            className="timer-bar-fill" 
+            className={`timer-bar-fill ${isUnlimited ? 'unlimited-glow' : ''}`}
             style={{ width: `${progressPercent}%` }} 
           />
         </div>
@@ -84,6 +102,28 @@ export const MovementOverlay: React.FC<MovementOverlayProps> = ({
           <div className="coaching-callout">
             <Lightbulb size={18} className="callout-icon" />
             <p><strong>Mẹo HLV:</strong> {movementData.coachingTip}</p>
+          </div>
+        </div>
+
+        {/* Bottom Interactive Trigger Bar: Click / Touch or Spacebar */}
+        <div 
+          className="overlay-action-trigger" 
+          onClick={(e) => {
+            e.stopPropagation();
+            onCompleteAction?.();
+          }}
+          role="button"
+          tabIndex={0}
+        >
+          <div className="action-trigger-content">
+            <CheckCircle size={22} className="trigger-icon-check" />
+            <span className="trigger-hint-text">
+              TẬP XONG: <strong>BẤM PHÍM CÁCH</strong> HOẶC <strong>CHẠM VÀO MÀN HÌNH</strong> ĐỂ SANG BÀI KHÁC
+            </span>
+            <div className="trigger-pill-btn">
+              <span>TIẾP THEO</span>
+              <ArrowRight size={18} />
+            </div>
           </div>
         </div>
       </div>

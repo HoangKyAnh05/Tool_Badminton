@@ -2,7 +2,7 @@
 
 export type TrainingMode = 'TAY' | 'CHÂN' | 'TAY + CHÂN' | 'LÝ THUYẾT' | 'TOÀN BỘ';
 
-export type SpeedPreset = 'very_slow' | 'slow' | 'normal' | 'fast' | 'very_fast' | 'custom';
+export type SpeedPreset = 'very_slow' | 'slow' | 'normal' | 'fast' | 'very_fast' | 'custom' | 'unlimited';
 
 export type SessionState = 
   | 'IDLE' 

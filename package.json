@@ -1,5 +1,8 @@
 {
   "name": "badminton-reaction-trainer",
+  "productName": "Badminton Pro Trainer",
+  "description": "Badminton Reaction & Tactical Training System - Luyện phản xạ và lý thuyết chiến thuật cầu lông 9 ô",
+  "author": "Trong Tino <trongtinozzzz@gmail.com>",
   "private": true,
   "version": "1.0.0",
   "type": "module",
@@ -9,8 +12,51 @@
     "build": "tsc -b && vite build",
     "preview": "vite preview",
     "electron:dev": "concurrently -k \"vite\" \"wait-on tcp:5173 && electron .\"",
-    "electron:build": "npm run build && electron-builder",
+    "electron:build": "npm run build && electron-builder --win",
+    "electron:portable": "npm run build && electron-builder --win portable",
+    "electron:nsis": "npm run build && electron-builder --win nsis",
     "start": "vite"
+  },
+  "build": {
+    "appId": "com.badminton.reactionpro",
+    "productName": "Badminton Pro Trainer",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "electron/**/*",
+      "public/**/*",
+      "package.json"
+    ],
+    "win": {
+      "icon": "public/icon.ico",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Badminton Pro Trainer",
+      "uninstallDisplayName": "Badminton Pro Trainer"
+    },
+    "portable": {
+      "artifactName": "${productName}-Portable-${version}.${ext}"
+    }
   },
   "dependencies": {
     "canvas-confetti": "^1.9.4",
@@ -27,6 +73,7 @@
     "concurrently": "^9.1.2",
     "cross-env": "^7.0.3",
     "electron": "^34.0.0",
+    "electron-builder": "^26.15.3",
     "typescript": "~5.7.2",
     "vite": "^6.1.0",
     "wait-on": "^8.0.2"

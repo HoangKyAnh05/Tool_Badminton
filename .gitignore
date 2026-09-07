@@ -25,3 +25,8 @@ dist-ssr
 
 # Temporary files
 scratch/
+
+# Build artifacts
+release/
+dist_electron/
+

@@ -66,6 +66,20 @@ npm run electron:dev
 npm run build
 ```
 
+### Cách 4: Đóng gói thành file cài đặt Windows (.exe)
+- **1-Click**: Nhấp đúp vào file **`build_exe.bat`** để hệ thống tự động biên dịch và tạo ra bộ cài Windows.
+- **File đầu ra** sẽ được lưu trong thư mục `release/`:
+  - `Badminton Pro Trainer Setup 1.0.0.exe`: Bộ cài đặt Windows chính thức, tự tạo shortcut màn hình Desktop và Start Menu.
+  - `Badminton Pro Trainer-Portable-1.0.0.exe`: Phiên bản di động, copy vào USB hoặc máy khác mở lên chạy ngay không cần cài đặt.
+- **Hoặc bằng lệnh**:
+  ```bash
+  # Đóng gói cả bản Installer và Portable
+  npm run electron:build
+  
+  # Chỉ đóng gói bản Portable
+  npm run electron:portable
+  ```
+
 ---
 
 ## 🔄 ĐỒNG BỘ MÃ NGUỒN VỚI GITHUB

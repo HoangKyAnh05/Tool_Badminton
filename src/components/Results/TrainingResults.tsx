@@ -16,11 +16,13 @@ import {
   Play,
   ListOrdered,
   Sparkles,
-  CheckCircle2
+  CheckCircle2,
+  Camera
 } from 'lucide-react';
 import { storageService, DailyChallengeProgress } from '../../services/storage';
 import { DAILY_PLAN_100, DailyWorkout } from '../../data/dailyPlan100';
 import { DailyRoadmapModal } from '../DailyChallenge/DailyRoadmapModal';
+import { VideoRecorderModal } from '../Recorder/VideoRecorderModal';
 
 interface TrainingResultsProps {
   stats: TrainingResultStats;
@@ -39,6 +41,7 @@ export const TrainingResults: React.FC<TrainingResultsProps> = ({
 }) => {
   const [dailyProgress, setDailyProgress] = useState<DailyChallengeProgress>(() => storageService.loadDailyProgress());
   const [isRoadmapOpen, setIsRoadmapOpen] = useState<boolean>(false);
+  const [isRecorderOpen, setIsRecorderOpen] = useState<boolean>(false);
 
   // Current day and homework calculation
   const todayWorkout = DAILY_PLAN_100.find(w => w.day === dailyProgress.currentDay) || DAILY_PLAN_100[0];
@@ -235,6 +238,13 @@ export const TrainingResults: React.FC<TrainingResultsProps> = ({
                     </button>
                   )}
                   <button 
+                    className="btn-record-homework"
+                    onClick={() => setIsRecorderOpen(true)}
+                  >
+                    <Camera size={16} />
+                    <span>QUAY VIDEO BÀI TẬP</span>
+                  </button>
+                  <button 
                     className="btn-view-roadmap"
                     onClick={() => setIsRoadmapOpen(true)}
                   >
@@ -256,6 +266,10 @@ export const TrainingResults: React.FC<TrainingResultsProps> = ({
           <button className="btn-action secondary" onClick={onHome}>
             <Home size={18} />
             <span>VỀ TRANG CHỦ</span>
+          </button>
+          <button className="btn-action record-btn" onClick={() => setIsRecorderOpen(true)}>
+            <Camera size={18} className="text-danger" />
+            <span>QUAY VIDEO</span>
           </button>
           <button className="btn-action tertiary" onClick={onViewHistory}>
             <History size={18} />
@@ -281,6 +295,12 @@ export const TrainingResults: React.FC<TrainingResultsProps> = ({
           const updated = storageService.completeDayWorkout(day);
           setDailyProgress(updated);
         }}
+      />
+
+      {/* Dedicated Video Recorder Modal (Auto-download to device) */}
+      <VideoRecorderModal
+        isOpen={isRecorderOpen}
+        onClose={() => setIsRecorderOpen(false)}
       />
     </div>
   );

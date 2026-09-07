@@ -9,7 +9,8 @@ import {
   Sparkles, 
   Compass, 
   Play, 
-  CheckCircle2 
+  CheckCircle2,
+  Camera
 } from 'lucide-react';
 import { VideoSection } from '../Video/VideoSection';
 import { DailyChallengeCard } from '../DailyChallenge/DailyChallengeCard';
@@ -18,11 +19,13 @@ import { DailyWorkout } from '../../data/dailyPlan100';
 interface HomeDashboardProps {
   onSelectMode: (mode: TrainingMode) => void;
   onQuickStart: () => void;
+  onOpenRecorder?: () => void;
 }
 
 export const HomeDashboard: React.FC<HomeDashboardProps> = ({
   onSelectMode,
-  onQuickStart
+  onQuickStart,
+  onOpenRecorder
 }) => {
   const [lifetime, setLifetime] = useState<LifetimeStats>(() => storageService.loadLifetimeStats());
   const [dailyProgress, setDailyProgress] = useState(() => storageService.loadDailyProgress());
@@ -118,6 +121,13 @@ export const HomeDashboard: React.FC<HomeDashboardProps> = ({
               <Play size={20} fill="currentColor" />
               <span>VÀO PHÒNG TẬP NGAY</span>
             </button>
+
+            {onOpenRecorder && (
+              <button className="btn-hero-record" onClick={onOpenRecorder}>
+                <Camera size={20} className="text-danger" />
+                <span>QUAY VIDEO TỰ LUYỆN</span>
+              </button>
+            )}
           </div>
         </div>
 

@@ -7,11 +7,13 @@ import { TrainingSetup } from './components/Setup/TrainingSetup';
 import { TrainingArena } from './components/Arena/TrainingArena';
 import { TrainingResults } from './components/Results/TrainingResults';
 import { HistoryModal } from './components/History/HistoryModal';
+import { VideoRecorderModal } from './components/Recorder/VideoRecorderModal';
 import { TrainingMode } from './types';
 
 export const App: React.FC = () => {
   const [currentView, setCurrentView] = useState<'HOME' | 'SETUP' | 'TRAINING' | 'RESULTS'>('HOME');
   const [isHistoryOpen, setIsHistoryOpen] = useState<boolean>(false);
+  const [isRecorderOpen, setIsRecorderOpen] = useState<boolean>(false);
 
   const training = useTraining();
   const camera = useCamera(training.config.cameraEnabled);
@@ -54,6 +56,7 @@ export const App: React.FC = () => {
         soundEnabled={training.config.soundEnabled}
         onToggleSound={() => training.updateConfig({ soundEnabled: !training.config.soundEnabled })}
         onOpenHistory={() => setIsHistoryOpen(true)}
+        onOpenRecorder={() => setIsRecorderOpen(true)}
         onGoHome={() => {
           if (training.state === 'ACTIVE' || training.state === 'COUNTDOWN') {
             if (window.confirm('Bạn có chắc muốn thoát bài tập đang diễn ra không?')) {
@@ -71,6 +74,7 @@ export const App: React.FC = () => {
           <HomeDashboard
             onSelectMode={handleSelectMode}
             onQuickStart={handleQuickStart}
+            onOpenRecorder={() => setIsRecorderOpen(true)}
           />
         )}
 
@@ -127,6 +131,12 @@ export const App: React.FC = () => {
       <HistoryModal
         isOpen={isHistoryOpen}
         onClose={() => setIsHistoryOpen(false)}
+      />
+
+      {/* Dedicated Video Recorder Modal (Auto-downloads to device) */}
+      <VideoRecorderModal
+        isOpen={isRecorderOpen}
+        onClose={() => setIsRecorderOpen(false)}
       />
     </div>
   );

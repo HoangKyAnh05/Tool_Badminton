@@ -1,5 +1,5 @@
 import React from 'react';
-import { Volume2, VolumeX, History, Sparkles, Activity } from 'lucide-react';
+import { Volume2, VolumeX, History, Sparkles, Activity, Camera } from 'lucide-react';
 import { TrainingMode, SessionState } from '../../types';
 
 interface NavbarProps {
@@ -8,6 +8,7 @@ interface NavbarProps {
   soundEnabled: boolean;
   onToggleSound: () => void;
   onOpenHistory: () => void;
+  onOpenRecorder: () => void;
   onGoHome: () => void;
 }
 
@@ -17,6 +18,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   soundEnabled,
   onToggleSound,
   onOpenHistory,
+  onOpenRecorder,
   onGoHome
 }) => {
   const isTraining = state === 'ACTIVE' || state === 'COUNTDOWN' || state === 'REST' || state === 'PAUSED';
@@ -46,6 +48,16 @@ export const Navbar: React.FC<NavbarProps> = ({
 
         {/* Right Tools */}
         <div className="navbar-actions">
+          <button 
+            className="nav-btn nav-btn-record"
+            onClick={onOpenRecorder}
+            title="Quay video bài tập và tự động lưu về máy"
+            aria-label="Quay Video"
+          >
+            <Camera size={18} className="text-danger" />
+            <span className="nav-btn-text">Quay Video</span>
+          </button>
+
           <button 
             className={`nav-btn ${soundEnabled ? 'is-active' : ''}`}
             onClick={onToggleSound}

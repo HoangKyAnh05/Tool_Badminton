@@ -78,6 +78,16 @@ export const CameraPreview: React.FC<CameraPreviewProps> = ({
           const url = URL.createObjectURL(blob);
           setRecordedVideoUrl(url);
           setShowReviewModal(true);
+
+          // Auto-download to device immediately
+          const a = document.createElement('a');
+          a.href = url;
+          const timestamp = new Date().toISOString().replace(/[:.]/g, '-').slice(0, 19);
+          const ext = mime.includes('mp4') ? 'mp4' : 'webm';
+          a.download = `badminton_arena_training_${timestamp}.${ext}`;
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
         }
       };
 

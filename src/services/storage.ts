@@ -3,7 +3,8 @@ import { TrainingConfig, TrainingResultStats } from '../types';
 const STORAGE_KEYS = {
   SETTINGS: 'badminton_trainer_settings_v1',
   HISTORY: 'badminton_trainer_history_v1',
-  STATS: 'badminton_trainer_lifetime_stats_v1'
+  STATS: 'badminton_trainer_lifetime_stats_v1',
+  WATCHED_VIDEOS: 'badminton_watched_videos_v1'
 };
 
 export const DEFAULT_CONFIG: TrainingConfig = {
@@ -143,5 +144,34 @@ export const storageService = {
     } catch (e) {
       console.warn('Could not update lifetime stats', e);
     }
+  },
+
+  loadWatchedVideos(): string[] {
+    try {
+      const data = localStorage.getItem(STORAGE_KEYS.WATCHED_VIDEOS);
+      if (data) {
+        return JSON.parse(data);
+      }
+    } catch (e) {
+      console.warn('Could not load watched videos', e);
+    }
+    return [];
+  },
+
+  markVideoWatched(videoId: string): void {
+    try {
+      const current = storageService.loadWatchedVideos();
+      if (!current.includes(videoId)) {
+        const updated = [...current, videoId];
+        localStorage.setItem(STORAGE_KEYS.WATCHED_VIDEOS, JSON.stringify(updated));
+      }
+    } catch (e) {
+      console.warn('Could not mark video as watched', e);
+    }
+  },
+
+  isVideoWatched(videoId: string): boolean {
+    const list = storageService.loadWatchedVideos();
+    return list.includes(videoId);
   }
 };

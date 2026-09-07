@@ -11,6 +11,7 @@ import {
   Play, 
   CheckCircle2 
 } from 'lucide-react';
+import { VideoSection } from '../Video/VideoSection';
 
 interface HomeDashboardProps {
   onSelectMode: (mode: TrainingMode) => void;
@@ -178,6 +179,9 @@ export const HomeDashboard: React.FC<HomeDashboardProps> = ({
           ))}
         </div>
       </div>
+
+      {/* Video Course Section for Doubles Tactics */}
+      <VideoSection />
 
       {/* 9-Zone Court Concept Info Box */}
       <div className="court-explainer-banner">

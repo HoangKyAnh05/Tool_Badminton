@@ -120,3 +120,14 @@ export interface TrainingResultStats {
   theoryTotalCount: number;
   historyRounds: ActiveRoundData[];
 }
+
+export interface TacticsVideo {
+  id: string;
+  title: string;
+  subTitle: string;
+  description: string;
+  videoUrl: string;
+  thumbnailUrl?: string;
+  durationText?: string;
+  tags: string[];
+}

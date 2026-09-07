@@ -1,20 +1,62 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { TrainingResultStats } from '../../types';
-import { Trophy, RotateCcw, Home, History, CheckCircle, Zap, Clock, Target, Award } from 'lucide-react';
+import { 
+  Trophy, 
+  RotateCcw, 
+  Home, 
+  History, 
+  CheckCircle, 
+  Zap, 
+  Clock, 
+  Target, 
+  Award,
+  BookOpen,
+  Calendar,
+  Flame,
+  Play,
+  ListOrdered,
+  Sparkles,
+  CheckCircle2
+} from 'lucide-react';
+import { storageService, DailyChallengeProgress } from '../../services/storage';
+import { DAILY_PLAN_100, DailyWorkout } from '../../data/dailyPlan100';
+import { DailyRoadmapModal } from '../DailyChallenge/DailyRoadmapModal';
 
 interface TrainingResultsProps {
   stats: TrainingResultStats;
   onRestart: () => void;
   onHome: () => void;
   onViewHistory: () => void;
+  onStartWorkout?: (workout: DailyWorkout) => void;
 }
 
 export const TrainingResults: React.FC<TrainingResultsProps> = ({
   stats,
   onRestart,
   onHome,
-  onViewHistory
+  onViewHistory,
+  onStartWorkout
 }) => {
+  const [dailyProgress, setDailyProgress] = useState<DailyChallengeProgress>(() => storageService.loadDailyProgress());
+  const [isRoadmapOpen, setIsRoadmapOpen] = useState<boolean>(false);
+
+  // Current day and homework calculation
+  const todayWorkout = DAILY_PLAN_100.find(w => w.day === dailyProgress.currentDay) || DAILY_PLAN_100[0];
+  const isTodayCompleted = dailyProgress.completedDays.includes(todayWorkout.day);
+
+  // Homework for the next day
+  const nextDayNumber = isTodayCompleted 
+    ? Math.min(100, todayWorkout.day + 1)
+    : Math.min(100, todayWorkout.day);
+  const homeworkWorkout = DAILY_PLAN_100.find(w => w.day === (isTodayCompleted ? Math.min(100, todayWorkout.day + 1) : todayWorkout.day + 1)) || DAILY_PLAN_100[Math.min(99, todayWorkout.day)];
+
+  const handleCompleteCurrentDay = () => {
+    const updated = storageService.completeDayWorkout(todayWorkout.day);
+    setDailyProgress(updated);
+  };
+
+  const percent = Math.round((dailyProgress.completedDays.length / 100) * 100);
+
   return (
     <div className="results-container animate-fade-in">
       <div className="results-card">
@@ -105,6 +147,106 @@ export const TrainingResults: React.FC<TrainingResultsProps> = ({
           </div>
         </div>
 
+        {/* ==========================================================================
+            HOMEWORK ASSIGNMENT / GIAO BÀI TẬP VỀ NHÀ (THỬ THÁCH 100 NGÀY)
+            ========================================================================== */}
+        <div className="results-homework-card animate-pop">
+          <div className="homework-card-header">
+            <div className="homework-title-group">
+              <div className="homework-badge-icon">
+                <BookOpen size={20} className="text-cyan" />
+              </div>
+              <div>
+                <span className="homework-label-top">NHIỆM VỤ TIẾP THEO</span>
+                <h3 className="homework-main-title">
+                  {isTodayCompleted 
+                    ? `BÀI TẬP VỀ NHÀ GIAO CHO BẠN (NGÀY ${homeworkWorkout.day}/100)`
+                    : `BÀI TẬP HÔM NAY (NGÀY ${todayWorkout.day}/100)`}
+                </h3>
+              </div>
+            </div>
+
+            <div className="homework-meta-pills">
+              <span className="hw-pill streak-pill">
+                <Flame size={14} className="text-orange" />
+                <span>Streak: <strong>{dailyProgress.streak} ngày</strong></span>
+              </span>
+              <span className="hw-pill count-pill">
+                <Trophy size={14} className="text-lime" />
+                <span><strong>{dailyProgress.completedDays.length}/100 ngày ({percent}%)</strong></span>
+              </span>
+            </div>
+          </div>
+
+          <div className="homework-card-body">
+            {/* Show current status / confirmation */}
+            {!isTodayCompleted ? (
+              <div className="homework-pending-box">
+                <p className="hw-prompt-text">
+                  Bạn vừa hoàn thành xuất sắc lượt tập! Hãy xác nhận hoàn thành bài tập của <strong>Ngày {todayWorkout.day}</strong> để nhận bài tập về nhà ngày tiếp theo:
+                </p>
+                <div className="hw-current-task">
+                  <div className="hw-task-num">Bài hôm nay:</div>
+                  <div className="hw-task-title">{todayWorkout.title}</div>
+                </div>
+                <button 
+                  className="btn-claim-homework"
+                  onClick={handleCompleteCurrentDay}
+                >
+                  <CheckCircle2 size={18} />
+                  <span>XÁC NHẬN ĐÃ TẬP XONG NGÀY {todayWorkout.day} & NHẬN BÀI VỀ NHÀ</span>
+                </button>
+              </div>
+            ) : (
+              <div className="homework-assigned-box">
+                <div className="assigned-status-banner">
+                  <CheckCircle2 size={18} className="text-emerald" />
+                  <span>Đã tích xanh Ngày {todayWorkout.day}! Dưới đây là bài tập về nhà được giao:</span>
+                </div>
+
+                <div className="assigned-workout-detail">
+                  <div className="assigned-header-row">
+                    <span className="assigned-day-pill">NGÀY {homeworkWorkout.day}</span>
+                    <span className="assigned-cat-pill">{homeworkWorkout.category}</span>
+                    <span className="assigned-phase-tag">{homeworkWorkout.phaseName}</span>
+                  </div>
+
+                  <h4 className="assigned-workout-title">
+                    {homeworkWorkout.title}
+                  </h4>
+                  <p className="assigned-workout-desc">
+                    💡 <strong>Hướng dẫn HLV:</strong> {homeworkWorkout.description}
+                  </p>
+
+                  <div className="assigned-suggest-bar">
+                    <Zap size={16} className="text-cyan" />
+                    <span>Chế độ luyện tập phù hợp: <strong>{homeworkWorkout.suggestedMode}</strong></span>
+                  </div>
+                </div>
+
+                <div className="assigned-actions-row">
+                  {onStartWorkout && (
+                    <button 
+                      className="btn-practice-homework-now"
+                      onClick={() => onStartWorkout(homeworkWorkout)}
+                    >
+                      <Play size={16} fill="#050c14" />
+                      <span>TẬP LUÔN BÀI NGÀY {homeworkWorkout.day}</span>
+                    </button>
+                  )}
+                  <button 
+                    className="btn-view-roadmap"
+                    onClick={() => setIsRoadmapOpen(true)}
+                  >
+                    <ListOrdered size={16} />
+                    <span>XEM LỘ TRÌNH 100 NGÀY</span>
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+
         {/* Action Buttons */}
         <div className="results-actions-row">
           <button className="btn-action primary" onClick={onRestart}>
@@ -119,8 +261,27 @@ export const TrainingResults: React.FC<TrainingResultsProps> = ({
             <History size={18} />
             <span>LỊCH SỬ</span>
           </button>
+          <button className="btn-action roadmap-btn" onClick={() => setIsRoadmapOpen(true)}>
+            <ListOrdered size={18} />
+            <span>100 NGÀY</span>
+          </button>
         </div>
       </div>
+
+      {/* 100-Day Roadmap Modal */}
+      <DailyRoadmapModal
+        isOpen={isRoadmapOpen}
+        onClose={() => setIsRoadmapOpen(false)}
+        progress={dailyProgress}
+        onSelectWorkout={(w) => {
+          setIsRoadmapOpen(false);
+          onStartWorkout?.(w);
+        }}
+        onCompleteDay={(day) => {
+          const updated = storageService.completeDayWorkout(day);
+          setDailyProgress(updated);
+        }}
+      />
     </div>
   );
 };

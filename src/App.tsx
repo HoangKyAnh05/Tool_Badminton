@@ -115,6 +115,10 @@ export const App: React.FC = () => {
             }}
             onHome={() => setCurrentView('HOME')}
             onViewHistory={() => setIsHistoryOpen(true)}
+            onStartWorkout={(workout) => {
+              training.updateConfig({ mode: workout.suggestedMode });
+              setCurrentView('SETUP');
+            }}
           />
         )}
       </main>

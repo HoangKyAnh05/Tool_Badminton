@@ -42,6 +42,7 @@ export const VideoPlayerModal: React.FC<VideoPlayerModalProps> = ({
   const [isMuted, setIsMuted] = useState<boolean>(false);
   const [playbackRate, setPlaybackRate] = useState<number>(1);
   const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
+  const [isWindowFull, setIsWindowFull] = useState<boolean>(false);
   const [zoomMode, setZoomMode] = useState<'fill' | 'zoom2' | 'original'>('fill');
   
   // Status and Alerts
@@ -52,13 +53,25 @@ export const VideoPlayerModal: React.FC<VideoPlayerModalProps> = ({
 
   const maxWatchedRef = useRef<number>(0);
 
+  // Listen to browser fullscreen changes
+  useEffect(() => {
+    const handleFsChange = () => {
+      const isFs = !!(document.fullscreenElement || (document as any).webkitFullscreenElement);
+      setIsFullscreen(isFs);
+      if (!isFs) setIsWindowFull(false);
+    };
+    document.addEventListener('fullscreenchange', handleFsChange);
+    document.addEventListener('webkitfullscreenchange', handleFsChange);
+    return () => {
+      document.removeEventListener('fullscreenchange', handleFsChange);
+      document.removeEventListener('webkitfullscreenchange', handleFsChange);
+    };
+  }, []);
+
   // Sync completion status when video changes
   useEffect(() => {
     const watched = storageService.isVideoWatched(video.id);
     setIsCompleted(watched);
-    // If already watched before, user is permitted to seek anywhere freely, or keep locked if strictly desired
-    // Per requirement: "ko cho phép tua khi xem xong thì ng xem sẽ tự đọng đc tích kaf mình đã xem xong roi"
-    // If not watched, start maxWatched at 0. If already watched, unlock full duration.
     if (watched) {
       maxWatchedRef.current = 999999;
       setMaxWatchedTime(999999);
@@ -71,12 +84,23 @@ export const VideoPlayerModal: React.FC<VideoPlayerModalProps> = ({
     setJustCompletedToast(false);
   }, [video.id, isOpen]);
 
-  // Handle escape key to close
+  // Handle hotkeys (Space = play/pause, F = fullscreen, Esc = exit)
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (!isOpen) return;
       if (e.key === 'Escape') {
-        onClose();
+        if (isFullscreen || isWindowFull) {
+          if (document.fullscreenElement) {
+            document.exitFullscreen?.().catch(() => {});
+          }
+          setIsFullscreen(false);
+          setIsWindowFull(false);
+        } else {
+          onClose();
+        }
+      } else if (e.key.toLowerCase() === 'f') {
+        e.preventDefault();
+        toggleFullscreen();
       } else if (e.key === ' ') {
         e.preventDefault();
         togglePlay();
@@ -90,7 +114,7 @@ export const VideoPlayerModal: React.FC<VideoPlayerModalProps> = ({
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [isOpen, isPlaying]);
+  }, [isOpen, isPlaying, isFullscreen, isWindowFull]);
 
   if (!isOpen) return null;
 
@@ -208,13 +232,37 @@ export const VideoPlayerModal: React.FC<VideoPlayerModalProps> = ({
     }
   };
 
-  const toggleFullscreen = () => {
+  const toggleFullscreen = async () => {
     const container = document.getElementById('video-theater-wrapper');
     if (!container) return;
-    if (!document.fullscreenElement) {
-      container.requestFullscreen?.().then(() => setIsFullscreen(true)).catch(() => {});
+
+    if (!document.fullscreenElement && !isWindowFull) {
+      try {
+        if (container.requestFullscreen) {
+          await container.requestFullscreen();
+          setIsFullscreen(true);
+        } else if ((container as any).webkitRequestFullscreen) {
+          await (container as any).webkitRequestFullscreen();
+          setIsFullscreen(true);
+        } else {
+          setIsWindowFull(true);
+        }
+      } catch {
+        // Fallback to full window if browser fullscreen API is blocked
+        setIsWindowFull(true);
+      }
     } else {
-      document.exitFullscreen?.().then(() => setIsFullscreen(false)).catch(() => {});
+      try {
+        if (document.fullscreenElement) {
+          await document.exitFullscreen?.();
+        } else if ((document as any).webkitExitFullscreen) {
+          await (document as any).webkitExitFullscreen?.();
+        }
+      } catch {
+        // ignore
+      }
+      setIsFullscreen(false);
+      setIsWindowFull(false);
     }
   };
 
@@ -232,7 +280,7 @@ export const VideoPlayerModal: React.FC<VideoPlayerModalProps> = ({
     <div className="video-modal-backdrop animate-fade-in" onClick={onClose}>
       <div 
         id="video-theater-wrapper"
-        className="video-theater-card animate-scale-up" 
+        className={`video-theater-card animate-scale-up ${(isFullscreen || isWindowFull) ? 'is-full-screen-mode' : ''}`} 
         onClick={(e) => e.stopPropagation()}
       >
         {/* Modal Top Header */}
@@ -310,6 +358,8 @@ export const VideoPlayerModal: React.FC<VideoPlayerModalProps> = ({
             }}
             onEnded={handleCompleteVideo}
             onClick={togglePlay}
+            onDoubleClick={toggleFullscreen}
+            title="Nhấp 1 lần để Phát/Tạm dừng • Nhấp đúp để Bật/Tắt Toàn Màn Hình"
           />
 
           {/* Center Play Overlay Icon when paused */}
@@ -419,10 +469,10 @@ export const VideoPlayerModal: React.FC<VideoPlayerModalProps> = ({
                 <button
                   className={`speed-pill zoom-pill ${zoomMode === 'fill' ? 'active-fill' : ''}`}
                   onClick={() => setZoomMode('fill')}
-                  title="Phóng to tràn màn hình (Tự động cắt viền đen TikTok để video to rõ nhất)"
+                  title="Cắt viền đen trên dưới (Phóng to vừa vặn khung hình 16:9)"
                 >
                   <Scan size={14} />
-                  <span>Toàn màn hình</span>
+                  <span>Tràn viền 16:9</span>
                 </button>
                 <button
                   className={`speed-pill zoom-pill ${zoomMode === 'zoom2' ? 'active-fill' : ''}`}
@@ -434,15 +484,20 @@ export const VideoPlayerModal: React.FC<VideoPlayerModalProps> = ({
                 <button
                   className={`speed-pill zoom-pill ${zoomMode === 'original' ? 'active-fill' : ''}`}
                   onClick={() => setZoomMode('original')}
-                  title="Kích thước gốc TikTok (Có viền đen trên dưới)"
+                  title="Kích thước gốc của video"
                 >
                   <span>Khung gốc</span>
                 </button>
               </div>
 
-              {/* Fullscreen */}
-              <button className="ctrl-btn" onClick={toggleFullscreen} title="Toàn màn hình">
-                {isFullscreen ? <Minimize2 size={18} /> : <Maximize2 size={18} />}
+              {/* Fullscreen Button - Prominent & Clearly Named */}
+              <button 
+                className={`ctrl-btn btn-fullscreen-main ${(isFullscreen || isWindowFull) ? 'is-active-fullscreen' : ''}`} 
+                onClick={toggleFullscreen} 
+                title="Toàn màn hình (Phím F hoặc Nhấp đúp vào video)"
+              >
+                {isFullscreen || isWindowFull ? <Minimize2 size={16} /> : <Maximize2 size={16} />}
+                <span>{isFullscreen || isWindowFull ? 'Thu nhỏ' : 'Toàn màn hình'}</span>
               </button>
             </div>
           </div>

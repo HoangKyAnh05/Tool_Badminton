@@ -173,5 +173,84 @@ export const storageService = {
   isVideoWatched(videoId: string): boolean {
     const list = storageService.loadWatchedVideos();
     return list.includes(videoId);
+  },
+
+  // 100-Day Challenge Progress
+  loadDailyProgress(): DailyChallengeProgress {
+    try {
+      const data = localStorage.getItem('badminton_daily_challenge_100_v1');
+      if (data) {
+        return { ...DEFAULT_DAILY_CHALLENGE, ...JSON.parse(data) };
+      }
+    } catch (e) {
+      console.warn('Could not load daily challenge progress', e);
+    }
+    return { ...DEFAULT_DAILY_CHALLENGE };
+  },
+
+  completeDayWorkout(dayNumber: number): DailyChallengeProgress {
+    try {
+      const current = storageService.loadDailyProgress();
+      const todayStr = new Date().toISOString().split('T')[0];
+      
+      const newCompleted = current.completedDays.includes(dayNumber)
+        ? current.completedDays
+        : [...current.completedDays, dayNumber].sort((a, b) => a - b);
+      
+      // Calculate streak
+      let newStreak = current.streak;
+      if (current.lastCompletedDate) {
+        const lastDate = new Date(current.lastCompletedDate);
+        const today = new Date(todayStr);
+        const diffDays = Math.round((today.getTime() - lastDate.getTime()) / (1000 * 3600 * 24));
+        if (diffDays === 1) {
+          newStreak += 1;
+        } else if (diffDays > 1) {
+          newStreak = 1;
+        }
+      } else {
+        newStreak = 1;
+      }
+
+      // Current active day is the next incomplete day, or dayNumber + 1
+      const nextDay = Math.min(100, Math.max(current.currentDay, dayNumber + 1));
+
+      const updated: DailyChallengeProgress = {
+        currentDay: nextDay,
+        completedDays: newCompleted,
+        lastCompletedDate: todayStr,
+        streak: newStreak
+      };
+
+      localStorage.setItem('badminton_daily_challenge_100_v1', JSON.stringify(updated));
+      return updated;
+    } catch (e) {
+      console.warn('Could not save daily challenge completion', e);
+      return storageService.loadDailyProgress();
+    }
+  },
+
+  resetDailyProgress(): DailyChallengeProgress {
+    try {
+      localStorage.removeItem('badminton_daily_challenge_100_v1');
+    } catch (e) {
+      console.warn('Could not reset daily challenge', e);
+    }
+    return { ...DEFAULT_DAILY_CHALLENGE };
   }
 };
+
+export interface DailyChallengeProgress {
+  currentDay: number;
+  completedDays: number[];
+  lastCompletedDate: string | null;
+  streak: number;
+}
+
+const DEFAULT_DAILY_CHALLENGE: DailyChallengeProgress = {
+  currentDay: 1,
+  completedDays: [],
+  lastCompletedDate: null,
+  streak: 0
+};
+

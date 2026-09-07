@@ -12,6 +12,8 @@ import {
   CheckCircle2 
 } from 'lucide-react';
 import { VideoSection } from '../Video/VideoSection';
+import { DailyChallengeCard } from '../DailyChallenge/DailyChallengeCard';
+import { DailyWorkout } from '../../data/dailyPlan100';
 
 interface HomeDashboardProps {
   onSelectMode: (mode: TrainingMode) => void;
@@ -23,10 +25,21 @@ export const HomeDashboard: React.FC<HomeDashboardProps> = ({
   onQuickStart
 }) => {
   const [lifetime, setLifetime] = useState<LifetimeStats>(() => storageService.loadLifetimeStats());
+  const [dailyProgress, setDailyProgress] = useState(() => storageService.loadDailyProgress());
 
   useEffect(() => {
     setLifetime(storageService.loadLifetimeStats());
+    setDailyProgress(storageService.loadDailyProgress());
   }, []);
+
+  const handleCompleteDay = (dayNumber: number) => {
+    const updated = storageService.completeDayWorkout(dayNumber);
+    setDailyProgress(updated);
+  };
+
+  const handleSelectWorkout = (workout: DailyWorkout) => {
+    onSelectMode(workout.suggestedMode);
+  };
 
   const trainingCards: {
     mode: TrainingMode;
@@ -143,6 +156,13 @@ export const HomeDashboard: React.FC<HomeDashboardProps> = ({
           </div>
         </div>
       </div>
+
+      {/* 100-Day Challenge Daily Assignment Hero */}
+      <DailyChallengeCard
+        progress={dailyProgress}
+        onSelectWorkout={handleSelectWorkout}
+        onCompleteDay={handleCompleteDay}
+      />
 
       {/* Main Training Mode Cards */}
       <div className="modes-section">

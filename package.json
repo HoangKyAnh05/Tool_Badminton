@@ -15,7 +15,7 @@
     "electron:build": "npm run build && electron-builder --win",
     "electron:portable": "npm run build && electron-builder --win portable",
     "electron:nsis": "npm run build && electron-builder --win nsis",
-    "start": "vite"
+    "start": "node server.cjs"
   },
   "build": {
     "appId": "com.badminton.reactionpro",

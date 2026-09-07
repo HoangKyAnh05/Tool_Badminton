@@ -1,4 +1,14 @@
-const { app, BrowserWindow, session, ipcMain } = require('electron');
+const electron = require('electron');
+
+// Check if running in a cloud/server environment (Render/Railway/Heroku) via plain Node.js
+if (typeof electron === 'string' || !electron.app) {
+  console.log('[INFO] Detected Node.js cloud environment (Render.com).');
+  console.log('[INFO] Starting production web server to serve web application...');
+  require('../server.cjs');
+  return;
+}
+
+const { app, BrowserWindow, session, ipcMain } = electron;
 const path = require('path');
 
 let mainWindow = null;

@@ -1,0 +1,67 @@
+const { app, BrowserWindow, session, ipcMain } = require('electron');
+const path = require('path');
+
+let mainWindow = null;
+
+function createWindow() {
+  mainWindow = new BrowserWindow({
+    width: 1360,
+    height: 860,
+    minWidth: 960,
+    minHeight: 640,
+    title: 'Badminton Pro - Hệ Thống Luyện Phản Xạ 9 Ô',
+    icon: path.join(__dirname, '../public/icon.ico'),
+    backgroundColor: '#080d14',
+    webPreferences: {
+      preload: path.join(__dirname, 'preload.cjs'),
+      nodeIntegration: false,
+      contextIsolation: true,
+      webSecurity: true
+    },
+    autoHideMenuBar: true
+  });
+
+  // Automatically grant camera and microphone permissions in Electron
+  session.defaultSession.setPermissionCheckHandler((webContents, permission) => {
+    if (permission === 'media') {
+      return true;
+    }
+    return false;
+  });
+
+  session.defaultSession.setPermissionRequestHandler((webContents, permission, callback) => {
+    if (permission === 'media') {
+      callback(true); // Approve camera
+    } else {
+      callback(false);
+    }
+  });
+
+  const isDev = process.env.NODE_ENV !== 'production' && !app.isPackaged;
+
+  if (isDev) {
+    mainWindow.loadURL('http://localhost:5173');
+    // Open DevTools in dev mode if needed
+    // mainWindow.webContents.openDevTools();
+  } else {
+    mainWindow.loadFile(path.join(__dirname, '../dist/index.html'));
+  }
+
+  mainWindow.on('closed', () => {
+    mainWindow = null;
+  });
+}
+
+app.whenReady().then(() => {
+  createWindow();
+
+  app.on('activate', () => {
+    if (BrowserWindow.getAllWindows().length === 0) createWindow();
+  });
+});
+
+app.on('window-all-closed', () => {
+  if (process.platform !== 'darwin') {
+    app.quit();
+  }
+});

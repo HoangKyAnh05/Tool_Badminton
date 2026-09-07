@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stopColor="#0f172a" />
+      <stop offset="100%" stopColor="#050a12" />
+    </linearGradient>
+    <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stopColor="#00f0ff" />
+      <stop offset="100%" stopColor="#0077b6" />
+    </linearGradient>
+    <linearGradient id="limeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stopColor="#39ff14" />
+      <stop offset="100%" stopColor="#10b981" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background rounded rectangle -->
+  <rect x="8" y="8" width="240" height="240" rx="54" fill="url(#bgGrad)" stroke="#00f0ff" stroke-width="6" />
+
+  <!-- 3x3 Grid Dots / Targets -->
+  <g opacity="0.35">
+    <circle cx="64" cy="64" r="8" fill="#00f0ff" />
+    <circle cx="128" cy="64" r="8" fill="#00f0ff" />
+    <circle cx="192" cy="64" r="8" fill="#00f0ff" />
+    <circle cx="64" cy="128" r="8" fill="#00f0ff" />
+    <circle cx="128" cy="128" r="8" fill="#39ff14" />
+    <circle cx="192" cy="128" r="8" fill="#00f0ff" />
+    <circle cx="64" cy="192" r="8" fill="#00f0ff" />
+    <circle cx="128" cy="192" r="8" fill="#00f0ff" />
+    <circle cx="192" cy="192" r="8" fill="#00f0ff" />
+  </g>
+
+  <!-- Pulsing Center Target Ring -->
+  <circle cx="128" cy="128" r="38" fill="none" stroke="url(#limeGrad)" stroke-width="4" stroke-dasharray="6 4" />
+
+  <!-- Stylized Badminton Shuttlecock in Center -->
+  <g transform="translate(128, 122) scale(1.1)">
+    <!-- Shuttlecock Cork / Base -->
+    <ellipse cx="0" cy="24" rx="14" ry="12" fill="#f8fafc" stroke="#00f0ff" stroke-width="3" />
+    <line x1="-12" y1="21" x2="12" y2="21" stroke="#ff3366" stroke-width="3" />
+    
+    <!-- Feathers -->
+    <path d="M -14 18 L -34 -28 C -20 -34 20 -34 34 -28 L 14 18 Z" fill="rgba(255, 255, 255, 0.9)" stroke="#94a3b8" stroke-width="2" />
+    
+    <!-- Feather ribs -->
+    <line x1="-24" y1="-26" x2="-8" y2="18" stroke="#cbd5e1" stroke-width="1.5" />
+    <line x1="-12" y1="-30" x2="-3" y2="18" stroke="#cbd5e1" stroke-width="1.5" />
+    <line x1="0" y1="-32" x2="0" y2="18" stroke="#cbd5e1" stroke-width="2" />
+    <line x1="12" y1="-30" x2="3" y2="18" stroke="#cbd5e1" stroke-width="1.5" />
+    <line x1="24" y1="-26" x2="8" y2="18" stroke="#cbd5e1" stroke-width="1.5" />
+
+    <!-- Feather thread binding -->
+    <path d="M -29 -14 Q 0 -6 29 -14" fill="none" stroke="#00f0ff" stroke-width="2.5" />
+    <path d="M -23 -1 Q 0 6 23 -1" fill="none" stroke="#00f0ff" stroke-width="2" />
+  </g>
+
+  <!-- Sparkle stars -->
+  <polygon points="196,44 202,56 214,62 202,68 196,80 190,68 178,62 190,56" fill="#39ff14" />
+</svg>

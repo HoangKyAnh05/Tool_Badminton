@@ -9,11 +9,11 @@ const STORAGE_KEYS = {
 
 export const DEFAULT_CONFIG: TrainingConfig = {
   mode: 'TOÀN BỘ',
-  totalRounds: 20,
-  speedPreset: 'normal',
-  actionDuration: 1.5,
-  prepDuration: 3,
-  restDuration: 0.8,
+  totalRounds: 15,
+  speedPreset: 'slow',
+  actionDuration: 4.0,
+  prepDuration: 6,
+  restDuration: 1.5,
   soundEnabled: true,
   cameraEnabled: false
 };

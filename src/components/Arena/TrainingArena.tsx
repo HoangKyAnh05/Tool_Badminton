@@ -14,7 +14,9 @@ import {
   XSquare, 
   Zap, 
   Timer as TimerIcon, 
-  Coffee 
+  Coffee,
+  MapPin,
+  CheckCircle2
 } from 'lucide-react';
 
 interface TrainingArenaProps {
@@ -23,6 +25,7 @@ interface TrainingArenaProps {
   currentRound: number;
   activeData: ActiveRoundData | null;
   countdownNum: number | string;
+  isArrived?: boolean;
   remainingTime: number;
   onAbort: () => void;
   onTogglePause: () => void;
@@ -45,6 +48,7 @@ export const TrainingArena: React.FC<TrainingArenaProps> = ({
   currentRound,
   activeData,
   countdownNum,
+  isArrived = false,
   remainingTime,
   onAbort,
   onTogglePause,
@@ -124,39 +128,44 @@ export const TrainingArena: React.FC<TrainingArenaProps> = ({
 
       {/* Main Center Playground */}
       <div className="arena-stage">
-        {/* Background 3x3 Grid (Always in place for spatial orientation) */}
+        {/* Background 3x3 Grid (Always in place and 100% visible) */}
         <div className={`grid-stage-wrapper ${isActive && isPhysical ? 'stage-dimmed' : ''}`}>
           <Grid9
             activePositionId={activeData?.position?.id}
             highlightMode={activeData?.actualMode as 'TAY' | 'CHÂN' | 'TAY + CHÂN'}
+            countdownNum={countdownNum}
+            isCountingDown={isCountdown}
+            isArrived={isArrived}
+            onPositionClick={() => onCompleteAction?.()}
+            interactive={true}
           />
         </div>
 
-        {/* 1. Large Countdown / Move-to-Position Phase */}
-        {isCountdown && (
+        {/* Non-intrusive Corner Guide Pill (Leaves court 100% visible) */}
+        {isCountdown && activeData?.position && (
           <div 
-            className="countdown-backdrop animate-fade-in"
+            className={`arena-corner-guide animate-slide-right ${isArrived ? 'is-arrived-mode' : ''}`}
             onClick={() => onCompleteAction?.()}
+            title="Bấm để xác nhận sẵn sàng ngay (hoặc bấm phím CÁCH)"
           >
-            <div className="countdown-content animate-zoom">
-              <div className="countdown-target-badge">
-                <span className="target-pill-num">{activeData?.position?.id ?? 5}</span>
-                <div className="target-pill-text">
-                  <small>HÃY DI CHUYỂN NGAY ĐẾN</small>
-                  <strong>{activeData?.position ? `${activeData.position.zoneName} (Ô ${activeData.position.id})` : 'TÂM SÂN (Ô 5)'}</strong>
-                </div>
+            <div className="corner-guide-icon">
+              {isArrived ? (
+                <CheckCircle2 size={24} className="text-emerald animate-pop" />
+              ) : (
+                <MapPin size={22} className="text-cyan animate-pulse" />
+              )}
+            </div>
+            <div className="corner-guide-body">
+              <div className="corner-guide-label">
+                {isArrived ? '✅ ĐÃ DI CHUYỂN TỚI VỊ TRÍ' : '📍 VỊ TRÍ CẦN DI CHUYỂN:'}
               </div>
-
-              <div className="countdown-digit">{countdownNum}</div>
-
-              <div className="countdown-sub">
-                {activeData?.position
-                  ? `Chạy đến ${activeData.position.directionLabel} và chuẩn bị vào thế!`
-                  : 'Đứng sẵn sàng tại vị trí số 5'}
+              <div className="corner-guide-title">
+                Ô {activeData.position.id} – {activeData.position.zoneName}
               </div>
-
-              <div className="countdown-skip-hint">
-                <span>⚡ Bấm phím <strong>CÁCH</strong> hoặc <strong>Chạm màn hình</strong> để vào bài học ngay</span>
+              <div className="corner-guide-sub">
+                {isArrived 
+                  ? 'Chuẩn bị thực hiện động tác...' 
+                  : `Đang đếm giây (${countdownNum}s) • Bấm CÁCH hoặc chạm ô để sẵn sàng ngay`}
               </div>
             </div>
           </div>

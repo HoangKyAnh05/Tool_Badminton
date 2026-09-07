@@ -90,6 +90,7 @@ export const App: React.FC = () => {
             currentRound={training.currentRound}
             activeData={training.activeData}
             countdownNum={training.countdownNum}
+            isArrived={training.isArrived}
             remainingTime={training.remainingTime}
             onAbort={handleAbort}
             onTogglePause={training.togglePause}

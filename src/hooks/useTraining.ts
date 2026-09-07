@@ -15,7 +15,8 @@ export function useTraining() {
   const [state, setState] = useState<SessionState>('IDLE');
   const [currentRound, setCurrentRound] = useState<number>(1);
   const [activeData, setActiveData] = useState<ActiveRoundData | null>(null);
-  const [countdownNum, setCountdownNum] = useState<number | string>(3);
+  const [countdownNum, setCountdownNum] = useState<number | string>(6);
+  const [isArrived, setIsArrived] = useState<boolean>(false);
   const [remainingTime, setRemainingTime] = useState<number>(0);
   const [results, setResults] = useState<TrainingResultStats | null>(null);
 
@@ -248,10 +249,23 @@ export function useTraining() {
 
   // Manually finish current action or skip countdown
   const completeCurrentAction = useCallback(() => {
-    // If in COUNTDOWN: skip waiting and start lesson immediately
+    // If in COUNTDOWN: acknowledge arrival at position, show brief confirmation, then start action
     if (stateRef.current === 'COUNTDOWN') {
       if (activeDataRef.current && activeDataRef.current.actualMode !== 'LÝ THUYẾT') {
-        startActivePhysicalAction(activeDataRef.current);
+        if (cdIntervalRef.current) {
+          clearInterval(cdIntervalRef.current);
+          cdIntervalRef.current = null;
+        }
+        setIsArrived(true);
+        setCountdownNum('ĐÃ TỚI!');
+        playGoSound();
+        const data = activeDataRef.current;
+        setTimeout(() => {
+          if (stateRef.current === 'COUNTDOWN') {
+            setIsArrived(false);
+            startActivePhysicalAction(data);
+          }
+        }, 800);
       }
       return;
     }
@@ -338,10 +352,11 @@ export function useTraining() {
     };
     setActiveData(roundData);
 
-    const prepSec = configRef.current.prepDuration ?? 3;
+    const prepSec = configRef.current.prepDuration ?? 6;
 
     if (prepSec > 0) {
       setState('COUNTDOWN');
+      setIsArrived(false);
       let step = prepSec;
       setCountdownNum(step);
       playCountdownBeep(440);
@@ -352,12 +367,20 @@ export function useTraining() {
           setCountdownNum(step);
           playCountdownBeep(440);
         } else if (step === 0) {
-          setCountdownNum('GO!');
-          playGoSound();
-        } else {
+          // Arrived at position!
           clearInterval(cdIntervalRef.current);
           cdIntervalRef.current = null;
-          startActivePhysicalAction(roundData);
+          setCountdownNum('ĐÃ TỚI!');
+          setIsArrived(true);
+          playGoSound();
+
+          // Wait a moment so athlete sees "Đã di chuyển tới vị trí đó", then show the movement!
+          setTimeout(() => {
+            if (stateRef.current === 'COUNTDOWN') {
+              setIsArrived(false);
+              startActivePhysicalAction(roundData);
+            }
+          }, 1400);
         }
       }, 1000);
     } else {
@@ -430,6 +453,7 @@ export function useTraining() {
     currentRound,
     activeData,
     countdownNum,
+    isArrived,
     remainingTime,
     results,
     startSession,

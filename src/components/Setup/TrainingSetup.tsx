@@ -25,12 +25,12 @@ export const TrainingSetup: React.FC<TrainingSetupProps> = ({
 
   const speedPresets: { id: SpeedPreset; label: string; duration: number }[] = [
     { id: 'unlimited', label: '♾️ Không giới hạn (Tự do)', duration: 0 },
-    { id: 'very_slow', label: 'Rất chậm (3.0s)', duration: 3.0 },
-    { id: 'slow', label: 'Chậm (2.0s)', duration: 2.0 },
-    { id: 'normal', label: 'Bình thường (1.5s)', duration: 1.5 },
-    { id: 'fast', label: 'Nhanh (1.0s)', duration: 1.0 },
-    { id: 'very_fast', label: 'Rất nhanh (0.5s)', duration: 0.5 },
-    { id: 'custom', label: 'Tùy chỉnh', duration: config.actionDuration > 0 ? config.actionDuration : 1.5 }
+    { id: 'very_slow', label: '🐢 Siêu chậm (Newbie - 5.0s)', duration: 5.0 },
+    { id: 'slow', label: '🚶 Chậm (Cơ bản - 4.0s)', duration: 4.0 },
+    { id: 'normal', label: '⚡ Vừa phải (2.5s)', duration: 2.5 },
+    { id: 'fast', label: '🔥 Nhanh (1.5s)', duration: 1.5 },
+    { id: 'very_fast', label: '⚡ Siêu tốc (0.8s)', duration: 0.8 },
+    { id: 'custom', label: 'Tùy chỉnh', duration: config.actionDuration > 0 ? config.actionDuration : 4.0 }
   ];
 
   const roundOptions = [10, 20, 30, 50, 100];
@@ -113,13 +113,13 @@ export const TrainingSetup: React.FC<TrainingSetupProps> = ({
           ) : (
             /* Custom Duration Slider */
             <div className="slider-wrapper">
-              <span className="slider-bound">0.4s</span>
+              <span className="slider-bound">0.5s (Chớp nhoáng)</span>
               <input
                 type="range"
-                min="0.4"
-                max="4.0"
+                min="0.5"
+                max="6.0"
                 step="0.1"
-                value={config.actionDuration > 0 ? config.actionDuration : 1.5}
+                value={config.actionDuration > 0 ? config.actionDuration : 4.0}
                 onChange={(e) =>
                   onUpdateConfig({
                     speedPreset: 'custom',
@@ -128,7 +128,7 @@ export const TrainingSetup: React.FC<TrainingSetupProps> = ({
                 }
                 className="range-slider"
               />
-              <span className="slider-bound">4.0s</span>
+              <span className="slider-bound">6.0s (Chậm rãi cho Newbie)</span>
             </div>
           )}
         </div>

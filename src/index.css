@@ -1189,15 +1189,21 @@ button {
 }
 
 .overlay-header {
-  padding: 12px 20px;
+  padding: 10px 20px;
   background: #09101d;
   border-bottom: 1px solid var(--border-subtle);
   display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.overlay-header-top {
+  display: flex;
   align-items: center;
   justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 10px;
-  flex-shrink: 0;
+  width: 100%;
 }
 
 .position-header-pill {
@@ -1288,13 +1294,15 @@ button {
 .overlay-visual-arena {
   position: relative;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   background: #030712;
   min-height: 280px;
   max-height: 380px;
   padding: 8px 16px;
   flex-shrink: 0;
+  overflow: hidden;
 }
 
 .overlay-illustration {
@@ -4062,6 +4070,12 @@ button {
 .tab-mobile-label {
   display: none;
 }
+.cam-title-desktop {
+  display: inline;
+}
+.cam-title-mobile {
+  display: none;
+}
 
 /* ==========================================================================
    COMPREHENSIVE MOBILE OPTIMIZATIONS (Smartphones <= 768px)
@@ -4151,27 +4165,47 @@ button {
   }
 
   .camera-preview-panel {
-    width: 125px !important;
+    width: 110px !important;
     border-radius: 10px !important;
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 240, 255, 0.3) !important;
   }
 
   .camera-preview-panel.is-minimized {
-    width: 110px !important;
+    width: 95px !important;
   }
 
   .camera-header {
     padding: 3px 6px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
   }
 
   .camera-title {
-    font-size: 0.62rem !important;
+    font-size: 0.65rem !important;
     gap: 4px !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    display: flex !important;
+    align-items: center !important;
   }
 
   .camera-title svg {
     width: 12px !important;
     height: 12px !important;
+    flex-shrink: 0 !important;
+  }
+
+  .cam-title-desktop {
+    display: none !important;
+  }
+
+  .cam-title-mobile {
+    display: inline !important;
+    font-size: 0.65rem !important;
+    font-weight: 700 !important;
+    white-space: nowrap !important;
   }
 
   .camera-actions {
@@ -4230,8 +4264,8 @@ button {
 
   /* Compact camera during active movement modal */
   .camera-floating-container.has-active-modal .camera-preview-panel {
-    width: 105px !important;
-    opacity: 0.85;
+    width: 100px !important;
+    opacity: 0.88;
   }
 
   .camera-floating-container.has-active-modal .camera-preview-panel:hover,
@@ -4249,12 +4283,24 @@ button {
     max-height: 98vh !important;
     border-radius: 12px !important;
     margin: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
   }
 
   .overlay-header {
     padding: 6px 8px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
     gap: 4px !important;
-    flex-wrap: wrap !important;
+    background: #09101d !important;
+  }
+
+  .overlay-header-top {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    width: 100% !important;
   }
 
   .position-header-pill {
@@ -4277,13 +4323,15 @@ button {
   }
 
   .variation-badge {
-    order: 4 !important;
     width: 100% !important;
     max-width: 100% !important;
     padding: 3px 6px !important;
     font-size: 0.7rem !important;
     text-align: center !important;
     justify-content: center !important;
+    box-sizing: border-box !important;
+    margin: 0 !important;
+    order: unset !important;
   }
 
   .header-right-meta {
@@ -4296,13 +4344,41 @@ button {
     gap: 3px !important;
   }
 
+  .timer-bar-track {
+    width: 100% !important;
+    height: 4px !important;
+    flex-shrink: 0 !important;
+  }
+
+  .overlay-visual-arena {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    min-height: 180px !important;
+    max-height: 220px !important;
+    padding: 4px !important;
+    overflow: hidden !important;
+    flex-shrink: 0 !important;
+  }
+
+  .illustration-container {
+    width: 100% !important;
+    height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+  }
+
   .illustration-view-tabs {
     display: flex !important;
     flex-direction: row !important;
     flex-wrap: nowrap !important;
     gap: 4px !important;
-    margin-bottom: 5px !important;
+    margin: 2px 0 4px 0 !important;
     width: 100% !important;
+    flex-shrink: 0 !important;
   }
 
   .view-tab-btn {
@@ -4322,17 +4398,21 @@ button {
     display: inline !important;
   }
 
-  .overlay-visual-arena {
-    min-height: 175px !important;
-    max-height: 215px !important;
-    padding: 4px !important;
+  .illustration-display-stage {
+    flex: 1 !important;
+    width: 100% !important;
+    min-height: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
   }
 
   .overlay-instruction-card {
-    padding: 6px 10px !important;
+    padding: 6px 10px 80px 10px !important; /* 80px bottom clearance ensures scroll clears the camera! */
     gap: 4px !important;
-    max-height: 48vh !important;
+    max-height: 46vh !important;
     overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch;
   }
 
   .movement-title {

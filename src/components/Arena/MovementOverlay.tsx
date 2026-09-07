@@ -55,49 +55,51 @@ export const MovementOverlay: React.FC<MovementOverlayProps> = ({
       >
         {/* Sleek, organized top header */}
         <div className="overlay-header">
-          {/* Position indicator */}
-          <div className="header-badge position-header-pill">
-            <span className="pos-badge-circle">{position.id}</span>
-            <div className="pos-badge-text">
-              <strong>{position.zoneName}</strong>
-              <small>{position.directionLabel}</small>
+          {/* Row 1: Position on left, Meta & Timer on right */}
+          <div className="overlay-header-top">
+            <div className="header-badge position-header-pill">
+              <span className="pos-badge-circle">{position.id}</span>
+              <div className="pos-badge-text">
+                <strong>{position.zoneName}</strong>
+                <small>{position.directionLabel}</small>
+              </div>
+            </div>
+
+            {/* Mode & Round Badges */}
+            <div className="header-right-meta">
+              <div className="header-badge mode-badge">
+                <Zap size={14} />
+                <span>CHẾ ĐỘ {modeTitle}</span>
+              </div>
+
+              <div className="header-badge round-badge">
+                <span>LƯỢT {roundNumber}/{totalRounds}</span>
+              </div>
+
+              {/* Stopwatch / Timer */}
+              <div className={`header-badge timer-badge ${isUnlimited ? 'is-unlimited-badge' : ''}`}>
+                {isUnlimited ? (
+                  <>
+                    <InfinityIcon size={16} className="icon-pulse" />
+                    <span className="timer-number">{remainingTime.toFixed(1)}s</span>
+                  </>
+                ) : (
+                  <>
+                    <Timer size={16} />
+                    <span className="timer-number">{remainingTime.toFixed(2)}s</span>
+                  </>
+                )}
+              </div>
             </div>
           </div>
 
-          {/* Technique Variation Pill */}
+          {/* Row 2: Technique Variation Pill */}
           {activeVar && (
             <div className="header-badge variation-badge">
-              <Target size={16} className="text-cyan animate-pulse" />
+              <Target size={15} className="text-cyan animate-pulse" />
               <span>KIỂU ĐÁNH <strong>{variationIndex + 1}/3</strong>: {activeVar.shotName}</span>
             </div>
           )}
-
-          {/* Mode & Round Badges */}
-          <div className="header-right-meta">
-            <div className="header-badge mode-badge">
-              <Zap size={15} />
-              <span>CHẾ ĐỘ {modeTitle}</span>
-            </div>
-
-            <div className="header-badge round-badge">
-              <span>LƯỢT {roundNumber}/{totalRounds}</span>
-            </div>
-
-            {/* Stopwatch / Timer */}
-            <div className={`header-badge timer-badge ${isUnlimited ? 'is-unlimited-badge' : ''}`}>
-              {isUnlimited ? (
-                <>
-                  <InfinityIcon size={18} className="icon-pulse" />
-                  <span className="timer-number">{remainingTime.toFixed(1)}s (Tự do)</span>
-                </>
-              ) : (
-                <>
-                  <Timer size={18} />
-                  <span className="timer-number">{remainingTime.toFixed(2)}s</span>
-                </>
-              )}
-            </div>
-          </div>
         </div>
 
         {/* Progress indicator bar */}

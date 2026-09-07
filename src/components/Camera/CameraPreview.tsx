@@ -144,8 +144,13 @@ export const CameraPreview: React.FC<CameraPreviewProps> = ({
       <div className={`camera-preview-panel ${isMinimized ? 'is-minimized' : ''}`}>
         <div className="camera-header">
           <div className="camera-title">
-            <Camera size={16} />
-            <span>{isRecording ? `🔴 ĐANG QUAY (${formatTimer(recordingSeconds)})` : 'Camera Tập Luyện'}</span>
+            <Camera size={14} />
+            <span className="cam-title-desktop">
+              {isRecording ? `🔴 ĐANG QUAY (${formatTimer(recordingSeconds)})` : 'Camera Tập Luyện'}
+            </span>
+            <span className="cam-title-mobile">
+              {isRecording ? `REC ${formatTimer(recordingSeconds)}` : 'Camera'}
+            </span>
           </div>
           <div className="camera-actions">
             <button 

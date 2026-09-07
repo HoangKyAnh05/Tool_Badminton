@@ -1,9 +1,11 @@
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
+const { execSync } = require('child_process');
 
 const PORT = process.env.PORT || 5173;
 const DIST_DIR = path.join(__dirname, 'dist');
+const INDEX_HTML = path.join(DIST_DIR, 'index.html');
 
 // MIME types mapping
 const MIME_TYPES = {
@@ -24,6 +26,21 @@ const MIME_TYPES = {
   '.ttf': 'font/ttf'
 };
 
+// Check and auto-build dist if missing
+function ensureDistExists() {
+  if (!fs.existsSync(INDEX_HTML)) {
+    console.log('[AUTO-BUILD] dist/index.html is missing. Building frontend now...');
+    try {
+      execSync('npm run build', { stdio: 'inherit' });
+      console.log('[AUTO-BUILD] Build completed successfully!');
+    } catch (e) {
+      console.error('[AUTO-BUILD ERROR] Could not build dist:', e.message);
+    }
+  }
+}
+
+ensureDistExists();
+
 const server = http.createServer((req, res) => {
   // Parse clean URL path
   const parsedUrl = new URL(req.url, `http://${req.headers.host || 'localhost'}`);
@@ -37,16 +54,15 @@ const server = http.createServer((req, res) => {
 
   // Security check: prevent directory traversal
   if (!filePath.startsWith(DIST_DIR)) {
-    res.writeHead(403, { 'Content-Type': 'text/plain' });
+    res.writeHead(403, { 'Content-Type': 'text/plain; charset=utf-8' });
     res.end('403 Forbidden');
     return;
   }
 
-  // Check if file exists
+  // Check if file exists, else fallback to index.html for Single Page App
   fs.stat(filePath, (err, stats) => {
     if (err || !stats.isFile()) {
-      // SPA Fallback: serve index.html
-      filePath = path.join(DIST_DIR, 'index.html');
+      filePath = INDEX_HTML;
     }
 
     const ext = path.extname(filePath).toLowerCase();
@@ -54,8 +70,30 @@ const server = http.createServer((req, res) => {
 
     fs.readFile(filePath, (readErr, content) => {
       if (readErr) {
-        res.writeHead(500, { 'Content-Type': 'text/plain' });
-        res.end('500 Internal Server Error');
+        console.error(`[SERVER ERROR] Failed reading: ${filePath}`, readErr.message);
+
+        // Emergency fallback if dist was not built
+        res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
+        res.end(`<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Badminton Pro - Khởi động</title>
+  <style>
+    body { background: #080d14; color: #fff; font-family: sans-serif; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; }
+    .card { background: #0f172a; padding: 30px; border-radius: 16px; border: 1px solid #00f0ff; text-align: center; max-width: 500px; }
+    h1 { color: #00f0ff; }
+    button { background: #00f0ff; border: none; padding: 12px 24px; border-radius: 8px; font-weight: bold; cursor: pointer; margin-top: 16px; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>🏸 Badminton Pro Trainer</h1>
+    <p>Đang đồng bộ dữ liệu hoặc thư mục dist chưa được tạo. Vui lòng làm mới trang sau 10 giây.</p>
+    <button onclick="location.reload()">TẢI LẠI TRANG</button>
+  </div>
+</body>
+</html>`);
         return;
       }
 

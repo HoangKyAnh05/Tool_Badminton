@@ -55,10 +55,13 @@ export function useTraining() {
     storageService.saveConfig(config);
   }, [config]);
 
+  const cdIntervalRef = useRef<any>(null);
+
   // Clean up any running timers on unmount
   useEffect(() => {
     return () => {
       if (timerLoopRef.current) cancelAnimationFrame(timerLoopRef.current);
+      if (cdIntervalRef.current) clearInterval(cdIntervalRef.current);
     };
   }, []);
 
@@ -70,6 +73,7 @@ export function useTraining() {
   // Finish whole training session
   const finishSession = useCallback(() => {
     if (timerLoopRef.current) cancelAnimationFrame(timerLoopRef.current);
+    if (cdIntervalRef.current) clearInterval(cdIntervalRef.current);
     setState('COMPLETE');
 
     const history = [...roundsHistoryRef.current];
@@ -158,6 +162,70 @@ export function useTraining() {
     startRoundSequence(nextRound);
   }, [finishSession]);
 
+  // Launch physical action phase (MovementOverlay opens)
+  const startActivePhysicalAction = useCallback((roundData: ActiveRoundData) => {
+    if (cdIntervalRef.current) {
+      clearInterval(cdIntervalRef.current);
+      cdIntervalRef.current = null;
+    }
+
+    setState('ACTIVE');
+    const now = performance.now();
+    startTimeRef.current = now;
+
+    // Play "GO!" sound for movement
+    playGoSound();
+
+    const isUnlimited = configRef.current.speedPreset === 'unlimited' || configRef.current.actionDuration <= 0;
+
+    if (isUnlimited) {
+      // Unlimited mode: timer counts up elapsed seconds and does not auto-abort
+      setRemainingTime(0);
+      const loop = (timestamp: number) => {
+        const elapsed = (timestamp - now) / 1000;
+        setRemainingTime(Number(elapsed.toFixed(1)));
+        timerLoopRef.current = requestAnimationFrame(loop);
+      };
+      timerLoopRef.current = requestAnimationFrame(loop);
+    } else {
+      // Precision countdown loop for physical movement action duration
+      const durationMs = configRef.current.actionDuration * 1000;
+      setRemainingTime(configRef.current.actionDuration);
+
+      const loop = (timestamp: number) => {
+        const elapsed = timestamp - now;
+        const left = Math.max(0, (durationMs - elapsed) / 1000);
+        setRemainingTime(Number(left.toFixed(2)));
+
+        if (elapsed >= durationMs) {
+          // Action time elapsed
+          const recordedRound: ActiveRoundData = {
+            ...roundData,
+            responseTime: Number((configRef.current.actionDuration).toFixed(2))
+          };
+          roundsHistoryRef.current.push(recordedRound);
+
+          // Rest phase or straight next
+          if (configRef.current.restDuration > 0) {
+            setState('REST');
+            setRemainingTime(configRef.current.restDuration);
+            setTimeout(() => {
+              if (stateRef.current !== 'IDLE' && stateRef.current !== 'PAUSED') {
+                startNextRoundOrFinish();
+              }
+            }, configRef.current.restDuration * 1000);
+          } else {
+            startNextRoundOrFinish();
+          }
+        } else {
+          timerLoopRef.current = requestAnimationFrame(loop);
+        }
+      };
+
+      timerLoopRef.current = requestAnimationFrame(loop);
+    }
+  }, [playGoSound, startNextRoundOrFinish]);
+
   // Start active action for physical or theory round
   const executeActiveRound = useCallback((roundNum: number, actualMode: 'TAY' | 'CHÂN' | 'TAY + CHÂN' | 'LÝ THUYẾT') => {
     setState('ACTIVE');
@@ -175,73 +243,20 @@ export function useTraining() {
       };
       setActiveData(roundData);
       setRemainingTime(0);
-    } else {
-      const pos = randomizer.getNextPosition();
-      const roundData: ActiveRoundData = {
-        roundNumber: roundNum,
-        totalRounds: configRef.current.totalRounds,
-        actualMode,
-        position: pos,
-        startTime: now
-      };
-      setActiveData(roundData);
-
-      // Play "GO!" sound for movement
-      playGoSound();
-
-      const isUnlimited = configRef.current.speedPreset === 'unlimited' || configRef.current.actionDuration <= 0;
-
-      if (isUnlimited) {
-        // Unlimited mode: timer counts up elapsed seconds and does not auto-abort
-        setRemainingTime(0);
-        const loop = (timestamp: number) => {
-          const elapsed = (timestamp - now) / 1000;
-          setRemainingTime(Number(elapsed.toFixed(1)));
-          timerLoopRef.current = requestAnimationFrame(loop);
-        };
-        timerLoopRef.current = requestAnimationFrame(loop);
-      } else {
-        // Precision countdown loop for physical movement action duration
-        const durationMs = configRef.current.actionDuration * 1000;
-        setRemainingTime(configRef.current.actionDuration);
-
-        const loop = (timestamp: number) => {
-          const elapsed = timestamp - now;
-          const left = Math.max(0, (durationMs - elapsed) / 1000);
-          setRemainingTime(Number(left.toFixed(2)));
-
-          if (elapsed >= durationMs) {
-            // Action time elapsed
-            const recordedRound: ActiveRoundData = {
-              ...roundData,
-              responseTime: Number((configRef.current.actionDuration).toFixed(2))
-            };
-            roundsHistoryRef.current.push(recordedRound);
-
-            // Rest phase or straight next
-            if (configRef.current.restDuration > 0) {
-              setState('REST');
-              setRemainingTime(configRef.current.restDuration);
-              setTimeout(() => {
-                if (stateRef.current !== 'IDLE' && stateRef.current !== 'PAUSED') {
-                  startNextRoundOrFinish();
-                }
-              }, configRef.current.restDuration * 1000);
-            } else {
-              startNextRoundOrFinish();
-            }
-          } else {
-            timerLoopRef.current = requestAnimationFrame(loop);
-          }
-        };
-
-        timerLoopRef.current = requestAnimationFrame(loop);
-      }
     }
-  }, [playGoSound, startNextRoundOrFinish]);
+  }, []);
 
-  // Manually finish current physical action round (triggered by Space key or screen tap)
+  // Manually finish current action or skip countdown
   const completeCurrentAction = useCallback(() => {
+    // If in COUNTDOWN: skip waiting and start lesson immediately
+    if (stateRef.current === 'COUNTDOWN') {
+      if (activeDataRef.current && activeDataRef.current.actualMode !== 'LÝ THUYẾT') {
+        startActivePhysicalAction(activeDataRef.current);
+      }
+      return;
+    }
+
+    // If in ACTIVE physical: finish early and move to next round
     if (stateRef.current !== 'ACTIVE') return;
     if (!activeDataRef.current || activeDataRef.current.actualMode === 'LÝ THUYẾT') return;
 
@@ -270,9 +285,9 @@ export function useTraining() {
     } else {
       startNextRoundOrFinish();
     }
-  }, [playGoSound, startNextRoundOrFinish]);
+  }, [playGoSound, startActivePhysicalAction, startNextRoundOrFinish]);
 
-  // Spacebar hotkey listener to advance exercises
+  // Spacebar hotkey listener to advance exercises or start lesson
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       // If focused inside an input or textarea, ignore
@@ -282,7 +297,7 @@ export function useTraining() {
       }
       if (e.code === 'Space' || e.key === ' ') {
         e.preventDefault();
-        if (stateRef.current === 'ACTIVE' && activeDataRef.current?.actualMode !== 'LÝ THUYẾT') {
+        if (stateRef.current === 'COUNTDOWN' || (stateRef.current === 'ACTIVE' && activeDataRef.current?.actualMode !== 'LÝ THUYẾT')) {
           completeCurrentAction();
         }
       }
@@ -292,9 +307,13 @@ export function useTraining() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [completeCurrentAction]);
 
-  // Round sequence with countdown 3-2-1
+  // Round sequence with countdown (allows user to move to the position first)
   const startRoundSequence = useCallback((roundNum: number) => {
     if (timerLoopRef.current) cancelAnimationFrame(timerLoopRef.current);
+    if (cdIntervalRef.current) {
+      clearInterval(cdIntervalRef.current);
+      cdIntervalRef.current = null;
+    }
 
     const prevMode = roundsHistoryRef.current.length > 0 
       ? roundsHistoryRef.current[roundsHistoryRef.current.length - 1].actualMode 
@@ -302,14 +321,32 @@ export function useTraining() {
 
     const actualMode = randomizer.determineRoundMode(configRef.current.mode, prevMode);
 
-    // If first round or physical round, run prep countdown
-    if (roundNum === 1 && configRef.current.prepDuration > 0) {
+    if (actualMode === 'LÝ THUYẾT') {
+      executeActiveRound(roundNum, 'LÝ THUYẾT');
+      return;
+    }
+
+    // Physical round: pick position first so player sees target position on 9-grid!
+    const pos = randomizer.getNextPosition();
+    const now = performance.now();
+    const roundData: ActiveRoundData = {
+      roundNumber: roundNum,
+      totalRounds: configRef.current.totalRounds,
+      actualMode,
+      position: pos,
+      startTime: now
+    };
+    setActiveData(roundData);
+
+    const prepSec = configRef.current.prepDuration ?? 3;
+
+    if (prepSec > 0) {
       setState('COUNTDOWN');
-      let step = 3;
-      setCountdownNum(3);
+      let step = prepSec;
+      setCountdownNum(step);
       playCountdownBeep(440);
 
-      const cdInterval = setInterval(() => {
+      cdIntervalRef.current = setInterval(() => {
         step -= 1;
         if (step > 0) {
           setCountdownNum(step);
@@ -318,14 +355,15 @@ export function useTraining() {
           setCountdownNum('GO!');
           playGoSound();
         } else {
-          clearInterval(cdInterval);
-          executeActiveRound(roundNum, actualMode);
+          clearInterval(cdIntervalRef.current);
+          cdIntervalRef.current = null;
+          startActivePhysicalAction(roundData);
         }
-      }, 800);
+      }, 1000);
     } else {
-      executeActiveRound(roundNum, actualMode);
+      startActivePhysicalAction(roundData);
     }
-  }, [executeActiveRound, playCountdownBeep, playGoSound]);
+  }, [executeActiveRound, playCountdownBeep, playGoSound, startActivePhysicalAction]);
 
   // Submit theory answer
   const submitAnswer = useCallback((selectedOptionId: 'A' | 'B' | 'C' | 'D') => {

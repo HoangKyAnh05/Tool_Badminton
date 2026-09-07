@@ -133,10 +133,54 @@ export const TrainingSetup: React.FC<TrainingSetupProps> = ({
           )}
         </div>
 
-        {/* 3. Number of rounds & Rest times */}
+        {/* 3. Preparation / Move-to-Position Duration (1s - 10s) */}
+        <div className="setup-section">
+          <div className="section-label-row">
+            <label className="section-label">3. THỜI GIAN DI CHUYỂN ĐẾN VỊ TRÍ (1s - 10s)</label>
+            <span className="current-speed-tag">
+              <Clock size={14} /> Chờ người học tới vị trí: <strong>{config.prepDuration ?? 3}s</strong>
+            </span>
+          </div>
+
+          <div className="speed-pills-row">
+            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((sec) => (
+              <button
+                key={sec}
+                className={`speed-pill ${(config.prepDuration ?? 3) === sec ? 'is-active' : ''}`}
+                onClick={() => onUpdateConfig({ prepDuration: sec })}
+              >
+                {sec}s
+              </button>
+            ))}
+          </div>
+
+          <div className="slider-wrapper">
+            <span className="slider-bound">1s (Chạy nhanh)</span>
+            <input
+              type="range"
+              min="1"
+              max="10"
+              step="1"
+              value={config.prepDuration ?? 3}
+              onChange={(e) => onUpdateConfig({ prepDuration: parseInt(e.target.value, 10) })}
+              className="range-slider"
+            />
+            <span className="slider-bound">10s (Thoải mái vào form)</span>
+          </div>
+
+          <div className="unlimited-notice-card animate-fade-in" style={{ marginTop: '10px' }}>
+            <Activity size={18} className="notice-icon" />
+            <div>
+              <strong>Thời gian chuẩn bị cho mỗi lượt:</strong>
+              <p>Lưới 9 ô sẽ sáng vị trí trước và đếm lùi để bạn kịp di chuyển đến vị trí đó. Khi hết thời gian (hoặc bạn bấm phím CÁCH / chạm màn hình khi vừa tới nơi), bài học sẽ bắt đầu!</p>
+            </div>
+          </div>
+        </div>
+
+        {/* 4. Number of rounds & Rest times */}
         <div className="setup-grid-dual">
           <div className="setup-col">
-            <label className="section-label">3. SỐ LƯỢT TẬP (ROUNDS)</label>
+            <label className="section-label">4. SỐ LƯỢT TẬP (ROUNDS)</label>
             <div className="round-pills-row">
               {roundOptions.map((r) => (
                 <button
@@ -151,7 +195,7 @@ export const TrainingSetup: React.FC<TrainingSetupProps> = ({
           </div>
 
           <div className="setup-col">
-            <label className="section-label">4. THỜI GIAN NGHỈ GIỮA HIỆP</label>
+            <label className="section-label">5. THỜI GIAN NGHỈ GIỮA HIỆP</label>
             <div className="rest-pills-row">
               {[0.4, 0.8, 1.2, 2.0].map((sec) => (
                 <button

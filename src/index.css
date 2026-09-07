@@ -2266,3 +2266,67 @@ button {
   color: #000000 !important;
   box-shadow: 0 0 15px rgba(0, 240, 255, 0.6) !important;
 }
+
+/* Move-to-Position Countdown Target Badge */
+.countdown-target-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  background: rgba(15, 23, 42, 0.9);
+  border: 2px solid var(--color-cyan);
+  border-radius: 9999px;
+  padding: 8px 24px;
+  margin-bottom: 12px;
+  box-shadow: 0 0 25px rgba(0, 240, 255, 0.4);
+  animation: pulseGlow 1.8s infinite;
+}
+
+.target-pill-num {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--color-cyan);
+  color: #000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Orbitron', monospace;
+  font-size: 1.6rem;
+  font-weight: 900;
+  box-shadow: 0 0 12px rgba(0, 240, 255, 0.8);
+}
+
+.target-pill-text {
+  text-align: left;
+}
+
+.target-pill-text small {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: var(--color-cyan);
+}
+
+.target-pill-text strong {
+  display: block;
+  font-size: 1.3rem;
+  color: #ffffff;
+  font-family: 'Orbitron', monospace;
+}
+
+.countdown-skip-hint {
+  margin-top: 18px;
+  font-size: 0.88rem;
+  color: #94a3b8;
+  background: rgba(0, 0, 0, 0.45);
+  border: 1px dashed rgba(255, 255, 255, 0.2);
+  padding: 6px 16px;
+  border-radius: 9999px;
+  display: inline-block;
+}
+
+.countdown-skip-hint strong {
+  color: var(--color-cyan);
+}
+

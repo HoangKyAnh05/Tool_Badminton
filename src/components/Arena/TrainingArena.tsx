@@ -132,13 +132,32 @@ export const TrainingArena: React.FC<TrainingArenaProps> = ({
           />
         </div>
 
-        {/* 1. Large Countdown Overlay (3, 2, 1, GO!) */}
+        {/* 1. Large Countdown / Move-to-Position Phase */}
         {isCountdown && (
-          <div className="countdown-backdrop animate-fade-in">
+          <div 
+            className="countdown-backdrop animate-fade-in"
+            onClick={() => onCompleteAction?.()}
+          >
             <div className="countdown-content animate-zoom">
-              <div className="countdown-label">CHUẨN BỊ</div>
+              <div className="countdown-target-badge">
+                <span className="target-pill-num">{activeData?.position?.id ?? 5}</span>
+                <div className="target-pill-text">
+                  <small>HÃY DI CHUYỂN NGAY ĐẾN</small>
+                  <strong>{activeData?.position ? `${activeData.position.zoneName} (Ô ${activeData.position.id})` : 'TÂM SÂN (Ô 5)'}</strong>
+                </div>
+              </div>
+
               <div className="countdown-digit">{countdownNum}</div>
-              <div className="countdown-sub">Đứng sẵn sàng tại vị trí số 5</div>
+
+              <div className="countdown-sub">
+                {activeData?.position
+                  ? `Chạy đến ${activeData.position.directionLabel} và chuẩn bị vào thế!`
+                  : 'Đứng sẵn sàng tại vị trí số 5'}
+              </div>
+
+              <div className="countdown-skip-hint">
+                <span>⚡ Bấm phím <strong>CÁCH</strong> hoặc <strong>Chạm màn hình</strong> để vào bài học ngay</span>
+              </div>
             </div>
           </div>
         )}

@@ -4,7 +4,7 @@ color 0E
 
 echo ================================================================
 echo           DANG DONG BO DU LIEU LEN GITHUB REPOSITORY
-echo   Repo: https://github.com/trongtinozzzz-stack/Tool_Badminton.git
+echo   Repo: https://github.com/HoangKyAnh05/Tool_Badminton.git
 echo ================================================================
 echo.
 
@@ -19,7 +19,7 @@ if not exist ".git\" (
 
 :: Ensure remote origin is set
 git remote remove origin >nul 2>nul
-git remote add origin https://github.com/trongtinozzzz-stack/Tool_Badminton.git
+git remote add origin https://github.com/HoangKyAnh05/Tool_Badminton.git
 
 echo.
 set /p COMMIT_MSG="Nhap noi dung commit (Hoac an Enter de dung mac dinh): "

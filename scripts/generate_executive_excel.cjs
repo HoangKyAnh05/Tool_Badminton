@@ -105,7 +105,7 @@ async function buildExecutiveReport() {
   const kpiItems = [
     ['5 CHẾ ĐỘ HUẤN LUYỆN TOÀN DIỆN', 'Tay, Chân, Phối Hợp, Lý Thuyết Thực Chiến & Tổng Hợp Trận Đấu', 'Phủ kín 100% nhu cầu tập'],
     ['9 VÙNG SÂN & 27 BIẾN THỂ ĐÁNH', 'Mô phỏng chuẩn cơ sinh học Lưới - Trung Sân - Cuối Sân', 'Hình ảnh mô phỏng trực quan'],
-    ['13 VIDEO THỰC TẾ (ĐƠN NAM, ĐÔI NAM, ĐƠN NỮ)', '6 Đơn Nam + 3 Đôi Nam + 4 Đơn Nữ, chống tua, tự động đổi theo ô sân', '100% Video thực tế'],
+    ['17 VIDEO THỰC TẾ (4 CHUYÊN MỤC)', '6 Đơn Nam + 3 Đôi Nam + 4 Đơn Nữ + 4 Đôi Nữ, chống tua, tự động đổi theo ô sân', '100% Video thực tế'],
     ['LỘ TRÌNH THỬ THÁCH 100 NGÀY', '5 giai đoạn từ Nền tảng, Tăng tốc, Sức bền đến Master Kiện tướng', 'Duy trì kỷ luật tập luyện'],
     ['CÔNG CỤ QUAY VIDEO QUA WEBCAM', 'Tự soi động tác, đo thời gian, tải file MP4/WebM về máy tức thì', 'Tự phân tích & nộp bài HLV'],
     ['TÍNH NĂNG GẮN LINK MỞ RỘNG', 'Tự do gắn link YouTube / Shorts / MP4 online không giới hạn', 'Không tốn dung lượng ổ cứng']
@@ -407,7 +407,7 @@ async function buildExecutiveReport() {
 
   ws4.mergeCells('A1:F1');
   const t4 = ws4.getCell('A1');
-  t4.value = 'DANH MỤC 13 VIDEO THỰC CHIẾN (ĐƠN NAM, ĐÔI NAM, ĐƠN NỮ) & CÔNG NGHỆ GẮN LINK';
+  t4.value = 'DANH MỤC 17 VIDEO THỰC CHIẾN (ĐƠN NAM, ĐÔI NAM, ĐƠN NỮ, ĐÔI NỮ) & CÔNG NGHỆ GẮN LINK';
   t4.font = { name: fontFamily, size: 14, bold: true, color: { argb: 'FFFFFF' } };
   t4.fill = headerFill('4338CA'); // Indigo 700
   t4.alignment = { vertical: 'middle', horizontal: 'center' };
@@ -438,7 +438,11 @@ async function buildExecutiveReport() {
     ["11", "ĐƠN NỮ", "Chiến Thuật Ép Cầu Đáy Sân & Mở Góc Tấn Công Đơn Nữ", "Kỹ thuật phông cầu cao sâu, khai thác khoảng trống hai góc biên.", "snaptik.vn_7567643845215669521.mp4", "Chống tua nhanh, tự động tích xanh, xem toàn màn hình"],
     ["12", "ĐƠN NỮ", "Kỹ Thuật Bỏ Nhỏ Sát Lưới & Kéo Lưới Lừa Hướng Đơn Nữ", "Cảm giác mặt vợt tinh tế, cắt cầu đổi hướng đánh gục phản xạ.", "snaptik.vn_7598797082912181511.mp4", "Chống tua nhanh, tự động tích xanh, quay chậm"],
     ["13", "ĐƠN NỮ", "Kỹ Năng Đập Cầu Điểm Rơi & Chém Cầu Bạt Góc Đơn Nữ", "Biến hóa giữa đập cắm biên và chém cầu rơi chéo sân dứt điểm.", "snaptik.vn_7651286512998288661.mp4", "Chống tua nhanh, tự động tích xanh, âm thanh chuẩn"],
-    ["14", "TÍNH NĂNG MỞ RỘNG", "NÚT '➕ GẮN LINK VIDEO MỚI'", "Cho phép người dùng hoặc HLV tự dán link YouTube, YouTube Shorts hoặc MP4 online vào 4 chuyên mục.", "Link YouTube / Shorts / MP4 CDN", "KHÔNG GIỚI HẠN SỐ LƯỢNG, không tốn 1MB ổ cứng máy"]
+    ["14", "ĐÔI NỮ", "Chiến Thuật Bọc Lót & Phòng Thủ Bền Bỉ Đôi Nữ", "Phối hợp di chuyển bọc lót, cứu cầu liên hoàn và phá thế tấn công.", "snaptik.vn_7372888645730192658.mp4", "Chống tua nhanh, tự động tích xanh, xem toàn màn hình"],
+    ["15", "ĐÔI NỮ", "Kỹ Thuật Phản Tạt Đè Cầu & Gài Lưới Đôi Nữ", "Giữ thế chủ động trên lưới, tạt cầu thấp không cho đối thủ nâng bổng.", "snaptik.vn_7495761376141397255.mp4", "Chống tua nhanh, tự động tích xanh, xem chậm 0.5x"],
+    ["16", "ĐÔI NỮ", "Đổi Vị Trí Công - Thủ & Chuyển Giao Quyền Tấn Công", "Quy tắc di chuyển hoán đổi trước - sau trong trận đấu đôi nữ.", "snaptik.vn_7669811035297172757.mp4", "Chống tua nhanh, tự động tích xanh, tua lại 5s"],
+    ["17", "ĐÔI NỮ", "Tấn Công Liên Hoàn Đập Cầu & Bắt Lưới Dứt Điểm Đôi Nữ", "Phối hợp nhịp nhàng giữa quả đập phía sau và quả chớp lưới phía trước.", "snaptik.vn_7681640086798159124.mp4", "Chống tua nhanh, tự động tích xanh, âm thanh sống động"],
+    ["18", "TÍNH NĂNG MỞ RỘNG", "NÚT '➕ GẮN LINK VIDEO MỚI'", "Cho phép người dùng hoặc HLV tự dán link YouTube, YouTube Shorts hoặc MP4 online vào 4 chuyên mục.", "Link YouTube / Shorts / MP4 CDN", "KHÔNG GIỚI HẠN SỐ LƯỢNG, không tốn 1MB ổ cứng máy"]
   ];
 
   videosData.forEach((rowVal, idx) => {

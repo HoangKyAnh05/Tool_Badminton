@@ -144,5 +144,49 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     videoUrl: './videos/snaptik.vn_7651286512998288661.mp4',
     durationText: 'Bài 04',
     tags: ['Đơn Nữ', 'Smash điểm rơi', 'Chém cầu']
+  },
+
+  // =========================================================================
+  // 4. CHUYÊN MỤC: ĐÔI NỮ (4 Video thực tế từ Video_đôi nữ)
+  // =========================================================================
+  {
+    id: 'video-doi-nu-1',
+    category: 'DOI_NU',
+    title: 'Chiến Thuật Bọc Lót & Phòng Thủ Bền Bỉ Đôi Nữ',
+    subTitle: 'Phối hợp di chuyển bọc lót, cứu cầu liên hoàn và phá thế tấn công',
+    description: 'Phân tích lối đánh bền bỉ của các cặp đôi nữ: cách giữ khoảng cách, luân chuyển vị trí khi bị ép góc sâu và phản công chuẩn xác.',
+    videoUrl: './videos/snaptik.vn_7372888645730192658.mp4',
+    durationText: 'Bài 01',
+    tags: ['Đôi Nữ', 'Bọc lót', 'Phòng thủ']
+  },
+  {
+    id: 'video-doi-nu-2',
+    category: 'DOI_NU',
+    title: 'Kỹ Thuật Phản Tạt Đè Cầu & Gài Lưới Đôi Nữ',
+    subTitle: 'Giữ thế chủ động trên lưới, tạt cầu thấp không cho đối thủ nâng bổng',
+    description: 'Rèn luyện phản xạ tay trên lưới cực nhanh, tạt cầu chéo sân và gài lưới tinh tế ép đối phương phải hất cầu cao.',
+    videoUrl: './videos/snaptik.vn_7495761376141397255.mp4',
+    durationText: 'Bài 02',
+    tags: ['Đôi Nữ', 'Phản tạt', 'Gài lưới']
+  },
+  {
+    id: 'video-doi-nu-3',
+    category: 'DOI_NU',
+    title: 'Đổi Vị Trí Công - Thủ & Chuyển Giao Quyền Tấn Công',
+    subTitle: 'Quy tắc di chuyển hoán đổi trước - sau trong trận đấu đôi nữ',
+    description: 'Cách nhận biết thời điểm đối thủ bung cầu non để người phía sau dâng lên tấn công và người phía trước lùi xuống phòng ngự bọc lót.',
+    videoUrl: './videos/snaptik.vn_7669811035297172757.mp4',
+    durationText: 'Bài 03',
+    tags: ['Đôi Nữ', 'Công thủ', 'Hoán đổi']
+  },
+  {
+    id: 'video-doi-nu-4',
+    category: 'DOI_NU',
+    title: 'Tấn Công Liên Hoàn Đập Cầu & Bắt Lưới Dứt Điểm Đôi Nữ',
+    subTitle: 'Phối hợp nhịp nhàng giữa quả đập phía sau và quả chớp lưới phía trước',
+    description: 'Quy trình tổ chức tấn công dồn dập: người sau đập cầu điểm rơi gây khó khăn cho đối thủ, người trước đón bắt vồ cầu dứt điểm cắm sàn.',
+    videoUrl: './videos/snaptik.vn_7681640086798159124.mp4',
+    durationText: 'Bài 04',
+    tags: ['Đôi Nữ', 'Đập cầu', 'Dứt điểm']
   }
 ];

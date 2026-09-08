@@ -35,9 +35,25 @@ export const MovementIllustration: React.FC<MovementIllustrationProps> = ({
   mode,
   className = ''
 }) => {
-  // Tab view: 'TECHNIQUE' (Thị phạm kỹ thuật chuẩn xác) vs 'COURT' (Sơ đồ di chuyển) vs 'VIDEO' (Video thực chiến) vs 'CUSTOM' (Gắn link riêng)
-  const [activeTab, setActiveTab] = useState<'TECHNIQUE' | 'COURT' | 'VIDEO' | 'CUSTOM'>('TECHNIQUE');
-  const [selectedVideoIndex, setSelectedVideoIndex] = useState<number>(0);
+  // Helper to automatically pick the matching video for each court position
+  const getDefaultVideoIndexForPosition = (id: number): number => {
+    switch (id) {
+      case 1: return 2; // Ô 1: Lưới Trái -> Bài 03 Đơn Nam: Bỏ nhỏ sát lưới & kéo lưới
+      case 2: return 7; // Ô 2: Lưới Giữa -> Bài 02 Đôi Nam: Đè lưới & phản tạt ép góc
+      case 3: return 8; // Ô 3: Lưới Phải -> Bài 03 Đôi Nam: Tấn công đập cầu & bồi cầu
+      case 4: return 5; // Ô 4: Trung Tâm Trái -> Bài 06 Đơn Nam: Thủ cầu bung sâu đảo ngược thế trận
+      case 5: return 0; // Ô 5: Tâm Sân -> Bài 01 Đơn Nam: Đọc hướng & di chuyển 4 góc
+      case 6: return 6; // Ô 6: Trung Tâm Phải -> Bài 01 Đôi Nam: Chiến thuật bọc lót & di chuyển đôi
+      case 7: return 1; // Ô 7: Đáy Trái -> Bài 02 Đơn Nam: Ép cầu hai góc cuối sân
+      case 8: return 3; // Ô 8: Đáy Giữa -> Bài 04 Đơn Nam: Bước lùi đón cầu & chém bạt góc
+      case 9: return 4; // Ô 9: Đáy Phải -> Bài 05 Đơn Nam: Bật nhảy Jump Smash đập cầu
+      default: return 0;
+    }
+  };
+
+  // Tab view: Default is 'VIDEO' (Video thực chiến)
+  const [activeTab, setActiveTab] = useState<'VIDEO' | 'TECHNIQUE' | 'COURT' | 'CUSTOM'>('VIDEO');
+  const [selectedVideoIndex, setSelectedVideoIndex] = useState<number>(() => getDefaultVideoIndexForPosition(position.id));
   const [isPlaying, setIsPlaying] = useState<boolean>(true);
   const [isSlowMo, setIsSlowMo] = useState<boolean>(false);
   const [isMuted, setIsMuted] = useState<boolean>(true);
@@ -52,6 +68,11 @@ export const MovementIllustration: React.FC<MovementIllustrationProps> = ({
   const isHand = mode === 'TAY';
   const isFoot = mode === 'CHÂN';
   const primaryColor = isHand ? '#00f0ff' : isFoot ? '#39ff14' : '#ffb703';
+
+  // Automatically update video to match the new position when posId changes
+  useEffect(() => {
+    setSelectedVideoIndex(getDefaultVideoIndexForPosition(posId));
+  }, [posId]);
 
   // Load custom video for this position if saved in localStorage
   useEffect(() => {
@@ -131,6 +152,15 @@ export const MovementIllustration: React.FC<MovementIllustrationProps> = ({
   // Active video selection
   const currentVideoItem = TACTICS_VIDEOS[selectedVideoIndex % TACTICS_VIDEOS.length];
   const activeVideoUrl = customVideoUrl || currentVideoItem?.videoUrl || './videos/viesnap.vn_tiktok_7556982998449655047.mp4';
+
+  // Auto-play when activeVideoUrl changes
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.currentTime = 0;
+      videoRef.current.play().catch(() => {});
+      setIsPlaying(true);
+    }
+  }, [activeVideoUrl]);
 
   // 1. Render Accurate Biomechanical Athlete Simulation (ALWAYS 100% MATCHES THE DRILL)
   const renderAthleteTechniqueVisual = () => {
@@ -684,6 +714,18 @@ export const MovementIllustration: React.FC<MovementIllustrationProps> = ({
       {/* Visual Mode Navigation Switcher */}
       <div className="illustration-view-tabs">
         <button
+          className={`view-tab-btn ${activeTab === 'VIDEO' ? 'is-active' : ''}`}
+          onClick={(e) => {
+            e.stopPropagation();
+            setActiveTab('VIDEO');
+          }}
+        >
+          <Film size={14} />
+          <span className="tab-full-label">🎥 VIDEO THỰC CHIẾN</span>
+          <span className="tab-mobile-label">Video</span>
+        </button>
+
+        <button
           className={`view-tab-btn ${activeTab === 'TECHNIQUE' ? 'is-active' : ''}`}
           onClick={(e) => {
             e.stopPropagation();
@@ -705,18 +747,6 @@ export const MovementIllustration: React.FC<MovementIllustrationProps> = ({
           <Compass size={14} />
           <span className="tab-full-label">🏟️ SƠ ĐỒ DI CHUYỂN</span>
           <span className="tab-mobile-label">Sơ đồ sân</span>
-        </button>
-
-        <button
-          className={`view-tab-btn ${activeTab === 'VIDEO' ? 'is-active' : ''}`}
-          onClick={(e) => {
-            e.stopPropagation();
-            setActiveTab('VIDEO');
-          }}
-        >
-          <Film size={14} />
-          <span className="tab-full-label">🎥 VIDEO THỰC CHIẾN</span>
-          <span className="tab-mobile-label">Video</span>
         </button>
 
         <button

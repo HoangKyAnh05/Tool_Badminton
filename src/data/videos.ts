@@ -100,5 +100,49 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     thumbnailUrl: './videos/766319825_1345687688618423_4346388704197900737_n.jpg',
     durationText: 'Bài 03',
     tags: ['Đôi Nam', 'Đập cầu', 'Dứt điểm']
+  },
+
+  // =========================================================================
+  // 3. CHUYÊN MỤC: ĐƠN NỮ (4 Video thực tế từ Video_đơn nữ)
+  // =========================================================================
+  {
+    id: 'video-don-nu-1',
+    category: 'DON_NU',
+    title: 'Kỹ Thuật Di Chuyển Bộ Pháp Dẻo Dai & Điều Cầu Đơn Nữ',
+    subTitle: 'Bộ pháp linh hoạt, di chuyển 4 góc sân êm ái và hồi vị nhịp nhàng',
+    description: 'Phân tích cách các tay vợt đơn nữ hàng đầu thế giới kiểm soát cự ly, giữ thăng bằng sau những pha cứu cầu rướn sâu và nhịp hồi tâm ổn định.',
+    videoUrl: './videos/snaptik.vn_7500378802141269256.mp4',
+    durationText: 'Bài 01',
+    tags: ['Đơn Nữ', 'Bộ pháp', 'Di chuyển']
+  },
+  {
+    id: 'video-don-nu-2',
+    category: 'DON_NU',
+    title: 'Chiến Thuật Ép Cầu Đáy Sân & Mở Góc Tấn Công Đơn Nữ',
+    subTitle: 'Kỹ thuật phông cầu cao sâu, khai thác khoảng trống hai góc biên',
+    description: 'Rèn luyện khả năng phát lực từ vai và cổ tay để đưa cầu cắm sâu về góc cuối sân, buộc đối phương phải đánh trong thế bị động.',
+    videoUrl: './videos/snaptik.vn_7567643845215669521.mp4',
+    durationText: 'Bài 02',
+    tags: ['Đơn Nữ', 'Phông cầu', 'Ép góc đáy']
+  },
+  {
+    id: 'video-don-nu-3',
+    category: 'DON_NU',
+    title: 'Kỹ Thuật Bỏ Nhỏ Sát Lưới & Kéo Lưới Lừa Hướng Đơn Nữ',
+    subTitle: 'Cảm giác mặt vợt tinh tế, cắt cầu đổi hướng đánh gục phản xạ',
+    description: 'Cách kiểm soát lực tiếp xúc, miết nhẹ mặt vợt tạo độ rơi hiểm sát mép chữ T khiến đối thủ không kịp lao lên cứu cầu.',
+    videoUrl: './videos/snaptik.vn_7598797082912181511.mp4',
+    durationText: 'Bài 03',
+    tags: ['Đơn Nữ', 'Bỏ nhỏ', 'Kéo lưới']
+  },
+  {
+    id: 'video-don-nu-4',
+    category: 'DON_NU',
+    title: 'Kỹ Năng Đập Cầu Điểm Rơi & Chém Cầu Bạt Góc Đơn Nữ',
+    subTitle: 'Biến hóa giữa đập cắm biên và chém cầu rơi chéo sân dứt điểm',
+    description: 'Động tác vung tay dứt khoát, kết hợp xoay hông và gập bụng tạo góc rơi hiểm hóc, điểm rơi sát mép biên đối phương.',
+    videoUrl: './videos/snaptik.vn_7651286512998288661.mp4',
+    durationText: 'Bài 04',
+    tags: ['Đơn Nữ', 'Smash điểm rơi', 'Chém cầu']
   }
 ];

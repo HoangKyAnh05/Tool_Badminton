@@ -578,7 +578,7 @@ export const MovementIllustration: React.FC<MovementIllustrationProps> = ({
             >
               {TACTICS_VIDEOS.map((v, i) => (
                 <option key={v.id} value={i}>
-                  {v.category === 'DON_NAM' ? '👤 Đơn Nam' : '👥 Đôi Nam'}: {v.title}
+                  {v.category === 'DON_NAM' ? '👤 Đơn Nam' : v.category === 'DOI_NAM' ? '👥 Đôi Nam' : v.category === 'DON_NU' ? '👩 Đơn Nữ' : '👭 Đôi Nữ'}: {v.title}
                 </option>
               ))}
             </select>

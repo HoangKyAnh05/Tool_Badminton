@@ -228,10 +228,54 @@ export const VideoSection: React.FC = () => {
 
       {/* Video Cards Grid */}
       <div className="video-grid">
-        {filteredVideos.map((video, idx) => {
-          const isWatched = watchedIds.includes(video.id);
-          const thumbSrc = getThumbnailSrc(video);
-          const isMp4 = video.videoUrl.endsWith('.mp4');
+        {filteredVideos.length === 0 ? (
+          <div 
+            className="empty-video-category-card" 
+            style={{ 
+              textAlign: 'center', 
+              padding: '48px 24px', 
+              background: 'rgba(15, 23, 42, 0.6)', 
+              borderRadius: '20px', 
+              border: '1.5px dashed rgba(0, 240, 255, 0.3)', 
+              gridColumn: '1 / -1',
+              margin: '10px 0'
+            }}
+          >
+            <Tv size={48} style={{ color: '#00f0ff', opacity: 0.6, margin: '0 auto 14px' }} />
+            <h3 style={{ color: '#ffffff', fontSize: '1.2rem', marginBottom: '8px' }}>Chuyên mục này hiện chưa có video</h3>
+            <p style={{ color: '#94a3b8', fontSize: '0.9rem', maxWidth: '500px', margin: '0 auto 20px', lineHeight: 1.6 }}>
+              Hệ thống chỉ nạp chính xác các video thực tế bạn cung cấp (gồm 6 video Đơn Nam & 3 video Đôi Nam). Khi bạn có thêm video cho chuyên mục này, bạn có thể bấm nút bên dưới để gắn link bất cứ lúc nào!
+            </p>
+            <button
+              className="btn-add-video-link"
+              onClick={() => {
+                if (activeCategory !== 'ALL') {
+                  setNewCategory(activeCategory);
+                }
+                setIsAddModalOpen(true);
+              }}
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+                padding: '10px 22px',
+                background: 'linear-gradient(135deg, #00f0ff 0%, #0284c7 100%)',
+                color: '#020812',
+                fontWeight: 800,
+                borderRadius: '10px',
+                border: 'none',
+                cursor: 'pointer'
+              }}
+            >
+              <Plus size={16} />
+              <span>GẮN LINK VIDEO CHO MỤC NÀY</span>
+            </button>
+          </div>
+        ) : (
+          filteredVideos.map((video, idx) => {
+            const isWatched = watchedIds.includes(video.id);
+            const thumbSrc = getThumbnailSrc(video);
+            const isMp4 = video.videoUrl.endsWith('.mp4');
 
           return (
             <div 
@@ -349,8 +393,9 @@ export const VideoSection: React.FC = () => {
               </div>
             </div>
           );
-        })}
+        }))}
       </div>
+
 
       {/* Video Modal Player */}
       {selectedVideo && (

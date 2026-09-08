@@ -1,5 +1,5 @@
 import React from 'react';
-import { Volume2, VolumeX, History, Sparkles, Activity, Camera, FileSpreadsheet } from 'lucide-react';
+import { Volume2, VolumeX, History, Sparkles, Activity, Camera } from 'lucide-react';
 import { TrainingMode, SessionState } from '../../types';
 
 interface NavbarProps {
@@ -48,19 +48,6 @@ export const Navbar: React.FC<NavbarProps> = ({
 
         {/* Right Tools */}
         <div className="navbar-actions">
-          <a
-            href="./huong-dan-tinh-nang.html"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="nav-btn"
-            title="Xem cẩm nang tính năng trực tuyến & Tải file Excel"
-            aria-label="Cẩm nang Excel"
-            style={{ textDecoration: 'none', color: '#00f0ff', borderColor: 'rgba(0, 240, 255, 0.4)' }}
-          >
-            <FileSpreadsheet size={18} />
-            <span className="nav-btn-text">Cẩm Nang Excel</span>
-          </a>
-
           <button 
             className="nav-btn nav-btn-record"
             onClick={onOpenRecorder}

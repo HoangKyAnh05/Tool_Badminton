@@ -50,7 +50,7 @@ function createWindow() {
   const isDev = process.env.NODE_ENV !== 'production' && !app.isPackaged;
 
   if (isDev) {
-    mainWindow.loadURL('http://localhost:5173');
+    mainWindow.loadURL('http://localhost:5188');
     // Open DevTools in dev mode if needed
     // mainWindow.webContents.openDevTools();
   } else {

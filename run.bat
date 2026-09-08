@@ -1,9 +1,9 @@
 @echo off
-title Badminton Pro - He Thong Luyen Phan Xa & Ky Chien Thuat Cau Long
+title Badminton Pro - He Thong Luyen Phan Xa va Ky Chien Thuat Cau Long
 color 0B
 
 echo ================================================================
-echo          BADMINTON PRO - PHAN XA 9 O & FOOTWORK TRAINER
+echo          BADMINTON PRO - PHAN XA 9 O va FOOTWORK TRAINER
 echo ================================================================
 echo.
 
@@ -38,7 +38,7 @@ call npm run electron:dev
 if %errorlevel% neq 0 (
     echo.
     echo [CHU Y] Neu ung dung Electron gap loi hien thi, dang mo ban Web tai trinh duyet...
-    start http://localhost:5173
+    start http://localhost:5188
     call npm run dev
 )
 

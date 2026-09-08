@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
 
-const PORT = process.env.PORT || 5173;
+const PORT = process.env.PORT || 5188;
 const DIST_DIR = path.join(__dirname, 'dist');
 const INDEX_HTML = path.join(DIST_DIR, 'index.html');
 

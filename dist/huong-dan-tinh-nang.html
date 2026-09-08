@@ -3,23 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cẩm Nang & Giới Thiệu Tính Năng - Badminton Pro Trainer</title>
+  <title>Báo Cáo Toàn Diện Tính Năng - Badminton Pro Trainer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg-dark: #070d18;
-      --bg-card: rgba(15, 23, 42, 0.85);
-      --bg-card-hover: rgba(30, 41, 59, 0.9);
+      --bg-card: rgba(15, 23, 42, 0.9);
       --primary: #00f0ff;
-      --primary-glow: rgba(0, 240, 255, 0.35);
+      --primary-glow: rgba(0, 240, 255, 0.3);
       --secondary: #39ff14;
       --accent: #ffb703;
       --text: #f8fafc;
       --text-muted: #94a3b8;
       --border: rgba(255, 255, 255, 0.1);
-      --border-accent: rgba(0, 240, 255, 0.3);
+      --border-accent: rgba(0, 240, 255, 0.35);
     }
     * {
       box-sizing: border-box;
@@ -35,55 +34,106 @@
       padding: 24px 16px;
     }
     .container {
-      max-width: 1200px;
+      max-width: 1280px;
       margin: 0 auto;
     }
-    header {
-      text-align: center;
-      padding: 32px 16px 24px;
-      border-bottom: 1px solid var(--border);
+    /* Executive Header */
+    .executive-header {
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(30, 41, 59, 0.9));
+      border: 1px solid var(--border-accent);
+      border-radius: 20px;
+      padding: 36px 28px;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
       margin-bottom: 28px;
+      position: relative;
+      overflow: hidden;
     }
-    .badge-top {
+    .executive-header::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(0, 240, 255, 0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .badge-report {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
       background: rgba(0, 240, 255, 0.12);
       border: 1px solid rgba(0, 240, 255, 0.3);
       color: var(--primary);
       padding: 6px 14px;
       border-radius: 999px;
       font-size: 13px;
-      font-weight: 700;
+      font-weight: 800;
       letter-spacing: 0.5px;
       margin-bottom: 14px;
     }
-    h1 {
-      font-size: clamp(24px, 4vw, 36px);
+    .report-title {
+      font-size: clamp(24px, 3.5vw, 36px);
       font-weight: 900;
-      background: linear-gradient(135deg, #ffffff 30%, #00f0ff 100%);
+      background: linear-gradient(135deg, #ffffff 40%, #00f0ff 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       margin-bottom: 10px;
+      line-height: 1.25;
     }
-    p.subtitle {
+    .report-subtitle {
       color: var(--text-muted);
-      font-size: 16px;
-      max-width: 780px;
-      margin: 0 auto 24px;
+      font-size: 15px;
+      max-width: 850px;
+      margin-bottom: 24px;
     }
+    /* Executive Metric Scorecards */
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+    .metric-card {
+      background: rgba(10, 18, 30, 0.7);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 16px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      transition: transform 0.2s ease, border-color 0.2s;
+    }
+    .metric-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--primary);
+    }
+    .metric-val {
+      font-size: 26px;
+      font-weight: 900;
+      color: var(--primary);
+      letter-spacing: -0.5px;
+    }
+    .metric-lbl {
+      font-size: 13px;
+      font-weight: 700;
+      color: #fff;
+    }
+    .metric-desc {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+    /* Quick Action Buttons */
     .action-links {
       display: flex;
       flex-wrap: wrap;
-      justify-content: center;
       gap: 12px;
-      margin-top: 18px;
     }
     .btn {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 10px 20px;
+      padding: 12px 22px;
       border-radius: 10px;
       font-weight: 700;
       font-size: 14px;
@@ -94,11 +144,11 @@
     .btn-download {
       background: linear-gradient(135deg, #00f0ff, #0284c7);
       color: #030712;
-      box-shadow: 0 4px 14px var(--primary-glow);
+      box-shadow: 0 4px 16px var(--primary-glow);
     }
     .btn-download:hover {
       transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(0, 240, 255, 0.5);
+      box-shadow: 0 8px 24px rgba(0, 240, 255, 0.5);
     }
     .btn-outline {
       background: rgba(255, 255, 255, 0.05);
@@ -125,17 +175,17 @@
       flex-wrap: wrap;
       gap: 8px;
       margin-bottom: 24px;
-      background: rgba(10, 18, 30, 0.8);
-      padding: 8px;
-      border-radius: 12px;
+      background: rgba(10, 18, 30, 0.85);
+      padding: 10px;
+      border-radius: 16px;
       border: 1px solid var(--border);
     }
     .tab-btn {
       background: transparent;
       border: none;
       color: var(--text-muted);
-      padding: 10px 18px;
-      border-radius: 8px;
+      padding: 12px 20px;
+      border-radius: 10px;
       font-size: 14px;
       font-weight: 700;
       font-family: inherit;
@@ -149,16 +199,16 @@
     .tab-btn.active {
       color: #030712;
       background: #00f0ff;
-      box-shadow: 0 2px 10px var(--primary-glow);
+      box-shadow: 0 4px 14px var(--primary-glow);
     }
     /* Tab Content panels */
     .tab-pane {
       display: none;
       background: var(--bg-card);
       border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 24px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      border-radius: 20px;
+      padding: 28px;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
       backdrop-filter: blur(12px);
       overflow-x: auto;
     }
@@ -174,7 +224,7 @@
       font-size: 20px;
       font-weight: 800;
       color: var(--primary);
-      margin-bottom: 16px;
+      margin-bottom: 20px;
       display: flex;
       align-items: center;
       gap: 8px;
@@ -186,35 +236,25 @@
       text-align: left;
     }
     th, td {
-      padding: 14px 16px;
+      padding: 14px 18px;
       border-bottom: 1px solid var(--border);
-      vertical-align: top;
+      vertical-align: middle;
     }
     th {
-      background: rgba(15, 23, 42, 0.95);
+      background: rgba(15, 23, 42, 0.98);
       color: #38bdf8;
       font-weight: 800;
       letter-spacing: 0.5px;
-      border-bottom: 2px solid rgba(0, 240, 255, 0.3);
+      border-bottom: 2px solid rgba(0, 240, 255, 0.4);
       position: sticky;
       top: 0;
     }
     tr:hover td {
-      background: rgba(255, 255, 255, 0.03);
+      background: rgba(255, 255, 255, 0.035);
     }
     td:first-child {
       font-weight: 700;
-      color: var(--secondary);
-    }
-    .highlight-pill {
-      display: inline-block;
-      padding: 3px 8px;
-      background: rgba(255, 183, 3, 0.15);
-      border: 1px solid rgba(255, 183, 3, 0.3);
-      color: var(--accent);
-      border-radius: 6px;
-      font-size: 12px;
-      font-weight: 700;
+      color: #38bdf8;
     }
     footer {
       text-align: center;
@@ -240,46 +280,70 @@
 </head>
 <body>
   <div class="container">
-    <header>
-      <div class="badge-top">🏸 TÀI LIỆU HỆ THỐNG CHÍNH THỨC</div>
-      <h1>CẨM NANG & GIỚI THIỆU TÍNH NĂNG</h1>
-      <p class="subtitle">
-        Bản tổng hợp chi tiết toàn bộ tính năng, 5 chế độ huấn luyện, bản đồ 9 ô sân & 27 biến thể kỹ thuật, kho video và lộ trình 100 ngày.
+    <div class="executive-header">
+      <div class="badge-report">📊 TÀI LIỆU TRÌNH BAN LÃNH ĐẠO / HLV TRƯỞNG</div>
+      <h1 class="report-title">BÁO CÁO TOÀN DIỆN HỆ THỐNG BADMINTON PRO TRAINER</h1>
+      <p class="report-subtitle">
+        Bản tổng hợp chi tiết toàn bộ tính năng, kiến trúc 5 chế độ huấn luyện, bản đồ 9 ô sân & 27 kỹ thuật thực chiến, kho video chuyên môn và lộ trình 100 ngày nâng cao thể lực.
       </p>
+
+      <!-- 4 High-Level Metric Scorecards -->
+      <div class="metric-grid">
+        <div class="metric-card">
+          <span class="metric-val">5 CHẾ ĐỘ</span>
+          <span class="metric-lbl">Huấn Luyện Đa Chiều</span>
+          <span class="metric-desc">Tay, Chân, Phối Hợp, Lý Thuyết, Tổng Hợp</span>
+        </div>
+        <div class="metric-card">
+          <span class="metric-val">9 Ô & 27 BÀI</span>
+          <span class="metric-lbl">Biến Thể Thực Chiến</span>
+          <span class="metric-desc">Mô phỏng 3D cơ sinh học góc đánh & chân lunge</span>
+        </div>
+        <div class="metric-card">
+          <span class="metric-val">9 VIDEO THỰC TẾ</span>
+          <span class="metric-lbl">Tự Đổi Theo Ô Sân</span>
+          <span class="metric-desc">6 Đơn Nam + 3 Đôi Nam kèm chống tua nhanh</span>
+        </div>
+        <div class="metric-card">
+          <span class="metric-val">100 NGÀY</span>
+          <span class="metric-lbl">Lộ Trình Thử Thách</span>
+          <span class="metric-desc">5 giai đoạn rèn luyện kỷ luật và thể lực bền bỉ</span>
+        </div>
+      </div>
 
       <div class="action-links">
         <a href="./Gioi_Thieu_Tinh_Nang_Badminton_Pro.xlsx" download="Gioi_Thieu_Tinh_Nang_Badminton_Pro.xlsx" class="btn btn-download">
-          📥 Tải File Excel Gốc (.xlsx)
+          📥 Tải File Excel Chuẩn Sếp (.xlsx)
         </a>
         <a href="https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Ftool-badminton-1.onrender.com%2FGioi_Thieu_Tinh_Nang_Badminton_Pro.xlsx" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
-          🌐 Xem Trực Tuyến (Office Live)
+          🌐 Xem Excel Online (Office Live)
         </a>
         <a href="https://docs.google.com/viewer?url=https%3A%2F%2Ftool-badminton-1.onrender.com%2FGioi_Thieu_Tinh_Nang_Badminton_Pro.xlsx" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
-          📄 Xem Qua Google Docs
+          📄 Xem Excel Qua Google Docs
         </a>
         <a href="./" class="btn btn-app">
-          🏸 Quay Lại Ứng Dụng Tập
+          🏸 Trở Lại Ứng Dụng Luyện Tập
         </a>
       </div>
-    </header>
+    </div>
 
-    <!-- TAB BUTTONS -->
+    <!-- TABS NAVIGATION -->
     <div class="tabs-nav" id="tabNav">
       
         <button class="tab-btn active" onclick="switchTab(0)">
-          🌟 1. Tổng Quan Hệ Thống
+          📋 1. Báo Cáo Tổng Quan
         </button>
       
         <button class="tab-btn " onclick="switchTab(1)">
-          ⚡ 2. 5 Chế Độ Tập Luyện
+          ⚡ 2. 5 Chế Độ Luyện Tập
         </button>
       
         <button class="tab-btn " onclick="switchTab(2)">
-          🏸 3. 9 Vị Trí & 27 Biến Thể
+          🏸 3. 9 Ô Sân & 27 Kỹ Thuật
         </button>
       
         <button class="tab-btn " onclick="switchTab(3)">
-          🎥 4. Kho Video Giáo Trình
+          🎥 4. Video Thực Chiến
         </button>
       
         <button class="tab-btn " onclick="switchTab(4)">
@@ -287,94 +351,94 @@
         </button>
       
         <button class="tab-btn " onclick="switchTab(5)">
-          📊 6. Tính Năng Bổ Trợ & Báo Cáo
+          📊 6. Tính Năng Bổ Trợ
         </button>
       
     </div>
 
-    <!-- TAB PANES -->
+    <!-- TABS CONTENT PANES -->
     <div id="tabPanes">
       
           <div class="tab-pane active" id="pane-0">
-            <div class="table-title">📌 HỆ THỐNG HUẤN LUYỆN PHẢN XẠ & KỸ CHIẾN THUẬT CẦU LÔNG CHUYÊN NGHIỆP</div>
+            <div class="table-title">📌 1. Báo Cáo Tổng Quan</div>
             <table>
               <thead>
                 <tr>
-                  <th>Tên ứng dụng</th><th>Badminton Pro Trainer (Hệ thống Luyện Phản Xạ & Chiến Thuật Cầu Lông)</th><th></th>
+                  <th>BÁO CÁO TỔNG QUAN HỆ THỐNG BADMINTON PRO TRAINER</th><th>BÁO CÁO TỔNG QUAN HỆ THỐNG BADMINTON PRO TRAINER</th><th>BÁO CÁO TỔNG QUAN HỆ THỐNG BADMINTON PRO TRAINER</th>
                 </tr>
               </thead>
               <tbody>
-                <tr><td>Phiên bản</td><td>v2.0.0 (Cập nhật 2026)</td><td></td></tr><tr><td>Nền tảng hỗ trợ</td><td>Web Trực Tuyến (Render.com) & Desktop App (.exe Portable/Cài đặt)</td><td></td></tr><tr><td>Đối tượng sử dụng</td><td>Vận động viên, Huấn luyện viên, Người chơi phong trào, Học viên các CLB</td><td></td></tr><tr><td>Mục tiêu cốt lõi</td><td>Chuẩn hóa bộ pháp (footwork), tốc độ phản xạ tay/mắt, tư duy đọc cầu và chiến thuật thực chiến</td><td></td></tr><tr><td>CÁC ĐIỂM NỔI BẬT & ĐỘT PHÁ CỦA ỨNG DỤNG</td><td>CHI TIẾT TÍNH NĂNG</td><td>GIÁ TRỊ MANG LẠI</td></tr><tr><td>1. Huấn luyện đa chế độ (5 Modes)</td><td>Hỗ trợ 5 chế độ: Chỉ Tay, Chỉ Chân, Phối hợp Tay + Chân, Lý thuyết chiến thuật, Toàn bộ tổng hợp.</td><td>Giúp người tập rèn luyện toàn diện từ tư duy, phản xạ cơ bắp đến bộ pháp di chuyển.</td></tr><tr><td>2. Bản đồ 9 Ô Sân & 27 Kỹ thuật thực chiến</td><td>Mô phỏng chính xác 9 vùng sân thi đấu thực tế (Lưới, Trung sân, Cuối sân) với 27 biến thể đánh đỉnh cao.</td><td>Học viên hình dung rõ nét góc đánh, tư thế mở vợt, bộ pháp chân lunge và điểm tiếp xúc cầu.</td></tr><tr><td>3. Đo phản xạ mili-giây & Chấm điểm tự động</td><td>Hệ thống tự động tính toán thời gian phản xạ (giây/mili-giây), độ chính xác, tỷ lệ hoàn thành hiệp.</td><td>Theo dõi sự tiến bộ hàng ngày một cách khoa học bằng số liệu chuẩn xác.</td></tr><tr><td>4. Kho Video Giáo Trình Chiến Thuật 4 Mục</td><td>Phân chia rõ ràng: Đơn Nam, Đôi Nam, Đơn Nữ, Đôi Nữ. Tích hợp công nghệ chống tua video và tự động tích xanh.</td><td>Học viên bắt buộc phải theo dõi nghiêm túc từng bài giảng để nắm chắc nguyên tắc thi đấu.</td></tr><tr><td>5. Tính năng Gắn Link Video Không Giới Hạn</td><td>Cho phép người dùng hoặc HLV tự dán link YouTube, YouTube Shorts hoặc MP4 online vào bất kỳ chuyên mục nào.</td><td>Không lo nặng dung lượng máy, mở rộng bài tập vô tận theo giáo án riêng của từng CLB.</td></tr><tr><td>6. Thử Thách 100 Ngày (100-Day Challenge)</td><td>Lộ trình 100 ngày tập luyện bài bản từ Cơ bản, Trung cấp, Nâng cao đến Master.</td><td>Duy trì chuỗi ngày tập luyện (Streak), tạo thói quen kỷ luật thể thao mỗi ngày.</td></tr><tr><td>7. Tự Quay Video Luyện Tập Qua Webcam</td><td>Tích hợp công cụ quay video Full HD, đo thời gian, tùy chọn tốc độ và tự động tải file MP4/WebM về máy.</td><td>Học viên tự xem lại động tác của mình hoặc gửi clip cho HLV chấm điểm, sửa lỗi.</td></tr><tr><td>8. Tự Động Giao Bài Tập Về Nhà</td><td>Sau mỗi buổi tập, hệ thống tự tạo mã bài tập, ngày giao, hạn chót deadline và nhân viên phụ trách.</td><td>Giúp công tác huấn luyện tại trung tâm/CLB được chuyên nghiệp và quản lý chặt chẽ.</td></tr>
+                <tr><td>Tài liệu báo cáo tính năng, kiến trúc huấn luyện & giá trị thực tế trình Ban Lãnh Đạo / Huấn Luyện Viên Trưởng</td><td>Tài liệu báo cáo tính năng, kiến trúc huấn luyện & giá trị thực tế trình Ban Lãnh Đạo / Huấn Luyện Viên Trưởng</td><td>Tài liệu báo cáo tính năng, kiến trúc huấn luyện & giá trị thực tế trình Ban Lãnh Đạo / Huấn Luyện Viên Trưởng</td></tr><tr><td>Tên Ứng Dụng:</td><td>Badminton Pro Trainer (Hệ Thống Phản Xạ & Chiến Thuật Cầu Lông)</td><td>Trạng Thái: ĐÃ TRIỂN KHAI HOÀN TẤT</td></tr><tr><td>Phiên Bản:</td><td>v2.5.0 Chuyên Nghiệp (Cập nhật 2026)</td><td>Môi Trường: Web Online (Render) & Desktop App (.exe)</td></tr><tr><td>Người Lập Báo Cáo:</td><td>Ban Phát Triển Kỹ Thuật & Huấn Luyện Số</td><td>Ngày Báo Cáo: 8/9/2026</td></tr><tr><td>Mục Tiêu Trọng Tâm:</td><td>Chuẩn hóa bộ pháp di chuyển 9 ô, tăng tốc phản ứng tay/vợt và nâng cao tư duy đọc cầu thực chiến.</td><td>Đánh Giá Chung: ĐẠT TIÊU CHUẨN ĐỈNH CAO</td></tr><tr><td>CHỈ SỐ QUY MÔ & TÍNH NĂNG CỐT LÕI (KEY METRICS)</td><td>CHỈ SỐ QUY MÔ & TÍNH NĂNG CỐT LÕI (KEY METRICS)</td><td>CHỈ SỐ QUY MÔ & TÍNH NĂNG CỐT LÕI (KEY METRICS)</td></tr><tr><td>5 CHẾ ĐỘ HUẤN LUYỆN TOÀN DIỆN</td><td>Tay, Chân, Phối Hợp, Lý Thuyết Thực Chiến & Tổng Hợp Trận Đấu</td><td>Phủ kín 100% nhu cầu tập</td></tr><tr><td>9 VÙNG SÂN & 27 BIẾN THỂ ĐÁNH</td><td>Mô phỏng chuẩn cơ sinh học Lưới - Trung Sân - Cuối Sân</td><td>Hình ảnh mô phỏng trực quan</td></tr><tr><td>9 VIDEO THỰC TẾ ĐƠN NAM & ĐÔI NAM</td><td>6 Bài Đơn Nam + 3 Bài Đôi Nam, chống tua, tự động đổi theo ô sân</td><td>100% Video thực tế</td></tr><tr><td>LỘ TRÌNH THỬ THÁCH 100 NGÀY</td><td>5 giai đoạn từ Nền tảng, Tăng tốc, Sức bền đến Master Kiện tướng</td><td>Duy trì kỷ luật tập luyện</td></tr><tr><td>CÔNG CỤ QUAY VIDEO QUA WEBCAM</td><td>Tự soi động tác, đo thời gian, tải file MP4/WebM về máy tức thì</td><td>Tự phân tích & nộp bài HLV</td></tr><tr><td>TÍNH NĂNG GẮN LINK MỞ RỘNG</td><td>Tự do gắn link YouTube / Shorts / MP4 online không giới hạn</td><td>Không tốn dung lượng ổ cứng</td></tr><tr><td>TÍNH NĂNG NỔI BẬT ĐÃ PHÁT TRIỂN</td><td>MÔ TẢ CHI TIẾT CÁCH VẬN HÀNH</td><td>GIÁ TRỊ MANG LẠI CHO NGƯỜI TẬP & HLV</td></tr><tr><td>1. Huấn luyện 5 Chế độ chuyên biệt</td><td>Lựa chọn linh hoạt: Chỉ Tay (phản xạ vợt), Chỉ Chân (bộ pháp footwork), Phối hợp Tay + Chân, Lý thuyết câu hỏi trắc nghiệm thực chiến, Toàn bộ tổng hợp áp lực trận đấu.</td><td>Rèn luyện phản xạ vô điều kiện, học viên biết chính xác khi cầu đến vị trí nào thì chân bước ra sao và tay đón thế nào.</td></tr><tr><td>2. Bản đồ 9 Ô Sân & 27 Biến thể kỹ thuật</td><td>Chia sân thành 9 vùng chuẩn quốc tế. Mỗi vùng có 3 biến thể đánh thực chiến từ cứu cầu lưới, ve trái tay, tạt biên đến đập smash cắm sàn.</td><td>Xóa bỏ cách tập mơ hồ; học viên hiểu sâu bản chất kỹ thuật, vị trí đặt chân và góc mở mặt vợt.</td></tr><tr><td>3. Đo tốc độ phản xạ & Chấm điểm tự động</td><td>Đồng hồ đo mili-giây cực nhạy, tính toán thời gian phản ứng, tỷ lệ chính xác %, tổng kết biểu đồ sau mỗi lượt tập.</td><td>HLV và học viên theo dõi được sự tiến bộ rõ rệt theo từng ngày bằng số liệu thống kê khoa học.</td></tr><tr><td>4. Video Thực Chiến Tự Đổi Theo Ô Sân</td><td>Mặc định vào phòng tập là Video thực tế. Khi bài tập nhảy sang ô nào (1 đến 9), video tự động đổi đúng bài của ô đó và phát từ đầu.</td><td>Trực quan 100%, nhìn thấy VĐV chuyên nghiệp di chuyển và tung đòn đánh mẫu để làm theo ngay lập tức.</td></tr><tr><td>5. Công nghệ Gắn Link Video Không Giới Hạn</td><td>Cho phép người dùng hoặc HLV tự dán thêm bất kỳ link YouTube, YouTube Shorts hoặc MP4 trực tuyến vào 4 chuyên mục.</td><td>Kho giáo trình mở rộng vô tận theo giáo án riêng của từng CLB mà không gây nặng tải ứng dụng.</td></tr><tr><td>6. Thử Thách 100 Ngày (100-Day Challenge)</td><td>Lộ trình 100 ngày bài bản phân thành 5 giai đoạn: Nền tảng -> Tăng tốc -> Lưới -> Sức bền -> Master kiện tướng.</td><td>Duy trì chuỗi ngày tập liên tục (Streak), tạo thói quen kỷ luật thể thao mỗi ngày cho học viên.</td></tr><tr><td>7. Tự Ghi Hình Video Qua Camera Máy Tính</td><td>Tích hợp công cụ quay video HD ngay trong web, có đếm giờ, tùy chọn camera và tự động lưu file về máy tính.</td><td>Học viên tự soi lại góc chân, tư thế vung vợt để sửa lỗi hoặc gửi clip cho HLV nhận xét từ xa.</td></tr><tr><td>8. Tự Động Giao Bài Tập Về Nhà</td><td>Sau mỗi buổi tập, hệ thống xuất phiếu giao bài tập gồm: Mã buổi tập, Ngày giao, Hạn deadline, Người phụ trách.</td><td>Giúp trung tâm đào tạo cầu lông chuyên nghiệp hóa quy trình quản lý học viên bài bản.</td></tr>
               </tbody>
             </table>
           </div>
         
           <div class="tab-pane " id="pane-1">
-            <div class="table-title">📌 CHI TIẾT 5 CHẾ ĐỘ HUẤN LUYỆN TRONG BADMINTON PRO TRAINER</div>
+            <div class="table-title">📌 2. 5 Chế Độ Luyện Tập</div>
             <table>
               <thead>
                 <tr>
-                  <th>STT</th><th>Chế Độ Tập</th><th>Mục Tiêu Huấn Luyện</th><th>Quy Trình Hoạt Động Trên Màn Hình</th><th>Tham Số Tùy Chỉnh Có Sẵn</th>
+                  <th>CHI TIẾT 5 CHẾ ĐỘ HUẤN LUYỆN CHUYÊN BIỆT</th><th>CHI TIẾT 5 CHẾ ĐỘ HUẤN LUYỆN CHUYÊN BIỆT</th><th>CHI TIẾT 5 CHẾ ĐỘ HUẤN LUYỆN CHUYÊN BIỆT</th><th>CHI TIẾT 5 CHẾ ĐỘ HUẤN LUYỆN CHUYÊN BIỆT</th><th>CHI TIẾT 5 CHẾ ĐỘ HUẤN LUYỆN CHUYÊN BIỆT</th>
                 </tr>
               </thead>
               <tbody>
-                <tr><td>1</td><td>PHẢN XẠ TAY (✋)</td><td>Rèn tốc độ vung vợt, độ gập cổ tay, phản xạ xoay chuyển mặt vợt thuận/trái tay.</td><td>Màn hình kích hoạt ngẫu nhiên 1 trong 9 vị trí kèm hình ảnh thị phạm góc vợt, yêu cầu vung vợt dứt khoát theo hiệu lệnh.</td><td>Tốc độ (Rất chậm -> Rất nhanh -> Vô hạn), Thời gian giữ động tác (1s - 10s), Âm thanh đếm nhịp.</td></tr><tr><td>2</td><td>FOOTWORK BỘ PHÁP CHÂN (🦶)</td><td>Rèn các bước di chuyển: Lunge gối 90°, trượt ngang chassé, bước đệm, bật nhảy cắt kéo scissor kick.</td><td>Chỉ thị ô mục tiêu và sơ đồ vector hướng chạy từ tâm sân số 5 phóng tới góc, yêu cầu hoàn thành bước chân trước khi hết giờ.</td><td>Số hiệp (5 - 50 hiệp), Thời gian chuẩn bị countdown (3s - 10s), Thời gian nghỉ giữa hiệp (1s - 5s).</td></tr><tr><td>3</td><td>PHỐI HỢP TAY & CHÂN (⚡)</td><td>Đồng bộ hóa toàn bộ cơ thể: Chân tới điểm rơi đúng lúc tay chạm cầu ở điểm cao nhất.</td><td>Kết hợp đồng thời chỉ dẫn chân lunge/chassé và kỹ thuật vợt miết/gõ/đập cắm sàn. Thử thách sức bền và phản xạ đỉnh cao.</td><td>Bật/Tắt Camera tự động nhận diện vùng sân, đếm nhịp bằng giọng nói tiếng Việt.</td></tr><tr><td>4</td><td>LÝ THUYẾT CHIẾN THUẬT (🧠)</td><td>Nâng cao tư duy đọc tình huống: chọn đường đánh tối ưu khi bị ép góc, cách di chuyển bọc lót.</td><td>Xuất hiện câu hỏi trắc nghiệm thực chiến (A, B, C, D) có đồng hồ đếm ngược. Chấm điểm tức thì kèm lời giải thích chiến thuật từ HLV.</td><td>Bộ ngân hàng câu hỏi phân theo độ khó (Cơ bản, Trung bình, Nâng cao), chủ đề Đơn/Đôi/Phòng thủ/Tấn công.</td></tr><tr><td>5</td><td>TOÀN BỘ TỔNG HỢP (🌟)</td><td>Mô phỏng một trận đấu cầu lông thực tế: Đan xen ngẫu nhiên giữa Tay, Chân, Phối hợp và Câu hỏi lý thuyết.</td><td>Tạo áp lực tâm lý và phản xạ đa chiều giống hệt như đang thi đấu set 3 căng thẳng trên sân cầu.</td><td>Tự động tổng kết biểu đồ phân bổ tỷ lệ các hiệp, phản xạ trung bình và lưu bảng thành tích lịch sử.</td></tr>
+                <tr><td>STT</td><td>CHẾ ĐỘ TẬP</td><td>MỤC TIÊU HUẤN LUYỆN</td><td>QUY TRÌNH HOẠT ĐỘNG TRỰC QUAN</td><td>THAM SỐ TÙY CHỈNH HỆ THỐNG</td></tr><tr><td>1</td><td>PHẢN XẠ TAY (✋)</td><td>Rèn tốc độ vung vợt, độ gập cổ tay, phản xạ xoay chuyển mặt vợt thuận/trái tay chớp nhoáng.</td><td>Màn hình kích hoạt ngẫu nhiên 1 trong 9 vị trí kèm hình ảnh thị phạm góc vợt, yêu cầu vung vợt dứt khoát theo hiệu lệnh.</td><td>Tốc độ (Rất chậm -> Rất nhanh -> Vô hạn), Thời gian giữ động tác (1s - 10s), Âm thanh đếm nhịp.</td></tr><tr><td>2</td><td>BỘ PHÁP CHÂN (🦶)</td><td>Rèn các bước di chuyển: Lunge gối 90°, trượt ngang chassé, bước đệm, bật nhảy cắt kéo scissor kick.</td><td>Chỉ thị ô mục tiêu và sơ đồ vector hướng chạy từ tâm sân số 5 phóng tới góc, yêu cầu hoàn thành bước chân trước khi hết giờ.</td><td>Số hiệp (5 - 50 hiệp), Thời gian countdown chuẩn bị (3s - 10s), Thời gian nghỉ giữa hiệp (1s - 5s).</td></tr><tr><td>3</td><td>PHỐI HỢP TAY & CHÂN (⚡)</td><td>Đồng bộ hóa toàn bộ cơ thể: Chân tới điểm rơi đúng lúc tay chạm cầu ở điểm cao nhất.</td><td>Kết hợp đồng thời chỉ dẫn chân lunge/chassé và kỹ thuật vợt miết/gõ/đập cắm sàn. Thử thách sức bền và phản xạ đỉnh cao.</td><td>Bật/Tắt Camera tự động nhận diện vùng sân, đếm nhịp bằng giọng nói tiếng Việt.</td></tr><tr><td>4</td><td>LÝ THUYẾT CHIẾN THUẬT (🧠)</td><td>Nâng cao tư duy đọc tình huống: chọn đường đánh tối ưu khi bị ép góc, cách di chuyển bọc lót trong đánh đơn và đánh đôi.</td><td>Xuất hiện câu hỏi trắc nghiệm thực chiến (A, B, C, D) có đồng hồ đếm ngược. Chấm điểm tức thì kèm lời giải thích chiến thuật từ HLV.</td><td>Ngân hàng 20+ câu hỏi phân theo độ khó (Cơ bản, Trung bình, Nâng cao), chủ đề Đơn/Đôi/Phòng thủ/Tấn công.</td></tr><tr><td>5</td><td>TOÀN BỘ TỔNG HỢP (🌟)</td><td>Mô phỏng một trận đấu cầu lông thực tế: Đan xen ngẫu nhiên giữa Tay, Chân, Phối hợp và Câu hỏi lý thuyết.</td><td>Tạo áp lực tâm lý và phản xạ đa chiều giống hệt như đang thi đấu set 3 căng thẳng trên sân cầu chuyên nghiệp.</td><td>Tự động tổng kết biểu đồ phân bổ tỷ lệ các hiệp, phản xạ trung bình và lưu bảng thành tích lịch sử.</td></tr>
               </tbody>
             </table>
           </div>
         
           <div class="tab-pane " id="pane-2">
-            <div class="table-title">📌 DANH MỤC 9 VỊ TRÍ SÂN VÀ 27 BIẾN THỂ KỸ THUẬT CƠ SINH HỌC</div>
+            <div class="table-title">📌 3. 9 Ô Sân & 27 Kỹ Thuật</div>
             <table>
               <thead>
                 <tr>
-                  <th>Vị Trí Ô</th><th>Tên Vùng Sân</th><th>Khu Vực</th><th>Tên Kỹ Thuật Biến Thể</th><th>Kỹ Thuật Vợt / Cổ Tay</th><th>Bộ Pháp Chân (Footwork)</th><th>Trọng Tâm Huấn Luyện</th>
+                  <th>DANH MỤC CHI TIẾT 9 VỊ TRÍ SÂN VÀ 27 BIẾN THỂ KỸ THUẬT THỰC CHIẾN</th><th>DANH MỤC CHI TIẾT 9 VỊ TRÍ SÂN VÀ 27 BIẾN THỂ KỸ THUẬT THỰC CHIẾN</th><th>DANH MỤC CHI TIẾT 9 VỊ TRÍ SÂN VÀ 27 BIẾN THỂ KỸ THUẬT THỰC CHIẾN</th><th>DANH MỤC CHI TIẾT 9 VỊ TRÍ SÂN VÀ 27 BIẾN THỂ KỸ THUẬT THỰC CHIẾN</th><th>DANH MỤC CHI TIẾT 9 VỊ TRÍ SÂN VÀ 27 BIẾN THỂ KỸ THUẬT THỰC CHIẾN</th><th>DANH MỤC CHI TIẾT 9 VỊ TRÍ SÂN VÀ 27 BIẾN THỂ KỸ THUẬT THỰC CHIẾN</th><th>DANH MỤC CHI TIẾT 9 VỊ TRÍ SÂN VÀ 27 BIẾN THỂ KỸ THUẬT THỰC CHIẾN</th>
                 </tr>
               </thead>
               <tbody>
-                <tr><td>Ô 1</td><td>Góc Lưới Trái</td><td>Lưới trước bên trái</td><td>1. Gài Lưới Trái Tay (Net Spin/Slice)</td><td>Mặt vợt nghiêng 45°, miết nhẹ đầu quả cầu</td><td>Lunge chân phải chùng sâu, gót chạm trước</td><td>Cổ tay thả lỏng, điểm rơi bóng sát mép lưới đối thủ</td></tr><tr><td>Ô 1</td><td>Góc Lưới Trái</td><td>Lưới trước bên trái</td><td>2. Vồ Cầu / Chụp Lưới (Net Kill)</td><td>Gõ cắm cổ tay cực nhanh, biên độ ngắn</td><td>Bứt tốc chân phải lao thẳng lên đỉnh lưới</td><td>Không để chạm lưới (Net fault), đón bóng trên cao</td></tr><tr><td>Ô 1</td><td>Góc Lưới Trái</td><td>Lưới trước bên trái</td><td>3. Hất Cầu Bổng Sâu (Cross Net Lift)</td><td>Mở mặt vợt 60°, bung lực cẳng tay lên cao</td><td>Lunge thấp cứu cầu sát sàn rồi bật lùi</td><td>Đổi hướng chéo sang góc 9 đối phương để thoát ép</td></tr><tr><td>Ô 2</td><td>Lưới Giữa (Chữ T)</td><td>Lưới trước trung tâm</td><td>1. Đè Lưới Dứt Điểm (T-Tap Kill)</td><td>Úp mặt vợt gõ cắm thẳng xuống đất</td><td>Bước đệm ngắn bật nhanh tới chữ T</td><td>Dùng lực ngón tay giật dứt điểm chớp nhoáng</td></tr><tr><td>Ô 2</td><td>Lưới Giữa (Chữ T)</td><td>Lưới trước trung tâm</td><td>2. Bỏ Nhỏ Ngay Chữ T (Straight Net Drop)</td><td>Cổ tay thả lỏng nâng nhẹ đầu quả cầu</td><td>Bước lướt êm, hãm quán tính bằng gối</td><td>Cầu lộn nhào qua lưới khiến đối thủ khó bung sâu</td></tr><tr><td>Ô 2</td><td>Lưới Giữa (Chữ T)</td><td>Lưới trước trung tâm</td><td>3. Hất Cầu Thẳng Sâu (Straight Net Lift)</td><td>Bung cẳng tay ngửa vợt đẩy bóng vọt cao</td><td>Dậm chân phải lấy trụ bung người lên</td><td>Ép người công của đối thủ phải lùi sâu phòng ngự</td></tr><tr><td>Ô 3</td><td>Góc Lưới Phải</td><td>Lưới trước bên phải</td><td>1. Gài Lưới Thuận Tay (Forehand Net Slice)</td><td>Cắt chéo đáy cầu bằng mặt vợt thuận</td><td>Lunge chân phải hướng 2h, lưng thẳng</td><td>Tạo độ xoáy cho quả cầu rơi chìm sát vạch</td></tr><tr><td>Ô 3</td><td>Góc Lưới Phải</td><td>Lưới trước bên phải</td><td>2. Vồ Lưới Thuận Tay (Forehand Net Kill)</td><td>Đón cầu đỉnh mép lưới, gõ cắm sàn</td><td>Lao nhanh vươn dài cánh tay thuận</td><td>Thu vợt lại ngay trước ngực sau khi đập</td></tr><tr><td>Ô 3</td><td>Góc Lưới Phải</td><td>Lưới trước bên phải</td><td>3. Hất Cầu Chéo Góc (Forehand Cross Lift)</td><td>Vung vợt từ dưới lên chéo qua vai trái</td><td>Hạ thấp vai cứu cầu rơi sâu</td><td>Hất bổng sang góc 7 đối phương đảo ngược thế trận</td></tr><tr><td>Ô 4</td><td>Trung Tâm Trái</td><td>Ngang biên trái</td><td>1. Phản Tạt Trái Tay (Backhand Flat Drive)</td><td>Đón cầu ngang hông, ngón cái tì cạnh vát</td><td>Trượt ngang chassé dậm chân phải</td><td>Đè cầu phẳng ngang mép lưới tước quyền tấn công</td></tr><tr><td>Ô 4</td><td>Trung Tâm Trái</td><td>Ngang biên trái</td><td>2. Thủ Ve Trái Tay Đẩy Sâu (Backhand Defense)</td><td>Hạ thấp trọng tâm, bung lực cẳng tay</td><td>Đứng tấn thấp hai chân rộng bằng vai</td><td>Cứu cú smash cắm sàn đẩy sâu về đáy sân đối thủ</td></tr><tr><td>Ô 4</td><td>Trung Tâm Trái</td><td>Ngang biên trái</td><td>3. Chặn Cầu Nhỏ Lưới (Backhand Soft Block)</td><td>Thả lỏng cổ tay hãm lực cú đập cực mạnh</td><td>Chùng gối đón bóng ngay trước sườn</td><td>Quả cầu rơi ngay sau lưới triệt tiêu sức tấn công</td></tr><tr><td>Ô 5</td><td>Tâm Sân (Base Ready)</td><td>Trung tâm sân đấu</td><td>1. Nhún Bật Split-Step Đàn Hồi</td><td>Giơ vợt trước ngực sẵn sàng cả công lẫn thủ</td><td>Bật nhẹ tách hai chân tiếp đất bằng mũi</td><td>Tạo năng lượng lò xo bứt tốc tới bất kỳ 8 góc còn lại</td></tr><tr><td>Ô 5</td><td>Tâm Sân (Base Ready)</td><td>Trung tâm sân đấu</td><td>2. Đọc Hướng & Đổi Nhịp (Read & React)</td><td>Xoay mặt vợt linh hoạt đón nhịp phản xạ</td><td>Nhấp chân chuyển trọng tâm theo hướng đánh</td><td>Mắt quan sát điểm chạm cầu của đối phương</td></tr><tr><td>Ô 5</td><td>Tâm Sân (Base Ready)</td><td>Trung tâm sân đấu</td><td>3. Khóa Lưới Trung Tâm (Midcourt Push)</td><td>Đẩy cầu nhanh vào khoảng trống sườn đối thủ</td><td>Bước đệm nửa bước đón cầu trên ngực</td><td>Không cho đối thủ cơ hội nâng cầu cao</td></tr><tr><td>Ô 6</td><td>Trung Tâm Phải</td><td>Ngang biên phải</td><td>1. Phản Tạt Thuận Tay (Forehand Flat Drive)</td><td>Đón cầu ngang ngực/hông, vung đè phẳng</td><td>Bước mở chân phải rộng sang biên phải</td><td>Bạt bóng xuyên qua nách đối phương</td></tr><tr><td>Ô 6</td><td>Trung Tâm Phải</td><td>Ngang biên phải</td><td>2. Thủ Cầu Thuận Tay Đẩy Sâu (Forehand Defense)</td><td>Ngửa mặt vợt đón cú smash nách phải</td><td>Hạ trọng tâm dồn lực chân phải</td><td>Đẩy bóng bổng vọt cao về góc 7 phía sau</td></tr><tr><td>Ô 6</td><td>Trung Tâm Phải</td><td>Ngang biên phải</td><td>3. Gài Cầu Chéo Góc (Forehand Cross Block)</td><td>Gập cổ tay đổi hướng bay chéo sân</td><td>Trụ vững chân phải hãm quán tính</td><td>Bắt đối thủ phải di chuyển quãng đường dài nhất</td></tr><tr><td>Ô 7</td><td>Đáy Sân Trái</td><td>Cuối sân góc trái</td><td>1. Ve Cầu Trái Tay Cuối Sân (Backhand Clear)</td><td>Xoay lưng về lưới, bung lực xoay cẳng tay</td><td>Bước lùi chassé 2 nhịp dậm chân phải</td><td>Cú đánh kỹ thuật khó nhất: đẩy bóng sâu về đáy</td></tr><tr><td>Ô 7</td><td>Đáy Sân Trái</td><td>Cuối sân góc trái</td><td>2. Vòng Đầu Đập Cầu (Round-the-Head Smash)</td><td>Vung tay thuận uốn cong qua đầu sang trái</td><td>Bật nhảy kiễng gót xoay vai trên không</td><td>Smash bất ngờ từ góc trái bằng tay thuận</td></tr><tr><td>Ô 7</td><td>Đáy Sân Trái</td><td>Cuối sân góc trái</td><td>3. Chém Cầu Rơi Chéo Sân (Overhead Slice Drop)</td><td>Giả động tác phông sâu rồi miết xiên mặt vợt</td><td>Lùi chân đón cầu trên đỉnh đầu</td><td>Cầu rơi cắm sát mép biên lưới đối diện đánh lừa</td></tr><tr><td>Ô 8</td><td>Đáy Sân Giữa</td><td>Cuối sân trung tâm</td><td>1. Phông Cầu Cao Sâu (Overhead Clear)</td><td>Vung trọn cánh tay từ sau ra trước qua đầu</td><td>Lùi 2 bước đón bóng phía trước trán</td><td>Đưa cầu đi cao và sát vạch cuối sân ép đối thủ</td></tr><tr><td>Ô 8</td><td>Đáy Sân Giữa</td><td>Cuối sân trung tâm</td><td>2. Chém Cầu Bạt Cạnh Sân (Fast Drop Shot)</td><td>Cắt xiên góc mặt vợt giảm lực tiếp xúc</td><td>Kiễng gót bật nhẹ dồn trọng tâm tới</td><td>Cầu bay nhanh rơi cắm góc chữ T hoặc mép biên</td></tr><tr><td>Ô 8</td><td>Đáy Sân Giữa</td><td>Cuối sân trung tâm</td><td>3. Bật Đập Cầu Trung Tâm (Straight Power Smash)</td><td>Gập bụng dồn lực cơ liên sườn và cánh tay</td><td>Bật nhảy hai chân đón bóng đỉnh cao nhất</td><td>Cú đập sấm sét cắm thẳng giữa hai người đối thủ</td></tr><tr><td>Ô 9</td><td>Đáy Sân Phải</td><td>Cuối sân góc phải</td><td>1. Bật Nhảy Đập Cầu Cắt Kéo (Jump Smash)</td><td>Chân phải tạo đà bật cao, hoán đổi chân trên không</td><td>Scissor-kick bật nhảy hai chân rời sàn</td><td>Cú đánh uy lực nhất trong cầu lông hiện đại</td></tr><tr><td>Ô 9</td><td>Đáy Sân Phải</td><td>Cuối sân góc phải</td><td>2. Phông Cầu Thuận Tay Đáy Sân (Forehand Clear)</td><td>Mở rộng lồng ngực xoay vai đẩy cầu</td><td>Bước lùi chassé đón cầu đúng điểm rơi</td><td>Thoát thế ép cuối sân, hồi về tâm số 5</td></tr><tr><td>Ô 9</td><td>Đáy Sân Phải</td><td>Cuối sân góc phải</td><td>3. Chém Cầu Bạt Góc Sâu (Forehand Slice Drop)</td><td>Miết mặt vợt cắt chéo đầu quả cầu</td><td>Chùng gối chân phải lấy đà phóng tới</td><td>Bắt đối thủ phải lao hết tốc lực cứu cầu lưới</td></tr>
+                <tr><td>VỊ TRÍ Ô</td><td>TÊN VÙNG SÂN</td><td>KHU VỰC SÂN</td><td>TÊN KỸ THUẬT BIẾN THỂ</td><td>KỸ THUẬT TAY / CỔ TAY</td><td>BỘ PHÁP CHÂN (FOOTWORK)</td><td>TRỌNG TÂM HUẤN LUYỆN</td></tr><tr><td>Ô 1</td><td>Góc Lưới Trái</td><td>Lưới trước bên trái</td><td>1. Gài Lưới Trái Tay (Net Spin/Slice)</td><td>Mặt vợt nghiêng 45°, miết nhẹ đầu quả cầu</td><td>Lunge chân phải chùng sâu, gót chạm trước</td><td>Cổ tay thả lỏng, điểm rơi bóng sát mép lưới đối thủ</td></tr><tr><td>Ô 1</td><td>Góc Lưới Trái</td><td>Lưới trước bên trái</td><td>2. Vồ Cầu / Chụp Lưới (Net Kill)</td><td>Gõ cắm cổ tay cực nhanh, biên độ ngắn</td><td>Bứt tốc chân phải lao thẳng lên đỉnh lưới</td><td>Không để chạm lưới (Net fault), đón bóng trên cao</td></tr><tr><td>Ô 1</td><td>Góc Lưới Trái</td><td>Lưới trước bên trái</td><td>3. Hất Cầu Bổng Sâu (Cross Net Lift)</td><td>Mở mặt vợt 60°, bung lực cẳng tay lên cao</td><td>Lunge thấp cứu cầu sát sàn rồi bật lùi</td><td>Đổi hướng chéo sang góc 9 đối phương để thoát ép</td></tr><tr><td>Ô 2</td><td>Lưới Giữa (Chữ T)</td><td>Lưới trước trung tâm</td><td>1. Đè Lưới Dứt Điểm (T-Tap Kill)</td><td>Úp mặt vợt gõ cắm thẳng xuống đất</td><td>Bước đệm ngắn bật nhanh tới chữ T</td><td>Dùng lực ngón tay giật dứt điểm chớp nhoáng</td></tr><tr><td>Ô 2</td><td>Lưới Giữa (Chữ T)</td><td>Lưới trước trung tâm</td><td>2. Bỏ Nhỏ Ngay Chữ T (Straight Net Drop)</td><td>Cổ tay thả lỏng nâng nhẹ đầu quả cầu</td><td>Bước lướt êm, hãm quán tính bằng gối</td><td>Cầu lộn nhào qua lưới khiến đối thủ khó bung sâu</td></tr><tr><td>Ô 2</td><td>Lưới Giữa (Chữ T)</td><td>Lưới trước trung tâm</td><td>3. Hất Cầu Thẳng Sâu (Straight Net Lift)</td><td>Bung cẳng tay ngửa vợt đẩy bóng vọt cao</td><td>Dậm chân phải lấy trụ bung người lên</td><td>Ép người công của đối thủ phải lùi sâu phòng ngự</td></tr><tr><td>Ô 3</td><td>Góc Lưới Phải</td><td>Lưới trước bên phải</td><td>1. Gài Lưới Thuận Tay (Forehand Net Slice)</td><td>Cắt chéo đáy cầu bằng mặt vợt thuận</td><td>Lunge chân phải hướng 2h, lưng thẳng</td><td>Tạo độ xoáy cho quả cầu rơi chìm sát vạch</td></tr><tr><td>Ô 3</td><td>Góc Lưới Phải</td><td>Lưới trước bên phải</td><td>2. Vồ Lưới Thuận Tay (Forehand Net Kill)</td><td>Đón cầu đỉnh mép lưới, gõ cắm sàn</td><td>Lao nhanh vươn dài cánh tay thuận</td><td>Thu vợt lại ngay trước ngực sau khi đập</td></tr><tr><td>Ô 3</td><td>Góc Lưới Phải</td><td>Lưới trước bên phải</td><td>3. Hất Cầu Chéo Góc (Forehand Cross Lift)</td><td>Vung vợt từ dưới lên chéo qua vai trái</td><td>Hạ thấp vai cứu cầu rơi sâu</td><td>Hất bổng sang góc 7 đối phương đảo ngược thế trận</td></tr><tr><td>Ô 4</td><td>Trung Tâm Trái</td><td>Ngang biên trái</td><td>1. Phản Tạt Trái Tay (Backhand Flat Drive)</td><td>Đón cầu ngang hông, ngón cái tì cạnh vát</td><td>Trượt ngang chassé dậm chân phải</td><td>Đè cầu phẳng ngang mép lưới tước quyền tấn công</td></tr><tr><td>Ô 4</td><td>Trung Tâm Trái</td><td>Ngang biên trái</td><td>2. Thủ Ve Trái Tay Đẩy Sâu (Backhand Defense)</td><td>Hạ thấp trọng tâm, bung lực cẳng tay</td><td>Đứng tấn thấp hai chân rộng bằng vai</td><td>Cứu cú smash cắm sàn đẩy sâu về đáy sân đối thủ</td></tr><tr><td>Ô 4</td><td>Trung Tâm Trái</td><td>Ngang biên trái</td><td>3. Chặn Cầu Nhỏ Lưới (Backhand Soft Block)</td><td>Thả lỏng cổ tay hãm lực cú đập cực mạnh</td><td>Chùng gối đón bóng ngay trước sườn</td><td>Quả cầu rơi ngay sau lưới triệt tiêu sức tấn công</td></tr><tr><td>Ô 5</td><td>Tâm Sân (Base Ready)</td><td>Trung tâm sân đấu</td><td>1. Nhún Bật Split-Step Đàn Hồi</td><td>Giơ vợt trước ngực sẵn sàng cả công lẫn thủ</td><td>Bật nhẹ tách hai chân tiếp đất bằng mũi</td><td>Tạo năng lượng lò xo bứt tốc tới bất kỳ 8 góc còn lại</td></tr><tr><td>Ô 5</td><td>Tâm Sân (Base Ready)</td><td>Trung tâm sân đấu</td><td>2. Đọc Hướng & Đổi Nhịp (Read & React)</td><td>Xoay mặt vợt linh hoạt đón nhịp phản xạ</td><td>Nhấp chân chuyển trọng tâm theo hướng đánh</td><td>Mắt quan sát điểm chạm cầu của đối phương</td></tr><tr><td>Ô 5</td><td>Tâm Sân (Base Ready)</td><td>Trung tâm sân đấu</td><td>3. Khóa Lưới Trung Tâm (Midcourt Push)</td><td>Đẩy cầu nhanh vào khoảng trống sườn đối thủ</td><td>Bước đệm nửa bước đón cầu trên ngực</td><td>Không cho đối thủ cơ hội nâng cầu cao</td></tr><tr><td>Ô 6</td><td>Trung Tâm Phải</td><td>Ngang biên phải</td><td>1. Phản Tạt Thuận Tay (Forehand Flat Drive)</td><td>Đón cầu ngang ngực/hông, vung đè phẳng</td><td>Bước mở chân phải rộng sang biên phải</td><td>Bạt bóng xuyên qua nách đối phương</td></tr><tr><td>Ô 6</td><td>Trung Tâm Phải</td><td>Ngang biên phải</td><td>2. Thủ Cầu Thuận Tay Đẩy Sâu (Forehand Defense)</td><td>Ngửa mặt vợt đón cú smash nách phải</td><td>Hạ trọng tâm dồn lực chân phải</td><td>Đẩy bóng bổng vọt cao về góc 7 phía sau</td></tr><tr><td>Ô 6</td><td>Trung Tâm Phải</td><td>Ngang biên phải</td><td>3. Gài Cầu Chéo Góc (Forehand Cross Block)</td><td>Gập cổ tay đổi hướng bay chéo sân</td><td>Trụ vững chân phải hãm quán tính</td><td>Bắt đối thủ phải di chuyển quãng đường dài nhất</td></tr><tr><td>Ô 7</td><td>Đáy Sân Trái</td><td>Cuối sân góc trái</td><td>1. Ve Cầu Trái Tay Cuối Sân (Backhand Clear)</td><td>Xoay lưng về lưới, bung lực xoay cẳng tay</td><td>Bước lùi chassé 2 nhịp dậm chân phải</td><td>Cú đánh kỹ thuật khó nhất: đẩy bóng sâu về đáy</td></tr><tr><td>Ô 7</td><td>Đáy Sân Trái</td><td>Cuối sân góc trái</td><td>2. Vòng Đầu Đập Cầu (Round-the-Head Smash)</td><td>Vung tay thuận uốn cong qua đầu sang trái</td><td>Bật nhảy kiễng gót xoay vai trên không</td><td>Smash bất ngờ từ góc trái bằng tay thuận</td></tr><tr><td>Ô 7</td><td>Đáy Sân Trái</td><td>Cuối sân góc trái</td><td>3. Chém Cầu Rơi Chéo Sân (Overhead Slice Drop)</td><td>Giả động tác phông sâu rồi miết xiên mặt vợt</td><td>Lùi chân đón cầu trên đỉnh đầu</td><td>Cầu rơi cắm sát mép biên lưới đối diện đánh lừa</td></tr><tr><td>Ô 8</td><td>Đáy Sân Giữa</td><td>Cuối sân trung tâm</td><td>1. Phông Cầu Cao Sâu (Overhead Clear)</td><td>Vung trọn cánh tay từ sau ra trước qua đầu</td><td>Lùi 2 bước đón bóng phía trước trán</td><td>Đưa cầu đi cao và sát vạch cuối sân ép đối thủ</td></tr><tr><td>Ô 8</td><td>Đáy Sân Giữa</td><td>Cuối sân trung tâm</td><td>2. Chém Cầu Bạt Cạnh Sân (Fast Drop Shot)</td><td>Cắt xiên góc mặt vợt giảm lực tiếp xúc</td><td>Kiễng gót bật nhẹ dồn trọng tâm tới</td><td>Cầu bay nhanh rơi cắm góc chữ T hoặc mép biên</td></tr><tr><td>Ô 8</td><td>Đáy Sân Giữa</td><td>Cuối sân trung tâm</td><td>3. Bật Đập Cầu Trung Tâm (Straight Power Smash)</td><td>Gập bụng dồn lực cơ liên sườn và cánh tay</td><td>Bật nhảy hai chân đón bóng đỉnh cao nhất</td><td>Cú đập sấm sét cắm thẳng giữa hai người đối thủ</td></tr><tr><td>Ô 9</td><td>Đáy Sân Phải</td><td>Cuối sân góc phải</td><td>1. Bật Nhảy Đập Cầu Cắt Kéo (Jump Smash)</td><td>Chân phải tạo đà bật cao, hoán đổi chân trên không</td><td>Scissor-kick bật nhảy hai chân rời sàn</td><td>Cú đánh uy lực nhất trong cầu lông hiện đại</td></tr><tr><td>Ô 9</td><td>Đáy Sân Phải</td><td>Cuối sân góc phải</td><td>2. Phông Cầu Thuận Tay Đáy Sân (Forehand Clear)</td><td>Mở rộng lồng ngực xoay vai đẩy cầu</td><td>Bước lùi chassé đón cầu đúng điểm rơi</td><td>Thoát thế ép cuối sân, hồi về tâm số 5</td></tr><tr><td>Ô 9</td><td>Đáy Sân Phải</td><td>Cuối sân góc phải</td><td>3. Chém Cầu Bạt Góc Sâu (Forehand Slice Drop)</td><td>Miết mặt vợt cắt chéo đầu quả cầu</td><td>Chùng gối chân phải lấy đà phóng tới</td><td>Bắt đối thủ phải lao hết tốc lực cứu cầu lưới</td></tr>
               </tbody>
             </table>
           </div>
         
           <div class="tab-pane " id="pane-3">
-            <div class="table-title">📌 KHO VIDEO GIÁO TRÌNH CHIẾN THUẬT & TÍNH NĂNG GẮN LINK VIDEO</div>
+            <div class="table-title">📌 4. Video Thực Chiến</div>
             <table>
               <thead>
                 <tr>
-                  <th>STT</th><th>Chuyên Mục</th><th>Tên Bài Học Kỹ Thuật</th><th>Mô Tả Trọng Điểm Huấn Luyện</th><th>Tập Tin Video Thực Tế / Nguồn</th><th>Tính Năng Hỗ Trợ Độc Quyền</th>
+                  <th>DANH MỤC 9 VIDEO THỰC CHIẾN & CÔNG NGHỆ GẮN LINK VIDEO</th><th>DANH MỤC 9 VIDEO THỰC CHIẾN & CÔNG NGHỆ GẮN LINK VIDEO</th><th>DANH MỤC 9 VIDEO THỰC CHIẾN & CÔNG NGHỆ GẮN LINK VIDEO</th><th>DANH MỤC 9 VIDEO THỰC CHIẾN & CÔNG NGHỆ GẮN LINK VIDEO</th><th>DANH MỤC 9 VIDEO THỰC CHIẾN & CÔNG NGHỆ GẮN LINK VIDEO</th><th>DANH MỤC 9 VIDEO THỰC CHIẾN & CÔNG NGHỆ GẮN LINK VIDEO</th>
                 </tr>
               </thead>
               <tbody>
-                <tr><td>01</td><td>ĐƠN NAM</td><td>Kỹ Thuật Đọc Hướng & Di Chuyển 4 Góc Sân</td><td>Phân tích cách VĐV đơn nam bao quát sân 13.4m, nhịp bật bước chéo đón cầu và thu chân hồi tâm sân.</td><td>snaptik.vn_7465697345355713799.mp4</td><td>Chống tua nhanh (Anti-seek), Tự động tích xanh khi xem xong, Quay chậm 0.5x</td></tr><tr><td>02</td><td>ĐƠN NAM</td><td>Chiến Thuật Ép Cầu Hai Góc Cuối Sân</td><td>Kỹ năng phông bổng sâu, ép đối thủ xoay lưng và mở góc sân trống để tung đòn dứt điểm.</td><td>snaptik.vn_7476759285720993040.mp4</td><td>Chống tua nhanh, Lưu tiến độ học tập vào LocalStorage, Xem toàn màn hình</td></tr><tr><td>03</td><td>ĐƠN NAM</td><td>Phản Xạ Bỏ Nhỏ Sát Lưới & Kéo Lưới Đổi Hướng</td><td>Kỹ thuật tay thả lỏng trước khi chạm cầu, miết nhẹ tạo độ xoáy lộn sát mép lưới đối phương.</td><td>snaptik.vn_7501608184688299271.mp4</td><td>Chống tua nhanh, Tự động tích xanh, Xem chậm từng nhịp miết mặt vợt</td></tr><tr><td>04</td><td>ĐƠN NAM</td><td>Kỹ Thuật Bước Lùi Đón Cầu & Chém Cầu Bạt Góc</td><td>Động tác giả smash, giảm lực chém xiên mặt vợt đưa cầu rơi sát mép biên đánh lừa phán đoán.</td><td>snaptik.vn_7568145336158440724.mp4</td><td>Chống tua nhanh, Nhận diện video MP4 hiển thị trực tiếp khung hình thực tế</td></tr><tr><td>05</td><td>ĐƠN NAM</td><td>Bật Nhảy Đập Cầu Tấn Công Dứt Điểm (Jump Smash)</td><td>Quy trình tích lũy lực từ chân, hông, cơ bụng truyền đến cổ tay đập cầu cắm sàn sấm sét.</td><td>snaptik.vn_7631002086502649109.mp4</td><td>Chống tua nhanh, Tự động tích xanh, Quay chậm soi kỹ nhịp gập bụng trên không</td></tr><tr><td>06</td><td>ĐƠN NAM</td><td>Kỹ Năng Thủ Cầu Bung Sâu Đảo Ngược Thế Trận</td><td>Cách hạ thấp trọng tâm, ngửa mặt vợt linh hoạt cứu những pha tấn công hiểm hóc sát sườn.</td><td>snaptik.vn_7665340734379281682.mp4</td><td>Chống tua nhanh, Bật tắt tiếng, Điều khiển tua lại 5s ôn tập</td></tr><tr><td>07</td><td>ĐÔI NAM</td><td>Chiến Thuật Bọc Lót & Đổi Vị Trí Trong Đôi Nam</td><td>Quy tắc chia sân công - thủ, di chuyển xoay tua bọc lót khi đồng đội bị đối phương ép góc sâu.</td><td>viesnap.vn_tiktok_7556982998449655047.mp4</td><td>Chống tua nhanh, Tự động tích xanh, Kèm hình ảnh thumbnail sắc nét</td></tr><tr><td>08</td><td>ĐÔI NAM</td><td>Kỹ Năng Đè Lưới & Phản Tạt Ép Góc Đôi Nam</td><td>Kỹ thuật giữ lưới chủ động, tạt cầu thấp tước đoạt quyền tấn công, ép đối thủ nâng bổng.</td><td>viesnap.vn_tiktok_ZSq6N6mx5.mp4</td><td>Chống tua nhanh, Tự động tích xanh, Chế độ xem rạp hát Theater Mode</td></tr><tr><td>09</td><td>ĐÔI NAM</td><td>Phối Hợp Tấn Công Đập Cầu & Bồi Cầu Dứt Điểm</td><td>Quy trình triển khai liên hoàn: người sau đập cầu uy lực tạo đà cho người trước lao vào vồ dứt điểm.</td><td>viesnap.vn_tiktok_ZSq6NmtCb.mp4</td><td>Chống tua nhanh, Tự động tích xanh, Báo cáo tiến độ khóa học</td></tr><tr><td>10</td><td>TÍNH NĂNG MỞ RỘNG</td><td>NÚT '➕ GẮN LINK VIDEO MỚI'</td><td>Cho phép người dùng hoặc HLV tự dán link YouTube, YouTube Shorts hoặc MP4 online vào 4 chuyên mục.</td><td>Hỗ trợ Link YouTube / Shorts / MP4 CDN</td><td>KHÔNG GIỚI HẠN SỐ LƯỢNG VIDEO, Không tốn 1MB ổ cứng, lưu trữ bền vững</td></tr>
+                <tr><td>STT</td><td>CHUYÊN MỤC</td><td>TÊN BÀI HỌC THỰC CHIẾN</td><td>TRỌNG ĐIỂM KỸ THUẬT PHÂN TÍCH</td><td>TẬP TIN VIDEO THỰC TẾ TRÊN HỆ THỐNG</td><td>CÔNG NGHỆ BỔ TRỢ</td></tr><tr><td>01</td><td>ĐƠN NAM</td><td>Kỹ Thuật Đọc Hướng & Di Chuyển 4 Góc Sân</td><td>Phân tích cách VĐV đơn nam bao quát sân 13.4m, nhịp bật bước chéo đón cầu và thu chân hồi tâm sân.</td><td>snaptik.vn_7465697345355713799.mp4</td><td>Chống tua, tự đổi theo Ô 5 tâm sân, quay chậm 0.5x</td></tr><tr><td>02</td><td>ĐƠN NAM</td><td>Chiến Thuật Ép Cầu Hai Góc Cuối Sân</td><td>Kỹ năng phông bổng sâu, ép đối thủ xoay lưng và mở góc sân trống để tung đòn dứt điểm.</td><td>snaptik.vn_7476759285720993040.mp4</td><td>Chống tua, tự đổi theo Ô 7 đáy trái, toàn màn hình</td></tr><tr><td>03</td><td>ĐƠN NAM</td><td>Phản Xạ Bỏ Nhỏ Sát Lưới & Kéo Lưới Đổi Hướng</td><td>Kỹ thuật tay thả lỏng trước khi chạm cầu, miết nhẹ tạo độ xoáy lộn sát mép lưới đối phương.</td><td>snaptik.vn_7501608184688299271.mp4</td><td>Chống tua, tự đổi theo Ô 1 lưới trái, tích xanh hoàn thành</td></tr><tr><td>04</td><td>ĐƠN NAM</td><td>Kỹ Thuật Bước Lùi Đón Cầu & Chém Cầu Bạt Góc</td><td>Động tác giả smash, giảm lực chém xiên mặt vợt đưa cầu rơi sát mép biên đánh lừa phán đoán.</td><td>snaptik.vn_7568145336158440724.mp4</td><td>Chống tua, tự đổi theo Ô 8 đáy giữa, âm thanh chuẩn</td></tr><tr><td>05</td><td>ĐƠN NAM</td><td>Bật Nhảy Đập Cầu Tấn Công Dứt Điểm (Jump Smash)</td><td>Quy trình tích lũy lực từ chân, hông, cơ bụng truyền đến cổ tay đập cầu cắm sàn sấm sét.</td><td>snaptik.vn_7631002086502649109.mp4</td><td>Chống tua, tự đổi theo Ô 9 đáy phải, soi nhịp gập bụng</td></tr><tr><td>06</td><td>ĐƠN NAM</td><td>Kỹ Năng Thủ Cầu Bung Sâu Đảo Ngược Thế Trận</td><td>Cách hạ thấp trọng tâm, ngửa mặt vợt linh hoạt cứu những pha tấn công hiểm hóc sát sườn.</td><td>snaptik.vn_7665340734379281682.mp4</td><td>Chống tua, tự đổi theo Ô 4 trung tâm trái, tua lại 5s</td></tr><tr><td>07</td><td>ĐÔI NAM</td><td>Chiến Thuật Bọc Lót & Đổi Vị Trí Trong Đôi Nam</td><td>Quy tắc chia sân công - thủ, di chuyển xoay tua bọc lót khi đồng đội bị đối phương ép góc sâu.</td><td>viesnap.vn_tiktok_7556982998449655047.mp4</td><td>Chống tua, tự đổi theo Ô 6 trung tâm phải, thumbnail đẹp</td></tr><tr><td>08</td><td>ĐÔI NAM</td><td>Kỹ Năng Đè Lưới & Phản Tạt Ép Góc Đôi Nam</td><td>Kỹ thuật giữ lưới chủ động, tạt cầu thấp tước đoạt quyền tấn công, ép đối thủ nâng bổng.</td><td>viesnap.vn_tiktok_ZSq6N6mx5.mp4</td><td>Chống tua, tự đổi theo Ô 2 lưới giữa, chế độ rạp hát</td></tr><tr><td>09</td><td>ĐÔI NAM</td><td>Phối Hợp Tấn Công Đập Cầu & Bồi Cầu Dứt Điểm</td><td>Quy trình triển khai liên hoàn: người sau đập cầu uy lực tạo đà cho người trước lao vào vồ dứt điểm.</td><td>viesnap.vn_tiktok_ZSq6NmtCb.mp4</td><td>Chống tua, tự đổi theo Ô 3 lưới phải, báo cáo tiến độ</td></tr><tr><td>10</td><td>TÍNH NĂNG MỞ RỘNG</td><td>NÚT '➕ GẮN LINK VIDEO MỚI'</td><td>Cho phép người dùng hoặc HLV tự dán link YouTube, YouTube Shorts hoặc MP4 online vào 4 chuyên mục.</td><td>Link YouTube / Shorts / MP4 CDN</td><td>KHÔNG GIỚI HẠN SỐ LƯỢNG, không tốn 1MB ổ cứng máy</td></tr>
               </tbody>
             </table>
           </div>
         
           <div class="tab-pane " id="pane-4">
-            <div class="table-title">📌 GIÁO ÁN LỘ TRÌNH THỬ THÁCH 100 NGÀY CẦU LÔNG (100-DAY BADMINTON CHALLENGE)</div>
+            <div class="table-title">📌 5. Thử Thách 100 Ngày</div>
             <table>
               <thead>
                 <tr>
-                  <th>Giai Đoạn</th><th>Số Ngày</th><th>Tên Giai Đoạn</th><th>Nội Dung Giáo Án Trọng Tâm</th><th>Mục Tiêu & Tiêu Chuẩn Đạt Được</th>
+                  <th>LỘ TRÌNH HUẤN LUYỆN THỬ THÁCH 100 NGÀY CẦU LÔNG (100-DAY ROADMAP)</th><th>LỘ TRÌNH HUẤN LUYỆN THỬ THÁCH 100 NGÀY CẦU LÔNG (100-DAY ROADMAP)</th><th>LỘ TRÌNH HUẤN LUYỆN THỬ THÁCH 100 NGÀY CẦU LÔNG (100-DAY ROADMAP)</th><th>LỘ TRÌNH HUẤN LUYỆN THỬ THÁCH 100 NGÀY CẦU LÔNG (100-DAY ROADMAP)</th><th>LỘ TRÌNH HUẤN LUYỆN THỬ THÁCH 100 NGÀY CẦU LÔNG (100-DAY ROADMAP)</th>
                 </tr>
               </thead>
               <tbody>
-                <tr><td>Giai đoạn 1</td><td>Ngày 01 -> 15</td><td>NỀN TẢNG FOOTWORK CƠ BẢN</td><td>Tập trung phản xạ Ô 5 tâm sân, bước lunge gối 90° góc lưới (Ô 1, Ô 3), nhún bật split-step.</td><td>Hình thành phản xạ vô điều kiện hồi về tâm sân sau khi đánh; không bị ngã hay chúi người.</td></tr><tr><td>Giai đoạn 2</td><td>Ngày 16 -> 35</td><td>TĂNG TỐC PHẢN TẠT TRUNG SÂN</td><td>Luyện phản xạ Ô 4 (Biên trái) và Ô 6 (Biên phải), thủ ve trái tay, tạt phẳng ngang hông.</td><td>Tăng tốc độ phản xạ dưới 2.5 giây/hiệp; xử lý mượt các pha cầu đập thẳng nách và sườn.</td></tr><tr><td>Giai đoạn 3</td><td>Ngày 36 -> 60</td><td>BỨT TỐC TẤN CÔNG & LƯỚI</td><td>Phối hợp di chuyển Lưới - Đáy sân, kỹ thuật vồ cầu dứt điểm Ô 2, bỏ nhỏ gài xoáy.</td><td>Thời gian phản xạ đạt mốc dưới 1.8 giây; di chuyển thanh thoát không tốn sức.</td></tr><tr><td>Giai đoạn 4</td><td>Ngày 61 -> 85</td><td>SỨC BỀN & ĐẬP CẦU SCISSOR KICK</td><td>Luyện các bài đáy sân Ô 7, Ô 8, Ô 9. Bật nhảy đập cầu cắt kéo, chém cầu bạt góc lừa hướng.</td><td>Duy trì thể lực và độ chuẩn xác trên 85% trong các chuỗi bài tập kéo dài 30 - 50 hiệp.</td></tr><tr><td>Giai đoạn 5</td><td>Ngày 86 -> 100</td><td>MASTER TOÀN DIỆN THỰC CHIẾN</td><td>Chế độ Toàn Bộ ngẫu nhiên 9 ô sân tốc độ cao kết hợp câu hỏi chiến thuật đánh đơn và đánh đôi.</td><td>Đạt danh hiệu 'Kiện Tướng Cầu Lông' (Badminton Master), phản xạ siêu nhanh dưới 1.2 giây.</td></tr>
+                <tr><td>GIAI ĐOẠN</td><td>SỐ NGÀY TẬP</td><td>TÊN GIAI ĐOẠN</td><td>NỘI DUNG GIÁO ÁN TRỌNG TÂM</td><td>TIÊU CHUẨN ĐẠT ĐƯỢC</td></tr><tr><td>Giai đoạn 1</td><td>Ngày 01 -> 15</td><td>NỀN TẢNG FOOTWORK CƠ BẢN</td><td>Tập trung phản xạ Ô 5 tâm sân, bước lunge gối 90° góc lưới (Ô 1, Ô 3), nhún bật split-step.</td><td>Hình thành phản xạ vô điều kiện hồi về tâm sân sau khi đánh; không bị ngã hay chúi người.</td></tr><tr><td>Giai đoạn 2</td><td>Ngày 16 -> 35</td><td>TĂNG TỐC PHẢN TẠT TRUNG SÂN</td><td>Luyện phản xạ Ô 4 (Biên trái) và Ô 6 (Biên phải), thủ ve trái tay, tạt phẳng ngang hông.</td><td>Tăng tốc độ phản xạ dưới 2.5 giây/hiệp; xử lý mượt các pha cầu đập thẳng nách và sườn.</td></tr><tr><td>Giai đoạn 3</td><td>Ngày 36 -> 60</td><td>BỨT TỐC TẤN CÔNG & LƯỚI</td><td>Phối hợp di chuyển Lưới - Đáy sân, kỹ thuật vồ cầu dứt điểm Ô 2, bỏ nhỏ gài xoáy.</td><td>Thời gian phản xạ đạt mốc dưới 1.8 giây; di chuyển thanh thoát không tốn sức.</td></tr><tr><td>Giai đoạn 4</td><td>Ngày 61 -> 85</td><td>SỨC BỀN & ĐẬP CẦU SCISSOR KICK</td><td>Luyện các bài đáy sân Ô 7, Ô 8, Ô 9. Bật nhảy đập cầu cắt kéo, chém cầu bạt góc lừa hướng.</td><td>Duy trì thể lực và độ chuẩn xác trên 85% trong các chuỗi bài tập kéo dài 30 - 50 hiệp.</td></tr><tr><td>Giai đoạn 5</td><td>Ngày 86 -> 100</td><td>MASTER TOÀN DIỆN THỰC CHIẾN</td><td>Chế độ Toàn Bộ ngẫu nhiên 9 ô sân tốc độ cao kết hợp câu hỏi chiến thuật đánh đơn và đánh đôi.</td><td>Đạt danh hiệu 'Kiện Tướng Cầu Lông' (Badminton Master), phản xạ siêu nhanh dưới 1.2 giây.</td></tr>
               </tbody>
             </table>
           </div>
         
           <div class="tab-pane " id="pane-5">
-            <div class="table-title">📌 CÁC CÔNG CỤ BỔ TRỢ, GHI HÌNH VÀ BÁO CÁO HUẤN LUYỆN NÂNG CAO</div>
+            <div class="table-title">📌 6. Tính Năng Bổ Trợ</div>
             <table>
               <thead>
                 <tr>
-                  <th>Tên Tính Năng</th><th>Mô Tả Chi Tiết Hoạt Động</th><th>Lợi Ích Thực Tế Cho Học Viên & HLV</th>
+                  <th>CÁC CÔNG CỤ BỔ TRỢ, GHI HÌNH VÀ BÁO CÁO NÂNG CAO</th><th>CÁC CÔNG CỤ BỔ TRỢ, GHI HÌNH VÀ BÁO CÁO NÂNG CAO</th><th>CÁC CÔNG CỤ BỔ TRỢ, GHI HÌNH VÀ BÁO CÁO NÂNG CAO</th>
                 </tr>
               </thead>
               <tbody>
-                <tr><td>1. Công cụ Tự Ghi Hình Video (Recorder)</td><td>Mở camera máy tính, ghi lại toàn bộ buổi tập luyện, có thanh thời gian và tùy chọn tải ngay file MP4/WebM về máy.</td><td>Giúp học viên soi lại góc chân, độ mở vai và cách cầm vợt của bản thân để tự sửa lỗi sai.</td></tr><tr><td>2. Nhật Ký Lịch Sử Tập Luyện (History)</td><td>Tự động lưu trữ 50 buổi tập gần nhất với đầy đủ thông tin: Ngày giờ, Chế độ, Số hiệp, Độ chính xác, Tốc độ trung bình, Tốc độ tốt nhất.</td><td>Xem lại quá trình phát triển phong độ theo từng tuần, từng tháng.</td></tr><tr><td>3. Thống Kê Trọn Đời (Lifetime Stats)</td><td>Tính tổng số buổi đã tập, tổng số hiệp hoàn thành, chuỗi ngày liên tục (Streak) và kỷ lục phản xạ nhanh nhất.</td><td>Tạo động lực thi đua, duy trì thói quen tập luyện đều đặn không bỏ cuộc.</td></tr><tr><td>4. Tự Động Giao Bài Tập Về Nhà</td><td>Ngay khi hoàn thành bài tập, hệ thống xuất thẻ bài tập với Mã buổi tập, Ngày giao, Deadline, Người phụ trách và Yêu cầu quay camera nộp bài.</td><td>Chuẩn hóa quy trình dạy học cho các HLV và trung tâm cầu lông chuyên nghiệp.</td></tr><tr><td>5. Động cơ Âm Thanh & Đếm Nhịp Giọng Nói</td><td>Tích hợp âm thanh đếm ngược 3-2-1, còi hiệu lệnh xuất phát, âm thanh thành công, chúc mừng pháo hoa Confetti.</td><td>Tăng cường sự tập trung cao độ và hưng phấn của học viên trong suốt buổi tập.</td></tr><tr><td>6. Hỗ Trợ Đa Nền Tảng (Web & Desktop App)</td><td>Chạy online mượt mà trên Render.com, đồng thời đóng gói sẵn file chạy Windows .exe không cần cài đặt phức tạp.</td><td>Tiện lợi mở trên điện thoại, máy tính bảng, laptop hoặc máy tính để bàn tại sân tập.</td></tr>
+                <tr><td>TÊN TÍNH NĂNG CÔNG NGHỆ</td><td>MÔ TẢ NGUYÊN LÝ HOẠT ĐỘNG CHI TIẾT</td><td>LỢI ÍCH THỰC TẾ CHO TRUNG TÂM & HỌC VIÊN</td></tr><tr><td>1. Công cụ Tự Ghi Hình Video (Recorder)</td><td>Mở camera máy tính, ghi lại toàn bộ buổi tập luyện, có thanh thời gian và tùy chọn tải ngay file MP4/WebM về máy.</td><td>Giúp học viên soi lại góc chân, độ mở vai và cách cầm vợt của bản thân để tự sửa lỗi sai.</td></tr><tr><td>2. Nhật Ký Lịch Sử Tập Luyện (History)</td><td>Tự động lưu trữ 50 buổi tập gần nhất với đầy đủ thông tin: Ngày giờ, Chế độ, Số hiệp, Độ chính xác, Tốc độ trung bình, Tốc độ tốt nhất.</td><td>Xem lại quá trình phát triển phong độ theo từng tuần, từng tháng.</td></tr><tr><td>3. Thống Kê Trọn Đời (Lifetime Stats)</td><td>Tính tổng số buổi đã tập, tổng số hiệp hoàn thành, chuỗi ngày liên tục (Streak) và kỷ lục phản xạ nhanh nhất.</td><td>Tạo động lực thi đua, duy trì thói quen tập luyện đều đặn không bỏ cuộc.</td></tr><tr><td>4. Tự Động Giao Bài Tập Về Nhà</td><td>Ngay khi hoàn thành bài tập, hệ thống xuất thẻ bài tập với Mã buổi tập, Ngày giao, Deadline, Người phụ trách và Yêu cầu quay camera nộp bài.</td><td>Chuẩn hóa quy trình dạy học cho các HLV và trung tâm cầu lông chuyên nghiệp.</td></tr><tr><td>5. Động cơ Âm Thanh & Đếm Nhịp Giọng Nói</td><td>Tích hợp âm thanh đếm ngược 3-2-1, còi hiệu lệnh xuất phát, âm thanh thành công, chúc mừng pháo hoa Confetti.</td><td>Tăng cường sự tập trung cao độ và hưng phấn của học viên trong suốt buổi tập.</td></tr><tr><td>6. Hỗ Trợ Đa Nền Tảng (Web & Desktop App)</td><td>Chạy online mượt mà trên Render.com, đồng thời đóng gói sẵn file chạy Windows .exe không cần cài đặt phức tạp.</td><td>Tiện lợi mở trên điện thoại, máy tính bảng, laptop hoặc máy tính để bàn tại sân tập.</td></tr>
               </tbody>
             </table>
           </div>
@@ -382,7 +446,7 @@
     </div>
 
     <footer>
-      <p>© 2026 Badminton Pro Trainer. Toàn quyền sở hữu tài liệu hướng dẫn kỹ chiến thuật.</p>
+      <p>© 2026 Badminton Pro Trainer. Báo cáo độc quyền phục vụ công tác quản lý và huấn luyện thể thao chuyên nghiệp.</p>
     </footer>
   </div>
 

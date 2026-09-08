@@ -53,6 +53,15 @@ export const VideoPlayerModal: React.FC<VideoPlayerModalProps> = ({
 
   const maxWatchedRef = useRef<number>(0);
 
+  const getYouTubeId = (url: string): string | null => {
+    if (!url) return null;
+    const regExp = /(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=|shorts\/))([\w-]{11})/;
+    const match = url.match(regExp);
+    return match ? match[1] : null;
+  };
+
+  const youtubeId = getYouTubeId(video.videoUrl);
+
   // Listen to browser fullscreen changes
   useEffect(() => {
     const handleFsChange = () => {
@@ -338,40 +347,88 @@ export const VideoPlayerModal: React.FC<VideoPlayerModalProps> = ({
             </div>
           )}
 
-          <video
-            ref={videoRef}
-            src={video.videoUrl}
-            className={`theater-video-element ${
-              zoomMode === 'fill' 
-                ? 'is-fill-crop' 
-                : zoomMode === 'zoom2' 
-                  ? 'is-zoom2' 
-                  : 'is-original'
-            }`}
-            playsInline
-            onTimeUpdate={handleTimeUpdate}
-            onSeeking={handleSeeking}
-            onLoadedMetadata={() => {
-              if (videoRef.current) {
-                setDuration(videoRef.current.duration);
-              }
-            }}
-            onEnded={handleCompleteVideo}
-            onClick={togglePlay}
-            onDoubleClick={toggleFullscreen}
-            title="Nhấp 1 lần để Phát/Tạm dừng • Nhấp đúp để Bật/Tắt Toàn Màn Hình"
-          />
-
-          {/* Center Play Overlay Icon when paused */}
-          {!isPlaying && !justCompletedToast && (
-            <div className="theater-center-play" onClick={togglePlay}>
-              <Play size={48} fill="currentColor" />
+          {youtubeId ? (
+            <div className="theater-youtube-wrapper" style={{ width: '100%', height: '100%', minHeight: '480px', display: 'flex' }}>
+              <iframe
+                src={`https://www.youtube-nocookie.com/embed/${youtubeId}?autoplay=1&rel=0&modestbranding=1`}
+                title={video.title}
+                className="theater-youtube-iframe"
+                style={{ width: '100%', height: '100%', border: 'none', minHeight: '480px' }}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+              />
             </div>
+          ) : (
+            <>
+              <video
+                ref={videoRef}
+                src={video.videoUrl}
+                className={`theater-video-element ${
+                  zoomMode === 'fill' 
+                    ? 'is-fill-crop' 
+                    : zoomMode === 'zoom2' 
+                      ? 'is-zoom2' 
+                      : 'is-original'
+                }`}
+                playsInline
+                onTimeUpdate={handleTimeUpdate}
+                onSeeking={handleSeeking}
+                onLoadedMetadata={() => {
+                  if (videoRef.current) {
+                    setDuration(videoRef.current.duration);
+                  }
+                }}
+                onEnded={handleCompleteVideo}
+                onClick={togglePlay}
+                onDoubleClick={toggleFullscreen}
+                title="Nhấp 1 lần để Phát/Tạm dừng • Nhấp đúp để Bật/Tắt Toàn Màn Hình"
+              />
+
+              {/* Center Play Overlay Icon when paused */}
+              {!isPlaying && !justCompletedToast && (
+                <div className="theater-center-play" onClick={togglePlay}>
+                  <Play size={48} fill="currentColor" />
+                </div>
+              )}
+            </>
           )}
         </div>
 
         {/* Custom Restricted Video Controls Bar */}
-        <div className="theater-controls-bar">
+        {youtubeId ? (
+          <div className="theater-controls-bar theater-youtube-bar" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '12px 20px', background: '#09131f' }}>
+            <div className="controls-left" style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
+              <span className="text-cyan font-bold" style={{ fontSize: '13px', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                <Tv size={16} /> Video bài giảng trực tuyến (YouTube)
+              </span>
+              <button 
+                className="ctrl-btn"
+                onClick={handleCompleteVideo}
+                style={{ 
+                  padding: '7px 16px', 
+                  borderRadius: '8px', 
+                  background: isCompleted ? '#059669' : '#0284c7', 
+                  color: '#fff', 
+                  display: 'flex', 
+                  alignItems: 'center', 
+                  gap: '6px',
+                  fontWeight: 600,
+                  fontSize: '13px'
+                }}
+              >
+                <CheckCircle2 size={16} />
+                <span>{isCompleted ? '✓ Đã hoàn thành bài học' : 'Đánh dấu đã xem'}</span>
+              </button>
+            </div>
+            <div className="controls-right">
+              <button className="ctrl-btn" onClick={toggleFullscreen} title="Toàn màn hình">
+                <Maximize2 size={18} />
+              </button>
+            </div>
+          </div>
+        ) : (
+          <div className="theater-controls-bar">
+
           {/* Progress Timeline Scrubber */}
           <div 
             className="theater-progress-track" 
@@ -502,6 +559,8 @@ export const VideoPlayerModal: React.FC<VideoPlayerModalProps> = ({
             </div>
           </div>
         </div>
+      )}
+
 
         {/* Lesson Description & Tactical Notes */}
         <div className="theater-footer-info">

@@ -121,8 +121,11 @@ export interface TrainingResultStats {
   historyRounds: ActiveRoundData[];
 }
 
+export type VideoCategory = 'DON_NAM' | 'DOI_NAM' | 'DON_NU' | 'DOI_NU';
+
 export interface TacticsVideo {
   id: string;
+  category: VideoCategory;
   title: string;
   subTitle: string;
   description: string;
@@ -130,4 +133,6 @@ export interface TacticsVideo {
   thumbnailUrl?: string;
   durationText?: string;
   tags: string[];
+  isCustom?: boolean;
 }
+

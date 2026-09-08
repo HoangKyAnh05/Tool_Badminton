@@ -1,4 +1,4 @@
-import { TrainingConfig, TrainingResultStats } from '../types';
+import { TrainingConfig, TrainingResultStats, TacticsVideo } from '../types';
 
 const STORAGE_KEYS = {
   SETTINGS: 'badminton_trainer_settings_v1',
@@ -173,6 +173,42 @@ export const storageService = {
   isVideoWatched(videoId: string): boolean {
     const list = storageService.loadWatchedVideos();
     return list.includes(videoId);
+  },
+
+  loadCustomVideos(): TacticsVideo[] {
+    try {
+      const data = localStorage.getItem('badminton_custom_videos_v1');
+      if (data) {
+        return JSON.parse(data);
+      }
+    } catch (e) {
+      console.warn('Could not load custom videos', e);
+    }
+    return [];
+  },
+
+  saveCustomVideo(video: TacticsVideo): void {
+    try {
+      const list = storageService.loadCustomVideos();
+      const existingIdx = list.findIndex(v => v.id === video.id);
+      if (existingIdx >= 0) {
+        list[existingIdx] = video;
+      } else {
+        list.unshift(video);
+      }
+      localStorage.setItem('badminton_custom_videos_v1', JSON.stringify(list));
+    } catch (e) {
+      console.warn('Could not save custom video', e);
+    }
+  },
+
+  deleteCustomVideo(videoId: string): void {
+    try {
+      const list = storageService.loadCustomVideos().filter(v => v.id !== videoId);
+      localStorage.setItem('badminton_custom_videos_v1', JSON.stringify(list));
+    } catch (e) {
+      console.warn('Could not delete custom video', e);
+    }
   },
 
   // 100-Day Challenge Progress

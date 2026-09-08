@@ -10,7 +10,8 @@ import {
   Compass, 
   Play, 
   CheckCircle2,
-  Camera
+  Camera,
+  FileSpreadsheet
 } from 'lucide-react';
 import { VideoSection } from '../Video/VideoSection';
 import { DailyChallengeCard } from '../DailyChallenge/DailyChallengeCard';
@@ -128,6 +129,26 @@ export const HomeDashboard: React.FC<HomeDashboardProps> = ({
                 <span>QUAY VIDEO TỰ LUYỆN</span>
               </button>
             )}
+
+            <a
+              href="./huong-dan-tinh-nang.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-hero-record"
+              style={{
+                textDecoration: 'none',
+                borderColor: 'rgba(0, 240, 255, 0.4)',
+                background: 'rgba(0, 240, 255, 0.08)',
+                color: '#00f0ff',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px'
+              }}
+              title="Xem cẩm nang tính năng trực tuyến & Tải file Excel"
+            >
+              <FileSpreadsheet size={20} />
+              <span>CẨM NANG & EXCEL TÍNH NĂNG</span>
+            </a>
           </div>
         </div>
 

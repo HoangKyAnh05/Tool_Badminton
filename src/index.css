@@ -6953,6 +6953,15 @@ button {
   box-shadow: 0 0 12px rgba(0, 240, 255, 0.3);
 }
 
+.chip-idx-num {
+  font-size: 0.72rem;
+  font-weight: 900;
+  color: #00f0ff;
+  background: rgba(0, 240, 255, 0.15);
+  padding: 1px 5px;
+  border-radius: 4px;
+}
+
 .chip-level-tag {
   font-size: 0.68rem;
   font-weight: 800;

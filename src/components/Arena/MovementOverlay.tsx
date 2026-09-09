@@ -234,6 +234,7 @@ export const MovementOverlay: React.FC<MovementOverlayProps> = ({
                     }}
                     title={v.shotName}
                   >
+                    <span className="chip-idx-num">{String(i + 1).padStart(2, '0')}</span>
                     <span className="chip-level-tag">{v.level}</span>
                     <span className="chip-name">{v.shotName}</span>
                   </button>
@@ -250,11 +251,12 @@ export const MovementOverlay: React.FC<MovementOverlayProps> = ({
             e.stopPropagation();
             onCompleteAction?.();
           }}
+          title="Bấm phím Cách (Space) để hoàn thành bài tập"
         >
           <div className="trigger-left">
             <CheckCircle size={22} className="trigger-check-icon" />
             <span className="trigger-main-text">
-              TẬP XONG: <strong>BẤM PHÍM CÁCH</strong> HOẶC <strong>CHẠM VÀO ĐÂY</strong> ĐỂ TIẾP TỤC
+              TẬP XONG: <strong>BẤM PHÍM CÁCH [SPACE]</strong> HOẶC <strong>CHẠM VÀO ĐÂY</strong> ĐỂ SANG BÀI KHÁC
             </span>
           </div>
           <div className="trigger-right-btn">

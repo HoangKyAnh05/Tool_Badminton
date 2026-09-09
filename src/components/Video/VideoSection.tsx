@@ -374,7 +374,14 @@ export const VideoSection: React.FC = () => {
                       className="video-mp4-preview" 
                       muted 
                       playsInline 
-                      preload="metadata"
+                      preload="none"
+                      onMouseEnter={(e) => {
+                        e.currentTarget.play().catch(() => {});
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.pause();
+                        e.currentTarget.currentTime = 0;
+                      }}
                     />
                   ) : (
                     <div className="video-thumb-fallback">

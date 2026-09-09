@@ -13,6 +13,11 @@ const path = require('path');
 
 let mainWindow = null;
 
+// GPU hardware acceleration for smooth 60fps rendering
+app.commandLine.appendSwitch('enable-gpu-rasterization');
+app.commandLine.appendSwitch('enable-zero-copy');
+app.commandLine.appendSwitch('ignore-gpu-blocklist');
+
 function createWindow() {
   mainWindow = new BrowserWindow({
     width: 1360,
@@ -26,7 +31,8 @@ function createWindow() {
       preload: path.join(__dirname, 'preload.cjs'),
       nodeIntegration: false,
       contextIsolation: true,
-      webSecurity: true
+      webSecurity: true,
+      backgroundThrottling: false
     },
     autoHideMenuBar: true
   });

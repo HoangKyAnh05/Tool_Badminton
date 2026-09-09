@@ -29,6 +29,23 @@ export const extractYouTubeId = (url: string): string | null => {
   return match ? match[1] : null;
 };
 
+export const extractTikTokId = (url: string): string | null => {
+  if (!url) return null;
+  const trimmed = url.trim();
+  const match = trimmed.match(/(?:video\/|v\/|embed\/(?:v2\/)?|v2\/)(\d{10,})/i) || 
+                trimmed.match(/tiktok\.com\/@[\w.-]+\/video\/(\d+)/i) || 
+                trimmed.match(/\/(\d{15,})\b/);
+  if (match) return match[1];
+  const directDigits = trimmed.match(/^(\d{15,})$/);
+  if (directDigits) return directDigits[1];
+  return null;
+};
+
+export const isTikTokUrl = (url: string): boolean => {
+  if (!url) return false;
+  return url.includes('tiktok.com') || url.includes('douyin.com') || /^\d{15,}$/.test(url.trim());
+};
+
 export const EditYouTubeLinkModal: React.FC<EditYouTubeLinkModalProps> = ({
   video,
   isOpen,

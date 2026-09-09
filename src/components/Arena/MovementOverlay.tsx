@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { GridPosition, MovementVariation, SkillLevel, TacticsVideo } from '../../types';
 import { storageService } from '../../services/storage';
-import { EditYouTubeLinkModal, extractYouTubeId } from '../Video/EditYouTubeLinkModal';
+import { EditYouTubeLinkModal, extractYouTubeId, extractTikTokId, isTikTokUrl } from '../Video/EditYouTubeLinkModal';
 import { 
   Play, 
   Pause, 
@@ -92,6 +92,8 @@ export const MovementOverlay: React.FC<MovementOverlayProps> = ({
 
   const currentVideoUrl = customOverride?.videoUrl || currentVar.videoUrl || `./videos/clips/pos_${position.id}_clip_${activeIdx + 1}.mp4`;
   const ytId = extractYouTubeId(currentVideoUrl);
+  const tiktokId = extractTikTokId(currentVideoUrl);
+  const isTikTok = isTikTokUrl(currentVideoUrl);
 
   // Prepare pseudo TacticsVideo for editing
   const editingTacticsVideo: TacticsVideo = {
@@ -221,7 +223,7 @@ export const MovementOverlay: React.FC<MovementOverlayProps> = ({
           />
         </div>
 
-        {/* Center: Full-Focus Real Video Player (Supports YouTube & MP4) */}
+        {/* Center: Full-Focus Real Video Player (Supports YouTube, TikTok & MP4) */}
         <div className="clean-video-arena" onClick={(e) => e.stopPropagation()}>
           <div className="clean-video-container">
             {ytId ? (
@@ -236,6 +238,20 @@ export const MovementOverlay: React.FC<MovementOverlayProps> = ({
                 <div className="arena-yt-badge">
                   <Youtube size={14} className="text-danger" />
                   <span>YouTube Video</span>
+                </div>
+              </div>
+            ) : (tiktokId || isTikTok) ? (
+              <div className="arena-youtube-iframe-wrap" style={{ position: 'relative', width: '100%', height: '100%', minHeight: '380px', background: '#000', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <iframe
+                  src={tiktokId ? `https://www.tiktok.com/embed/v2/${tiktokId}` : `https://www.tiktok.com/embed/v2/?url=${encodeURIComponent(currentVideoUrl)}`}
+                  title={currentVar.shotName}
+                  className="clean-youtube-player"
+                  style={{ width: '100%', height: '100%', minHeight: '380px', border: 'none' }}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                />
+                <div className="arena-yt-badge" style={{ background: 'rgba(0,0,0,0.85)', color: '#00f2fe' }}>
+                  <span>🎵 TikTok Video</span>
                 </div>
               </div>
             ) : (
@@ -279,7 +295,7 @@ export const MovementOverlay: React.FC<MovementOverlayProps> = ({
                       e.stopPropagation();
                       setIsEditingModalOpen(true);
                     }}
-                    title="Gắn link YouTube của bạn"
+                    title="Gắn link YouTube / TikTok của bạn"
                   >
                     <Edit3 size={15} />
                   </button>

@@ -15,9 +15,12 @@ import {
   ShieldAlert,
   Award,
   Scan,
-  Tv
+  Tv,
+  ExternalLink
 } from 'lucide-react';
 import { Youtube } from './YoutubeIcon';
+
+import { extractYouTubeId, extractTikTokId, isTikTokUrl } from './EditYouTubeLinkModal';
 
 interface VideoPlayerModalProps {
   video: TacticsVideo;
@@ -56,14 +59,9 @@ export const VideoPlayerModal: React.FC<VideoPlayerModalProps> = ({
 
   const maxWatchedRef = useRef<number>(0);
 
-  const getYouTubeId = (url: string): string | null => {
-    if (!url) return null;
-    const regExp = /(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=|shorts\/))([\w-]{11})/;
-    const match = url.match(regExp);
-    return match ? match[1] : null;
-  };
-
-  const youtubeId = getYouTubeId(video.videoUrl);
+  const youtubeId = extractYouTubeId(video.videoUrl);
+  const tiktokId = extractTikTokId(video.videoUrl);
+  const isTikTok = isTikTokUrl(video.videoUrl);
 
   // Listen to browser fullscreen changes
   useEffect(() => {
@@ -373,6 +371,28 @@ export const VideoPlayerModal: React.FC<VideoPlayerModalProps> = ({
                 allowFullScreen
               />
             </div>
+          ) : (tiktokId || isTikTok) ? (
+            <div className="theater-tiktok-wrapper" style={{ width: '100%', height: '100%', minHeight: '540px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', background: '#000', position: 'relative' }}>
+              <iframe
+                src={tiktokId ? `https://www.tiktok.com/embed/v2/${tiktokId}` : `https://www.tiktok.com/embed/v2/?url=${encodeURIComponent(video.videoUrl)}`}
+                title={video.title}
+                className="theater-tiktok-iframe"
+                style={{ width: '100%', height: '100%', minHeight: '540px', border: 'none' }}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+              />
+              <div style={{ position: 'absolute', top: 12, right: 12, zIndex: 10 }}>
+                <a 
+                  href={video.videoUrl} 
+                  target="_blank" 
+                  rel="noreferrer" 
+                  className="btn-open-external"
+                  style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', padding: '7px 14px', background: 'rgba(0,0,0,0.85)', color: '#fff', borderRadius: '20px', fontSize: '12px', fontWeight: 700, border: '1px solid rgba(255,255,255,0.25)', textDecoration: 'none' }}
+                >
+                  <ExternalLink size={13} className="text-cyan" /> Mở xem trên TikTok
+                </a>
+              </div>
+            </div>
           ) : (
             <>
               <video
@@ -410,11 +430,11 @@ export const VideoPlayerModal: React.FC<VideoPlayerModalProps> = ({
         </div>
 
         {/* Custom Restricted Video Controls Bar */}
-        {youtubeId ? (
+        {(youtubeId || tiktokId || isTikTok) ? (
           <div className="theater-controls-bar theater-youtube-bar" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '12px 20px', background: '#09131f' }}>
             <div className="controls-left" style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
               <span className="text-cyan font-bold" style={{ fontSize: '13px', display: 'flex', alignItems: 'center', gap: '6px' }}>
-                <Tv size={16} /> Video bài giảng trực tuyến (YouTube)
+                <Tv size={16} /> Video bài giảng trực tuyến {isTikTok ? '(TikTok)' : '(YouTube)'}
               </span>
               <button 
                 className="ctrl-btn"

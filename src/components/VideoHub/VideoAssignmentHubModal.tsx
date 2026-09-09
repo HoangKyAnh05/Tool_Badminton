@@ -3,7 +3,7 @@ import { BADMINTON_POSITIONS } from '../../data/movements';
 import { TACTICS_VIDEOS } from '../../data/videos';
 import { TacticsVideo, SkillLevel, VideoCategory } from '../../types';
 import { storageService } from '../../services/storage';
-import { extractYouTubeId } from '../Video/EditYouTubeLinkModal';
+import { extractYouTubeId, extractTikTokId, isTikTokUrl } from '../Video/EditYouTubeLinkModal';
 import { YouTubeGuideModal } from '../Video/YouTubeGuideModal';
 import { BatchImportExportModal } from '../Video/BatchImportExportModal';
 import { VideoPlayerModal } from '../Video/VideoPlayerModal';
@@ -217,13 +217,15 @@ export const VideoAssignmentHubModal: React.FC<VideoAssignmentHubModalProps> = (
     const urlToSave = rawUrl !== undefined ? rawUrl.trim() : '';
 
     if (!urlToSave) {
-      alert('Vui lòng dán đường dẫn link YouTube vào ô trước khi lưu!');
+      alert('Vui lòng dán đường dẫn link (YouTube, TikTok, Video MP4) vào ô trước khi lưu!');
       return;
     }
 
     const ytId = extractYouTubeId(urlToSave);
-    if (!ytId && !urlToSave.startsWith('http') && !urlToSave.endsWith('.mp4')) {
-      alert('Đường dẫn không hợp lệ. Vui lòng dán link YouTube (ví dụ https://youtu.be/... hoặc https://www.youtube.com/watch?v=...)');
+    const ttId = extractTikTokId(urlToSave);
+    const isTT = isTikTokUrl(urlToSave);
+    if (!ytId && !ttId && !isTT && !urlToSave.startsWith('http') && !urlToSave.endsWith('.mp4')) {
+      alert('Đường dẫn không hợp lệ. Vui lòng dán link YouTube (youtu.be/...), link TikTok (@.../video/...), hoặc link video trực tiếp.');
       return;
     }
 
@@ -271,8 +273,12 @@ export const VideoAssignmentHubModal: React.FC<VideoAssignmentHubModalProps> = (
     }
   };
 
-  // Handle previewing video
-  const handlePreview = (slot: VideoSlotItem, currentUrl: string) => {
+  // Handle previewing video - always use real-time typed input if available
+  const handlePreview = (slot: VideoSlotItem, fallbackUrl?: string) => {
+    const typed = inputUrls[slot.id] ? inputUrls[slot.id].trim() : '';
+    const override = videoOverrides[slot.id] || (slot.aliases && slot.aliases.map(a => videoOverrides[a]).find(Boolean));
+    const urlToPlay = typed || override?.videoUrl || fallbackUrl || slot.defaultVideoUrl;
+
     setPreviewVideo({
       id: slot.id,
       category: slot.categoryKey as any,
@@ -280,7 +286,7 @@ export const VideoAssignmentHubModal: React.FC<VideoAssignmentHubModalProps> = (
       subTitle: slot.subTitle || slot.categoryLabel,
       level: slot.level,
       description: slot.description,
-      videoUrl: currentUrl,
+      videoUrl: urlToPlay,
       durationText: 'Thực chiến',
       tags: ['Thực chiến', slot.level]
     });
@@ -470,9 +476,12 @@ export const VideoAssignmentHubModal: React.FC<VideoAssignmentHubModalProps> = (
               {filteredSlots.map((slot) => {
                 const override = videoOverrides[slot.id] || (slot.aliases && slot.aliases.map(a => videoOverrides[a]).find(Boolean));
                 const hasCustom = Boolean(override);
-                const currentUrl = override?.videoUrl || slot.defaultVideoUrl;
-                const ytId = extractYouTubeId(currentUrl);
+                const currentSavedUrl = override?.videoUrl || slot.defaultVideoUrl;
                 const inputValue = inputUrls[slot.id] !== undefined ? inputUrls[slot.id] : (hasCustom ? override?.videoUrl || '' : '');
+                const effectiveDisplayUrl = (inputValue && inputValue.trim()) || currentSavedUrl;
+                const ytId = extractYouTubeId(effectiveDisplayUrl);
+                const tiktokId = extractTikTokId(effectiveDisplayUrl);
+                const isTT = isTikTokUrl(effectiveDisplayUrl);
                 const isSaved = savedFeedback[slot.id];
 
                 const levelClass = slot.level === 'Cơ bản'
@@ -530,7 +539,7 @@ export const VideoAssignmentHubModal: React.FC<VideoAssignmentHubModalProps> = (
                         <Link2 size={16} className="input-link-icon" />
                         <input
                           type="text"
-                          placeholder="Dán link YouTube (ví dụ: https://youtu.be/... hoặc https://youtube.com/shorts/...)"
+                          placeholder="Dán link YouTube (youtu.be/...) hoặc TikTok (@.../video/...)"
                           value={inputValue}
                           onChange={(e) => setInputUrls(prev => ({ ...prev, [slot.id]: e.target.value }))}
                           onKeyDown={(e) => {
@@ -570,6 +579,14 @@ export const VideoAssignmentHubModal: React.FC<VideoAssignmentHubModalProps> = (
                             <Youtube size={12} className="text-danger" />
                             <span>YouTube ID: {ytId}</span>
                           </span>
+                        ) : (tiktokId || isTT) ? (
+                          <span className="source-badge yt-source" style={{ borderColor: 'rgba(0, 242, 254, 0.4)', background: 'rgba(0, 242, 254, 0.1)' }}>
+                            <span style={{ color: '#00f2fe' }}>🎵 TikTok: {tiktokId || 'Đã nhận link'}</span>
+                          </span>
+                        ) : hasCustom ? (
+                          <span className="source-badge yt-source" style={{ borderColor: 'rgba(16, 185, 129, 0.4)', background: 'rgba(16, 185, 129, 0.1)' }}>
+                            <span style={{ color: '#10b981' }}>🌐 Video Riêng Của Bạn</span>
+                          </span>
                         ) : (
                           <span className="source-badge mp4-source">
                             <span>Video MP4 Mặc Định</span>
@@ -580,7 +597,7 @@ export const VideoAssignmentHubModal: React.FC<VideoAssignmentHubModalProps> = (
                       <div className="slot-action-btns">
                         <button 
                           className="btn-slot-preview"
-                          onClick={() => handlePreview(slot, currentUrl)}
+                          onClick={() => handlePreview(slot, currentSavedUrl)}
                           title="Xem thử video hoạt động"
                         >
                           <Play size={13} />

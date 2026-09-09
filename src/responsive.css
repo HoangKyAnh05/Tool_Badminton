@@ -1,0 +1,633 @@
+/* ==========================================================================
+   BADMINTON PRO - DEDICATED RESPONSIVE STYLESHEET (MOBILE & TABLET)
+   Highest Specificity & Guaranteed Viewport Fit (< 768px & < 1024px)
+   ========================================================================== */
+
+/* Universal Mobile Constraints */
+@media (max-width: 768px) {
+  *, *::before, *::after {
+    box-sizing: border-box !important;
+  }
+
+  html, body, #root {
+    width: 100% !important;
+    max-width: 100vw !important;
+    overflow-x: hidden !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .app-layout {
+    width: 100% !important;
+    max-width: 100vw !important;
+    overflow-x: hidden !important;
+    min-height: 100vh !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  .app-main-content {
+    width: 100% !important;
+    max-width: 100vw !important;
+    overflow-x: hidden !important;
+  }
+
+  /* ----------------------------------------------------
+     1. TOP NAVIGATION BAR (Clean, compact, no overflow)
+     ---------------------------------------------------- */
+  .app-navbar {
+    height: 54px !important;
+    padding: 0 8px !important;
+    width: 100% !important;
+    max-width: 100vw !important;
+    box-sizing: border-box !important;
+  }
+
+  .navbar-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 4px !important;
+  }
+
+  .navbar-brand {
+    gap: 6px !important;
+    flex-shrink: 0 !important;
+  }
+
+  .brand-logo-badge {
+    width: 30px !important;
+    height: 30px !important;
+    border-radius: 6px !important;
+  }
+
+  .brand-icon {
+    width: 16px !important;
+    height: 16px !important;
+  }
+
+  .brand-name {
+    font-size: 0.92rem !important;
+    letter-spacing: 0.5px !important;
+  }
+
+  .brand-tag {
+    display: none !important;
+  }
+
+  .navbar-training-pill {
+    padding: 3px 8px !important;
+    font-size: 0.7rem !important;
+    max-width: 110px !important;
+  }
+
+  .pill-text-desktop {
+    display: none !important;
+  }
+
+  .pill-text-mobile {
+    display: inline !important;
+    font-weight: 800 !important;
+  }
+
+  .navbar-actions {
+    display: flex !important;
+    align-items: center !important;
+    gap: 4px !important;
+    flex-shrink: 0 !important;
+  }
+
+  .nav-btn {
+    padding: 5px 7px !important;
+    min-width: 32px !important;
+    height: 32px !important;
+    font-size: 0.72rem !important;
+    border-radius: 7px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  .nav-btn-text {
+    display: none !important;
+  }
+
+  /* ----------------------------------------------------
+     2. HOME DASHBOARD & HERO SECTION
+     ---------------------------------------------------- */
+  .home-dashboard {
+    width: 100% !important;
+    max-width: 100vw !important;
+    padding: 12px 10px 60px !important;
+    gap: 16px !important;
+    box-sizing: border-box !important;
+    overflow-x: hidden !important;
+  }
+
+  .hero-banner {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 18px 14px !important;
+    border-radius: 16px !important;
+    gap: 16px !important;
+    box-sizing: border-box !important;
+  }
+
+  .hero-content {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.68rem !important;
+    letter-spacing: 0.5px !important;
+    margin-bottom: 6px !important;
+    gap: 5px !important;
+  }
+
+  .hero-title {
+    font-size: 1.35rem !important;
+    line-height: 1.25 !important;
+    margin-bottom: 8px !important;
+    word-break: break-word !important;
+  }
+
+  .hero-desc {
+    font-size: 0.84rem !important;
+    line-height: 1.45 !important;
+    margin-bottom: 14px !important;
+  }
+
+  .hero-cta-group {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 8px !important;
+  }
+
+  .btn-hero-start,
+  .btn-hero-videohub,
+  .btn-hero-record {
+    display: flex !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    justify-content: center !important;
+    align-items: center !important;
+    text-align: center !important;
+    padding: 12px 14px !important;
+    font-size: 0.88rem !important;
+    font-weight: 800 !important;
+    border-radius: 10px !important;
+    gap: 8px !important;
+  }
+
+  .hero-stats-panel {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    gap: 6px !important;
+    box-sizing: border-box !important;
+    margin: 0 !important;
+  }
+
+  .stat-widget {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    padding: 8px 4px !important;
+    gap: 4px !important;
+    border-radius: 10px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    min-width: 0 !important;
+    overflow: hidden !important;
+  }
+
+  .stat-widget-icon {
+    width: 26px !important;
+    height: 26px !important;
+    border-radius: 6px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  .stat-widget-icon svg {
+    width: 14px !important;
+    height: 14px !important;
+  }
+
+  .stat-widget-info {
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    min-width: 0 !important;
+  }
+
+  .stat-widget-val {
+    font-size: 0.9rem !important;
+    font-weight: 800 !important;
+    line-height: 1.2 !important;
+    white-space: nowrap !important;
+  }
+
+  .stat-widget-lbl {
+    font-size: 0.62rem !important;
+    line-height: 1.1 !important;
+    color: var(--text-muted) !important;
+  }
+
+  /* ----------------------------------------------------
+     3. EXPERIENCE LEVEL SELECTOR & PRESETS
+     ---------------------------------------------------- */
+  .experience-level-strip {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 12px 10px !important;
+    gap: 10px !important;
+    border-radius: 14px !important;
+    box-sizing: border-box !important;
+    margin-top: 12px !important;
+  }
+
+  .exp-strip-left {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    width: 100% !important;
+    gap: 6px !important;
+  }
+
+  .exp-strip-label {
+    font-size: 0.7rem !important;
+  }
+
+  .exp-tabs-group {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    width: 100% !important;
+    gap: 4px !important;
+    padding: 3px !important;
+  }
+
+  .exp-tab-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 0.68rem !important;
+    padding: 7px 4px !important;
+    border-radius: 6px !important;
+    gap: 4px !important;
+  }
+
+  .exp-strip-right {
+    width: 100% !important;
+  }
+
+  .exp-guide-hint {
+    font-size: 0.74rem !important;
+    padding: 8px 10px !important;
+    line-height: 1.4 !important;
+    border-radius: 8px !important;
+  }
+
+  .exp-presets-card {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 14px 10px !important;
+    border-radius: 14px !important;
+    box-sizing: border-box !important;
+  }
+
+  .preset-card-header {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 4px !important;
+    margin-bottom: 10px !important;
+  }
+
+  .preset-title-group {
+    display: flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+  }
+
+  .preset-title-group h4 {
+    font-size: 0.9rem !important;
+  }
+
+  .preset-badge {
+    font-size: 0.65rem !important;
+  }
+
+  .preset-buttons-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 8px !important;
+  }
+
+  .btn-preset-item {
+    display: flex !important;
+    align-items: center !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 10px 12px !important;
+    border-radius: 10px !important;
+    gap: 10px !important;
+  }
+
+  .btn-preset-item strong {
+    font-size: 0.82rem !important;
+  }
+
+  .btn-preset-item small {
+    font-size: 0.7rem !important;
+  }
+
+  /* ----------------------------------------------------
+     4. DAILY CHALLENGE CARD
+     ---------------------------------------------------- */
+  .daily-challenge-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    border-radius: 14px !important;
+    box-sizing: border-box !important;
+  }
+
+  .daily-card-inner {
+    padding: 14px 10px !important;
+    gap: 12px !important;
+    box-sizing: border-box !important;
+  }
+
+  .daily-card-top {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 8px !important;
+    width: 100% !important;
+  }
+
+  .daily-tag-group {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    width: 100% !important;
+    flex-wrap: wrap !important;
+    gap: 6px !important;
+  }
+
+  .daily-pill-badge {
+    font-size: 0.7rem !important;
+    padding: 4px 8px !important;
+  }
+
+  .daily-phase-badge {
+    font-size: 0.65rem !important;
+    padding: 3px 6px !important;
+  }
+
+  .daily-stats-pills {
+    display: flex !important;
+    align-items: center !important;
+    width: 100% !important;
+    gap: 6px !important;
+    flex-wrap: wrap !important;
+  }
+
+  .stat-pill {
+    font-size: 0.7rem !important;
+    padding: 4px 8px !important;
+  }
+
+  .daily-workout-title {
+    font-size: 1.05rem !important;
+    line-height: 1.3 !important;
+  }
+
+  .daily-workout-desc {
+    font-size: 0.78rem !important;
+    line-height: 1.4 !important;
+  }
+
+  .daily-card-actions {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 8px !important;
+  }
+
+  .btn-daily-action {
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    padding: 10px 14px !important;
+    font-size: 0.82rem !important;
+  }
+
+  /* ----------------------------------------------------
+     5. 5 MAIN TRAINING MODE CARDS
+     ---------------------------------------------------- */
+  .modes-section {
+    width: 100% !important;
+    box-sizing: border-box !important;
+    gap: 14px !important;
+  }
+
+  .section-title {
+    font-size: 1.15rem !important;
+  }
+
+  .section-count {
+    font-size: 0.72rem !important;
+  }
+
+  .cards-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 10px !important;
+    box-sizing: border-box !important;
+  }
+
+  .mode-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 14px !important;
+    border-radius: 12px !important;
+  }
+
+  .card-title {
+    font-size: 0.98rem !important;
+  }
+
+  .card-desc {
+    font-size: 0.78rem !important;
+    margin-bottom: 10px !important;
+  }
+
+  .card-footer {
+    padding-top: 10px !important;
+  }
+
+  /* ----------------------------------------------------
+     6. VIDEO SECTION
+     ---------------------------------------------------- */
+  .video-section {
+    width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 12px 0 !important;
+  }
+
+  .video-group-navigation-bar {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 8px !important;
+  }
+
+  .group-tabs-switch {
+    display: flex !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    flex-wrap: nowrap !important;
+    width: 100% !important;
+    gap: 6px !important;
+    padding-bottom: 4px !important;
+  }
+
+  .group-switch-btn {
+    flex-shrink: 0 !important;
+    white-space: nowrap !important;
+    font-size: 0.75rem !important;
+    padding: 7px 10px !important;
+    border-radius: 7px !important;
+  }
+
+  .video-search-box {
+    width: 100% !important;
+  }
+
+  .category-pills-row {
+    width: 100% !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    padding-bottom: 4px !important;
+  }
+
+  .pills-scroll-wrap {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    gap: 6px !important;
+  }
+
+  .btn-corner-pill,
+  .btn-match-pill {
+    flex-shrink: 0 !important;
+    white-space: nowrap !important;
+    font-size: 0.72rem !important;
+    padding: 5px 9px !important;
+    border-radius: 7px !important;
+  }
+
+  .video-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 12px !important;
+    box-sizing: border-box !important;
+  }
+
+  .video-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    border-radius: 12px !important;
+  }
+
+  /* ----------------------------------------------------
+     7. COURT EXPLAINER BANNER
+     ---------------------------------------------------- */
+  .court-explainer-banner {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    padding: 14px !important;
+    gap: 10px !important;
+    border-radius: 12px !important;
+    box-sizing: border-box !important;
+  }
+
+  .explainer-left {
+    display: flex !important;
+    gap: 10px !important;
+  }
+
+  .explainer-left h3 {
+    font-size: 0.88rem !important;
+  }
+
+  .explainer-left p {
+    font-size: 0.78rem !important;
+  }
+
+  /* ----------------------------------------------------
+     8. TRAINING ARENA & SETUP
+     ---------------------------------------------------- */
+  .setup-container {
+    padding: 10px 8px 40px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .setup-card {
+    padding: 14px 10px !important;
+    border-radius: 14px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .setup-grid-dual {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 14px !important;
+    width: 100% !important;
+  }
+
+  .arena-container {
+    padding: 6px 4px 60px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .grid-stage-wrapper {
+    width: 100% !important;
+    max-width: min(96vw, 54vh) !important;
+    margin: 0 auto !important;
+  }
+
+  .grid-9-board {
+    width: 100% !important;
+    aspect-ratio: 1 / 1 !important;
+    gap: 5px !important;
+    padding: 5px !important;
+  }
+}

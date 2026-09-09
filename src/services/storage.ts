@@ -278,12 +278,40 @@ export const storageService = {
     return { ...DEFAULT_DAILY_CHALLENGE };
   },
 
-  // Video YouTube Overrides (Cho phép người dùng tự gắn link YouTube Unlisted vào bất kỳ video nào)
+  // Video YouTube / Custom Overrides
   loadVideoOverrides(): Record<string, Partial<TacticsVideo>> {
     try {
       const data = localStorage.getItem('badminton_video_overrides_v1');
       if (data) {
-        return JSON.parse(data);
+        const parsed = JSON.parse(data);
+        // Automatically purge any dummy/broken generated TikTok URLs
+        const cleaned: Record<string, Partial<TacticsVideo>> = {};
+        let hasBad = false;
+        for (const [k, v] of Object.entries(parsed)) {
+          const url = ((v as any)?.videoUrl || '') as string;
+          if (
+            url.includes('8192839') || 
+            url.includes('8293819') || 
+            url.includes('7470') || 
+            url.includes('7462819') || 
+            url.includes('7463819') || 
+            url.includes('7464819') || 
+            url.includes('7465819') || 
+            url.includes('7466819') || 
+            url.includes('7467819') || 
+            url.includes('7468819') || 
+            url.includes('7469819')
+          ) {
+            hasBad = true;
+          } else {
+            cleaned[k] = v as Partial<TacticsVideo>;
+          }
+        }
+        if (hasBad) {
+          localStorage.setItem('badminton_video_overrides_v1', JSON.stringify(cleaned));
+          return cleaned;
+        }
+        return parsed;
       }
     } catch (e) {
       console.warn('Could not load video overrides', e);

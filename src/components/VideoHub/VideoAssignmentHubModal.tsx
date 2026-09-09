@@ -3,7 +3,6 @@ import { BADMINTON_POSITIONS } from '../../data/movements';
 import { TACTICS_VIDEOS } from '../../data/videos';
 import { TacticsVideo, SkillLevel, VideoCategory } from '../../types';
 import { storageService } from '../../services/storage';
-import DEFAULT_OVERRIDES from '../../data/defaultOverrides.json';
 import { extractYouTubeId, extractTikTokId, isTikTokUrl } from '../Video/EditYouTubeLinkModal';
 import { YouTubeGuideModal } from '../Video/YouTubeGuideModal';
 import { BatchImportExportModal } from '../Video/BatchImportExportModal';
@@ -293,12 +292,14 @@ export const VideoAssignmentHubModal: React.FC<VideoAssignmentHubModalProps> = (
     });
   };
 
-  // Handle 1-click Auto-Fill All 130 TikTok Videos with titles matching badminton techniques
-  const handleAutoFillAllTikTok = () => {
-    if (window.confirm('Tự động điền tất cả 130 video TikTok chuẩn kỹ thuật cầu lông cho toàn bộ các ô và kỹ thuật?')) {
-      storageService.importVideoOverrides(DEFAULT_OVERRIDES);
+  // Handle Reset All Custom Videos to Defaults
+  const handleResetAllToDefault = () => {
+    if (window.confirm('Khôi phục toàn bộ các video về liên kết chuẩn ban đầu của hệ thống?')) {
+      storageService.saveVideoOverride('__reset__', {});
+      localStorage.removeItem('badminton_video_overrides_v1');
+      setInputUrls({});
       refreshOverrides();
-      setStatusFilter('CONFIGURED');
+      setStatusFilter('ALL');
     }
   };
 
@@ -325,19 +326,12 @@ export const VideoAssignmentHubModal: React.FC<VideoAssignmentHubModalProps> = (
 
           <div className="hub-header-actions">
             <button 
-              className="btn-hub-tool btn-autofill-tiktok"
-              onClick={handleAutoFillAllTikTok}
-              title="Tự động nạp 130 video TikTok cầu lông đã được khớp sẵn theo từng tiêu đề động tác"
-              style={{
-                background: 'linear-gradient(135deg, #00f2fe 0%, #4facfe 100%)',
-                color: '#000',
-                fontWeight: 800,
-                border: 'none',
-                boxShadow: '0 4px 14px rgba(0,242,254,0.35)'
-              }}
+              className="btn-hub-tool btn-reset-all"
+              onClick={handleResetAllToDefault}
+              title="Xóa toàn bộ các link tùy chỉnh đã lưu và khôi phục về mặc định"
             >
-              <Sparkles size={15} />
-              <span>Nạp 130 Video TikTok (1 Chạm)</span>
+              <RotateCcw size={15} className="text-warning" />
+              <span>Khôi Phục Gốc Tất Cả</span>
             </button>
 
             <button 

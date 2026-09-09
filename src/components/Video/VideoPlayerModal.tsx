@@ -372,26 +372,43 @@ export const VideoPlayerModal: React.FC<VideoPlayerModalProps> = ({
               />
             </div>
           ) : (tiktokId || isTikTok) ? (
-            <div className="theater-tiktok-wrapper" style={{ width: '100%', height: '100%', minHeight: '520px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', background: '#070d18', position: 'relative', padding: '16px 0' }}>
-              {/* Quick direct open floating pill */}
-              <div style={{ position: 'absolute', top: 12, right: 16, zIndex: 20 }}>
-                <a 
-                  href={video.videoUrl} 
-                  target="_blank" 
-                  rel="noreferrer" 
-                  className="btn-open-external"
-                  style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', padding: '8px 16px', background: 'rgba(0,0,0,0.85)', color: '#00f2fe', borderRadius: '24px', fontSize: '12px', fontWeight: 700, border: '1px solid rgba(0,242,254,0.4)', textDecoration: 'none', boxShadow: '0 4px 12px rgba(0,0,0,0.5)' }}
-                >
-                  <ExternalLink size={14} /> Mở tab riêng xem mượt 60fps
-                </a>
+            <div className="theater-tiktok-wrapper" style={{ width: '100%', height: '100%', minHeight: '520px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', background: '#070d18', position: 'relative', padding: '20px 16px' }}>
+              {/* Overload-protect warning & direct open card */}
+              <div style={{ width: '100%', maxWidth: '440px', background: 'rgba(15, 23, 42, 0.95)', border: '1px solid rgba(0, 242, 254, 0.3)', borderRadius: '16px', padding: '16px 20px', marginBottom: '14px', textAlign: 'center', boxShadow: '0 8px 24px rgba(0,0,0,0.6)' }}>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', color: '#00f2fe', fontWeight: 700, fontSize: '14px', marginBottom: '8px' }}>
+                  <AlertTriangle size={18} className="text-warning" />
+                  <span>TikTok Đang Chặn Nhúng (Overload Protect)</span>
+                </div>
+                <p style={{ color: '#94a3b8', fontSize: '12px', lineHeight: '1.5', margin: '0 0 14px 0' }}>
+                  Hệ thống bảo vệ của TikTok thường chặn phát qua iframe trên web. Hãy bấm nút dưới đây để xem mượt mà 60fps hoặc chuyển sang dùng link YouTube:
+                </p>
+                <div style={{ display: 'flex', gap: '10px', justifyContent: 'center', flexWrap: 'wrap' }}>
+                  <a 
+                    href={video.videoUrl} 
+                    target="_blank" 
+                    rel="noreferrer" 
+                    style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', padding: '9px 18px', background: 'linear-gradient(135deg, #00f2fe 0%, #4facfe 100%)', color: '#000', borderRadius: '24px', fontSize: '13px', fontWeight: 800, textDecoration: 'none', boxShadow: '0 4px 14px rgba(0,242,254,0.4)' }}
+                  >
+                    <ExternalLink size={15} /> Xem Trực Tiếp Trên TikTok
+                  </a>
+                  {onEditYouTube && (
+                    <button 
+                      onClick={() => onEditYouTube(video)}
+                      style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', padding: '9px 16px', background: 'rgba(239, 68, 68, 0.15)', color: '#ef4444', borderRadius: '24px', fontSize: '13px', fontWeight: 700, border: '1px solid rgba(239, 68, 68, 0.4)', cursor: 'pointer' }}
+                    >
+                      <Youtube size={15} /> Đổi sang link YouTube
+                    </button>
+                  )}
+                </div>
               </div>
 
-              <div style={{ width: '100%', maxWidth: '345px', height: '100%', minHeight: '500px', borderRadius: '16px', overflow: 'hidden', boxShadow: '0 8px 32px rgba(0,0,0,0.8)', border: '1px solid rgba(255,255,255,0.1)', background: '#000', display: 'flex', justifyContent: 'center' }}>
+              {/* TikTok iframe embed attempt */}
+              <div style={{ width: '100%', maxWidth: '345px', height: '100%', minHeight: '440px', borderRadius: '16px', overflow: 'hidden', boxShadow: '0 8px 32px rgba(0,0,0,0.8)', border: '1px solid rgba(255,255,255,0.1)', background: '#000', display: 'flex', justifyContent: 'center' }}>
                 <iframe
                   src={tiktokId ? `https://www.tiktok.com/embed/v2/${tiktokId}` : `https://www.tiktok.com/embed/v2/?url=${encodeURIComponent(video.videoUrl)}`}
                   title={video.title}
                   className="theater-tiktok-iframe"
-                  style={{ width: '100%', height: '100%', minHeight: '500px', border: 'none', background: '#000' }}
+                  style={{ width: '100%', height: '100%', minHeight: '440px', border: 'none', background: '#000' }}
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                   allowFullScreen
                 />

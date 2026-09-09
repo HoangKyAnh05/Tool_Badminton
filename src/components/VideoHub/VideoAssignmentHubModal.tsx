@@ -626,7 +626,7 @@ export const VideoAssignmentHubModal: React.FC<VideoAssignmentHubModalProps> = (
         {/* Modal Bottom Footer */}
         <div className="video-hub-footer">
           <div className="hub-footer-hint">
-            <span>💡 <strong>Ghi chú:</strong> Tất cả link video bạn lưu tại đây sẽ tự động hiển thị trong <strong>Sân Đấu (Arena)</strong> và <strong>Kho 130 Video Giáo Trình</strong> ngay khi bạn quay lại!</span>
+            <span>💡 <strong>Khuyên dùng:</strong> Sử dụng <strong>Link YouTube / YouTube Shorts</strong> để video tải nhanh trong 0.1s, mượt mà 60fps và không bị giới hạn <em>Overload Protect</em> như TikTok!</span>
           </div>
 
           <button className="btn-hub-done" onClick={onClose}>

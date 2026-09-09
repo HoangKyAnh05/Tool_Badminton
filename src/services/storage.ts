@@ -173,6 +173,27 @@ export const storageService = {
     }
   },
 
+  unmarkVideoWatched(videoId: string): void {
+    try {
+      const current = storageService.loadWatchedVideos();
+      const updated = current.filter(id => id !== videoId);
+      localStorage.setItem(STORAGE_KEYS.WATCHED_VIDEOS, JSON.stringify(updated));
+    } catch (e) {
+      console.warn('Could not unmark video as watched', e);
+    }
+  },
+
+  toggleVideoWatched(videoId: string): boolean {
+    const isWatched = storageService.isVideoWatched(videoId);
+    if (isWatched) {
+      storageService.unmarkVideoWatched(videoId);
+      return false;
+    } else {
+      storageService.markVideoWatched(videoId);
+      return true;
+    }
+  },
+
   isVideoWatched(videoId: string): boolean {
     const list = storageService.loadWatchedVideos();
     return list.includes(videoId);

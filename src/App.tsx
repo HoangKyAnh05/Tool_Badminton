@@ -16,19 +16,6 @@ export const App: React.FC = () => {
   const [isHistoryOpen, setIsHistoryOpen] = useState<boolean>(false);
   const [isRecorderOpen, setIsRecorderOpen] = useState<boolean>(false);
   const [isVideoHubOpen, setIsVideoHubOpen] = useState<boolean>(false);
-  const [isMobileView, setIsMobileView] = useState<boolean>(() => {
-    const saved = localStorage.getItem('badminton_force_mobile_view');
-    if (saved !== null) return saved === 'true';
-    return window.innerWidth <= 768;
-  });
-
-  const handleToggleMobileView = () => {
-    setIsMobileView(prev => {
-      const next = !prev;
-      localStorage.setItem('badminton_force_mobile_view', String(next));
-      return next;
-    });
-  };
 
   const training = useTraining();
   const camera = useCamera(training.config.cameraEnabled);
@@ -63,7 +50,7 @@ export const App: React.FC = () => {
   }, [training.state]);
 
   return (
-    <div className={`app-layout ${isMobileView ? 'is-forced-mobile-mode' : ''}`}>
+    <div className="app-layout">
       {/* Top Navbar */}
       <Navbar
         currentMode={training.config.mode}
@@ -73,8 +60,6 @@ export const App: React.FC = () => {
         onOpenHistory={() => setIsHistoryOpen(true)}
         onOpenRecorder={() => setIsRecorderOpen(true)}
         onOpenVideoHub={() => setIsVideoHubOpen(true)}
-        isMobileView={isMobileView}
-        onToggleMobileView={handleToggleMobileView}
         onGoHome={() => {
           if (training.state === 'ACTIVE' || training.state === 'COUNTDOWN') {
             if (window.confirm('Bạn có chắc muốn thoát bài tập đang diễn ra không?')) {

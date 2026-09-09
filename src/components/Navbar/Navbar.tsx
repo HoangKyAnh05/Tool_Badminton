@@ -1,5 +1,5 @@
 import React from 'react';
-import { Volume2, VolumeX, History, Activity, Camera, FolderSync, Smartphone, Monitor } from 'lucide-react';
+import { Volume2, VolumeX, History, Activity, Camera, FolderSync } from 'lucide-react';
 import { TrainingMode, SessionState } from '../../types';
 
 interface NavbarProps {
@@ -11,8 +11,6 @@ interface NavbarProps {
   onOpenRecorder: () => void;
   onOpenVideoHub: () => void;
   onGoHome: () => void;
-  isMobileView?: boolean;
-  onToggleMobileView?: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
@@ -23,36 +21,21 @@ export const Navbar: React.FC<NavbarProps> = ({
   onOpenHistory,
   onOpenRecorder,
   onOpenVideoHub,
-  onGoHome,
-  isMobileView,
-  onToggleMobileView
+  onGoHome
 }) => {
   const isTraining = state === 'ACTIVE' || state === 'COUNTDOWN' || state === 'REST' || state === 'PAUSED';
 
   return (
     <header className="app-navbar">
       <div className="navbar-container">
-        <div className="navbar-left-group">
-          {onToggleMobileView && (
-            <button 
-              className={`btn-mobile-view-toggle ${isMobileView ? 'is-active' : ''}`}
-              onClick={onToggleMobileView}
-              title={isMobileView ? "Chuyển về giao diện máy tính" : "Chuyển sang giao diện điện thoại"}
-            >
-              {isMobileView ? <Monitor size={16} className="text-emerald" /> : <Smartphone size={16} className="text-cyan" />}
-              <span className="mobile-toggle-label">{isMobileView ? 'Giao diện PC' : 'Giao diện Điện thoại'}</span>
-            </button>
-          )}
-
-          {/* Brand */}
-          <div className="navbar-brand" onClick={onGoHome} role="button" tabIndex={0}>
-            <div className="brand-logo-badge">
-              <Activity size={22} className="brand-icon" />
-            </div>
-            <div className="brand-texts">
-              <span className="brand-name">BADMINTON<span className="highlight-text">PRO</span></span>
-              <span className="brand-tag">REACTION & FOOTWORK TRAINER</span>
-            </div>
+        {/* Brand */}
+        <div className="navbar-brand" onClick={onGoHome} role="button" tabIndex={0}>
+          <div className="brand-logo-badge">
+            <Activity size={22} className="brand-icon" />
+          </div>
+          <div className="brand-texts">
+            <span className="brand-name">BADMINTON<span className="highlight-text">PRO</span></span>
+            <span className="brand-tag">REACTION & FOOTWORK TRAINER</span>
           </div>
         </div>
 

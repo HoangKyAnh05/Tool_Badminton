@@ -17,19 +17,22 @@ import {
   Scan,
   Tv
 } from 'lucide-react';
+import { Youtube } from './YoutubeIcon';
 
 interface VideoPlayerModalProps {
   video: TacticsVideo;
   isOpen: boolean;
   onClose: () => void;
   onWatchedChanged: () => void;
+  onEditYouTube?: (video: TacticsVideo) => void;
 }
 
 export const VideoPlayerModal: React.FC<VideoPlayerModalProps> = ({
   video,
   isOpen,
   onClose,
-  onWatchedChanged
+  onWatchedChanged,
+  onEditYouTube
 }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const progressBarRef = useRef<HTMLDivElement>(null);
@@ -313,9 +316,21 @@ export const VideoPlayerModal: React.FC<VideoPlayerModalProps> = ({
             <p className="theater-subtitle">{video.subTitle}</p>
           </div>
 
-          <button className="theater-close-btn" onClick={onClose} title="Đóng">
-            <X size={22} />
-          </button>
+          <div className="theater-header-actions" style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+            {onEditYouTube && (
+              <button 
+                className="btn-theater-edit-yt"
+                onClick={() => onEditYouTube(video)}
+                title="Gắn hoặc đổi link YouTube cho clip này"
+              >
+                <Youtube size={15} className="text-danger" />
+                <span>Gắn / Sửa link YouTube</span>
+              </button>
+            )}
+            <button className="theater-close-btn" onClick={onClose} title="Đóng">
+              <X size={22} />
+            </button>
+          </div>
         </div>
 
         {/* Video Canvas Container */}

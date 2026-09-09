@@ -34,11 +34,18 @@ export const HomeDashboard: React.FC<HomeDashboardProps> = ({
 }) => {
   const [lifetime, setLifetime] = useState<LifetimeStats>(() => storageService.loadLifetimeStats());
   const [dailyProgress, setDailyProgress] = useState(() => storageService.loadDailyProgress());
+  const [expLevel, setExpLevel] = useState<'BEGINNER' | 'ADVANCED'>(() => storageService.loadUserExperienceLevel());
 
   useEffect(() => {
     setLifetime(storageService.loadLifetimeStats());
     setDailyProgress(storageService.loadDailyProgress());
+    setExpLevel(storageService.loadUserExperienceLevel());
   }, []);
+
+  const handleToggleExpLevel = (level: 'BEGINNER' | 'ADVANCED') => {
+    setExpLevel(level);
+    storageService.saveUserExperienceLevel(level);
+  };
 
   const handleCompleteDay = (dayNumber: number) => {
     const updated = storageService.completeDayWorkout(dayNumber);
@@ -163,6 +170,114 @@ export const HomeDashboard: React.FC<HomeDashboardProps> = ({
               <span className="stat-widget-lbl">Kỷ lục phản xạ</span>
             </div>
           </div>
+        </div>
+      </div>
+
+      {/* Experience Level Selector Bar (Nghiệp vụ Người Mới vs Nâng Cao) */}
+      <div className="experience-level-strip animate-fade-in">
+        <div className="exp-strip-left">
+          <span className="exp-strip-label">CHẾ ĐỘ TẬP:</span>
+          <div className="exp-tabs-group">
+            <button 
+              className={`exp-tab-btn ${expLevel === 'BEGINNER' ? 'is-active-beginner' : ''}`}
+              onClick={() => handleToggleExpLevel('BEGINNER')}
+            >
+              <span className="exp-dot dot-green" />
+              <span>NGƯỜI MỚI (PHONG TRÀO)</span>
+            </button>
+            <button 
+              className={`exp-tab-btn ${expLevel === 'ADVANCED' ? 'is-active-advanced' : ''}`}
+              onClick={() => handleToggleExpLevel('ADVANCED')}
+            >
+              <span className="exp-dot dot-red" />
+              <span>NÂNG CAO (THI ĐẤU)</span>
+            </button>
+          </div>
+        </div>
+        <div className="exp-strip-right">
+          {expLevel === 'BEGINNER' ? (
+            <div className="exp-guide-hint">
+              <span>🌱 <strong>Lời khuyên cho bạn:</strong> Tập trung chuẩn hóa nhịp chân Split-step & Lunge trước. Sử dụng tốc độ Cơ bản (4s - 5s) hoặc chế độ Tự do (phím CÁCH) để không bị vấp ngã.</span>
+            </div>
+          ) : (
+            <div className="exp-guide-hint">
+              <span>⚡ <strong>Thử thách thi đấu:</strong> Đẩy tốc độ lên 0.8s - 1.5s, bứt tốc 9 ô sân liên tục, tập trung đón đập cầu và ve chéo góc biến ảo.</span>
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* Adaptive Quick Presets for Level */}
+      <div className={`exp-presets-card ${expLevel === 'BEGINNER' ? 'preset-beginner' : 'preset-advanced'}`}>
+        <div className="preset-card-header">
+          <div className="preset-title-group">
+            {expLevel === 'BEGINNER' ? (
+              <>
+                <Footprints size={18} className="text-emerald" />
+                <h4>Gợi Ý Bắt Đầu Cho Người Mới</h4>
+              </>
+            ) : (
+              <>
+                <Zap size={18} className="text-amber" />
+                <h4>Gói Luyện Tập Bứt Tốc Cho VĐV Nâng Cao</h4>
+              </>
+            )}
+          </div>
+          <span className="preset-badge">
+            {expLevel === 'BEGINNER' ? 'Dễ làm quen • Tránh chấn thương' : 'Cường độ cao • Phản xạ thi đấu'}
+          </span>
+        </div>
+
+        <div className="preset-buttons-grid">
+          {expLevel === 'BEGINNER' ? (
+            <>
+              <button className="btn-preset-item" onClick={() => onSelectMode('CHÂN')}>
+                <Footprints size={16} className="text-emerald" />
+                <div>
+                  <strong>Bộ pháp 4 góc sân cơ bản</strong>
+                  <small>Split-step, nhịp đệm chân lunge chuẩn xác</small>
+                </div>
+              </button>
+              <button className="btn-preset-item" onClick={() => onSelectMode('TAY')}>
+                <Target size={16} className="text-cyan" />
+                <div>
+                  <strong>Cầm vợt & Kê lưới trái tay</strong>
+                  <small>Cổ tay thả lỏng, mặt vợt 45 độ đón cầu</small>
+                </div>
+              </button>
+              <button className="btn-preset-item" onClick={onQuickStart}>
+                <Play size={16} className="text-lime" />
+                <div>
+                  <strong>Tập luyện phản xạ tự do</strong>
+                  <small>Không áp lực thời gian, tự do làm chủ nhịp</small>
+                </div>
+              </button>
+            </>
+          ) : (
+            <>
+              <button className="btn-preset-item" onClick={() => onSelectMode('TAY + CHÂN')}>
+                <Zap size={16} className="text-amber" />
+                <div>
+                  <strong>Phối hợp tay chân 9 ô tốc độ cao</strong>
+                  <small>Tiếp đất cùng lúc chạm cầu, hồi tâm tức thì</small>
+                </div>
+              </button>
+              <button className="btn-preset-item" onClick={() => onSelectMode('TOÀN BỘ')}>
+                <Layers size={16} className="text-emerald" />
+                <div>
+                  <strong>Mô phỏng trận đấu liên hoàn</strong>
+                  <small>Trộn ngẫu nhiên kỹ thuật, ép phản xạ dưới 1.5s</small>
+                </div>
+              </button>
+              <button className="btn-preset-item" onClick={onQuickStart}>
+                <Activity size={16} className="text-danger" />
+                <div>
+                  <strong>Thử thách phản xạ cực hạn 0.8s</strong>
+                  <small>Đo thời gian phản xạ ms & xếp hạng Rank</small>
+                </div>
+              </button>
+            </>
+          )}
         </div>
       </div>
 

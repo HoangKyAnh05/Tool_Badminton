@@ -102,6 +102,45 @@ export const TrainingSetup: React.FC<TrainingSetupProps> = ({
           </div>
         </div>
 
+        {/* Quick Presets for Beginner vs Advanced */}
+        <div className="setup-preset-switch-box">
+          <span className="preset-switch-title">Lựa chọn nhanh theo trình độ:</span>
+          <div className="preset-switch-buttons">
+            <button 
+              type="button"
+              className={`btn-quick-preset preset-btn-beginner ${config.actionDuration >= 4.0 || config.speedPreset === 'unlimited' ? 'is-active' : ''}`}
+              onClick={() => {
+                onUpdateConfig({
+                  speedPreset: 'slow',
+                  actionDuration: 4.0,
+                  prepDuration: 5,
+                  totalRounds: 10,
+                  soundEnabled: true
+                });
+              }}
+            >
+              <Footprints size={15} />
+              <span>🔰 Người Mới (10 hiệp • 4.0s thoải mái • Bật âm thanh)</span>
+            </button>
+            <button 
+              type="button"
+              className={`btn-quick-preset preset-btn-advanced ${config.actionDuration < 2.0 && config.speedPreset !== 'unlimited' ? 'is-active' : ''}`}
+              onClick={() => {
+                onUpdateConfig({
+                  speedPreset: 'fast',
+                  actionDuration: 1.5,
+                  prepDuration: 3,
+                  totalRounds: 25,
+                  soundEnabled: true
+                });
+              }}
+            >
+              <Zap size={15} />
+              <span>⚡ Thi Đấu Nâng Cao (25 hiệp • 1.5s bứt tốc)</span>
+            </button>
+          </div>
+        </div>
+
         {/* 1. Select Mode */}
         <div className="setup-section">
           <label className="section-label">1. CHỌN CHẾ ĐỘ TẬP</label>

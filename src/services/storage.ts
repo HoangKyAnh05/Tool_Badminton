@@ -273,6 +273,102 @@ export const storageService = {
       console.warn('Could not reset daily challenge', e);
     }
     return { ...DEFAULT_DAILY_CHALLENGE };
+  },
+
+  // Video YouTube Overrides (Cho phép người dùng tự gắn link YouTube Unlisted vào bất kỳ video nào)
+  loadVideoOverrides(): Record<string, Partial<TacticsVideo>> {
+    try {
+      const data = localStorage.getItem('badminton_video_overrides_v1');
+      if (data) {
+        return JSON.parse(data);
+      }
+    } catch (e) {
+      console.warn('Could not load video overrides', e);
+    }
+    return {};
+  },
+
+  saveVideoOverride(videoId: string, override: Partial<TacticsVideo>): void {
+    try {
+      const current = this.loadVideoOverrides();
+      current[videoId] = {
+        ...(current[videoId] || {}),
+        ...override,
+        isCustom: true
+      };
+      localStorage.setItem('badminton_video_overrides_v1', JSON.stringify(current));
+    } catch (e) {
+      console.warn('Could not save video override', e);
+    }
+  },
+
+  removeVideoOverride(videoId: string): void {
+    try {
+      const current = this.loadVideoOverrides();
+      delete current[videoId];
+      localStorage.setItem('badminton_video_overrides_v1', JSON.stringify(current));
+    } catch (e) {
+      console.warn('Could not remove video override', e);
+    }
+  },
+
+  // Export & Import toàn bộ overrides ra/vào JSON
+  exportVideoOverrides(): string {
+    const overrides = this.loadVideoOverrides();
+    const customVideos = this.loadCustomVideos();
+    return JSON.stringify({
+      version: '1.0',
+      exportDate: new Date().toISOString(),
+      overrides,
+      customVideos
+    }, null, 2);
+  },
+
+  importVideoOverrides(jsonString: string): { success: boolean; count: number; error?: string } {
+    try {
+      const data = JSON.parse(jsonString);
+      let count = 0;
+      if (data.overrides && typeof data.overrides === 'object') {
+        const current = this.loadVideoOverrides();
+        Object.assign(current, data.overrides);
+        localStorage.setItem('badminton_video_overrides_v1', JSON.stringify(current));
+        count += Object.keys(data.overrides).length;
+      }
+      if (Array.isArray(data.customVideos)) {
+        const existing = this.loadCustomVideos();
+        data.customVideos.forEach((cv: TacticsVideo) => {
+          if (!existing.some(x => x.id === cv.id)) {
+            existing.push(cv);
+            count++;
+          }
+        });
+        localStorage.setItem('badminton_custom_videos_v1', JSON.stringify(existing));
+      }
+      return { success: true, count };
+    } catch (err: any) {
+      return { success: false, count: 0, error: err?.message || 'Định dạng JSON không hợp lệ' };
+    }
+  },
+
+  // User Experience Level (Người Mới vs Nâng Cao)
+  loadUserExperienceLevel(): 'BEGINNER' | 'ADVANCED' {
+    try {
+      const val = localStorage.getItem('badminton_user_experience_level_v1');
+      if (val === 'ADVANCED' || val === 'BEGINNER') {
+        return val;
+      }
+    } catch (e) {
+      console.warn('Could not load experience level', e);
+    }
+    return 'BEGINNER'; // Mặc định thân thiện cho người mới
+  },
+
+  saveUserExperienceLevel(level: 'BEGINNER' | 'ADVANCED'): void {
+    try {
+      localStorage.setItem('badminton_user_experience_level_v1', level);
+    } catch (e) {
+      console.warn('Could not save experience level', e);
+    }
   }
 };
 

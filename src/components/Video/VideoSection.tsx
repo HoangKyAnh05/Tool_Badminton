@@ -3,6 +3,9 @@ import { TACTICS_VIDEOS } from '../../data/videos';
 import { TacticsVideo, VideoCategory, SkillLevel } from '../../types';
 import { storageService } from '../../services/storage';
 import { VideoPlayerModal } from './VideoPlayerModal';
+import { EditYouTubeLinkModal, extractYouTubeId } from './EditYouTubeLinkModal';
+import { YouTubeGuideModal } from './YouTubeGuideModal';
+import { BatchImportExportModal } from './BatchImportExportModal';
 import { 
   Tv, 
   Play, 
@@ -12,8 +15,13 @@ import {
   MapPin,
   Search,
   Layers,
-  Award
+  Award,
+  HelpCircle,
+  FileJson,
+  Edit3,
+  Sparkles
 } from 'lucide-react';
+import { Youtube } from './YoutubeIcon';
 
 type FilterCategory = 'ALL' | VideoCategory;
 type GroupTab = 'ALL' | 'CORNERS' | 'MATCHES';
@@ -46,13 +54,21 @@ export const VideoSection: React.FC = () => {
   const [selectedVideo, setSelectedVideo] = useState<TacticsVideo | null>(null);
   const [watchedIds, setWatchedIds] = useState<string[]>([]);
   const [customVideos, setCustomVideos] = useState<TacticsVideo[]>([]);
+  const [videoOverrides, setVideoOverrides] = useState<Record<string, Partial<TacticsVideo>>>(() => storageService.loadVideoOverrides());
+
+  // Modals state
   const [isAddModalOpen, setIsAddModalOpen] = useState<boolean>(false);
+  const [isEditModalOpen, setIsEditModalOpen] = useState<boolean>(false);
+  const [editingVideo, setEditingVideo] = useState<TacticsVideo | null>(null);
+  const [isGuideModalOpen, setIsGuideModalOpen] = useState<boolean>(false);
+  const [isBatchModalOpen, setIsBatchModalOpen] = useState<boolean>(false);
 
   // New video form states
   const [newUrl, setNewUrl] = useState<string>('');
   const [newTitle, setNewTitle] = useState<string>('');
   const [newSubTitle, setNewSubTitle] = useState<string>('');
   const [newCategory, setNewCategory] = useState<VideoCategory>('POS_1');
+  const [newLevel, setNewLevel] = useState<SkillLevel>('Cơ bản');
   const [newDesc, setNewDesc] = useState<string>('');
   const [newTags, setNewTags] = useState<string>('Thực chiến, Kỹ thuật');
 
@@ -64,15 +80,24 @@ export const VideoSection: React.FC = () => {
     setCustomVideos(storageService.loadCustomVideos());
   };
 
+  const refreshOverrides = () => {
+    setVideoOverrides(storageService.loadVideoOverrides());
+  };
+
   useEffect(() => {
     refreshWatchedStatus();
     refreshCustomVideos();
+    refreshOverrides();
   }, []);
 
-  // Merge predefined library with custom user-added videos
+  // Merge predefined library with overrides and custom user-added videos
   const allVideos = useMemo(() => {
-    return [...TACTICS_VIDEOS, ...customVideos];
-  }, [customVideos]);
+    const mergedBase = TACTICS_VIDEOS.map(v => {
+      const override = videoOverrides[v.id];
+      return override ? { ...v, ...override } : v;
+    });
+    return [...mergedBase, ...customVideos];
+  }, [customVideos, videoOverrides]);
 
   // Filter videos by category, level, and search query
   const filteredVideos = useMemo(() => {
@@ -103,6 +128,7 @@ export const VideoSection: React.FC = () => {
   const totalVideos = allVideos.length;
   const completedCount = allVideos.filter(v => watchedIds.includes(v.id)).length;
   const percentCompleted = totalVideos > 0 ? Math.round((completedCount / totalVideos) * 100) : 0;
+  const customCount = Object.keys(videoOverrides).length + customVideos.length;
 
   const handleAddVideo = (e: React.FormEvent) => {
     e.preventDefault();
@@ -117,6 +143,7 @@ export const VideoSection: React.FC = () => {
       category: newCategory,
       title: newTitle.trim(),
       subTitle: newSubTitle.trim() || 'Video phân tích thực chiến',
+      level: newLevel,
       description: newDesc.trim() || 'Video giáo trình thực chiến do người dùng đính kèm.',
       videoUrl: newUrl.trim(),
       durationText: 'Tự thêm',
@@ -143,13 +170,30 @@ export const VideoSection: React.FC = () => {
     }
   };
 
-  // Helper to get YouTube thumbnail or video preview
-  const getThumbnailSrc = (video: TacticsVideo) => {
+  const handleOpenEdit = (e: React.MouseEvent, video: TacticsVideo) => {
+    e.stopPropagation();
+    setEditingVideo(video);
+    setIsEditModalOpen(true);
+  };
+
+  const handleSaveVideoOverride = (updated: TacticsVideo) => {
+    refreshOverrides();
+    refreshCustomVideos();
+    if (selectedVideo && selectedVideo.id === updated.id) {
+      setSelectedVideo(updated);
+    }
+  };
+
+  const handleResetToDefault = (videoId: string) => {
+    refreshOverrides();
+    refreshCustomVideos();
+  };
+
+  const getThumbnailSrc = (video: TacticsVideo): string => {
     if (video.thumbnailUrl) return video.thumbnailUrl;
-    const regExp = /(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=|shorts\/))([\w-]{11})/;
-    const match = video.videoUrl.match(regExp);
-    if (match && match[1]) {
-      return `https://img.youtube.com/vi/${match[1]}/hqdefault.jpg`;
+    const ytId = extractYouTubeId(video.videoUrl);
+    if (ytId) {
+      return `https://img.youtube.com/vi/${ytId}/hqdefault.jpg`;
     }
     return '';
   };
@@ -168,12 +212,12 @@ export const VideoSection: React.FC = () => {
       <div className="section-title-wrap video-section-header">
         <div className="section-header-left">
           <div className="video-eyebrow">
-            <Tv size={16} className="text-cyan" />
-            <span>KHO VIDEO GIÁO TRÌNH & CHIẾN THUẬT THỰC CHIẾN (10 VIDEO / CATEGORY)</span>
+            <Youtube size={16} className="text-danger" />
+            <span>KHO VIDEO GIÁO TRÌNH & CHIẾN THUẬT (PHƯƠNG ÁN YOUTUBE UNLISTED)</span>
           </div>
           <h2 className="section-title">HỆ THỐNG VIDEO THEO TỪNG GÓC SÂN & THỂ THỨC THI ĐẤU</h2>
           <p className="video-section-subtitle">
-            Khám phá 90 video chia đều cho 9 vị trí góc sân (mỗi ô 10 video từ Cơ bản đến Nâng cao) cùng 40 video chiến thuật chuyên sâu Đơn Nam, Đôi Nam, Đơn Nữ, Đôi Nữ.
+            Khám phá 90 video chia đều cho 9 vị trí góc sân cùng 40 video chiến thuật chuyên sâu. Bạn có thể tự upload video lên YouTube Unlisted và gắn link thay thế bất kỳ lúc nào!
           </p>
         </div>
 
@@ -197,6 +241,39 @@ export const VideoSection: React.FC = () => {
               <span>Đã xem {completedCount}/{totalVideos} video ({percentCompleted}%)</span>
             )}
           </div>
+        </div>
+      </div>
+
+      {/* YouTube Management Toolbar */}
+      <div className="youtube-management-bar">
+        <div className="yt-mgmt-left">
+          <button 
+            className="btn-yt-toolbar btn-guide-link"
+            onClick={() => setIsGuideModalOpen(true)}
+            title="Xem hướng dẫn cách tải video lên YouTube Unlisted"
+          >
+            <HelpCircle size={15} className="text-cyan" />
+            <span>Cách Up Video YouTube Unlisted (3 bước)</span>
+          </button>
+
+          <button 
+            className="btn-yt-toolbar btn-json-backup"
+            onClick={() => setIsBatchModalOpen(true)}
+            title="Sao lưu danh sách link ra file JSON hoặc dán đồng bộ nhiều link cùng lúc"
+          >
+            <FileJson size={15} className="text-emerald" />
+            <span>Sao Lưu / Nhập JSON {customCount > 0 && <strong className="yt-counter-badge">({customCount})</strong>}</span>
+          </button>
+        </div>
+
+        <div className="yt-mgmt-right">
+          <button
+            className="btn-add-video-link"
+            onClick={() => setIsAddModalOpen(true)}
+          >
+            <Plus size={15} />
+            <span>GẮN THÊM VIDEO MỚI</span>
+          </button>
         </div>
       </div>
 
@@ -296,7 +373,7 @@ export const VideoSection: React.FC = () => {
         )}
       </div>
 
-      {/* Tier 3: Sub-filters (Skill Level) & Add Video Button */}
+      {/* Tier 3: Sub-filters (Skill Level) */}
       <div className="video-subfilter-toolbar">
         <div className="level-filters-group">
           <span className="filter-label">Cấp độ:</span>
@@ -311,13 +388,9 @@ export const VideoSection: React.FC = () => {
           ))}
         </div>
 
-        <button
-          className="btn-add-video-link"
-          onClick={() => setIsAddModalOpen(true)}
-        >
-          <Plus size={16} />
-          <span>GẮN LINK VIDEO MỚI</span>
-        </button>
+        <div className="filter-stats-hint">
+          <span>Hiển thị <strong>{filteredVideos.length}</strong> / {totalVideos} video</span>
+        </div>
       </div>
 
       {/* Video Cards Grid */}
@@ -346,6 +419,10 @@ export const VideoSection: React.FC = () => {
             const isWatched = watchedIds.includes(video.id);
             const thumbSrc = getThumbnailSrc(video);
             const isMp4 = video.videoUrl.endsWith('.mp4');
+            const isYt = !!extractYouTubeId(video.videoUrl);
+            const hasOverride = !!videoOverrides[video.id];
+            const isCustomOrOverridden = video.isCustom || hasOverride;
+
             const levelClass = video.level === 'Cơ bản'
               ? 'badge-lvl-basic'
               : video.level === 'Trung cấp'
@@ -355,7 +432,7 @@ export const VideoSection: React.FC = () => {
             return (
               <div 
                 key={video.id}
-                className={`video-card animate-fade-in ${isWatched ? 'is-watched' : ''}`}
+                className={`video-card animate-fade-in ${isWatched ? 'is-watched' : ''} ${hasOverride ? 'has-custom-override' : ''}`}
                 onClick={() => setSelectedVideo(video)}
               >
                 {/* Video Media Preview */}
@@ -384,7 +461,11 @@ export const VideoSection: React.FC = () => {
                     />
                   ) : (
                     <div className="video-thumb-fallback">
-                      <Tv size={40} className="text-cyan" />
+                      {isYt ? (
+                        <Youtube size={44} className="text-danger" />
+                      ) : (
+                        <Tv size={40} className="text-cyan" />
+                      )}
                     </div>
                   )}
 
@@ -403,7 +484,23 @@ export const VideoSection: React.FC = () => {
                         {video.level}
                       </span>
                     )}
+                    {isCustomOrOverridden && (
+                      <span className="card-override-indicator" title="Video do bạn tự gắn link YouTube">
+                        <Youtube size={11} className="text-danger" />
+                        <span>Link của bạn</span>
+                      </span>
+                    )}
                   </div>
+
+                  {/* Quick Edit Button on Hover */}
+                  <button 
+                    className="btn-card-quick-edit"
+                    onClick={(e) => handleOpenEdit(e, video)}
+                    title="Gắn hoặc đổi link YouTube của bạn cho video này"
+                  >
+                    <Edit3 size={13} />
+                    <span>Gắn link</span>
+                  </button>
 
                   {/* Duration Text */}
                   <span className="video-duration-pill">{video.durationText}</span>
@@ -429,15 +526,26 @@ export const VideoSection: React.FC = () => {
                       ))}
                     </div>
 
-                    {video.isCustom && (
+                    <div className="card-footer-actions">
                       <button 
-                        className="btn-del-custom-video"
-                        onClick={(e) => handleDeleteCustomVideo(e, video.id)}
-                        title="Xóa video tự thêm"
+                        className="btn-card-yt-link"
+                        onClick={(e) => handleOpenEdit(e, video)}
+                        title="Chỉnh sửa hoặc đổi link YouTube"
                       >
-                        <Trash2 size={14} />
+                        <Youtube size={14} className="text-danger" />
+                        <span>Sửa link</span>
                       </button>
-                    )}
+
+                      {video.isCustom && !TACTICS_VIDEOS.some(x => x.id === video.id) && (
+                        <button 
+                          className="btn-del-custom-video"
+                          onClick={(e) => handleDeleteCustomVideo(e, video.id)}
+                          title="Xóa video tự thêm này"
+                        >
+                          <Trash2 size={14} />
+                        </button>
+                      )}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -453,52 +561,105 @@ export const VideoSection: React.FC = () => {
           isOpen={true}
           onClose={() => setSelectedVideo(null)}
           onWatchedChanged={refreshWatchedStatus}
+          onEditYouTube={(vid) => {
+            setEditingVideo(vid);
+            setIsEditModalOpen(true);
+          }}
         />
       )}
 
+      {/* Edit YouTube Link Modal */}
+      {isEditModalOpen && (
+        <EditYouTubeLinkModal
+          video={editingVideo}
+          isOpen={isEditModalOpen}
+          onClose={() => {
+            setIsEditModalOpen(false);
+            setEditingVideo(null);
+          }}
+          onSave={handleSaveVideoOverride}
+          onResetToDefault={handleResetToDefault}
+          onOpenGuide={() => {
+            setIsEditModalOpen(false);
+            setIsGuideModalOpen(true);
+          }}
+        />
+      )}
+
+      {/* YouTube Unlisted Guide Modal */}
+      <YouTubeGuideModal
+        isOpen={isGuideModalOpen}
+        onClose={() => setIsGuideModalOpen(false)}
+      />
+
+      {/* Batch Import & Export Modal */}
+      <BatchImportExportModal
+        isOpen={isBatchModalOpen}
+        onClose={() => setIsBatchModalOpen(false)}
+        onDataChanged={() => {
+          refreshOverrides();
+          refreshCustomVideos();
+        }}
+      />
+
       {/* Add Custom Video Modal */}
       {isAddModalOpen && (
-        <div className="custom-modal-backdrop" onClick={() => setIsAddModalOpen(false)}>
-          <div className="custom-modal-card" onClick={(e) => e.stopPropagation()}>
+        <div className="video-modal-backdrop" onClick={() => setIsAddModalOpen(false)}>
+          <div className="custom-modal-card animate-scale-up" onClick={(e) => e.stopPropagation()}>
             <div className="custom-modal-header">
               <div className="flex-center-gap">
-                <Tv size={20} className="text-cyan" />
-                <h3>Gắn Link Video Giáo Trình Mới</h3>
+                <Youtube size={20} className="text-danger" />
+                <h3>Gắn Thêm Video Giáo Trình Mới</h3>
               </div>
-              <button className="btn-close-modal" onClick={() => setIsAddModalOpen(false)}>×</button>
+              <button className="theater-close-btn" onClick={() => setIsAddModalOpen(false)}>×</button>
             </div>
 
             <form onSubmit={handleAddVideo} className="custom-modal-form">
               <div className="form-group">
-                <label>Đường dẫn Video (URL YouTube / Shorts / MP4)*</label>
+                <label>Đường dẫn Video (URL YouTube / Shorts / Unlisted)*</label>
                 <input
                   type="text"
-                  placeholder="https://www.youtube.com/watch?v=... hoặc link mp4"
+                  placeholder="https://www.youtube.com/watch?v=... hoặc https://youtu.be/..."
                   value={newUrl}
                   onChange={(e) => setNewUrl(e.target.value)}
-                  className="form-input"
+                  className="modal-text-input"
                   required
                 />
               </div>
 
-              <div className="form-group">
-                <label>Chuyên mục Video*</label>
-                <select
-                  value={newCategory}
-                  onChange={(e) => setNewCategory(e.target.value as VideoCategory)}
-                  className="form-input"
-                >
-                  <optgroup label="9 Vị trí góc sân">
-                    {CORNER_CATEGORIES.map(c => (
-                      <option key={c.key} value={c.key}>{c.label}</option>
-                    ))}
-                  </optgroup>
-                  <optgroup label="Chuyên mục thi đấu">
-                    {MATCH_CATEGORIES.map(m => (
-                      <option key={m.key} value={m.key}>{m.label}</option>
-                    ))}
-                  </optgroup>
-                </select>
+              <div className="form-row-2">
+                <div className="form-group">
+                  <label>Chuyên mục Video*</label>
+                  <select
+                    value={newCategory}
+                    onChange={(e) => setNewCategory(e.target.value as VideoCategory)}
+                    className="modal-select-input"
+                  >
+                    <optgroup label="9 Vị trí góc sân">
+                      {CORNER_CATEGORIES.map(c => (
+                        <option key={c.key} value={c.key}>{c.label}</option>
+                      ))}
+                    </optgroup>
+                    <optgroup label="Chuyên mục thi đấu">
+                      {MATCH_CATEGORIES.map(m => (
+                        <option key={m.key} value={m.key}>{m.label}</option>
+                      ))}
+                    </optgroup>
+                  </select>
+                </div>
+
+                <div className="form-group">
+                  <label>Cấp độ kỹ thuật</label>
+                  <select
+                    value={newLevel}
+                    onChange={(e) => setNewLevel(e.target.value as SkillLevel)}
+                    className="modal-select-input"
+                  >
+                    <option value="Cơ bản">🟢 Cơ bản (Newbie)</option>
+                    <option value="Trung cấp">🟡 Trung cấp (Phong trào)</option>
+                    <option value="Nâng cao">🔴 Nâng cao (Thi đấu)</option>
+                  </select>
+                </div>
               </div>
 
               <div className="form-group">
@@ -508,25 +669,25 @@ export const VideoSection: React.FC = () => {
                   placeholder="Ví dụ: Kỹ thuật đập smash cắm sàn..."
                   value={newTitle}
                   onChange={(e) => setNewTitle(e.target.value)}
-                  className="form-input"
+                  className="modal-text-input"
                   required
                 />
               </div>
 
               <div className="form-group">
-                <label>Mô tả ngắn gọn</label>
+                <label>Mô tả tóm tắt kỹ thuật</label>
                 <input
                   type="text"
-                  placeholder="Tóm tắt điểm mấu chốt của video"
+                  placeholder="Tóm tắt điểm mấu chốt của động tác"
                   value={newSubTitle}
                   onChange={(e) => setNewSubTitle(e.target.value)}
-                  className="form-input"
+                  className="modal-text-input"
                 />
               </div>
 
               <div className="modal-actions" style={{ display: 'flex', justifyContent: 'flex-end', gap: '10px', marginTop: '20px' }}>
                 <button type="button" className="btn-cancel" onClick={() => setIsAddModalOpen(false)}>Hủy</button>
-                <button type="submit" className="btn-submit-save">LƯU VIDEO</button>
+                <button type="submit" className="btn-save-yt">LƯU VIDEO YOUTUBE</button>
               </div>
             </form>
           </div>

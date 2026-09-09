@@ -15,6 +15,8 @@
     "electron:build": "npm run build && electron-builder --win",
     "electron:portable": "npm run build && electron-builder --win portable",
     "electron:nsis": "npm run build && electron-builder --win nsis",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist",
     "start": "node server.cjs"
   },
   "build": {
@@ -75,6 +77,7 @@
     "cross-env": "^7.0.3",
     "electron": "^34.0.0",
     "electron-builder": "^26.15.3",
+    "gh-pages": "^6.3.0",
     "typescript": "~5.7.2",
     "vite": "^6.1.0",
     "wait-on": "^8.0.2"

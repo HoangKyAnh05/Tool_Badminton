@@ -24,7 +24,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Bước Lunge Đón Cầu Góc Lưới Trái",
     subTitle: "LƯỚI TRÁI • Bộ pháp • Cấp độ Cơ bản",
     description: "Giơ vợt ổn định trước ngực giữ thăng bằng. Lunge chân phải vươn dài, gót chạm đất trước.",
-    videoUrl: "https://www.tiktok.com/search?q=B%C6%B0%E1%BB%9Bc+Lunge+%C4%90%C3%B3n+C%E1%BA%A7u+G%C3%B3c+L%C6%B0%E1%BB%9Bi+Tr%C3%A1i+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Clip 02",
     tags: ["Ô 1", "LƯỚI TRÁI", "Cơ bản", "Bộ pháp"]
   },
@@ -36,7 +36,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Kê Cầu Vuốt Mép Lưới Đổi Nhịp",
     subTitle: "LƯỚI TRÁI • Kê lưới • Cấp độ Cơ bản",
     description: "Vuốt nhẹ đầu vợt triệt tiêu quán tính quả cầu. Chùng gối chân thuận hãm quán tính.",
-    videoUrl: "https://www.tiktok.com/search?q=K%C3%AA+C%E1%BA%A7u+Vu%E1%BB%91t+M%C3%A9p+L%C6%B0%E1%BB%9Bi+%C4%90%E1%BB%95i+Nh%E1%BB%8Bp+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Clip 03",
     tags: ["Ô 1", "LƯỚI TRÁI", "Cơ bản", "Kê lưới"]
   },
@@ -48,7 +48,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Gài Lưới / Miết Cầu Xoáy Lộn Lưới",
     subTitle: "LƯỚI TRÁI • Bỏ nhỏ xoáy • Cấp độ Trung cấp",
     description: "Miết nhẹ đầu quả cầu tạo độ xoáy lộn mép lưới. Chân phải chạm đất đồng thời vung cổ tay.",
-    videoUrl: "https://www.tiktok.com/search?q=G%C3%A0i+L%C6%B0%E1%BB%9Bi+%2F+Mi%E1%BA%BFt+C%E1%BA%A7u+Xo%C3%A1y+L%E1%BB%99n+L%C6%B0%E1%BB%9Bi+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Clip 04",
     tags: ["Ô 1", "LƯỚI TRÁI", "Trung cấp", "Bỏ nhỏ xoáy"]
   },
@@ -60,7 +60,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Hất Cầu Bổng Sâu Góc Lưới Trái",
     subTitle: "LƯỚI TRÁI • Hất bổng • Cấp độ Trung cấp",
     description: "Vung vợt từ dưới lên bung lực cẳng tay đẩy cầu sâu. Bật đẩy chân phải tạo đà lùi về tâm.",
-    videoUrl: "https://www.tiktok.com/search?q=H%E1%BA%A5t+C%E1%BA%A7u+B%E1%BB%95ng+S%C3%A2u+G%C3%B3c+L%C6%B0%E1%BB%9Bi+Tr%C3%A1i+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Clip 05",
     tags: ["Ô 1", "LƯỚI TRÁI", "Trung cấp", "Hất bổng"]
   },
@@ -72,7 +72,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Kéo Lưới Đổi Hướng Sang Biên Phải",
     subTitle: "LƯỚI TRÁI • Kéo lưới • Cấp độ Trung cấp",
     description: "Nghiêng góc mặt vợt đưa cầu lướt ngang mép lưới. Trụ vững chân trước, giữ thân thăng bằng.",
-    videoUrl: "https://www.tiktok.com/search?q=K%C3%A9o+L%C6%B0%E1%BB%9Bi+%C4%90%E1%BB%95i+H%C6%B0%E1%BB%9Bng+Sang+Bi%C3%AAn+Ph%E1%BA%A3i+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Clip 06",
     tags: ["Ô 1", "LƯỚI TRÁI", "Trung cấp", "Kéo lưới"]
   },
@@ -84,7 +84,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Vồ Cầu / Chụp Lưới Góc Trái",
     subTitle: "LƯỚI TRÁI • Vồ cầu • Cấp độ Nâng cao",
     description: "Đón cầu đỉnh lưới, búng ngón cái giật gõ cắm sàn. Bứt tốc chân trái đẩy chân phải phóng dài.",
-    videoUrl: "https://www.tiktok.com/search?q=V%E1%BB%93+C%E1%BA%A7u+%2F+Ch%E1%BB%A5p+L%C6%B0%E1%BB%9Bi+G%C3%B3c+Tr%C3%A1i+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Clip 07",
     tags: ["Ô 1", "LƯỚI TRÁI", "Nâng cao", "Vồ cầu"]
   },
@@ -96,7 +96,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Múa Vợt Đổi Hướng Chém Chéo Lưới",
     subTitle: "LƯỚI TRÁI • Đánh lừa • Cấp độ Nâng cao",
     description: "Giả động tác đẩy thẳng rồi chém cổ tay chéo sân. Giữ thăng bằng trên một chân rồi thu chân.",
-    videoUrl: "https://www.tiktok.com/search?q=M%C3%BAa+V%E1%BB%A3t+%C4%90%E1%BB%95i+H%C6%B0%E1%BB%9Bng+Ch%C3%A9m+Ch%C3%A9o+L%C6%B0%E1%BB%9Bi+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Clip 08",
     tags: ["Ô 1", "LƯỚI TRÁI", "Nâng cao", "Đánh lừa"]
   },
@@ -108,7 +108,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Giả Động Tác Đẩy Bổng Cắt Cầu Sát Lưới",
     subTitle: "LƯỚI TRÁI • Kỹ xảo • Cấp độ Nâng cao",
     description: "Tạo đà vung bổng nhưng hãm vợt miết nhẹ mép cầu. Đổi trọng tâm tức thì đánh lừa đối phương.",
-    videoUrl: "https://www.tiktok.com/search?q=Gi%E1%BA%A3+%C4%90%E1%BB%99ng+T%C3%A1c+%C4%90%E1%BA%A9y+B%E1%BB%95ng+C%E1%BA%AFt+C%E1%BA%A7u+S%C3%A1t+L%C6%B0%E1%BB%9Bi+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Clip 09",
     tags: ["Ô 1", "LƯỚI TRÁI", "Nâng cao", "Kỹ xảo"]
   },
@@ -120,7 +120,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Bật Lướt Đón Cầu Dứt Điểm Mép Chữ T",
     subTitle: "LƯỚI TRÁI • Bật lướt • Cấp độ Nâng cao",
     description: "Bật người trên không gõ cắm cầu trước khi qua lưới. Bật bằng mũi chân trái, tiếp đất êm ái.",
-    videoUrl: "https://www.tiktok.com/search?q=B%E1%BA%ADt+L%C6%B0%E1%BB%9Bt+%C4%90%C3%B3n+C%E1%BA%A7u+D%E1%BB%A9t+%C4%90i%E1%BB%83m+M%C3%A9p+Ch%E1%BB%AF+T+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Clip 10",
     tags: ["Ô 1", "LƯỚI TRÁI", "Nâng cao", "Bật lướt"]
   },
@@ -135,7 +135,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Chặn Đẩy Cầu Thẳng Mặt Lưới",
     subTitle: "LƯỚI GIỮA • Chặn đẩy • Cấp độ Cơ bản",
     description: "Đẩy mặt vợt thẳng hướng quả cầu rơi. Bước thẳng chân phải vào vạch chữ T.",
-    videoUrl: "https://www.tiktok.com/search?q=Ch%E1%BA%B7n+%C4%90%E1%BA%A9y+C%E1%BA%A7u+Th%E1%BA%B3ng+M%E1%BA%B7t+L%C6%B0%E1%BB%9Bi+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Clip 01",
     tags: ["Ô 2", "LƯỚI GIỮA", "Cơ bản", "Chặn đẩy"]
   },
@@ -147,7 +147,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Kê Cầu Chữ T Đổi Nhịp",
     subTitle: "LƯỚI GIỮA • Kê lưới • Cấp độ Cơ bản",
     description: "Thả lỏng cổ tay triệt tiêu lực quả cầu. Chân thuận tiếp đất vững chắc.",
-    videoUrl: "https://www.tiktok.com/search?q=K%C3%AA+C%E1%BA%A7u+Ch%E1%BB%AF+T+%C4%90%E1%BB%95i+Nh%E1%BB%8Bp+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Clip 02",
     tags: ["Ô 2", "LƯỚI GIỮA", "Cơ bản", "Kê lưới"]
   },
@@ -159,7 +159,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Bước Thẳng Đón Cầu Chữ T",
     subTitle: "LƯỚI GIỮA • Bộ pháp • Cấp độ Cơ bản",
     description: "Đưa vợt sớm trước mặt đón đầu quả cầu. Bước đuổi thẳng từ tâm sân vào chữ T.",
-    videoUrl: "https://www.tiktok.com/search?q=B%C6%B0%E1%BB%9Bc+Th%E1%BA%B3ng+%C4%90%C3%B3n+C%E1%BA%A7u+Ch%E1%BB%AF+T+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Clip 03",
     tags: ["Ô 2", "LƯỚI GIỮA", "Cơ bản", "Bộ pháp"]
   },
@@ -171,7 +171,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Đè Lưới / Phản Tạt Nhanh Giữa Sân",
     subTitle: "LƯỚI GIỮA • Đè lưới • Cấp độ Trung cấp",
     description: "Gập cổ tay chớp nhoáng đẩy cầu đi căng thấp. Nhịp bật lướt đón cầu ngang tầm mắt.",
-    videoUrl: "https://www.tiktok.com/search?q=%C4%90%C3%A8+L%C6%B0%E1%BB%9Bi+%2F+Ph%E1%BA%A3n+T%E1%BA%A1t+Nhanh+Gi%E1%BB%AFa+S%C3%A2n+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Clip 04",
     tags: ["Ô 2", "LƯỚI GIỮA", "Trung cấp", "Đè lưới"]
   },
@@ -183,7 +183,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Bung Cầu Bổng Sang Hai Góc",
     subTitle: "LƯỚI GIỮA • Bung bổng • Cấp độ Trung cấp",
     description: "Bung lực cổ tay hất cao bổng sang góc trống. Hạ thấp trọng tâm cứu cầu sát sàn.",
-    videoUrl: "https://www.tiktok.com/search?q=Bung+C%E1%BA%A7u+B%E1%BB%95ng+Sang+Hai+G%C3%B3c+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Clip 05",
     tags: ["Ô 2", "LƯỚI GIỮA", "Trung cấp", "Bung bổng"]
   },
@@ -195,7 +195,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Tạt Cầu Ngang Đầu Vợt Ép Đối Phương",
     subTitle: "LƯỚI GIỮA • Phản tạt • Cấp độ Trung cấp",
     description: "Tạt phẳng cầu sát mép trên của lưới. Dậm chân phải tạo lực đè bóng.",
-    videoUrl: "https://www.tiktok.com/search?q=T%E1%BA%A1t+C%E1%BA%A7u+Ngang+%C4%90%E1%BA%A7u+V%E1%BB%A3t+%C3%89p+%C4%90%E1%BB%91i+Ph%C6%B0%C6%A1ng+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Clip 06",
     tags: ["Ô 2", "LƯỚI GIỮA", "Trung cấp", "Phản tạt"]
   },
@@ -207,7 +207,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Búng Cổ Tay Chụp Lưới Dứt Điểm",
     subTitle: "LƯỚI GIỮA • Vồ cầu • Cấp độ Nâng cao",
     description: "Đón đỉnh lưới gõ cắm thẳng xuống đất đối thủ. Bật rướn nhanh chặn đầu quả cầu.",
-    videoUrl: "https://www.tiktok.com/search?q=B%C3%BAng+C%E1%BB%95+Tay+Ch%E1%BB%A5p+L%C6%B0%E1%BB%9Bi+D%E1%BB%A9t+%C4%90i%E1%BB%83m+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Clip 07",
     tags: ["Ô 2", "LƯỚI GIỮA", "Nâng cao", "Vồ cầu"]
   },
@@ -219,7 +219,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Giả Bỏ Nhỏ Gạt Cầu Sát Vách Lưới",
     subTitle: "LƯỚI GIỮA • Đánh lừa • Cấp độ Nâng cao",
     description: "Giữ nhịp vợt tĩnh (Hold) rồi gạt nhanh đổi hướng. Trụ vững chân trước, cơ thể ổn định.",
-    videoUrl: "https://www.tiktok.com/search?q=Gi%E1%BA%A3+B%E1%BB%8F+Nh%E1%BB%8F+G%E1%BA%A1t+C%E1%BA%A7u+S%C3%A1t+V%C3%A1ch+L%C6%B0%E1%BB%9Bi+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Clip 08",
     tags: ["Ô 2", "LƯỚI GIỮA", "Nâng cao", "Đánh lừa"]
   },
@@ -231,7 +231,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Chớp Cơ Hội Bồi Cầu Cắm Sàn Chữ T",
     subTitle: "LƯỚI GIỮA • Bồi cầu • Cấp độ Nâng cao",
     description: "Đón quả cầu trả bổng của đối phương đập cắm sàn. Bật lò xo giậm nhảy dứt điểm.",
-    videoUrl: "https://www.tiktok.com/search?q=Ch%E1%BB%9Bp+C%C6%A1+H%E1%BB%99i+B%E1%BB%93i+C%E1%BA%A7u+C%E1%BA%AFm+S%C3%A0n+Ch%E1%BB%AF+T+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Clip 09",
     tags: ["Ô 2", "LƯỚI GIỮA", "Nâng cao", "Bồi cầu"]
   },
@@ -243,7 +243,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Bắt Bài Đường Cầu Tạt Ngang Đầu",
     subTitle: "LƯỚI GIỮA • Cắt cầu • Cấp độ Nâng cao",
     description: "Đưa vợt đón lõng trên không đánh chặn tức thì. Bật nhảy đón đầu hướng bay quả cầu.",
-    videoUrl: "https://www.tiktok.com/search?q=B%E1%BA%AFt+B%C3%A0i+%C4%90%C6%B0%E1%BB%9Dng+C%E1%BA%A7u+T%E1%BA%A1t+Ngang+%C4%90%E1%BA%A7u+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Clip 10",
     tags: ["Ô 2", "LƯỚI GIỮA", "Nâng cao", "Cắt cầu"]
   },
@@ -258,7 +258,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Kê Cầu Thuận Tay Sát Lưới",
     subTitle: "LƯỚI PHẢI • Kê lưới • Cấp độ Cơ bản",
     description: "Mặt vợt mở nhẹ thuận tay đón cầu êm. Bước đệm chân phải hướng góc 2h.",
-    videoUrl: "https://www.tiktok.com/search?q=K%C3%AA+C%E1%BA%A7u+Thu%E1%BA%ADn+Tay+S%C3%A1t+L%C6%B0%E1%BB%9Bi+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Clip 01",
     tags: ["Ô 3", "LƯỚI PHẢI", "Cơ bản", "Kê lưới"]
   },
@@ -270,7 +270,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Bước Lunge Chân Thuận Góc Phải",
     subTitle: "LƯỚI PHẢI • Bộ pháp • Cấp độ Cơ bản",
     description: "Tay mở rộng giữ cân bằng trọng tâm. Lunge dài chân phải, đùi song song mặt sàn.",
-    videoUrl: "https://www.tiktok.com/search?q=B%C6%B0%E1%BB%9Bc+Lunge+Ch%C3%A2n+Thu%E1%BA%ADn+G%C3%B3c+Ph%E1%BA%A3i+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Clip 02",
     tags: ["Ô 3", "LƯỚI PHẢI", "Cơ bản", "Bộ pháp"]
   },
@@ -282,7 +282,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Kê Cầu Chéo Góc Thuận Tay",
     subTitle: "LƯỚI PHẢI • Kê lưới • Cấp độ Cơ bản",
     description: "Nghiêng nhẹ mặt vợt đón cầu đưa sang góc đối diện. Gót chân phải tiếp đất trước hãm đà.",
-    videoUrl: "https://www.tiktok.com/search?q=K%C3%AA+C%E1%BA%A7u+Ch%C3%A9o+G%C3%B3c+Thu%E1%BA%ADn+Tay+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Clip 03",
     tags: ["Ô 3", "LƯỚI PHẢI", "Cơ bản", "Kê lưới"]
   },
@@ -294,7 +294,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Miết Cầu Xoáy Lộn Lưới Thuận Tay",
     subTitle: "LƯỚI PHẢI • Bỏ nhỏ xoáy • Cấp độ Trung cấp",
     description: "Xoay cổ tay miết mép ngoài quả cầu lộn lưới. Chân trụ hãm đà quán tính.",
-    videoUrl: "https://www.tiktok.com/search?q=Mi%E1%BA%BFt+C%E1%BA%A7u+Xo%C3%A1y+L%E1%BB%99n+L%C6%B0%E1%BB%9Bi+Thu%E1%BA%ADn+Tay+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Clip 04",
     tags: ["Ô 3", "LƯỚI PHẢI", "Trung cấp", "Bỏ nhỏ xoáy"]
   },
@@ -330,7 +330,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Chụp Lưới / Đè Cầu Dứt Điểm Góc Phải",
     subTitle: "LƯỚI PHẢI • Đè lưới • Cấp độ Nâng cao",
     description: "Lao vào gõ cắm thẳng góc biên. Bứt tốc bước dài áp sát mép lưới.",
-    videoUrl: "https://www.tiktok.com/search?q=Ch%E1%BB%A5p+L%C6%B0%E1%BB%9Bi+%2F+%C4%90%C3%A8+C%E1%BA%A7u+D%E1%BB%A9t+%C4%90i%E1%BB%83m+G%C3%B3c+Ph%E1%BA%A3i+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Clip 07",
     tags: ["Ô 3", "LƯỚI PHẢI", "Nâng cao", "Đè lưới"]
   },
@@ -342,7 +342,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Giả Động Tác Chém Chéo Góc Lưới",
     subTitle: "LƯỚI PHẢI • Đánh lừa • Cấp độ Nâng cao",
     description: "Vung giả đẩy thẳng rồi bẻ cổ tay cắt chéo. Trọng tâm vững vàng hồi tâm sân.",
-    videoUrl: "https://www.tiktok.com/search?q=Gi%E1%BA%A3+%C4%90%E1%BB%99ng+T%C3%A1c+Ch%C3%A9m+Ch%C3%A9o+G%C3%B3c+L%C6%B0%E1%BB%9Bi+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Clip 08",
     tags: ["Ô 3", "LƯỚI PHẢI", "Nâng cao", "Đánh lừa"]
   },
@@ -354,7 +354,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Đè Cầu Tấn Công Góc Biên Thuận Tay",
     subTitle: "LƯỚI PHẢI • Tấn công • Cấp độ Nâng cao",
     description: "Vung vợt biên độ hẹp gõ cắm sát vạch biên. Bật chân phải lướt nhanh sát lưới.",
-    videoUrl: "https://www.tiktok.com/search?q=%C4%90%C3%A8+C%E1%BA%A7u+T%E1%BA%A5n+C%C3%B4ng+G%C3%B3c+Bi%C3%AAn+Thu%E1%BA%ADn+Tay+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Clip 09",
     tags: ["Ô 3", "LƯỚI PHẢI", "Nâng cao", "Tấn công"]
   },
@@ -366,7 +366,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Bật Lao Người Chụp Cầu Mép Trên",
     subTitle: "LƯỚI PHẢI • Chụp cầu • Cấp độ Nâng cao",
     description: "Vươn toàn thân đón cầu tầm cao dứt điểm. Hãm đà an toàn tránh chạm lưới.",
-    videoUrl: "https://www.tiktok.com/search?q=B%E1%BA%ADt+Lao+Ng%C6%B0%E1%BB%9Di+Ch%E1%BB%A5p+C%E1%BA%A7u+M%C3%A9p+Tr%C3%AAn+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Clip 10",
     tags: ["Ô 3", "LƯỚI PHẢI", "Nâng cao", "Chụp cầu"]
   },
@@ -381,7 +381,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Thủ Cầu Ngang Hông Trái Tay",
     subTitle: "TRUNG TÂM TRÁI • Thủ cầu • Cấp độ Cơ bản",
     description: "Ngón cái tì cán vợt, mở mặt vợt đỡ trước hông. Hạ thấp trọng tâm, hai chân mở rộng.",
-    videoUrl: "https://www.tiktok.com/search?q=Th%E1%BB%A7+C%E1%BA%A7u+Ngang+H%C3%B4ng+Tr%C3%A1i+Tay+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Clip 01",
     tags: ["Ô 4", "TRUNG TÂM TRÁI", "Cơ bản", "Thủ cầu"]
   },
@@ -393,7 +393,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Bước Trượt Ngang Đón Cầu Trái",
     subTitle: "TRUNG TÂM TRÁI • Bộ pháp • Cấp độ Cơ bản",
     description: "Vợt giơ ngang ngực sẵn sàng. Bước trượt ngang Chasse sang trái.",
-    videoUrl: "https://www.tiktok.com/search?q=B%C6%B0%E1%BB%9Bc+Tr%C6%B0%E1%BB%A3t+Ngang+%C4%90%C3%B3n+C%E1%BA%A7u+Tr%C3%A1i+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Clip 02",
     tags: ["Ô 4", "TRUNG TÂM TRÁI", "Cơ bản", "Bộ pháp"]
   },
@@ -405,7 +405,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Đỡ Cầu Phản Xạ Tầm Trung",
     subTitle: "TRUNG TÂM TRÁI • Phòng thủ • Cấp độ Cơ bản",
     description: "Mặt vợt vững vàng chặn quả đập ngang sườn. Chùng gối hai chân hấp thụ xung lực.",
-    videoUrl: "https://www.tiktok.com/search?q=%C4%90%E1%BB%A1+C%E1%BA%A7u+Ph%E1%BA%A3n+X%E1%BA%A1+T%E1%BA%A7m+Trung+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Clip 03",
     tags: ["Ô 4", "TRUNG TÂM TRÁI", "Cơ bản", "Phòng thủ"]
   },
@@ -417,7 +417,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Phản Tạt Ngang Lưới Trái Tay",
     subTitle: "TRUNG TÂM TRÁI • Phản tạt • Cấp độ Trung cấp",
     description: "Vung ngang mặt vợt tạt thẳng mép lưới. Xoay hông nhẹ dồn lực vào quả tạt.",
-    videoUrl: "https://www.tiktok.com/search?q=Ph%E1%BA%A3n+T%E1%BA%A1t+Ngang+L%C6%B0%E1%BB%9Bi+Tr%C3%A1i+Tay+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Clip 04",
     tags: ["Ô 4", "TRUNG TÂM TRÁI", "Trung cấp", "Phản tạt"]
   },
@@ -429,7 +429,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Thủ Cầu Chéo Góc Thoát Hiểm",
     subTitle: "TRUNG TÂM TRÁI • Thủ chéo • Cấp độ Trung cấp",
     description: "Nghiêng góc vợt đẩy cầu rơi chéo sân đối diện. Chùng gối trái nhận lực.",
-    videoUrl: "https://www.tiktok.com/search?q=Th%E1%BB%A7+C%E1%BA%A7u+Ch%C3%A9o+G%C3%B3c+Tho%C3%A1t+Hi%E1%BB%83m+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Clip 05",
     tags: ["Ô 4", "TRUNG TÂM TRÁI", "Trung cấp", "Thủ chéo"]
   },
@@ -441,7 +441,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Chặn Cầu Ngang Hông Hãm Xung Lực",
     subTitle: "TRUNG TÂM TRÁI • Hãm lực • Cấp độ Trung cấp",
     description: "Thả lỏng ngón tay đón bóng làm bóng rơi sát lưới. Thân trên giữ tĩnh ổn định.",
-    videoUrl: "https://www.tiktok.com/search?q=Ch%E1%BA%B7n+C%E1%BA%A7u+Ngang+H%C3%B4ng+H%C3%A3m+Xung+L%E1%BB%B1c+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Clip 06",
     tags: ["Ô 4", "TRUNG TÂM TRÁI", "Trung cấp", "Hãm lực"]
   },
@@ -453,7 +453,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Bung Phản Tạt Đè Góc Xa Trái Tay",
     subTitle: "TRUNG TÂM TRÁI • Phản công • Cấp độ Nâng cao",
     description: "Bung hết lực ngón cái đè bóng sâu về góc trống. Bật người đón cầu điểm cao nhất.",
-    videoUrl: "https://www.tiktok.com/search?q=Bung+Ph%E1%BA%A3n+T%E1%BA%A1t+%C4%90%C3%A8+G%C3%B3c+Xa+Tr%C3%A1i+Tay+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Clip 07",
     tags: ["Ô 4", "TRUNG TÂM TRÁI", "Nâng cao", "Phản công"]
   },
@@ -465,7 +465,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Đỡ Smash Bỏ Nhỏ Đổi Nhịp",
     subTitle: "TRUNG TÂM TRÁI • Hãm lực • Cấp độ Nâng cao",
     description: "Thả lỏng cổ tay đón cú smash cho cầu rơi sát lưới. Đứng vững hai chân, giữ thân người tĩnh.",
-    videoUrl: "https://www.tiktok.com/search?q=%C4%90%E1%BB%A1+Smash+B%E1%BB%8F+Nh%E1%BB%8F+%C4%90%E1%BB%95i+Nh%E1%BB%8Bp+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Clip 08",
     tags: ["Ô 4", "TRUNG TÂM TRÁI", "Nâng cao", "Hãm lực"]
   },
@@ -477,7 +477,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Phản Công Đè Cầu Tấn Công Góc Nách",
     subTitle: "TRUNG TÂM TRÁI • Tấn công • Cấp độ Nâng cao",
     description: "Bật người đè cầu cắm sát nách đối phương. Dậm mạnh chân trái tạo điểm tựa.",
-    videoUrl: "https://www.tiktok.com/search?q=Ph%E1%BA%A3n+C%C3%B4ng+%C4%90%C3%A8+C%E1%BA%A7u+T%E1%BA%A5n+C%C3%B4ng+G%C3%B3c+N%C3%A1ch+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Clip 09",
     tags: ["Ô 4", "TRUNG TÂM TRÁI", "Nâng cao", "Tấn công"]
   },
@@ -489,7 +489,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Bật Vẩy Cổ Tay Trái Tay Ép Đáy",
     subTitle: "TRUNG TÂM TRÁI • Phát lực • Cấp độ Nâng cao",
     description: "Búng cổ tay cực nhanh đưa cầu bay vút góc đáy đối diện. Xoay trục thân người trợ lực.",
-    videoUrl: "https://www.tiktok.com/search?q=B%E1%BA%ADt+V%E1%BA%A9y+C%E1%BB%95+Tay+Tr%C3%A1i+Tay+%C3%89p+%C4%90%C3%A1y+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Clip 10",
     tags: ["Ô 4", "TRUNG TÂM TRÁI", "Nâng cao", "Phát lực"]
   },
@@ -504,7 +504,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Bật Nhẹ Split-Step Sẵn Sàng",
     subTitle: "TÂM SÂN • Bộ pháp • Cấp độ Cơ bản",
     description: "Vợt giơ ngang cằm, khuỷu tay mở rộng. Bật nhảy hai chân tiếp đất bằng mũi chân.",
-    videoUrl: "https://www.tiktok.com/search?q=B%E1%BA%ADt+Nh%E1%BA%B9+Split-Step+S%E1%BA%B5n+S%C3%A0ng+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Clip 01",
     tags: ["Ô 5", "TÂM SÂN", "Cơ bản", "Bộ pháp"]
   },
@@ -516,7 +516,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Bộ Pháp Di Chuyển 4 Góc Từ Tâm",
     subTitle: "TÂM SÂN • Bộ pháp • Cấp độ Cơ bản",
     description: "Phối hợp tay vợt linh hoạt theo hướng chạy. Bước chéo chân xuất phát nhanh đến 4 góc.",
-    videoUrl: "https://www.tiktok.com/search?q=B%E1%BB%99+Ph%C3%A1p+Di+Chuy%E1%BB%83n+4+G%C3%B3c+T%E1%BB%AB+T%C3%A2m+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Clip 02",
     tags: ["Ô 5", "TÂM SÂN", "Cơ bản", "Bộ pháp"]
   },
@@ -528,7 +528,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Nhịp Dừng Hồi Tâm Ổn Định",
     subTitle: "TÂM SÂN • Hồi vị • Cấp độ Cơ bản",
     description: "Thu vợt trước ngực sẵn sàng đón nhịp tiếp theo. Trọng tâm rơi đúng tâm ô số 5.",
-    videoUrl: "https://www.tiktok.com/search?q=Nh%E1%BB%8Bp+D%E1%BB%ABng+H%E1%BB%93i+T%C3%A2m+%E1%BB%94n+%C4%90%E1%BB%8Bnh+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Clip 03",
     tags: ["Ô 5", "TÂM SÂN", "Cơ bản", "Hồi vị"]
   },
@@ -540,7 +540,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Bắt Bài Nhịp Cầu Nửa Sân",
     subTitle: "TÂM SÂN • Bắt bài • Cấp độ Trung cấp",
     description: "Giơ vợt đón đầu quả cầu bay lửng giữa sân. Bật một bước cắt ngang đường cầu.",
-    videoUrl: "https://www.tiktok.com/search?q=B%E1%BA%AFt+B%C3%A0i+Nh%E1%BB%8Bp+C%E1%BA%A7u+N%E1%BB%ADa+S%C3%A2n+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Clip 04",
     tags: ["Ô 5", "TÂM SÂN", "Trung cấp", "Bắt bài"]
   },
@@ -552,7 +552,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Xoay Hông Chuyển Trọng Tâm Nhanh",
     subTitle: "TÂM SÂN • Hồi vị • Cấp độ Trung cấp",
     description: "Thu vợt về ngực sau mỗi pha đánh. Xoay trục hông hồi vị ngay tâm ô số 5.",
-    videoUrl: "https://www.tiktok.com/search?q=Xoay+H%C3%B4ng+Chuy%E1%BB%83n+Tr%E1%BB%8Dng+T%C3%A2m+Nhanh+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Clip 05",
     tags: ["Ô 5", "TÂM SÂN", "Trung cấp", "Hồi vị"]
   },
@@ -564,7 +564,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Bước Đệm Đón Cầu Nửa Sân",
     subTitle: "TÂM SÂN • Bộ pháp • Cấp độ Trung cấp",
     description: "Đón cầu ngang ngực chuyển từ thủ sang công. Bước đệm nhịp nhàng hai chân.",
-    videoUrl: "https://www.tiktok.com/search?q=B%C6%B0%E1%BB%9Bc+%C4%90%E1%BB%87m+%C4%90%C3%B3n+C%E1%BA%A7u+N%E1%BB%ADa+S%C3%A2n+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Clip 06",
     tags: ["Ô 5", "TÂM SÂN", "Trung cấp", "Bộ pháp"]
   },
@@ -576,7 +576,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Đón Cầu Trên Không Nhịp Một",
     subTitle: "TÂM SÂN • Cắt cầu • Cấp độ Nâng cao",
     description: "Bật nhảy đón cầu trên không gõ cắm sàn. Bật thẳng hai chân giậm nhảy tiếp đất.",
-    videoUrl: "https://www.tiktok.com/search?q=%C4%90%C3%B3n+C%E1%BA%A7u+Tr%C3%AAn+Kh%C3%B4ng+Nh%E1%BB%8Bp+M%E1%BB%99t+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Clip 07",
     tags: ["Ô 5", "TÂM SÂN", "Nâng cao", "Cắt cầu"]
   },
@@ -588,7 +588,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Đổi Hướng Đảo Chiều Đánh Lừa",
     subTitle: "TÂM SÂN • Chiến thuật • Cấp độ Nâng cao",
     description: "Giả động tác sang trái rồi vung sang phải. Đổi trụ chân tức thì đánh lừa đối thủ.",
-    videoUrl: "https://www.tiktok.com/search?q=%C4%90%E1%BB%95i+H%C6%B0%E1%BB%9Bng+%C4%90%E1%BA%A3o+Chi%E1%BB%81u+%C4%90%C3%A1nh+L%E1%BB%ABa+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Clip 08",
     tags: ["Ô 5", "TÂM SÂN", "Nâng cao", "Chiến thuật"]
   },
@@ -600,7 +600,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Chớp Thời Cơ Cắt Cầu Giữa Sân",
     subTitle: "TÂM SÂN • Tấn công • Cấp độ Nâng cao",
     description: "Cắt ngang đường bay quả cầu dứt điểm cắm sàn. Lao người chớp nhoáng trên không.",
-    videoUrl: "https://www.tiktok.com/search?q=Ch%E1%BB%9Bp+Th%E1%BB%9Di+C%C6%A1+C%E1%BA%AFt+C%E1%BA%A7u+Gi%E1%BB%AFa+S%C3%A2n+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Clip 09",
     tags: ["Ô 5", "TÂM SÂN", "Nâng cao", "Tấn công"]
   },
@@ -612,7 +612,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Hoán Đổi Vị Trí Công Thủ Linh Hoạt",
     subTitle: "TÂM SÂN • Đôi nam/nữ • Cấp độ Nâng cao",
     description: "Phân công che chắn khu vực khi đồng đội dâng cao. Di chuyển bọc lót theo hình thoi.",
-    videoUrl: "https://www.tiktok.com/search?q=Ho%C3%A1n+%C4%90%E1%BB%95i+V%E1%BB%8B+Tr%C3%AD+C%C3%B4ng+Th%E1%BB%A7+Linh+Ho%E1%BA%A1t+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Clip 10",
     tags: ["Ô 5", "TÂM SÂN", "Nâng cao", "Đôi nam/nữ"]
   },
@@ -627,7 +627,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Thủ Cầu Ngang Hông Thuận Tay",
     subTitle: "TRUNG TÂM PHẢI • Thủ cầu • Cấp độ Cơ bản",
     description: "Cổ tay mở, đón cầu ngang sườn phải. Hạ thấp gối, trọng tâm dồn đều hai chân.",
-    videoUrl: "https://www.tiktok.com/search?q=Th%E1%BB%A7+C%E1%BA%A7u+Ngang+H%C3%B4ng+Thu%E1%BA%ADn+Tay+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Clip 01",
     tags: ["Ô 6", "TRUNG TÂM PHẢI", "Cơ bản", "Thủ cầu"]
   },
@@ -639,7 +639,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Bước Trượt Ngang Đón Cầu Phải",
     subTitle: "TRUNG TÂM PHẢI • Bộ pháp • Cấp độ Cơ bản",
     description: "Vợt giơ sẵn sàng trước ngực. Trượt ngang chân phải mở rộng sang sườn.",
-    videoUrl: "https://www.tiktok.com/search?q=B%C6%B0%E1%BB%9Bc+Tr%C6%B0%E1%BB%A3t+Ngang+%C4%90%C3%B3n+C%E1%BA%A7u+Ph%E1%BA%A3i+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Clip 02",
     tags: ["Ô 6", "TRUNG TÂM PHẢI", "Cơ bản", "Bộ pháp"]
   },
@@ -651,7 +651,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Đỡ Cầu Ngang Ngực Thuận Tay",
     subTitle: "TRUNG TÂM PHẢI • Phòng thủ • Cấp độ Cơ bản",
     description: "Đỡ quả cầu đánh ép ngực phải đẩy đi an toàn. Trụ vững hai chân hấp thụ chấn động.",
-    videoUrl: "https://www.tiktok.com/search?q=%C4%90%E1%BB%A1+C%E1%BA%A7u+Ngang+Ng%E1%BB%B1c+Thu%E1%BA%ADn+Tay+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Clip 03",
     tags: ["Ô 6", "TRUNG TÂM PHẢI", "Cơ bản", "Phòng thủ"]
   },
@@ -663,7 +663,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Phản Tạt Thuận Tay Đè Lưới",
     subTitle: "TRUNG TÂM PHẢI • Phản tạt • Cấp độ Trung cấp",
     description: "Vung ngang vợt đè phẳng đường bay của cầu. Bước chân phải đón cầu, dồn lực tiến.",
-    videoUrl: "https://www.tiktok.com/search?q=Ph%E1%BA%A3n+T%E1%BA%A1t+Thu%E1%BA%ADn+Tay+%C4%90%C3%A8+L%C6%B0%E1%BB%9Bi+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Clip 04",
     tags: ["Ô 6", "TRUNG TÂM PHẢI", "Trung cấp", "Phản tạt"]
   },
@@ -675,7 +675,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Thủ Kê Cầu Sát Lưới Đổi Nhịp",
     subTitle: "TRUNG TÂM PHẢI • Thủ mềm • Cấp độ Trung cấp",
     description: "Hãm xung lực cho bóng rơi sát vạch chữ T. Giữ thăng bằng không bị chúi người.",
-    videoUrl: "https://www.tiktok.com/search?q=Th%E1%BB%A7+K%C3%AA+C%E1%BA%A7u+S%C3%A1t+L%C6%B0%E1%BB%9Bi+%C4%90%E1%BB%95i+Nh%E1%BB%8Bp+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Clip 05",
     tags: ["Ô 6", "TRUNG TÂM PHẢI", "Trung cấp", "Thủ mềm"]
   },
@@ -687,7 +687,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Đẩy Cầu Nhanh Ngang Thân",
     subTitle: "TRUNG TÂM PHẢI • Phản tạt • Cấp độ Trung cấp",
     description: "Đẩy nhanh mặt vợt đưa cầu đi sát người đối thủ. Dồn trọng tâm chân thuận.",
-    videoUrl: "https://www.tiktok.com/search?q=%C4%90%E1%BA%A9y+C%E1%BA%A7u+Nhanh+Ngang+Th%C3%A2n+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Clip 06",
     tags: ["Ô 6", "TRUNG TÂM PHẢI", "Trung cấp", "Phản tạt"]
   },
@@ -699,7 +699,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Đè Cầu Tấn Công Góc Nách Thuận Tay",
     subTitle: "TRUNG TÂM PHẢI • Tấn công • Cấp độ Nâng cao",
     description: "Bung lực cổ tay ép cầu cắm vào người đối thủ. Tiến nửa bước dồn ép không gian.",
-    videoUrl: "https://www.tiktok.com/search?q=%C4%90%C3%A8+C%E1%BA%A7u+T%E1%BA%A5n+C%C3%B4ng+G%C3%B3c+N%C3%A1ch+Thu%E1%BA%ADn+Tay+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Clip 07",
     tags: ["Ô 6", "TRUNG TÂM PHẢI", "Nâng cao", "Tấn công"]
   },
@@ -711,7 +711,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Bật Ngang Vợt Phản Tạt Chéo Biên",
     subTitle: "TRUNG TÂM PHẢI • Phản tạt chéo • Cấp độ Nâng cao",
     description: "Chém xiên mặt vợt đưa cầu vút sang góc xa. Xoay người đẩy cơ thể hồi vị.",
-    videoUrl: "https://www.tiktok.com/search?q=B%E1%BA%ADt+Ngang+V%E1%BB%A3t+Ph%E1%BA%A3n+T%E1%BA%A1t+Ch%C3%A9o+Bi%C3%AAn+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Clip 08",
     tags: ["Ô 6", "TRUNG TÂM PHẢI", "Nâng cao", "Phản tạt chéo"]
   },
@@ -723,7 +723,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Phản Đòn Smash Bằng Quả Tạt Cắm Sàn",
     subTitle: "TRUNG TÂM PHẢI • Phản công • Cấp độ Nâng cao",
     description: "Mượn lực cú smash tạt ngược lại cắm sàn đối phương. Bật cổ tay đón đúng tâm vợt.",
-    videoUrl: "https://www.tiktok.com/search?q=Ph%E1%BA%A3n+%C4%90%C3%B2n+Smash+B%E1%BA%B1ng+Qu%E1%BA%A3+T%E1%BA%A1t+C%E1%BA%AFm+S%C3%A0n+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Clip 09",
     tags: ["Ô 6", "TRUNG TÂM PHẢI", "Nâng cao", "Phản công"]
   },
@@ -735,7 +735,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Đỡ Cầu Bật Phản Công Dồn Dập",
     subTitle: "TRUNG TÂM PHẢI • Liên hoàn • Cấp độ Nâng cao",
     description: "Cứu cầu liên tục 2 nhịp chuyển thế trận chủ động. Chuyển trụ chân trái sang phải linh hoạt.",
-    videoUrl: "https://www.tiktok.com/search?q=%C4%90%E1%BB%A1+C%E1%BA%A7u+B%E1%BA%ADt+Ph%E1%BA%A3n+C%C3%B4ng+D%E1%BB%93n+D%E1%BA%ADp+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Clip 10",
     tags: ["Ô 6", "TRUNG TÂM PHẢI", "Nâng cao", "Liên hoàn"]
   },
@@ -750,7 +750,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Bộ Pháp Lùi Chéo Góc Trái",
     subTitle: "ĐÁY TRÁI • Bộ pháp lùi • Cấp độ Cơ bản",
     description: "Giơ vợt vòng qua đầu đón điểm rơi. Bước chéo lùi chân đón bóng ở góc 8h.",
-    videoUrl: "https://www.tiktok.com/search?q=B%E1%BB%99+Ph%C3%A1p+L%C3%B9i+Ch%C3%A9o+G%C3%B3c+Tr%C3%A1i+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Clip 01",
     tags: ["Ô 7", "ĐÁY TRÁI", "Cơ bản", "Bộ pháp lùi"]
   },
@@ -762,7 +762,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Phông Cầu Vòng Đầu Thuận Tay",
     subTitle: "ĐÁY TRÁI • Phông cầu • Cấp độ Cơ bản",
     description: "Vung tay vòng qua đầu phông sâu cuối sân. Chân phải làm trụ bật đổi chân (Scissor kick).",
-    videoUrl: "https://www.tiktok.com/search?q=Ph%C3%B4ng+C%E1%BA%A7u+V%C3%B2ng+%C4%90%E1%BA%A7u+Thu%E1%BA%ADn+Tay+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Clip 02",
     tags: ["Ô 7", "ĐÁY TRÁI", "Cơ bản", "Phông cầu"]
   },
@@ -774,7 +774,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Đón Điểm Rơi Góc Trái Đáy Sân",
     subTitle: "ĐÁY TRÁI • Phán đoán • Cấp độ Cơ bản",
     description: "Mở rộng vai đón quả cầu bổng sâu. Lùi bước đuổi chân nhịp nhàng.",
-    videoUrl: "https://www.tiktok.com/search?q=%C4%90%C3%B3n+%C4%90i%E1%BB%83m+R%C6%A1i+G%C3%B3c+Tr%C3%A1i+%C4%90%C3%A1y+S%C3%A2n+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Clip 03",
     tags: ["Ô 7", "ĐÁY TRÁI", "Cơ bản", "Phán đoán"]
   },
@@ -786,7 +786,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Cắt Cầu Chéo Sân Vòng Đầu",
     subTitle: "ĐÁY TRÁI • Drop shot • Cấp độ Trung cấp",
     description: "Chém nghiêng mặt vợt cắt cầu rơi chéo mép lưới. Tiếp đất chân phải rồi đẩy tiến về tâm.",
-    videoUrl: "https://www.tiktok.com/search?q=C%E1%BA%AFt+C%E1%BA%A7u+Ch%C3%A9o+S%C3%A2n+V%C3%B2ng+%C4%90%E1%BA%A7u+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Clip 04",
     tags: ["Ô 7", "ĐÁY TRÁI", "Trung cấp", "Drop shot"]
   },
@@ -798,7 +798,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Đập Cầu Vòng Đầu Tấn Công",
     subTitle: "ĐÁY TRÁI • Smash vòng đầu • Cấp độ Trung cấp",
     description: "Gập bụng và cổ tay smash uy lực. Bật nhịp chân thuận dứt điểm.",
-    videoUrl: "https://www.tiktok.com/search?q=%C4%90%E1%BA%ADp+C%E1%BA%A7u+V%C3%B2ng+%C4%90%E1%BA%A7u+T%E1%BA%A5n+C%C3%B4ng+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Clip 05",
     tags: ["Ô 7", "ĐÁY TRÁI", "Trung cấp", "Smash vòng đầu"]
   },
@@ -810,7 +810,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Phông Cao Sâu Ép Biên Trái",
     subTitle: "ĐÁY TRÁI • Phông sâu • Cấp độ Trung cấp",
     description: "Phát lực cổ tay đưa cầu cao vút sát vạch biên. Xoay thân dồn lực vai.",
-    videoUrl: "https://www.tiktok.com/search?q=Ph%C3%B4ng+Cao+S%C3%A2u+%C3%89p+Bi%C3%AAn+Tr%C3%A1i+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Clip 06",
     tags: ["Ô 7", "ĐÁY TRÁI", "Trung cấp", "Phông sâu"]
   },
@@ -822,7 +822,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Phông Cầu Trái Tay Cuối Sân (Backhand Clear)",
     subTitle: "ĐÁY TRÁI • Phông trái tay • Cấp độ Nâng cao",
     description: "Xoay lưng, bung hết lực cẳng tay ngón cái. Bước chân phải dài về góc, lưng xoay về lưới.",
-    videoUrl: "https://www.tiktok.com/search?q=Ph%C3%B4ng+C%E1%BA%A7u+Tr%C3%A1i+Tay+Cu%E1%BB%91i+S%C3%A2n+%28Backhand+Clear%29+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Clip 07",
     tags: ["Ô 7", "ĐÁY TRÁI", "Nâng cao", "Phông trái tay"]
   },
@@ -834,7 +834,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Chém Cầu Trái Tay Rơi Lưới (Backhand Drop)",
     subTitle: "ĐÁY TRÁI • Chém trái tay • Cấp độ Nâng cao",
     description: "Giả động tác phông sâu rồi chém nhẹ rơi lưới. Chân phải trụ vững, xoay người thu chân.",
-    videoUrl: "https://www.tiktok.com/search?q=Ch%C3%A9m+C%E1%BA%A7u+Tr%C3%A1i+Tay+R%C6%A1i+L%C6%B0%E1%BB%9Bi+%28Backhand+Drop%29+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Clip 08",
     tags: ["Ô 7", "ĐÁY TRÁI", "Nâng cao", "Chém trái tay"]
   },
@@ -846,7 +846,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Bật Nhảy Smash Vòng Đầu Dứt Điểm",
     subTitle: "ĐÁY TRÁI • Jump smash • Cấp độ Nâng cao",
     description: "Bật cao gập người đập cắm biên. Bật nhảy 2 chân trên không tiếp đất.",
-    videoUrl: "https://www.tiktok.com/search?q=B%E1%BA%ADt+Nh%E1%BA%A3y+Smash+V%C3%B2ng+%C4%90%E1%BA%A7u+D%E1%BB%A9t+%C4%90i%E1%BB%83m+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Clip 09",
     tags: ["Ô 7", "ĐÁY TRÁI", "Nâng cao", "Jump smash"]
   },
@@ -858,7 +858,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Giả Phông Chém Chéo Rơi Sát Mép Biên",
     subTitle: "ĐÁY TRÁI • Đánh lừa • Cấp độ Nâng cao",
     description: "Đà vung phông cực mạnh nhưng vuốt cạnh vợt cắt cầu. Thân người bay trên không đảo hướng.",
-    videoUrl: "https://www.tiktok.com/search?q=Gi%E1%BA%A3+Ph%C3%B4ng+Ch%C3%A9m+Ch%C3%A9o+R%C6%A1i+S%C3%A1t+M%C3%A9p+Bi%C3%AAn+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Clip 10",
     tags: ["Ô 7", "ĐÁY TRÁI", "Nâng cao", "Đánh lừa"]
   },
@@ -873,7 +873,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Bật Lùi Đón Cầu Đáy Giữa Sân",
     subTitle: "ĐÁY GIỮA • Bộ pháp • Cấp độ Cơ bản",
     description: "Mở rộng vai, giơ vợt cao nhất có thể. Bước giật lùi nhanh đón cầu sau đầu.",
-    videoUrl: "https://www.tiktok.com/search?q=B%E1%BA%ADt+L%C3%B9i+%C4%90%C3%B3n+C%E1%BA%A7u+%C4%90%C3%A1y+Gi%E1%BB%AFa+S%C3%A2n+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Clip 01",
     tags: ["Ô 8", "ĐÁY GIỮA", "Cơ bản", "Bộ pháp"]
   },
@@ -885,7 +885,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Phông Cầu Bổng Sâu Đáy Sân",
     subTitle: "ĐÁY GIỮA • Phông cao sâu • Cấp độ Cơ bản",
     description: "Phát lực trọn vẹn đưa cầu cao vút về vạch cuối. Đổi chân trên không đưa chân phải lên trước.",
-    videoUrl: "https://www.tiktok.com/search?q=Ph%C3%B4ng+C%E1%BA%A7u+B%E1%BB%95ng+S%C3%A2u+%C4%90%C3%A1y+S%C3%A2n+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Clip 02",
     tags: ["Ô 8", "ĐÁY GIỮA", "Cơ bản", "Phông cao sâu"]
   },
@@ -897,7 +897,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Bộ Pháp Scissor Kick Đón Cầu Cao",
     subTitle: "ĐÁY GIỮA • Bộ pháp • Cấp độ Cơ bản",
     description: "Bật đổi chân cắt kéo trên không. Tiếp đất an toàn bằng chân thuận.",
-    videoUrl: "https://www.tiktok.com/search?q=B%E1%BB%99+Ph%C3%A1p+Scissor+Kick+%C4%90%C3%B3n+C%E1%BA%A7u+Cao+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Clip 03",
     tags: ["Ô 8", "ĐÁY GIỮA", "Cơ bản", "Bộ pháp"]
   },
@@ -909,7 +909,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Chém Cầu Thẳng Rơi Lưới (Straight Drop)",
     subTitle: "ĐÁY GIỮA • Drop shot • Cấp độ Trung cấp",
     description: "Chém vuốt cạnh quả cầu cho rơi sát lưới thẳng. Hạ đà tiến lên đón cầu tiếp theo.",
-    videoUrl: "https://www.tiktok.com/search?q=Ch%C3%A9m+C%E1%BA%A7u+Th%E1%BA%B3ng+R%C6%A1i+L%C6%B0%E1%BB%9Bi+%28Straight+Drop%29+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Clip 04",
     tags: ["Ô 8", "ĐÁY GIỮA", "Trung cấp", "Drop shot"]
   },
@@ -921,7 +921,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Đập Cầu Cắm Sàn Giữa Sân",
     subTitle: "ĐÁY GIỮA • Smash • Cấp độ Trung cấp",
     description: "Phát lực cổ tay cắm thẳng vào khe giữa hai đối thủ. Chân sau bật đưa về phía trước.",
-    videoUrl: "https://www.tiktok.com/search?q=%C4%90%E1%BA%ADp+C%E1%BA%A7u+C%E1%BA%AFm+S%C3%A0n+Gi%E1%BB%AFa+S%C3%A2n+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Clip 05",
     tags: ["Ô 8", "ĐÁY GIỮA", "Trung cấp", "Smash"]
   },
@@ -933,7 +933,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Phông Cầu Ép Sâu Vạch Cuối",
     subTitle: "ĐÁY GIỮA • Phông sâu • Cấp độ Trung cấp",
     description: "Ép đối phương lùi sâu sát vách phông cầu. Xoay thân hoàn tất cú đánh.",
-    videoUrl: "https://www.tiktok.com/search?q=Ph%C3%B4ng+C%E1%BA%A7u+%C3%89p+S%C3%A2u+V%E1%BA%A1ch+Cu%E1%BB%91i+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Clip 06",
     tags: ["Ô 8", "ĐÁY GIỮA", "Trung cấp", "Phông sâu"]
   },
@@ -945,7 +945,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Giả Phông Đập Chém Cầu Lỏng Tay",
     subTitle: "ĐÁY GIỮA • Đánh lừa • Cấp độ Nâng cao",
     description: "Đà vung cực mạnh nhưng giảm tốc chạm bóng nhẹ. Trụ cơ thể ổn định trên không.",
-    videoUrl: "https://www.tiktok.com/search?q=Gi%E1%BA%A3+Ph%C3%B4ng+%C4%90%E1%BA%ADp+Ch%C3%A9m+C%E1%BA%A7u+L%E1%BB%8Fng+Tay+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Clip 07",
     tags: ["Ô 8", "ĐÁY GIỮA", "Nâng cao", "Đánh lừa"]
   },
@@ -957,7 +957,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Bật Nhảy Hai Chân Đập Dứt Điểm",
     subTitle: "ĐÁY GIỮA • Jump smash • Cấp độ Nâng cao",
     description: "Treo người trên không smash cực đại. Bật lò xo hai chân tiếp đất gối chùng.",
-    videoUrl: "https://www.tiktok.com/search?q=B%E1%BA%ADt+Nh%E1%BA%A3y+Hai+Ch%C3%A2n+%C4%90%E1%BA%ADp+D%E1%BB%A9t+%C4%90i%E1%BB%83m+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Clip 08",
     tags: ["Ô 8", "ĐÁY GIỮA", "Nâng cao", "Jump smash"]
   },
@@ -969,7 +969,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Smash Điểm Rơi Cắm Khe Chữ T",
     subTitle: "ĐÁY GIỮA • Smash điểm • Cấp độ Nâng cao",
     description: "Gập cổ tay cắm bóng sát vạch chữ T đáy sân. Bật cao thu chân tiếp đất.",
-    videoUrl: "https://www.tiktok.com/search?q=Smash+%C4%90i%E1%BB%83m+R%C6%A1i+C%E1%BA%AFm+Khe+Ch%E1%BB%AF+T+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Clip 09",
     tags: ["Ô 8", "ĐÁY GIỮA", "Nâng cao", "Smash điểm"]
   },
@@ -981,7 +981,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Chém Cầu Đảo Cánh Đánh Gục Bộ Pháp",
     subTitle: "ĐÁY GIỮA • Chém cầu • Cấp độ Nâng cao",
     description: "Chém xiên cắt ngang mặt cầu đổi góc 90 độ. Thăng bằng hoàn hảo khi rơi xuống.",
-    videoUrl: "https://www.tiktok.com/search?q=Ch%C3%A9m+C%E1%BA%A7u+%C4%90%E1%BA%A3o+C%C3%A1nh+%C4%90%C3%A1nh+G%E1%BB%A5c+B%E1%BB%99+Ph%C3%A1p+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Clip 10",
     tags: ["Ô 8", "ĐÁY GIỮA", "Nâng cao", "Chém cầu"]
   },
@@ -996,7 +996,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Bộ Pháp Lùi Góc Thuận Tay",
     subTitle: "ĐÁY PHẢI • Bộ pháp • Cấp độ Cơ bản",
     description: "Mở góc vai phải, đưa vợt ra sau gáy chuẩn bị. Bước đuổi lùi chéo về góc 4h.",
-    videoUrl: "https://www.tiktok.com/search?q=B%E1%BB%99+Ph%C3%A1p+L%C3%B9i+G%C3%B3c+Thu%E1%BA%ADn+Tay+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Clip 01",
     tags: ["Ô 9", "ĐÁY PHẢI", "Cơ bản", "Bộ pháp"]
   },
@@ -1008,7 +1008,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Phông Cầu Cao Sâu Thuận Tay",
     subTitle: "ĐÁY PHẢI • Phông cầu • Cấp độ Cơ bản",
     description: "Vung hết biên độ phông cầu bổng sâu. Đổi chân bật kéo thân người về tâm.",
-    videoUrl: "https://www.tiktok.com/search?q=Ph%C3%B4ng+C%E1%BA%A7u+Cao+S%C3%A2u+Thu%E1%BA%ADn+Tay+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Clip 02",
     tags: ["Ô 9", "ĐÁY PHẢI", "Cơ bản", "Phông cầu"]
   },
@@ -1020,7 +1020,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Đón Cầu Góc Thuận Tay Ổn Định",
     subTitle: "ĐÁY PHẢI • Căn bản • Cấp độ Cơ bản",
     description: "Đón điểm rơi đúng tầm với trước trán. Hạ gót chân phải làm điểm tựa.",
-    videoUrl: "https://www.tiktok.com/search?q=%C4%90%C3%B3n+C%E1%BA%A7u+G%C3%B3c+Thu%E1%BA%ADn+Tay+%E1%BB%94n+%C4%90%E1%BB%8Bnh+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Clip 03",
     tags: ["Ô 9", "ĐÁY PHẢI", "Cơ bản", "Căn bản"]
   },
@@ -1032,7 +1032,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Chém Cầu Xiên Góc Thuận Tay (Cross Drop)",
     subTitle: "ĐÁY PHẢI • Drop shot • Cấp độ Trung cấp",
     description: "Cắt chéo mặt vợt đưa cầu rơi sát mép lưới đối diện. Tiếp đất bằng chân phải, bật tiến.",
-    videoUrl: "https://www.tiktok.com/search?q=Ch%C3%A9m+C%E1%BA%A7u+Xi%C3%AAn+G%C3%B3c+Thu%E1%BA%ADn+Tay+%28Cross+Drop%29+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Clip 04",
     tags: ["Ô 9", "ĐÁY PHẢI", "Trung cấp", "Drop shot"]
   },
@@ -1044,7 +1044,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Đập Cầu Dọc Biên Thuận Tay",
     subTitle: "ĐÁY PHẢI • Smash dọc biên • Cấp độ Trung cấp",
     description: "Smash cắm sát vạch biên đơn. Dồn trọng tâm chân phải bật tiến.",
-    videoUrl: "https://www.tiktok.com/search?q=%C4%90%E1%BA%ADp+C%E1%BA%A7u+D%E1%BB%8Dc+Bi%C3%AAn+Thu%E1%BA%ADn+Tay+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Clip 05",
     tags: ["Ô 9", "ĐÁY PHẢI", "Trung cấp", "Smash dọc biên"]
   },
@@ -1056,7 +1056,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Cắt Cầu Thẳng Rơi Sát Lưới",
     subTitle: "ĐÁY PHẢI • Drop shot • Cấp độ Trung cấp",
     description: "Cắt thẳng quả cầu rơi êm ái sát mép lưới đối diện. Chuyển đà tiến về phía trước.",
-    videoUrl: "https://www.tiktok.com/search?q=C%E1%BA%AFt+C%E1%BA%A7u+Th%E1%BA%B3ng+R%C6%A1i+S%C3%A1t+L%C6%B0%E1%BB%9Bi+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Clip 06",
     tags: ["Ô 9", "ĐÁY PHẢI", "Trung cấp", "Drop shot"]
   },
@@ -1068,7 +1068,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Nhảy Đập Jump Smash Uy Lực",
     subTitle: "ĐÁY PHẢI • Jump smash • Cấp độ Nâng cao",
     description: "Bật cao điểm tiếp xúc tối đa, smash sấm sét. Bật nhảy chân thuận xoay hông trên không.",
-    videoUrl: "https://www.tiktok.com/search?q=Nh%E1%BA%A3y+%C4%90%E1%BA%ADp+Jump+Smash+Uy+L%E1%BB%B1c+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Clip 07",
     tags: ["Ô 9", "ĐÁY PHẢI", "Nâng cao", "Jump smash"]
   },
@@ -1080,7 +1080,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Chém Cầu Xoáy Giả Động Tác Đập",
     subTitle: "ĐÁY PHẢI • Đánh lừa • Cấp độ Nâng cao",
     description: "Giả vung smash nhưng miết cạnh vợt xoáy rơi sát lưới. Hãm đà trên không và lao lên bắt lưới.",
-    videoUrl: "https://www.tiktok.com/search?q=Ch%C3%A9m+C%E1%BA%A7u+Xo%C3%A1y+Gi%E1%BA%A3+%C4%90%E1%BB%99ng+T%C3%A1c+%C4%90%E1%BA%ADp+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Clip 08",
     tags: ["Ô 9", "ĐÁY PHẢI", "Nâng cao", "Đánh lừa"]
   },
@@ -1092,7 +1092,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Đập Cầu Góc Nách Đối Phương",
     subTitle: "ĐÁY PHẢI • Tấn công • Cấp độ Nâng cao",
     description: "Smash nhắm thẳng vào nách tay cầm vợt đối thủ. Phát lực gập bụng dứt khoát.",
-    videoUrl: "https://www.tiktok.com/search?q=%C4%90%E1%BA%ADp+C%E1%BA%A7u+G%C3%B3c+N%C3%A1ch+%C4%90%E1%BB%91i+Ph%C6%B0%C6%A1ng+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Clip 09",
     tags: ["Ô 9", "ĐÁY PHẢI", "Nâng cao", "Tấn công"]
   },
@@ -1104,7 +1104,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Stick Smash Búng Cổ Tay Chớp Nhoáng",
     subTitle: "ĐÁY PHẢI • Stick smash • Cấp độ Nâng cao",
     description: "Búng cổ tay cực nhanh góc cắm hiểm. Bật nhảy nhịp một tiếp đất tức thì.",
-    videoUrl: "https://www.tiktok.com/search?q=Stick+Smash+B%C3%BAng+C%E1%BB%95+Tay+Ch%E1%BB%9Bp+Nho%C3%A1ng+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Clip 10",
     tags: ["Ô 9", "ĐÁY PHẢI", "Nâng cao", "Stick smash"]
   },
@@ -1118,7 +1118,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Kỹ Thuật Đọc Hướng & Di Chuyển 4 Góc Sân Đơn Nam",
     subTitle: "Đơn Nam • Cơ bản • Bài 01",
     description: "Bộ pháp đơn nam: Bật đà từ tâm sân, cứu cầu 4 góc và hồi vị tức thì",
-    videoUrl: "https://www.tiktok.com/search?q=K%E1%BB%B9+Thu%E1%BA%ADt+%C4%90%E1%BB%8Dc+H%C6%B0%E1%BB%9Bng+%26+Di+Chuy%E1%BB%83n+4+G%C3%B3c+S%C3%A2n+%C4%90%C6%A1n+Nam+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Bài 01",
     tags: ["Đơn Nam", "Cơ bản", "Thực chiến"]
   },
@@ -1129,7 +1129,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Chiến Thuật Ép Cầu Hai Góc Cuối Sân Đơn Nam",
     subTitle: "Đơn Nam • Trung cấp • Bài 02",
     description: "Kỹ năng phông bổng sâu, ép đối thủ xoay lưng và mở góc tấn công",
-    videoUrl: "https://www.tiktok.com/search?q=Chi%E1%BA%BFn+Thu%E1%BA%ADt+%C3%89p+C%E1%BA%A7u+Hai+G%C3%B3c+Cu%E1%BB%91i+S%C3%A2n+%C4%90%C6%A1n+Nam+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Bài 02",
     tags: ["Đơn Nam", "Trung cấp", "Thực chiến"]
   },
@@ -1140,7 +1140,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Phản Xạ Bỏ Nhỏ Sát Lưới & Kéo Lưới Đổi Hướng",
     subTitle: "Đơn Nam • Trung cấp • Bài 03",
     description: "Miết mặt vợt tinh tế, gài cầu lộn mép lưới ép đối thủ nâng bổng",
-    videoUrl: "https://www.tiktok.com/search?q=Ph%E1%BA%A3n+X%E1%BA%A1+B%E1%BB%8F+Nh%E1%BB%8F+S%C3%A1t+L%C6%B0%E1%BB%9Bi+%26+K%C3%A9o+L%C6%B0%E1%BB%9Bi+%C4%90%E1%BB%95i+H%C6%B0%E1%BB%9Bng+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Bài 03",
     tags: ["Đơn Nam", "Trung cấp", "Thực chiến"]
   },
@@ -1151,7 +1151,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Kỹ Thuật Bước Lùi Đón Cầu & Chém Cầu Bạt Góc",
     subTitle: "Đơn Nam • Trung cấp • Bài 04",
     description: "Đổi góc vung vợt chém cầu rơi chéo sân đánh lừa phán đoán",
-    videoUrl: "https://www.tiktok.com/search?q=K%E1%BB%B9+Thu%E1%BA%ADt+B%C6%B0%E1%BB%9Bc+L%C3%B9i+%C4%90%C3%B3n+C%E1%BA%A7u+%26+Ch%C3%A9m+C%E1%BA%A7u+B%E1%BA%A1t+G%C3%B3c+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Bài 04",
     tags: ["Đơn Nam", "Trung cấp", "Thực chiến"]
   },
@@ -1162,7 +1162,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Bật Nhảy Đập Cầu Tấn Công Dứt Điểm (Jump Smash Đơn Nam)",
     subTitle: "Đơn Nam • Nâng cao • Bài 05",
     description: "Tạo đà bằng chân thuận, bật cao gập bụng phát lực cắm sàn",
-    videoUrl: "https://www.tiktok.com/search?q=B%E1%BA%ADt+Nh%E1%BA%A3y+%C4%90%E1%BA%ADp+C%E1%BA%A7u+T%E1%BA%A5n+C%C3%B4ng+D%E1%BB%A9t+%C4%90i%E1%BB%83m+%28Jump+Smash+%C4%90%C6%A1n+Nam%29+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Bài 05",
     tags: ["Đơn Nam", "Nâng cao", "Thực chiến"]
   },
@@ -1173,7 +1173,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Kỹ Năng Thủ Cầu Bung Sâu Đảo Ngược Thế Trận",
     subTitle: "Đơn Nam • Cơ bản • Bài 06",
     description: "Đón đỡ cú đập sát sườn hông, bung lực cẳng tay đẩy cầu về cuối sân",
-    videoUrl: "https://www.tiktok.com/search?q=K%E1%BB%B9+N%C4%83ng+Th%E1%BB%A7+C%E1%BA%A7u+Bung+S%C3%A2u+%C4%90%E1%BA%A3o+Ng%C6%B0%E1%BB%A3c+Th%E1%BA%BF+Tr%E1%BA%ADn+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Bài 06",
     tags: ["Đơn Nam", "Cơ bản", "Thực chiến"]
   },
@@ -1184,7 +1184,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Stick Smash & Chém Cầu Lừa Hướng Cuối Sân Đơn Nam",
     subTitle: "Đơn Nam • Nâng cao • Bài 07",
     description: "Vung đà đập cực mạnh nhưng giảm tốc chém lỏng tay rơi sát lưới",
-    videoUrl: "https://www.tiktok.com/search?q=Stick+Smash+%26+Ch%C3%A9m+C%E1%BA%A7u+L%E1%BB%ABa+H%C6%B0%E1%BB%9Bng+Cu%E1%BB%91i+S%C3%A2n+%C4%90%C6%A1n+Nam+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Bài 07",
     tags: ["Đơn Nam", "Nâng cao", "Thực chiến"]
   },
@@ -1195,7 +1195,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Bứt Tốc Lao Lưới Vồ Cầu Dứt Điểm Đơn Nam",
     subTitle: "Đơn Nam • Nâng cao • Bài 08",
     description: "Bật người cực nhanh chớp cơ hội khi đối thủ bỏ nhỏ non",
-    videoUrl: "https://www.tiktok.com/search?q=B%E1%BB%A9t+T%E1%BB%91c+Lao+L%C6%B0%E1%BB%9Bi+V%E1%BB%93+C%E1%BA%A7u+D%E1%BB%A9t+%C4%90i%E1%BB%83m+%C4%90%C6%A1n+Nam+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Bài 08",
     tags: ["Đơn Nam", "Nâng cao", "Thực chiến"]
   },
@@ -1206,7 +1206,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Kỹ Năng Phông Cầu Trái Tay Đảo Góc Cuối Sân",
     subTitle: "Đơn Nam • Nâng cao • Bài 09",
     description: "Xoay lưng búng lực ngón cái giải tỏa áp lực góc chết",
-    videoUrl: "https://www.tiktok.com/search?q=K%E1%BB%B9+N%C4%83ng+Ph%C3%B4ng+C%E1%BA%A7u+Tr%C3%A1i+Tay+%C4%90%E1%BA%A3o+G%C3%B3c+Cu%E1%BB%91i+S%C3%A2n+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Bài 09",
     tags: ["Đơn Nam", "Nâng cao", "Thực chiến"]
   },
@@ -1217,7 +1217,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Bộ Pháp Di Chuyển Lùi Scissor Kick Chớp Nhoáng",
     subTitle: "Đơn Nam • Cơ bản • Bài 10",
     description: "Bật đổi chân trên không tiếp đất chuẩn bị cho pha dứt điểm",
-    videoUrl: "https://www.tiktok.com/search?q=B%E1%BB%99+Ph%C3%A1p+Di+Chuy%E1%BB%83n+L%C3%B9i+Scissor+Kick+Ch%E1%BB%9Bp+Nho%C3%A1ng+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Bài 10",
     tags: ["Đơn Nam", "Cơ bản", "Thực chiến"]
   },
@@ -1231,7 +1231,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Chiến Thuật Bọc Lót & Đổi Vị Trí Trong Đôi Nam",
     subTitle: "Đôi Nam • Cơ bản • Bài 01",
     description: "Quy tắc công - thủ, di chuyển xoay tua và phân công khu vực",
-    videoUrl: "https://www.tiktok.com/search?q=Chi%E1%BA%BFn+Thu%E1%BA%ADt+B%E1%BB%8Dc+L%C3%B3t+%26+%C4%90%E1%BB%95i+V%E1%BB%8B+Tr%C3%AD+Trong+%C4%90%C3%B4i+Nam+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Bài 01",
     tags: ["Đôi Nam", "Cơ bản", "Thực chiến"]
   },
@@ -1242,7 +1242,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Kỹ Năng Đè Lưới & Phản Tạt Ép Góc Đôi Nam",
     subTitle: "Đôi Nam • Trung cấp • Bài 02",
     description: "Kỹ thuật giữ lưới chủ động, tạt cầu thấp tước đoạt quyền tấn công",
-    videoUrl: "https://www.tiktok.com/search?q=K%E1%BB%B9+N%C4%83ng+%C4%90%C3%A8+L%C6%B0%E1%BB%9Bi+%26+Ph%E1%BA%A3n+T%E1%BA%A1t+%C3%89p+G%C3%B3c+%C4%90%C3%B4i+Nam+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Bài 02",
     tags: ["Đôi Nam", "Trung cấp", "Thực chiến"]
   },
@@ -1253,7 +1253,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Phối Hợp Tấn Công Đập Cầu & Bồi Cầu Dứt Điểm",
     subTitle: "Đôi Nam • Nâng cao • Bài 03",
     description: "Phối hợp nhịp nhàng giữa người công sau và người đè trước",
-    videoUrl: "https://www.tiktok.com/search?q=Ph%E1%BB%91i+H%E1%BB%A3p+T%E1%BA%A5n+C%C3%B4ng+%C4%90%E1%BA%ADp+C%E1%BA%A7u+%26+B%E1%BB%93i+C%E1%BA%A7u+D%E1%BB%A9t+%C4%90i%E1%BB%83m+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Bài 03",
     tags: ["Đôi Nam", "Nâng cao", "Thực chiến"]
   },
@@ -1264,7 +1264,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Kỹ Thuật Đè Lưới Cắt Đầu Vợt Tốc Độ Cao",
     subTitle: "Đôi Nam • Trung cấp • Bài 04",
     description: "Bắt nhịp phản xạ cực nhanh không cho đối phương nâng bổng",
-    videoUrl: "https://www.tiktok.com/search?q=K%E1%BB%B9+Thu%E1%BA%ADt+%C4%90%C3%A8+L%C6%B0%E1%BB%9Bi+C%E1%BA%AFt+%C4%90%E1%BA%A7u+V%E1%BB%A3t+T%E1%BB%91c+%C4%90%E1%BB%99+Cao+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Bài 04",
     tags: ["Đôi Nam", "Trung cấp", "Thực chiến"]
   },
@@ -1275,7 +1275,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Chiến Thuật Giữ Lưới Chủ Động & Búng Cổ Tay",
     subTitle: "Đôi Nam • Nâng cao • Bài 05",
     description: "Đón đỉnh lưới gõ cắm thẳng xuống đất đối thủ",
-    videoUrl: "https://www.tiktok.com/search?q=Chi%E1%BA%BFn+Thu%E1%BA%ADt+Gi%E1%BB%AF+L%C6%B0%E1%BB%9Bi+Ch%E1%BB%A7+%C4%90%E1%BB%99ng+%26+B%C3%BAng+C%E1%BB%95+Tay+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Bài 05",
     tags: ["Đôi Nam", "Nâng cao", "Thực chiến"]
   },
@@ -1286,7 +1286,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Đập Cầu Dọc Biên Uy Lực Ép Đối Thủ Mở Góc",
     subTitle: "Đôi Nam • Nâng cao • Bài 06",
     description: "Cú smash sấm sét mở đường cho đồng đội dứt điểm trên lưới",
-    videoUrl: "https://www.tiktok.com/search?q=%C4%90%E1%BA%ADp+C%E1%BA%A7u+D%E1%BB%8Dc+Bi%C3%AAn+Uy+L%E1%BB%B1c+%C3%89p+%C4%90%E1%BB%91i+Th%E1%BB%A7+M%E1%BB%9F+G%C3%B3c+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Bài 06",
     tags: ["Đôi Nam", "Nâng cao", "Thực chiến"]
   },
@@ -1297,7 +1297,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Thủ Cầu Bung Góc Thoát Vây Bị Tấn Công Liên Hoàn",
     subTitle: "Đôi Nam • Trung cấp • Bài 07",
     description: "Hạ trọng tâm đón cầu smash đẩy chéo góc xa thoát hiểm",
-    videoUrl: "https://www.tiktok.com/search?q=Th%E1%BB%A7+C%E1%BA%A7u+Bung+G%C3%B3c+Tho%C3%A1t+V%C3%A2y+B%E1%BB%8B+T%E1%BA%A5n+C%C3%B4ng+Li%C3%AAn+Ho%C3%A0n+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Bài 07",
     tags: ["Đôi Nam", "Trung cấp", "Thực chiến"]
   },
@@ -1308,7 +1308,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Phản Tạt Căng Ngang Sườn Phá Thế Công Đôi Nam",
     subTitle: "Đôi Nam • Trung cấp • Bài 08",
     description: "Đè phẳng đường bay quả cầu khiến đối thủ phải lùi thế phòng ngự",
-    videoUrl: "https://www.tiktok.com/search?q=Ph%E1%BA%A3n+T%E1%BA%A1t+C%C4%83ng+Ngang+S%C6%B0%E1%BB%9Dn+Ph%C3%A1+Th%E1%BA%BF+C%C3%B4ng+%C4%90%C3%B4i+Nam+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Bài 08",
     tags: ["Đôi Nam", "Trung cấp", "Thực chiến"]
   },
@@ -1319,7 +1319,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Bộ Pháp Bọc Lót Đôi Khi Đồng Đội Rướn Cứu Cầu",
     subTitle: "Đôi Nam • Cơ bản • Bài 09",
     description: "Di chuyển bù khoảng trống tức thì giữ vững trận địa phòng thủ",
-    videoUrl: "https://www.tiktok.com/search?q=B%E1%BB%99+Ph%C3%A1p+B%E1%BB%8Dc+L%C3%B3t+%C4%90%C3%B4i+Khi+%C4%90%E1%BB%93ng+%C4%90%E1%BB%99i+R%C6%B0%E1%BB%9Bn+C%E1%BB%A9u+C%E1%BA%A7u+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Bài 09",
     tags: ["Đôi Nam", "Cơ bản", "Thực chiến"]
   },
@@ -1330,7 +1330,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Bắt Bài Đường Cầu Lửng Giữa Sân Chốt Hạ Trận Đấu",
     subTitle: "Đôi Nam • Nâng cao • Bài 10",
     description: "Lao vào cắt ngang đường cầu dứt điểm cắm sàn chớp nhoáng",
-    videoUrl: "https://www.tiktok.com/search?q=B%E1%BA%AFt+B%C3%A0i+%C4%90%C6%B0%E1%BB%9Dng+C%E1%BA%A7u+L%E1%BB%ADng+Gi%E1%BB%AFa+S%C3%A2n+Ch%E1%BB%91t+H%E1%BA%A1+Tr%E1%BA%ADn+%C4%90%E1%BA%A5u+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Bài 10",
     tags: ["Đôi Nam", "Nâng cao", "Thực chiến"]
   },
@@ -1344,7 +1344,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Kỹ Thuật Di Chuyển Bộ Pháp Dẻo Dai & Điều Cầu Đơn Nữ",
     subTitle: "Đơn Nữ • Cơ bản • Bài 01",
     description: "Bộ pháp linh hoạt, di chuyển 4 góc sân êm ái và hồi vị nhịp nhàng",
-    videoUrl: "https://www.tiktok.com/search?q=K%E1%BB%B9+Thu%E1%BA%ADt+Di+Chuy%E1%BB%83n+B%E1%BB%99+Ph%C3%A1p+D%E1%BA%BBo+Dai+%26+%C4%90i%E1%BB%81u+C%E1%BA%A7u+%C4%90%C6%A1n+N%E1%BB%AF+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Bài 01",
     tags: ["Đơn Nữ", "Cơ bản", "Thực chiến"]
   },
@@ -1355,7 +1355,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Chiến Thuật Ép Cầu Đáy Sân & Mở Góc Tấn Công Đơn Nữ",
     subTitle: "Đơn Nữ • Trung cấp • Bài 02",
     description: "Kỹ thuật phông cầu cao sâu, khai thác khoảng trống hai góc biên",
-    videoUrl: "https://www.tiktok.com/search?q=Chi%E1%BA%BFn+Thu%E1%BA%ADt+%C3%89p+C%E1%BA%A7u+%C4%90%C3%A1y+S%C3%A2n+%26+M%E1%BB%9F+G%C3%B3c+T%E1%BA%A5n+C%C3%B4ng+%C4%90%C6%A1n+N%E1%BB%AF+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Bài 02",
     tags: ["Đơn Nữ", "Trung cấp", "Thực chiến"]
   },
@@ -1366,7 +1366,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Kỹ Thuật Bỏ Nhỏ Sát Lưới & Kéo Lưới Lừa Hướng Đơn Nữ",
     subTitle: "Đơn Nữ • Trung cấp • Bài 03",
     description: "Cảm giác mặt vợt tinh tế, cắt cầu đổi hướng đánh gục phản xạ",
-    videoUrl: "https://www.tiktok.com/search?q=K%E1%BB%B9+Thu%E1%BA%ADt+B%E1%BB%8F+Nh%E1%BB%8F+S%C3%A1t+L%C6%B0%E1%BB%9Bi+%26+K%C3%A9o+L%C6%B0%E1%BB%9Bi+L%E1%BB%ABa+H%C6%B0%E1%BB%9Bng+%C4%90%C6%A1n+N%E1%BB%AF+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Bài 03",
     tags: ["Đơn Nữ", "Trung cấp", "Thực chiến"]
   },
@@ -1377,7 +1377,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Kỹ Năng Đập Cầu Điểm Rơi & Chém Cầu Bạt Góc Đơn Nữ",
     subTitle: "Đơn Nữ • Nâng cao • Bài 04",
     description: "Biến hóa giữa đập cắm biên và chém cầu rơi chéo sân dứt điểm",
-    videoUrl: "https://www.tiktok.com/search?q=K%E1%BB%B9+N%C4%83ng+%C4%90%E1%BA%ADp+C%E1%BA%A7u+%C4%90i%E1%BB%83m+R%C6%A1i+%26+Ch%C3%A9m+C%E1%BA%A7u+B%E1%BA%A1t+G%C3%B3c+%C4%90%C6%A1n+N%E1%BB%AF+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Bài 04",
     tags: ["Đơn Nữ", "Nâng cao", "Thực chiến"]
   },
@@ -1388,7 +1388,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Kỹ Thuật Cắt Cầu Chéo Sân Vòng Đầu Đơn Nữ",
     subTitle: "Đơn Nữ • Trung cấp • Bài 05",
     description: "Vung tay giả phông sâu rồi miết vợt đưa cầu rơi sát mép lưới",
-    videoUrl: "https://www.tiktok.com/search?q=K%E1%BB%B9+Thu%E1%BA%ADt+C%E1%BA%AFt+C%E1%BA%A7u+Ch%C3%A9o+S%C3%A2n+V%C3%B2ng+%C4%90%E1%BA%A7u+%C4%90%C6%A1n+N%E1%BB%AF+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Bài 05",
     tags: ["Đơn Nữ", "Trung cấp", "Thực chiến"]
   },
@@ -1399,7 +1399,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Bộ Pháp Lunge Sâu Cứu Cầu Sát Sàn Đơn Nữ",
     subTitle: "Đơn Nữ • Cơ bản • Bài 06",
     description: "Hạ gối chùng sâu rướn người cứu những pha bỏ nhỏ hiểm hóc",
-    videoUrl: "https://www.tiktok.com/search?q=B%E1%BB%99+Ph%C3%A1p+Lunge+S%C3%A2u+C%E1%BB%A9u+C%E1%BA%A7u+S%C3%A1t+S%C3%A0n+%C4%90%C6%A1n+N%E1%BB%AF+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Bài 06",
     tags: ["Đơn Nữ", "Cơ bản", "Thực chiến"]
   },
@@ -1410,7 +1410,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Phông Cầu Cao Sâu Bền Bỉ Ép Đối Thủ Tiêu Hao Thể Lực",
     subTitle: "Đơn Nữ • Cơ bản • Bài 07",
     description: "Phát lực từ vai và cổ tay đưa cầu cắm sâu vạch cuối sân",
-    videoUrl: "https://www.tiktok.com/search?q=Ph%C3%B4ng+C%E1%BA%A7u+Cao+S%C3%A2u+B%E1%BB%81n+B%E1%BB%89+%C3%89p+%C4%90%E1%BB%91i+Th%E1%BB%A7+Ti%C3%AAu+Hao+Th%E1%BB%83+L%E1%BB%B1c+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Bài 07",
     tags: ["Đơn Nữ", "Cơ bản", "Thực chiến"]
   },
@@ -1421,7 +1421,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Chém Cầu Thẳng Sát Lưới Ép Đối Thủ Rướn Cứu",
     subTitle: "Đơn Nữ • Trung cấp • Bài 08",
     description: "Chém cầu điểm rơi chính xác khiến đối phương bị động",
-    videoUrl: "https://www.tiktok.com/search?q=Ch%C3%A9m+C%E1%BA%A7u+Th%E1%BA%B3ng+S%C3%A1t+L%C6%B0%E1%BB%9Bi+%C3%89p+%C4%90%E1%BB%91i+Th%E1%BB%A7+R%C6%B0%E1%BB%9Bn+C%E1%BB%A9u+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Bài 08",
     tags: ["Đơn Nữ", "Trung cấp", "Thực chiến"]
   },
@@ -1432,7 +1432,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Kỹ Năng Bật Nhảy Đập Điểm Rơi Sát Vạch Biên Đơn Nữ",
     subTitle: "Đơn Nữ • Nâng cao • Bài 09",
     description: "Gập cổ tay tạo độ cắm hiểm hóc sát mép vạch đơn",
-    videoUrl: "https://www.tiktok.com/search?q=K%E1%BB%B9+N%C4%83ng+B%E1%BA%ADt+Nh%E1%BA%A3y+%C4%90%E1%BA%ADp+%C4%90i%E1%BB%83m+R%C6%A1i+S%C3%A1t+V%E1%BA%A1ch+Bi%C3%AAn+%C4%90%C6%A1n+N%E1%BB%AF+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Bài 09",
     tags: ["Đơn Nữ", "Nâng cao", "Thực chiến"]
   },
@@ -1443,7 +1443,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Kéo Lưới Lừa Hướng Đánh Gục Bộ Pháp Đối Phương",
     subTitle: "Đơn Nữ • Nâng cao • Bài 10",
     description: "Mặt vợt miết nhẹ đổi hướng bóng làm đối thủ lỡ đà",
-    videoUrl: "https://www.tiktok.com/search?q=K%C3%A9o+L%C6%B0%E1%BB%9Bi+L%E1%BB%ABa+H%C6%B0%E1%BB%9Bng+%C4%90%C3%A1nh+G%E1%BB%A5c+B%E1%BB%99+Ph%C3%A1p+%C4%90%E1%BB%91i+Ph%C6%B0%C6%A1ng+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Bài 10",
     tags: ["Đơn Nữ", "Nâng cao", "Thực chiến"]
   },
@@ -1457,7 +1457,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Chiến Thuật Bọc Lót & Phòng Thủ Bền Bỉ Đôi Nữ",
     subTitle: "Đôi Nữ • Cơ bản • Bài 01",
     description: "Phối hợp di chuyển bọc lót, cứu cầu liên hoàn và phá thế tấn công",
-    videoUrl: "https://www.tiktok.com/search?q=Chi%E1%BA%BFn+Thu%E1%BA%ADt+B%E1%BB%8Dc+L%C3%B3t+%26+Ph%C3%B2ng+Th%E1%BB%A7+B%E1%BB%81n+B%E1%BB%89+%C4%90%C3%B4i+N%E1%BB%AF+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Bài 01",
     tags: ["Đôi Nữ", "Cơ bản", "Thực chiến"]
   },
@@ -1468,7 +1468,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Kỹ Thuật Phản Tạt Đè Cầu & Gài Lưới Đôi Nữ",
     subTitle: "Đôi Nữ • Trung cấp • Bài 02",
     description: "Giữ thế chủ động trên lưới, tạt cầu thấp không cho đối thủ nâng bổng",
-    videoUrl: "https://www.tiktok.com/search?q=K%E1%BB%B9+Thu%E1%BA%ADt+Ph%E1%BA%A3n+T%E1%BA%A1t+%C4%90%C3%A8+C%E1%BA%A7u+%26+G%C3%A0i+L%C6%B0%E1%BB%9Bi+%C4%90%C3%B4i+N%E1%BB%AF+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Bài 02",
     tags: ["Đôi Nữ", "Trung cấp", "Thực chiến"]
   },
@@ -1479,7 +1479,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Đổi Vị Trí Công - Thủ & Chuyển Giao Quyền Tấn Công",
     subTitle: "Đôi Nữ • Trung cấp • Bài 03",
     description: "Quy tắc di chuyển hoán đổi trước - sau trong trận đấu đôi nữ",
-    videoUrl: "https://www.tiktok.com/search?q=%C4%90%E1%BB%95i+V%E1%BB%8B+Tr%C3%AD+C%C3%B4ng+-+Th%E1%BB%A7+%26+Chuy%E1%BB%83n+Giao+Quy%E1%BB%81n+T%E1%BA%A5n+C%C3%B4ng+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Bài 03",
     tags: ["Đôi Nữ", "Trung cấp", "Thực chiến"]
   },
@@ -1490,7 +1490,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Tấn Công Liên Hoàn Đập Cầu & Bắt Lưới Dứt Điểm Đôi Nữ",
     subTitle: "Đôi Nữ • Nâng cao • Bài 04",
     description: "Phối hợp nhịp nhàng giữa quả đập phía sau và quả chớp lưới phía trước",
-    videoUrl: "https://www.tiktok.com/search?q=T%E1%BA%A5n+C%C3%B4ng+Li%C3%AAn+Ho%C3%A0n+%C4%90%E1%BA%ADp+C%E1%BA%A7u+%26+B%E1%BA%AFt+L%C6%B0%E1%BB%9Bi+D%E1%BB%A9t+%C4%90i%E1%BB%83m+%C4%90%C3%B4i+N%E1%BB%AF+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Bài 04",
     tags: ["Đôi Nữ", "Nâng cao", "Thực chiến"]
   },
@@ -1501,7 +1501,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Kỹ Năng Gài Lưới Xoáy Ép Đối Thủ Nâng Cầu Bổng",
     subTitle: "Đôi Nữ • Trung cấp • Bài 05",
     description: "Miết mép vợt tạo độ lộn cầu sát mép lưới đối phương",
-    videoUrl: "https://www.tiktok.com/search?q=K%E1%BB%B9+N%C4%83ng+G%C3%A0i+L%C6%B0%E1%BB%9Bi+Xo%C3%A1y+%C3%89p+%C4%90%E1%BB%91i+Th%E1%BB%A7+N%C3%A2ng+C%E1%BA%A7u+B%E1%BB%95ng+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Bài 05",
     tags: ["Đôi Nữ", "Trung cấp", "Thực chiến"]
   },
@@ -1512,7 +1512,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Thủ Cầu Bung Cao Sâu Hồi Phục Đội Hình Đôi Nữ",
     subTitle: "Đôi Nữ • Cơ bản • Bài 06",
     description: "Bung hết lực cẳng tay đẩy cầu về tận đáy sân giải vây",
-    videoUrl: "https://www.tiktok.com/search?q=Th%E1%BB%A7+C%E1%BA%A7u+Bung+Cao+S%C3%A2u+H%E1%BB%93i+Ph%E1%BB%A5c+%C4%90%E1%BB%99i+H%C3%ACnh+%C4%90%C3%B4i+N%E1%BB%AF+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Bài 06",
     tags: ["Đôi Nữ", "Cơ bản", "Thực chiến"]
   },
@@ -1523,7 +1523,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Kỹ Năng Đè Lưới Chớp Nhoáng Cắt Đứt Đợt Tấn Công",
     subTitle: "Đôi Nữ • Trung cấp • Bài 07",
     description: "Chặn đầu quả tạt của đối phương tước đoạt quyền chủ động",
-    videoUrl: "https://www.tiktok.com/search?q=K%E1%BB%B9+N%C4%83ng+%C4%90%C3%A8+L%C6%B0%E1%BB%9Bi+Ch%E1%BB%9Bp+Nho%C3%A1ng+C%E1%BA%AFt+%C4%90%E1%BB%A9t+%C4%90%E1%BB%A3t+T%E1%BA%A5n+C%C3%B4ng+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Bài 07",
     tags: ["Đôi Nữ", "Trung cấp", "Thực chiến"]
   },
@@ -1534,7 +1534,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Đập Cầu Liên Hoàn Phía Sau Cho Đồng Đội Lao Bắt Lưới",
     subTitle: "Đôi Nữ • Nâng cao • Bài 08",
     description: "Smash dồn dập ép đối thủ bung cầu non",
-    videoUrl: "https://www.tiktok.com/search?q=%C4%90%E1%BA%ADp+C%E1%BA%A7u+Li%C3%AAn+Ho%C3%A0n+Ph%C3%ADa+Sau+Cho+%C4%90%E1%BB%93ng+%C4%90%E1%BB%99i+Lao+B%E1%BA%AFt+L%C6%B0%E1%BB%9Bi+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Bài 08",
     tags: ["Đôi Nữ", "Nâng cao", "Thực chiến"]
   },
@@ -1545,7 +1545,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Bọc Lót Góc Chết Cuối Sân Khi Đối Phương Ép Góc",
     subTitle: "Đôi Nữ • Cơ bản • Bài 09",
     description: "Di chuyển hoán đổi nhịp nhàng không để hở khoảng trống",
-    videoUrl: "https://www.tiktok.com/search?q=B%E1%BB%8Dc+L%C3%B3t+G%C3%B3c+Ch%E1%BA%BFt+Cu%E1%BB%91i+S%C3%A2n+Khi+%C4%90%E1%BB%91i+Ph%C6%B0%C6%A1ng+%C3%89p+G%C3%B3c+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Bài 09",
     tags: ["Đôi Nữ", "Cơ bản", "Thực chiến"]
   },
@@ -1556,7 +1556,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Chụp Lưới Dứt Điểm Cắm Sàn Kết Thúc Pha Cầu Đôi Nữ",
     subTitle: "Đôi Nữ • Nâng cao • Bài 10",
     description: "Lao vào gõ cắm cầu chớp nhoáng tại mép lưới",
-    videoUrl: "https://www.tiktok.com/search?q=Ch%E1%BB%A5p+L%C6%B0%E1%BB%9Bi+D%E1%BB%A9t+%C4%90i%E1%BB%83m+C%E1%BA%AFm+S%C3%A0n+K%E1%BA%BFt+Th%C3%BAc+Pha+C%E1%BA%A7u+%C4%90%C3%B4i+N%E1%BB%AF+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "",
     durationText: "Bài 10",
     tags: ["Đôi Nữ", "Nâng cao", "Thực chiến"]
   },

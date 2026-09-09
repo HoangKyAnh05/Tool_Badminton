@@ -26,6 +26,7 @@ export interface GridPosition {
   courtSide: 'left' | 'center' | 'right';
   level?: SkillLevel;
   videoUrl?: string;
+  thumbnailUrl?: string;
   
   // Visual & movement data
   handMovement: MovementDetail;
@@ -49,6 +50,7 @@ export interface MovementVariation {
   shotType: string;
   level?: SkillLevel;
   videoUrl?: string;
+  thumbnailUrl?: string;
   handMovement: MovementDetail;
   footMovement: MovementDetail;
   combinedMovement: MovementDetail;

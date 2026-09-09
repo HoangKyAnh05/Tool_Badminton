@@ -203,12 +203,17 @@ export const VideoSection: React.FC<VideoSectionProps> = ({ initialLevel }) => {
   };
 
   const getThumbnailSrc = (video: TacticsVideo): string => {
-    if (video.thumbnailUrl) return video.thumbnailUrl;
+    if (video.thumbnailUrl) {
+      if (video.thumbnailUrl.startsWith('./thumbnails/')) {
+        return `${import.meta.env.BASE_URL}thumbnails/${video.thumbnailUrl.replace('./thumbnails/', '')}`;
+      }
+      return video.thumbnailUrl;
+    }
     const ytId = extractYouTubeId(video.videoUrl);
     if (ytId) {
       return `https://img.youtube.com/vi/${ytId}/hqdefault.jpg`;
     }
-    return '';
+    return `${import.meta.env.BASE_URL}thumbnails/${video.id}.jpg`;
   };
 
   const getCategoryLabel = (cat: VideoCategory) => {

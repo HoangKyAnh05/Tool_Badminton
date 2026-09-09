@@ -17,6 +17,7 @@ export const DEFAULT_CONFIG: TrainingConfig = {
   soundEnabled: true,
   voiceCoachEnabled: true,
   targetZones: [1, 2, 3, 4, 5, 6, 7, 8, 9],
+  manualAdvance: true,
   cameraEnabled: false
 };
 

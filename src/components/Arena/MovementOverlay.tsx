@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { GridPosition, MovementVariation, SkillLevel } from '../../types';
+import { GridPosition, MovementVariation, SkillLevel, TacticsVideo } from '../../types';
 import { storageService } from '../../services/storage';
-import { extractYouTubeId } from '../Video/EditYouTubeLinkModal';
+import { EditYouTubeLinkModal, extractYouTubeId } from '../Video/EditYouTubeLinkModal';
 import { 
   Play, 
   Pause, 
@@ -14,7 +14,8 @@ import {
   ArrowRight,
   Award,
   Layers,
-  ExternalLink
+  Edit3,
+  MousePointerClick
 } from 'lucide-react';
 import { Youtube } from '../Video/YoutubeIcon';
 
@@ -44,7 +45,8 @@ export const MovementOverlay: React.FC<MovementOverlayProps> = ({
   onCompleteAction
 }) => {
   // Load overrides from storage so user-customized YouTube videos play in Arena
-  const [videoOverrides] = useState<Record<string, any>>(() => storageService.loadVideoOverrides());
+  const [videoOverrides, setVideoOverrides] = useState<Record<string, any>>(() => storageService.loadVideoOverrides());
+  const [isEditingModalOpen, setIsEditingModalOpen] = useState<boolean>(false);
 
   // All variations for this position (6-7 real technique clips)
   const variationsList = position.variations && position.variations.length > 0 
@@ -85,11 +87,35 @@ export const MovementOverlay: React.FC<MovementOverlayProps> = ({
   const currentVar = variationsList[activeIdx] || variationsList[0];
   
   // Resolve override if user customized this position video
-  const overrideKey = `video-pos-${position.id}-${activeIdx + 1}`;
-  const customOverride = videoOverrides[overrideKey] || videoOverrides[currentVar.id];
+  const overrideKey = currentVar.id || `video-pos-${position.id}-${activeIdx + 1}`;
+  const customOverride = videoOverrides[overrideKey] || videoOverrides[`pos_${position.id}_clip_${activeIdx + 1}`];
 
   const currentVideoUrl = customOverride?.videoUrl || currentVar.videoUrl || `./videos/clips/pos_${position.id}_clip_${activeIdx + 1}.mp4`;
   const ytId = extractYouTubeId(currentVideoUrl);
+
+  // Prepare pseudo TacticsVideo for editing
+  const editingTacticsVideo: TacticsVideo = {
+    id: overrideKey,
+    category: `POS_${position.id}` as any,
+    title: customOverride?.title || currentVar.shotName,
+    subTitle: customOverride?.subTitle || `Ô ${position.id}: ${position.zoneName} • ${currentVar.shotType || 'Kỹ thuật'}`,
+    level: customOverride?.level || currentVar.level || 'Cơ bản',
+    description: customOverride?.description || currentVar.combinedMovement?.description || position.combinedMovement?.description || 'Video kỹ thuật động tác thực chiến.',
+    videoUrl: currentVideoUrl,
+    durationText: 'Thực chiến',
+    tags: customOverride?.tags || ['Thực chiến', position.zoneName, currentVar.level || 'Cơ bản'],
+    isCustom: !!customOverride
+  };
+
+  const handleSaveVideoOverride = (updated: TacticsVideo) => {
+    setVideoOverrides(storageService.loadVideoOverrides());
+    setIsEditingModalOpen(false);
+  };
+
+  const handleResetToDefault = (videoId: string) => {
+    setVideoOverrides(storageService.loadVideoOverrides());
+    setIsEditingModalOpen(false);
+  };
 
   // Autoplay video when clip changes
   useEffect(() => {
@@ -149,21 +175,25 @@ export const MovementOverlay: React.FC<MovementOverlayProps> = ({
               <span>{currentVar.level || 'Cơ bản'}</span>
             </div>
 
+            {/* Live Upload Video Button */}
+            <button 
+              className="btn-arena-upload-yt"
+              onClick={(e) => {
+                e.stopPropagation();
+                setIsEditingModalOpen(true);
+              }}
+              title="Đổi hoặc gắn link YouTube video của bạn vào ô này"
+            >
+              <Youtube size={14} className="text-danger" />
+              <span>Đổi / Gắn Link Video Ô Này</span>
+            </button>
+
             {/* Round & Timer */}
             <div className="clean-timer-group">
               <span className="clean-round-pill">LƯỢT {roundNumber}/{totalRounds}</span>
               <span className="clean-timer-pill">
-                {isUnlimited ? (
-                  <>
-                    <InfinityIcon size={14} />
-                    <span>{remainingTime.toFixed(1)}s</span>
-                  </>
-                ) : (
-                  <>
-                    <TimerIcon size={14} />
-                    <span>{remainingTime.toFixed(1)}s</span>
-                  </>
-                )}
+                <TimerIcon size={14} />
+                <span>{remainingTime.toFixed(1)}s</span>
               </span>
             </div>
           </div>
@@ -173,6 +203,12 @@ export const MovementOverlay: React.FC<MovementOverlayProps> = ({
             <h2 className="clean-technique-title">{currentVar.shotName}</h2>
             {currentVar.shotType && (
               <span className="clean-technique-type">• {currentVar.shotType}</span>
+            )}
+            {customOverride && (
+              <span className="arena-custom-tag">
+                <Youtube size={11} className="text-danger" />
+                <span>Video của bạn</span>
+              </span>
             )}
           </div>
         </div>
@@ -237,6 +273,16 @@ export const MovementOverlay: React.FC<MovementOverlayProps> = ({
                   >
                     {isMuted ? <VolumeX size={16} /> : <Volume2 size={16} />}
                   </button>
+                  <button 
+                    className="clean-vid-btn btn-change-link" 
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setIsEditingModalOpen(true);
+                    }}
+                    title="Gắn link YouTube của bạn"
+                  >
+                    <Edit3 size={15} />
+                  </button>
                 </div>
               </>
             )}
@@ -276,27 +322,39 @@ export const MovementOverlay: React.FC<MovementOverlayProps> = ({
           </div>
         </div>
 
-        {/* Bottom Interactive Trigger Bar */}
+        {/* Bottom Interactive Trigger Bar (Đợi người dùng bấm chuột / phím Cách) */}
         <div 
-          className="clean-bottom-trigger"
+          className="clean-bottom-trigger active-waiting"
           onClick={(e) => {
             e.stopPropagation();
             onCompleteAction?.();
           }}
-          title="Bấm phím Cách (Space) để hoàn thành bài tập"
+          title="Bấm chuột vào đây hoặc gõ phím CÁCH (Space) để qua ô mới"
         >
           <div className="trigger-left">
-            <CheckCircle size={22} className="trigger-check-icon" />
+            <MousePointerClick size={24} className="trigger-click-pulsing text-lime" />
             <span className="trigger-main-text">
-              TẬP XONG: <strong>BẤM PHÍM CÁCH [SPACE]</strong> HOẶC <strong>CHẠM VÀO ĐÂY</strong> ĐỂ SANG BÀI KHÁC
+              ĐÃ XONG ĐỘNG TÁC: <strong className="text-lime">CLICK CHUỘT VÀO MÀN HÌNH</strong> HOẶC <strong className="text-lime">BẤM PHÍM CÁCH [SPACE]</strong> ĐỂ QUA Ô MỚI
             </span>
           </div>
           <div className="trigger-right-btn">
-            <span>BÀI TIẾP</span>
+            <span>QUA Ô TIẾP</span>
             <ArrowRight size={18} />
           </div>
         </div>
       </div>
+
+      {/* Live YouTube Edit / Upload Modal */}
+      {isEditingModalOpen && (
+        <EditYouTubeLinkModal
+          video={editingTacticsVideo}
+          isOpen={isEditingModalOpen}
+          onClose={() => setIsEditingModalOpen(false)}
+          onSave={handleSaveVideoOverride}
+          onResetToDefault={handleResetToDefault}
+        />
+      )}
     </div>
   );
 };
+

@@ -194,10 +194,10 @@ export function useTraining() {
     // Play "GO!" sound for movement
     playGoSound();
 
-    const isUnlimited = configRef.current.speedPreset === 'unlimited' || configRef.current.actionDuration <= 0;
+    const isManual = configRef.current.manualAdvance !== false || configRef.current.speedPreset === 'unlimited' || configRef.current.actionDuration <= 0;
 
-    if (isUnlimited) {
-      // Unlimited mode: timer counts up elapsed seconds and does not auto-abort
+    if (isManual) {
+      // Manual mode: timer counts up elapsed practice time and waits for user click / Space
       setRemainingTime(0);
       const loop = (timestamp: number) => {
         const elapsed = (timestamp - now) / 1000;
@@ -206,7 +206,7 @@ export function useTraining() {
       };
       timerLoopRef.current = requestAnimationFrame(loop);
     } else {
-      // Precision countdown loop for physical movement action duration
+      // Automatic countdown loop for physical movement action duration
       const durationMs = configRef.current.actionDuration * 1000;
       setRemainingTime(configRef.current.actionDuration);
 

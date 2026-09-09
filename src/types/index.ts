@@ -92,6 +92,7 @@ export interface TrainingConfig {
   soundEnabled: boolean;
   voiceCoachEnabled?: boolean;
   targetZones?: number[]; // [1..9], e.g. [1, 3, 7, 9] for 4 corners
+  manualAdvance?: boolean; // Wait for user click / space before advancing to next cell
   cameraEnabled: boolean;
 }
 

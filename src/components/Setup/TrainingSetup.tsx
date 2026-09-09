@@ -18,7 +18,8 @@ import {
   MapPin,
   Mic,
   MicOff,
-  Sparkles
+  Sparkles,
+  MousePointerClick
 } from 'lucide-react';
 
 interface TrainingSetupProps {
@@ -258,26 +259,33 @@ export const TrainingSetup: React.FC<TrainingSetupProps> = ({
             <div className="mini-court-label">Chạm vào ô để bật / tắt vị trí bạn muốn tập luyện:</div>
             <div className="mini-court-grid">
               {[
-                { id: 1, name: 'Lưới Trái' },
-                { id: 2, name: 'Lưới Giữa' },
-                { id: 3, name: 'Lưới Phải' },
-                { id: 4, name: 'TT Trái' },
-                { id: 5, name: 'Tâm Sân' },
-                { id: 6, name: 'TT Phải' },
-                { id: 7, name: 'Đáy Trái' },
-                { id: 8, name: 'Đáy Giữa' },
-                { id: 9, name: 'Đáy Phải' }
+                { id: 1, name: 'Lưới Trái', zone: 'net' },
+                { id: 2, name: 'Lưới Giữa', zone: 'net' },
+                { id: 3, name: 'Lưới Phải', zone: 'net' },
+                { id: 4, name: 'TT Trái', zone: 'mid' },
+                { id: 5, name: 'Tâm Sân', zone: 'mid' },
+                { id: 6, name: 'TT Phải', zone: 'mid' },
+                { id: 7, name: 'Đáy Trái', zone: 'rear' },
+                { id: 8, name: 'Đáy Giữa', zone: 'rear' },
+                { id: 9, name: 'Đáy Phải', zone: 'rear' }
               ].map(pos => {
                 const isSelected = activeZones.includes(pos.id);
                 return (
                   <button
                     key={pos.id}
                     type="button"
-                    className={`mini-cell-btn ${isSelected ? 'is-selected' : 'is-off'}`}
+                    className={`mini-cell-btn ${isSelected ? 'is-selected is-active-zone is-glowing-active' : 'is-off is-inactive-zone'}`}
                     onClick={() => handleToggleZone(pos.id)}
-                    title={`Ô ${pos.id}: ${pos.name} (${isSelected ? 'Đang bật' : 'Đang tắt'})`}
+                    title={`Ô ${pos.id}: ${pos.name} (${isSelected ? 'Đang BẬT' : 'Đang TẮT'})`}
                   >
-                    <span className="mini-cell-num">{pos.id}</span>
+                    <div className="cell-top-row">
+                      <span className="mini-cell-num">{pos.id}</span>
+                      {isSelected ? (
+                        <span className="cell-active-indicator-badge">BẬT ✓</span>
+                      ) : (
+                        <span className="cell-off-indicator-badge">TẮT</span>
+                      )}
+                    </div>
                     <span className="mini-cell-name">{pos.name}</span>
                   </button>
                 );
@@ -418,6 +426,15 @@ export const TrainingSetup: React.FC<TrainingSetupProps> = ({
         {/* 7. Hardware & Audio Toggles */}
         <div className="setup-section toggles-row">
           <button
+            className={`toggle-feature-btn ${config.manualAdvance !== false ? 'is-active' : ''}`}
+            onClick={() => onUpdateConfig({ manualAdvance: config.manualAdvance === false })}
+            title="Đợi bạn bấm chuột hoặc phím CÁCH mới chuyển sang ô mới"
+          >
+            <MousePointerClick size={18} className="text-lime" />
+            <span>{config.manualAdvance !== false ? 'Chờ Bấm Chuột / Phím Cách: BẬT' : 'Tự Chuyển Theo Giây: BẬT'}</span>
+          </button>
+
+          <button
             className={`toggle-feature-btn ${config.soundEnabled ? 'is-active' : ''}`}
             onClick={() => onUpdateConfig({ soundEnabled: !config.soundEnabled })}
           >
@@ -431,7 +448,7 @@ export const TrainingSetup: React.FC<TrainingSetupProps> = ({
             title="Huấn luyện viên đọc to tên ô và động tác bằng giọng nói tiếng Việt"
           >
             {config.voiceCoachEnabled !== false ? <Mic size={18} className="text-cyan" /> : <MicOff size={18} />}
-            <span>{config.voiceCoachEnabled !== false ? 'HLV Giọng Nói (TTS): BẬT' : 'HLV Giọng Nói: TẮT'}</span>
+            <span>{config.voiceCoachEnabled !== false ? 'HLV Giọng Nói: BẬT' : 'HLV Giọng Nói: TẮT'}</span>
           </button>
 
           <button

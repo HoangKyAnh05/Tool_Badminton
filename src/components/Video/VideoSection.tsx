@@ -262,47 +262,6 @@ export const VideoSection: React.FC<VideoSectionProps> = ({ initialLevel }) => {
         </div>
       </div>
 
-      {/* YouTube Management Toolbar */}
-      <div className="youtube-management-bar">
-        <div className="yt-mgmt-left">
-          <button 
-            className="btn-yt-toolbar btn-videohub-direct"
-            onClick={() => setIsHubModalOpen(true)}
-            title="Mở bảng điều khiển gom tất cả vị trí và đẩy link YouTube vào"
-          >
-            <FolderSync size={15} className="text-cyan" />
-            <span>Trung Tâm Đẩy Video Vào Vị Trí</span>
-          </button>
-
-          <button 
-            className="btn-yt-toolbar btn-guide-link"
-            onClick={() => setIsGuideModalOpen(true)}
-            title="Xem hướng dẫn cách tải video lên YouTube Unlisted"
-          >
-            <HelpCircle size={15} className="text-cyan" />
-            <span>Cách Up Video YouTube (3 bước)</span>
-          </button>
-
-          <button 
-            className="btn-yt-toolbar btn-json-backup"
-            onClick={() => setIsBatchModalOpen(true)}
-            title="Sao lưu danh sách link ra file JSON hoặc dán đồng bộ nhiều link cùng lúc"
-          >
-            <FileJson size={15} className="text-emerald" />
-            <span>Sao Lưu / Nhập JSON {customCount > 0 && <strong className="yt-counter-badge">({customCount})</strong>}</span>
-          </button>
-        </div>
-
-        <div className="yt-mgmt-right">
-          <button
-            className="btn-add-video-link"
-            onClick={() => setIsAddModalOpen(true)}
-          >
-            <Plus size={15} />
-            <span>GẮN THÊM VIDEO MỚI</span>
-          </button>
-        </div>
-      </div>
 
       {/* Main Group Selector & Search Bar */}
       <div className="video-group-navigation-bar">

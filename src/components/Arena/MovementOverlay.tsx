@@ -241,15 +241,17 @@ export const MovementOverlay: React.FC<MovementOverlayProps> = ({
                 </div>
               </div>
             ) : (tiktokId || isTikTok) ? (
-              <div className="arena-youtube-iframe-wrap" style={{ position: 'relative', width: '100%', height: '100%', minHeight: '380px', background: '#000', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <iframe
-                  src={tiktokId ? `https://www.tiktok.com/embed/v2/${tiktokId}` : `https://www.tiktok.com/embed/v2/?url=${encodeURIComponent(currentVideoUrl)}`}
-                  title={currentVar.shotName}
-                  className="clean-youtube-player"
-                  style={{ width: '100%', height: '100%', minHeight: '380px', border: 'none' }}
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowFullScreen
-                />
+              <div className="arena-youtube-iframe-wrap" style={{ position: 'relative', width: '100%', height: '100%', minHeight: '380px', background: '#050c17', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '10px 0' }}>
+                <div style={{ width: '100%', maxWidth: '320px', height: '100%', minHeight: '380px', borderRadius: '14px', overflow: 'hidden', background: '#000', border: '1px solid rgba(255,255,255,0.1)' }}>
+                  <iframe
+                    src={tiktokId ? `https://www.tiktok.com/embed/v2/${tiktokId}` : `https://www.tiktok.com/embed/v2/?url=${encodeURIComponent(currentVideoUrl)}`}
+                    title={currentVar.shotName}
+                    className="clean-youtube-player"
+                    style={{ width: '100%', height: '100%', minHeight: '380px', border: 'none', background: '#000' }}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
+                  />
+                </div>
                 <div className="arena-yt-badge" style={{ background: 'rgba(0,0,0,0.85)', color: '#00f2fe' }}>
                   <span>🎵 TikTok Video</span>
                 </div>

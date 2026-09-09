@@ -372,25 +372,29 @@ export const VideoPlayerModal: React.FC<VideoPlayerModalProps> = ({
               />
             </div>
           ) : (tiktokId || isTikTok) ? (
-            <div className="theater-tiktok-wrapper" style={{ width: '100%', height: '100%', minHeight: '540px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', background: '#000', position: 'relative' }}>
-              <iframe
-                src={tiktokId ? `https://www.tiktok.com/embed/v2/${tiktokId}` : `https://www.tiktok.com/embed/v2/?url=${encodeURIComponent(video.videoUrl)}`}
-                title={video.title}
-                className="theater-tiktok-iframe"
-                style={{ width: '100%', height: '100%', minHeight: '540px', border: 'none' }}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowFullScreen
-              />
-              <div style={{ position: 'absolute', top: 12, right: 12, zIndex: 10 }}>
+            <div className="theater-tiktok-wrapper" style={{ width: '100%', height: '100%', minHeight: '520px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', background: '#070d18', position: 'relative', padding: '16px 0' }}>
+              {/* Quick direct open floating pill */}
+              <div style={{ position: 'absolute', top: 12, right: 16, zIndex: 20 }}>
                 <a 
                   href={video.videoUrl} 
                   target="_blank" 
                   rel="noreferrer" 
                   className="btn-open-external"
-                  style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', padding: '7px 14px', background: 'rgba(0,0,0,0.85)', color: '#fff', borderRadius: '20px', fontSize: '12px', fontWeight: 700, border: '1px solid rgba(255,255,255,0.25)', textDecoration: 'none' }}
+                  style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', padding: '8px 16px', background: 'rgba(0,0,0,0.85)', color: '#00f2fe', borderRadius: '24px', fontSize: '12px', fontWeight: 700, border: '1px solid rgba(0,242,254,0.4)', textDecoration: 'none', boxShadow: '0 4px 12px rgba(0,0,0,0.5)' }}
                 >
-                  <ExternalLink size={13} className="text-cyan" /> Mở xem trên TikTok
+                  <ExternalLink size={14} /> Mở tab riêng xem mượt 60fps
                 </a>
+              </div>
+
+              <div style={{ width: '100%', maxWidth: '345px', height: '100%', minHeight: '500px', borderRadius: '16px', overflow: 'hidden', boxShadow: '0 8px 32px rgba(0,0,0,0.8)', border: '1px solid rgba(255,255,255,0.1)', background: '#000', display: 'flex', justifyContent: 'center' }}>
+                <iframe
+                  src={tiktokId ? `https://www.tiktok.com/embed/v2/${tiktokId}` : `https://www.tiktok.com/embed/v2/?url=${encodeURIComponent(video.videoUrl)}`}
+                  title={video.title}
+                  className="theater-tiktok-iframe"
+                  style={{ width: '100%', height: '100%', minHeight: '500px', border: 'none', background: '#000' }}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                />
               </div>
             </div>
           ) : (

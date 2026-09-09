@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { TacticsVideo } from '../../types';
 import { storageService } from '../../services/storage';
+import { videoStorageService } from '../../services/videoStorage';
 import { 
   X, 
   Play, 
@@ -16,7 +17,10 @@ import {
   Award,
   Scan,
   Tv,
-  ExternalLink
+  ExternalLink,
+  ChevronLeft,
+  ChevronRight,
+  UploadCloud
 } from 'lucide-react';
 import { Youtube } from './YoutubeIcon';
 
@@ -28,6 +32,10 @@ interface VideoPlayerModalProps {
   onClose: () => void;
   onWatchedChanged: () => void;
   onEditYouTube?: (video: TacticsVideo) => void;
+  onPrevVideo?: () => void;
+  onNextVideo?: () => void;
+  hasPrev?: boolean;
+  hasNext?: boolean;
 }
 
 export const VideoPlayerModal: React.FC<VideoPlayerModalProps> = ({
@@ -35,7 +43,11 @@ export const VideoPlayerModal: React.FC<VideoPlayerModalProps> = ({
   isOpen,
   onClose,
   onWatchedChanged,
-  onEditYouTube
+  onEditYouTube,
+  onPrevVideo,
+  onNextVideo,
+  hasPrev = false,
+  hasNext = false
 }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const progressBarRef = useRef<HTMLDivElement>(null);
@@ -50,6 +62,7 @@ export const VideoPlayerModal: React.FC<VideoPlayerModalProps> = ({
   const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
   const [isWindowFull, setIsWindowFull] = useState<boolean>(false);
   const [zoomMode, setZoomMode] = useState<'fill' | 'zoom2' | 'original'>('fill');
+  const [localBlobUrl, setLocalBlobUrl] = useState<string | null>(null);
   
   // Status and Alerts
   const [isCompleted, setIsCompleted] = useState<boolean>(() => storageService.isVideoWatched(video.id));
@@ -59,9 +72,23 @@ export const VideoPlayerModal: React.FC<VideoPlayerModalProps> = ({
 
   const maxWatchedRef = useRef<number>(0);
 
-  const youtubeId = extractYouTubeId(video.videoUrl);
-  const tiktokId = extractTikTokId(video.videoUrl);
-  const isTikTok = isTikTokUrl(video.videoUrl);
+  // Check if a local video file is stored in IndexedDB for this video
+  useEffect(() => {
+    let isMounted = true;
+    videoStorageService.getVideoObjectUrl(video.id).then((blobUrl) => {
+      if (isMounted) {
+        setLocalBlobUrl(blobUrl);
+      }
+    });
+    return () => {
+      isMounted = false;
+    };
+  }, [video.id, isOpen]);
+
+  const activeVideoUrl = localBlobUrl || video.videoUrl;
+  const youtubeId = !localBlobUrl ? extractYouTubeId(activeVideoUrl) : null;
+  const tiktokId = !localBlobUrl ? extractTikTokId(activeVideoUrl) : null;
+  const isTikTok = !localBlobUrl ? isTikTokUrl(activeVideoUrl) : false;
 
   // Listen to browser fullscreen changes
   useEffect(() => {
@@ -94,7 +121,7 @@ export const VideoPlayerModal: React.FC<VideoPlayerModalProps> = ({
     setJustCompletedToast(false);
   }, [video.id, isOpen]);
 
-  // Handle hotkeys (Space = play/pause, F = fullscreen, Esc = exit)
+  // Handle hotkeys (Space = play/pause, F = fullscreen, Esc = exit, Left/Right arrows = navigate)
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (!isOpen) return;
@@ -115,16 +142,30 @@ export const VideoPlayerModal: React.FC<VideoPlayerModalProps> = ({
         e.preventDefault();
         togglePlay();
       } else if (e.key === 'ArrowLeft') {
-        e.preventDefault();
-        handleRewind(5);
+        if (e.shiftKey || e.altKey || onPrevVideo) {
+          if (onPrevVideo && hasPrev) {
+            e.preventDefault();
+            onPrevVideo();
+          }
+        } else {
+          e.preventDefault();
+          handleRewind(5);
+        }
       } else if (e.key === 'ArrowRight') {
-        e.preventDefault();
-        triggerSeekWarning();
+        if (e.shiftKey || e.altKey || onNextVideo) {
+          if (onNextVideo && hasNext) {
+            e.preventDefault();
+            onNextVideo();
+          }
+        } else {
+          e.preventDefault();
+          triggerSeekWarning();
+        }
       }
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [isOpen, isPlaying, isFullscreen, isWindowFull]);
+  }, [isOpen, isPlaying, isFullscreen, isWindowFull, onPrevVideo, onNextVideo, hasPrev, hasNext]);
 
   if (!isOpen) return null;
 
@@ -314,15 +355,43 @@ export const VideoPlayerModal: React.FC<VideoPlayerModalProps> = ({
             <p className="theater-subtitle">{video.subTitle}</p>
           </div>
 
-          <div className="theater-header-actions" style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+          <div className="theater-header-actions" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            {/* Prev / Next Navigation Buttons */}
+            {onPrevVideo && (
+              <button 
+                className="btn-theater-nav"
+                onClick={onPrevVideo}
+                disabled={!hasPrev}
+                title="Động tác trước (←)"
+                style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', padding: '7px 12px', background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.2)', borderRadius: '8px', color: hasPrev ? '#fff' : '#475569', fontSize: '12px', fontWeight: 700, cursor: hasPrev ? 'pointer' : 'not-allowed', opacity: hasPrev ? 1 : 0.5 }}
+              >
+                <ChevronLeft size={16} />
+                <span>Trước</span>
+              </button>
+            )}
+
+            {onNextVideo && (
+              <button 
+                className="btn-theater-nav"
+                onClick={onNextVideo}
+                disabled={!hasNext}
+                title="Động tác tiếp theo (→)"
+                style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', padding: '7px 12px', background: 'rgba(0, 242, 254, 0.15)', border: '1px solid #00f2fe', borderRadius: '8px', color: hasNext ? '#00f2fe' : '#475569', fontSize: '12px', fontWeight: 700, cursor: hasNext ? 'pointer' : 'not-allowed', opacity: hasNext ? 1 : 0.5 }}
+              >
+                <span>Tiếp</span>
+                <ChevronRight size={16} />
+              </button>
+            )}
+
             {onEditYouTube && (
               <button 
                 className="btn-theater-edit-yt"
                 onClick={() => onEditYouTube(video)}
-                title="Gắn hoặc đổi link YouTube cho clip này"
+                title="Đẩy video file từ máy hoặc gắn link TikTok / YouTube cho clip này"
+                style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', padding: '7px 14px', background: 'linear-gradient(135deg, rgba(0, 242, 254, 0.2), rgba(79, 172, 254, 0.2))', border: '1px solid #00f2fe', color: '#fff', borderRadius: '8px', fontSize: '12px', fontWeight: 700, cursor: 'pointer' }}
               >
-                <Youtube size={15} className="text-danger" />
-                <span>Gắn / Sửa link YouTube</span>
+                <UploadCloud size={15} className="text-cyan" />
+                <span>Đẩy Video / Gắn Link</span>
               </button>
             )}
             <button className="theater-close-btn" onClick={onClose} title="Đóng">

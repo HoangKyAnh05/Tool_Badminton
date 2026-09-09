@@ -577,19 +577,37 @@ export const VideoSection: React.FC<VideoSectionProps> = ({ initialLevel }) => {
         )}
       </div>
 
-      {/* Video Player Modal */}
-      {selectedVideo && (
-        <VideoPlayerModal
-          video={selectedVideo}
-          isOpen={true}
-          onClose={() => setSelectedVideo(null)}
-          onWatchedChanged={refreshWatchedStatus}
-          onEditYouTube={(vid) => {
-            setEditingVideo(vid);
-            setIsEditModalOpen(true);
-          }}
-        />
-      )}
+      {/* Video Player Modal with full playlist prev/next navigation */}
+      {selectedVideo && (() => {
+        const currentIdx = filteredVideos.findIndex(v => v.id === selectedVideo.id);
+        const hasPrev = currentIdx > 0;
+        const hasNext = currentIdx >= 0 && currentIdx < filteredVideos.length - 1;
+
+        return (
+          <VideoPlayerModal
+            video={selectedVideo}
+            isOpen={true}
+            onClose={() => setSelectedVideo(null)}
+            onWatchedChanged={refreshWatchedStatus}
+            onPrevVideo={() => {
+              if (hasPrev) {
+                setSelectedVideo(filteredVideos[currentIdx - 1]);
+              }
+            }}
+            onNextVideo={() => {
+              if (hasNext) {
+                setSelectedVideo(filteredVideos[currentIdx + 1]);
+              }
+            }}
+            hasPrev={hasPrev}
+            hasNext={hasNext}
+            onEditYouTube={(vid) => {
+              setEditingVideo(vid);
+              setIsEditModalOpen(true);
+            }}
+          />
+        );
+      })()}
 
       {/* Edit YouTube Link Modal */}
       {isEditModalOpen && (

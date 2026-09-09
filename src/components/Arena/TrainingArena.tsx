@@ -128,18 +128,20 @@ export const TrainingArena: React.FC<TrainingArenaProps> = ({
 
       {/* Main Center Playground */}
       <div className="arena-stage">
-        {/* Background 3x3 Grid (Always in place and 100% visible) */}
-        <div className={`grid-stage-wrapper ${isActive && isPhysical ? 'stage-dimmed' : ''}`}>
-          <Grid9
-            activePositionId={activeData?.position?.id}
-            highlightMode={activeData?.actualMode as 'TAY' | 'CHÂN' | 'TAY + CHÂN'}
-            countdownNum={countdownNum}
-            isCountingDown={isCountdown}
-            isArrived={isArrived}
-            onPositionClick={() => onCompleteAction?.()}
-            interactive={true}
-          />
-        </div>
+        {/* Background 3x3 Grid (Hidden in Theory mode for clean full-width responsive view) */}
+        {!isTheory && (
+          <div className={`grid-stage-wrapper ${isActive && isPhysical ? 'stage-dimmed' : ''}`}>
+            <Grid9
+              activePositionId={activeData?.position?.id}
+              highlightMode={activeData?.actualMode as 'TAY' | 'CHÂN' | 'TAY + CHÂN'}
+              countdownNum={countdownNum}
+              isCountingDown={isCountdown}
+              isArrived={isArrived}
+              onPositionClick={() => onCompleteAction?.()}
+              interactive={true}
+            />
+          </div>
+        )}
 
         {/* Non-intrusive Corner Guide Pill (Leaves court 100% visible) */}
         {isCountdown && activeData?.position && (

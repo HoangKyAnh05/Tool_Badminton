@@ -12,7 +12,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Đỡ Cầu & Kê Lưới Trái Tay",
     subTitle: "LƯỚI TRÁI • Kê lưới • Cấp độ Cơ bản",
     description: "Mặt vợt ngửa 45 độ, thả lỏng cổ tay đón cầu sát lưới. Split-step -> Bước đệm chân phải góc 10h.",
-    videoUrl: "https://www.tiktok.com/search?q=%C4%90%E1%BB%A1+C%E1%BA%A7u+%26+K%C3%AA+L%C6%B0%E1%BB%9Bi+Tr%C3%A1i+Tay+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "https://www.tiktok.com/@congdongvnbadminton/video/7461076755865029904",
     durationText: "Clip 01",
     tags: ["Ô 1", "LƯỚI TRÁI", "Cơ bản", "Kê lưới"]
   },
@@ -306,7 +306,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Hất Cầu Bổng Sâu Thuận Tay",
     subTitle: "LƯỚI PHẢI • Hất sâu • Cấp độ Trung cấp",
     description: "Vung hết biên độ hất cầu cao về đáy góc 7. Bật lùi hồi vị ngay sau chạm cầu.",
-    videoUrl: "https://www.tiktok.com/search?q=H%E1%BA%A5t+C%E1%BA%A7u+B%E1%BB%95ng+S%C3%A2u+Thu%E1%BA%ADn+Tay+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "https://www.tiktok.com/@saigonsmashsquad/video/7672279216209136916",
     durationText: "Clip 05",
     tags: ["Ô 3", "LƯỚI PHẢI", "Trung cấp", "Hất sâu"]
   },
@@ -318,7 +318,7 @@ export const TACTICS_VIDEOS: TacticsVideo[] = [
     title: "Kéo Lưới Lừa Hướng Thuận Tay",
     subTitle: "LƯỚI PHẢI • Kéo lưới • Cấp độ Trung cấp",
     description: "Cắt chéo đường bay đưa cầu lướt dọc vạch trắng lưới. Xoay hông nhẹ đẩy thân người.",
-    videoUrl: "https://www.tiktok.com/search?q=K%C3%A9o+L%C6%B0%E1%BB%9Bi+L%E1%BB%ABa+H%C6%B0%E1%BB%9Bng+Thu%E1%BA%ADn+Tay+%28c%E1%BA%A7u+l%C3%B4ng%29",
+    videoUrl: "https://www.tiktok.com/@badmintonun/video/7609534277692165384",
     durationText: "Clip 06",
     tags: ["Ô 3", "LƯỚI PHẢI", "Trung cấp", "Kéo lưới"]
   },

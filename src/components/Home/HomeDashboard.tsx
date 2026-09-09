@@ -15,7 +15,8 @@ import {
   Footprints,
   BookOpen,
   Layers,
-  Award
+  Award,
+  FolderSync
 } from 'lucide-react';
 import { VideoSection } from '../Video/VideoSection';
 import { DailyChallengeCard } from '../DailyChallenge/DailyChallengeCard';
@@ -25,12 +26,14 @@ interface HomeDashboardProps {
   onSelectMode: (mode: TrainingMode) => void;
   onQuickStart: () => void;
   onOpenRecorder?: () => void;
+  onOpenVideoHub?: () => void;
 }
 
 export const HomeDashboard: React.FC<HomeDashboardProps> = ({
   onSelectMode,
   onQuickStart,
-  onOpenRecorder
+  onOpenRecorder,
+  onOpenVideoHub
 }) => {
   const [lifetime, setLifetime] = useState<LifetimeStats>(() => storageService.loadLifetimeStats());
   const [dailyProgress, setDailyProgress] = useState(() => storageService.loadDailyProgress());
@@ -128,10 +131,17 @@ export const HomeDashboard: React.FC<HomeDashboardProps> = ({
               <span>BẮT ĐẦU LUYỆN TẬP</span>
             </button>
 
+            {onOpenVideoHub && (
+              <button className="btn-hero-videohub" onClick={onOpenVideoHub}>
+                <FolderSync size={20} className="text-cyan" />
+                <span>ĐẨY VIDEO VÀO VỊ TRÍ</span>
+              </button>
+            )}
+
             {onOpenRecorder && (
               <button className="btn-hero-record" onClick={onOpenRecorder}>
                 <Camera size={20} className="text-danger" />
-                <span>QUAY VIDEO ĐỘNG TÁC</span>
+                <span>QUAY VIDEO</span>
               </button>
             )}
           </div>

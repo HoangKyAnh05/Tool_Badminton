@@ -8,12 +8,14 @@ import { TrainingArena } from './components/Arena/TrainingArena';
 import { TrainingResults } from './components/Results/TrainingResults';
 import { HistoryModal } from './components/History/HistoryModal';
 import { VideoRecorderModal } from './components/Recorder/VideoRecorderModal';
+import { VideoAssignmentHubModal } from './components/VideoHub/VideoAssignmentHubModal';
 import { TrainingMode } from './types';
 
 export const App: React.FC = () => {
   const [currentView, setCurrentView] = useState<'HOME' | 'SETUP' | 'TRAINING' | 'RESULTS'>('HOME');
   const [isHistoryOpen, setIsHistoryOpen] = useState<boolean>(false);
   const [isRecorderOpen, setIsRecorderOpen] = useState<boolean>(false);
+  const [isVideoHubOpen, setIsVideoHubOpen] = useState<boolean>(false);
 
   const training = useTraining();
   const camera = useCamera(training.config.cameraEnabled);
@@ -57,6 +59,7 @@ export const App: React.FC = () => {
         onToggleSound={() => training.updateConfig({ soundEnabled: !training.config.soundEnabled })}
         onOpenHistory={() => setIsHistoryOpen(true)}
         onOpenRecorder={() => setIsRecorderOpen(true)}
+        onOpenVideoHub={() => setIsVideoHubOpen(true)}
         onGoHome={() => {
           if (training.state === 'ACTIVE' || training.state === 'COUNTDOWN') {
             if (window.confirm('Bạn có chắc muốn thoát bài tập đang diễn ra không?')) {
@@ -75,6 +78,7 @@ export const App: React.FC = () => {
             onSelectMode={handleSelectMode}
             onQuickStart={handleQuickStart}
             onOpenRecorder={() => setIsRecorderOpen(true)}
+            onOpenVideoHub={() => setIsVideoHubOpen(true)}
           />
         )}
 
@@ -137,6 +141,12 @@ export const App: React.FC = () => {
       <VideoRecorderModal
         isOpen={isRecorderOpen}
         onClose={() => setIsRecorderOpen(false)}
+      />
+
+      {/* Video Assignment Hub (Gom tất cả chỗ chưa có video vào 1 nơi) */}
+      <VideoAssignmentHubModal
+        isOpen={isVideoHubOpen}
+        onClose={() => setIsVideoHubOpen(false)}
       />
     </div>
   );

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Volume2, VolumeX, History, Activity, Camera } from 'lucide-react';
+import { Volume2, VolumeX, History, Activity, Camera, FolderSync } from 'lucide-react';
 import { TrainingMode, SessionState } from '../../types';
 
 interface NavbarProps {
@@ -9,6 +9,7 @@ interface NavbarProps {
   onToggleSound: () => void;
   onOpenHistory: () => void;
   onOpenRecorder: () => void;
+  onOpenVideoHub: () => void;
   onGoHome: () => void;
 }
 
@@ -19,6 +20,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   onToggleSound,
   onOpenHistory,
   onOpenRecorder,
+  onOpenVideoHub,
   onGoHome
 }) => {
   const isTraining = state === 'ACTIVE' || state === 'COUNTDOWN' || state === 'REST' || state === 'PAUSED';
@@ -48,6 +50,16 @@ export const Navbar: React.FC<NavbarProps> = ({
 
         {/* Right Tools */}
         <div className="navbar-actions">
+          <button 
+            className="nav-btn nav-btn-videohub"
+            onClick={onOpenVideoHub}
+            title="Trung tâm đẩy video vào đúng các vị trí ô sân & kỹ thuật"
+            aria-label="Đẩy Video Vào Vị Trí"
+          >
+            <FolderSync size={18} className="text-cyan" />
+            <span className="nav-btn-text">Đẩy Video Vào Vị Trí</span>
+          </button>
+
           <button 
             className="nav-btn nav-btn-record"
             onClick={onOpenRecorder}

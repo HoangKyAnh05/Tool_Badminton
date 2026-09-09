@@ -1,7 +1,18 @@
-import React from 'react';
-import { GridPosition, MovementVariation } from '../../types';
-import { MovementIllustration } from './MovementIllustration';
-import { Timer, Zap, Lightbulb, ArrowRight, CheckCircle, Infinity as InfinityIcon, Target, Sparkles, Activity } from 'lucide-react';
+import React, { useState, useRef, useEffect } from 'react';
+import { GridPosition, MovementVariation, SkillLevel } from '../../types';
+import { 
+  Play, 
+  Pause, 
+  Volume2, 
+  VolumeX, 
+  Zap, 
+  Timer as TimerIcon, 
+  Infinity as InfinityIcon, 
+  CheckCircle, 
+  ArrowRight,
+  Sparkles,
+  Layers
+} from 'lucide-react';
 
 interface MovementOverlayProps {
   position: GridPosition;
@@ -28,165 +39,227 @@ export const MovementOverlay: React.FC<MovementOverlayProps> = ({
   isUnlimited = false,
   onCompleteAction
 }) => {
-  const activeVar = variation || (position.variations && position.variations[0]);
+  // All variations for this position (6-7 real technique clips)
+  const variationsList = position.variations && position.variations.length > 0 
+    ? position.variations 
+    : [
+        {
+          id: `pos_${position.id}_default`,
+          shotName: position.name,
+          shotType: 'Kỹ thuật cơ bản',
+          level: 'Cơ bản' as SkillLevel,
+          videoUrl: position.videoUrl || `./videos/clips/pos_${position.id}_clip_1.mp4`,
+          handMovement: position.handMovement,
+          footMovement: position.footMovement,
+          combinedMovement: position.combinedMovement
+        }
+      ];
 
-  const movementData = activeVar
-    ? (mode === 'TAY' 
-        ? activeVar.handMovement 
-        : mode === 'CHÂN' 
-          ? activeVar.footMovement 
-          : activeVar.combinedMovement)
-    : (mode === 'TAY'
-        ? position.handMovement
-        : mode === 'CHÂN'
-          ? position.footMovement
-          : position.combinedMovement);
+  const [activeIdx, setActiveIdx] = useState<number>(() => {
+    if (variationIndex >= 0 && variationIndex < variationsList.length) {
+      return variationIndex;
+    }
+    return 0;
+  });
 
-  const modeTitle = mode === 'TAY' ? 'TAY' : mode === 'CHÂN' ? 'CHÂN' : 'TAY + CHÂN';
+  const [isPlaying, setIsPlaying] = useState<boolean>(true);
+  const [isMuted, setIsMuted] = useState<boolean>(true);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  // Sync index when variationIndex or position changes
+  useEffect(() => {
+    if (variationIndex >= 0 && variationIndex < variationsList.length) {
+      setActiveIdx(variationIndex);
+    } else {
+      setActiveIdx(0);
+    }
+  }, [position.id, variationIndex, variationsList.length]);
+
+  const currentVar = variationsList[activeIdx] || variationsList[0];
+  const currentVideoUrl = currentVar.videoUrl || `./videos/clips/pos_${position.id}_clip_${activeIdx + 1}.mp4`;
+
+  // Autoplay video when clip changes
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.load();
+      videoRef.current.play().catch(() => {});
+      setIsPlaying(true);
+    }
+  }, [currentVideoUrl]);
+
+  const togglePlay = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (!videoRef.current) return;
+    if (isPlaying) {
+      videoRef.current.pause();
+      setIsPlaying(false);
+    } else {
+      videoRef.current.play().catch(() => {});
+      setIsPlaying(true);
+    }
+  };
+
+  const toggleMute = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (!videoRef.current) return;
+    videoRef.current.muted = !videoRef.current.muted;
+    setIsMuted(videoRef.current.muted);
+  };
+
   const progressPercent = isUnlimited 
     ? 100 
     : Math.max(0, Math.min(100, (remainingTime / totalDuration) * 100));
 
+  const levelColorClass = currentVar.level === 'Cơ bản' 
+    ? 'level-badge-basic' 
+    : currentVar.level === 'Trung cấp' 
+      ? 'level-badge-inter' 
+      : 'level-badge-adv';
+
   return (
     <div className="movement-overlay-backdrop">
       <div 
-        className="movement-overlay-modal animate-pop"
+        className="movement-clean-modal animate-pop"
         onClick={() => onCompleteAction?.()}
       >
-        {/* Sleek, organized top header */}
-        <div className="overlay-header">
-          {/* Row 1: Position on left, Meta & Timer on right */}
-          <div className="overlay-header-top">
-            <div className="header-badge position-header-pill">
-              <span className="pos-badge-circle">{position.id}</span>
-              <div className="pos-badge-text">
-                <strong>{position.zoneName}</strong>
-                <small>{position.directionLabel}</small>
-              </div>
+        {/* Top Minimalist Header: Position, Level & Technique Name Only */}
+        <div className="clean-overlay-header" onClick={(e) => e.stopPropagation()}>
+          <div className="header-meta-row">
+            <div className="clean-pos-pill">
+              <span className="clean-pos-num">{position.id}</span>
+              <span className="clean-pos-zone">{position.zoneName}</span>
             </div>
 
-            {/* Mode & Round Badges */}
-            <div className="header-right-meta">
-              <div className="header-badge mode-badge">
-                <Zap size={14} />
-                <span>CHẾ ĐỘ {modeTitle}</span>
-              </div>
+            {/* Level Badge (Cơ bản / Trung cấp / Nâng cao) */}
+            <div className={`clean-level-badge ${levelColorClass}`}>
+              <Sparkles size={14} />
+              <span>{currentVar.level || 'Cơ bản'}</span>
+            </div>
 
-              <div className="header-badge round-badge">
-                <span>LƯỢT {roundNumber}/{totalRounds}</span>
-              </div>
-
-              {/* Stopwatch / Timer */}
-              <div className={`header-badge timer-badge ${isUnlimited ? 'is-unlimited-badge' : ''}`}>
+            {/* Round & Timer */}
+            <div className="clean-timer-group">
+              <span className="clean-round-pill">LƯỢT {roundNumber}/{totalRounds}</span>
+              <span className="clean-timer-pill">
                 {isUnlimited ? (
                   <>
-                    <InfinityIcon size={16} className="icon-pulse" />
-                    <span className="timer-number">{remainingTime.toFixed(1)}s</span>
+                    <InfinityIcon size={14} />
+                    <span>{remainingTime.toFixed(1)}s</span>
                   </>
                 ) : (
                   <>
-                    <Timer size={16} />
-                    <span className="timer-number">{remainingTime.toFixed(2)}s</span>
+                    <TimerIcon size={14} />
+                    <span>{remainingTime.toFixed(1)}s</span>
                   </>
                 )}
-              </div>
+              </span>
             </div>
           </div>
 
-          {/* Row 2: Technique Variation Pill */}
-          {activeVar && (
-            <div className="header-badge variation-badge">
-              <Target size={15} className="text-cyan animate-pulse" />
-              <span>KIỂU ĐÁNH <strong>{variationIndex + 1}/3</strong>: {activeVar.shotName}</span>
-            </div>
-          )}
+          {/* Prominent Technique Title */}
+          <div className="clean-technique-title-wrap">
+            <h2 className="clean-technique-title">{currentVar.shotName}</h2>
+            {currentVar.shotType && (
+              <span className="clean-technique-type">• {currentVar.shotType}</span>
+            )}
+          </div>
         </div>
 
-        {/* Progress indicator bar */}
-        <div className="timer-bar-track">
+        {/* Progress Bar */}
+        <div className="clean-progress-track">
           <div 
-            className={`timer-bar-fill ${isUnlimited ? 'unlimited-glow' : ''}`}
+            className="clean-progress-fill" 
             style={{ width: `${progressPercent}%` }} 
           />
         </div>
 
-        {/* Visual Demonstration Area (Clean, Centered, NO overlapping floating pill) */}
-        <div className="overlay-visual-arena">
-          <MovementIllustration
-            position={position}
-            variation={activeVar}
-            variationIndex={variationIndex}
-            mode={mode}
-            className="overlay-illustration"
-          />
+        {/* Center: Full-Focus Real Video Player (No wall of text) */}
+        <div className="clean-video-arena" onClick={(e) => e.stopPropagation()}>
+          <div className="clean-video-container" onClick={togglePlay}>
+            <video
+              ref={videoRef}
+              src={currentVideoUrl}
+              autoPlay
+              loop
+              muted={isMuted}
+              playsInline
+              className="clean-video-player"
+            />
+
+            {!isPlaying && (
+              <div className="clean-video-pause-overlay">
+                <Play size={44} className="pause-icon" />
+              </div>
+            )}
+
+            {/* Compact Floating Video Controls */}
+            <div className="clean-video-actions">
+              <button 
+                className="clean-vid-btn" 
+                onClick={togglePlay}
+                title={isPlaying ? 'Tạm dừng video' : 'Phát tiếp'}
+              >
+                {isPlaying ? <Pause size={16} /> : <Play size={16} />}
+              </button>
+              <button 
+                className="clean-vid-btn" 
+                onClick={toggleMute}
+                title={isMuted ? 'Bật âm thanh' : 'Tắt âm'}
+              >
+                {isMuted ? <VolumeX size={16} /> : <Volume2 size={16} />}
+              </button>
+            </div>
+          </div>
+
+          {/* Quick Technique Variation Selector (5-7 videos per position categorized by level) */}
+          <div className="clean-variation-selector">
+            <div className="variation-selector-header">
+              <Layers size={14} />
+              <span>ĐỘNG TÁC TẠI Ô {position.id} ({variationsList.length} VIDEO THẬT):</span>
+            </div>
+            <div className="variation-chips-scroll">
+              {variationsList.map((v, i) => {
+                const isSelected = i === activeIdx;
+                const badgeClass = v.level === 'Cơ bản' 
+                  ? 'chip-basic' 
+                  : v.level === 'Trung cấp' 
+                    ? 'chip-inter' 
+                    : 'chip-adv';
+                return (
+                  <button
+                    key={v.id || i}
+                    className={`clean-var-chip ${isSelected ? 'is-selected' : ''} ${badgeClass}`}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setActiveIdx(i);
+                    }}
+                    title={v.shotName}
+                  >
+                    <span className="chip-level-tag">{v.level}</span>
+                    <span className="chip-name">{v.shotName}</span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
         </div>
 
-        {/* Clear Instructions for the athlete */}
-        <div className="overlay-instruction-card">
-          <div className="instruction-top-line">
-            <div className="instruction-tags">
-              <span className="shot-type-pill">
-                <Sparkles size={13} />
-                {activeVar?.shotType || 'Kỹ thuật thi đấu'}
-              </span>
-              <span className="shot-num-pill">
-                Biến thể kỹ thuật {variationIndex + 1}/3
-              </span>
-            </div>
-
-            <h2 className="movement-title">{movementData.title}</h2>
-            <p className="movement-subtitle">{movementData.subTitle}</p>
-          </div>
-
-          {/* Technique Breakdown: Hand + Foot specs */}
-          <div className="technique-breakdown-grid">
-            <div className="technique-mini-card hand-card">
-              <div className="mini-card-header">
-                <Activity size={14} className="text-cyan" />
-                <span>KỸ THUẬT VỢT / TAY:</span>
-              </div>
-              <div className="mini-card-body">
-                {activeVar?.handMovement.subTitle || position.handMovement.subTitle}
-              </div>
-            </div>
-
-            <div className="technique-mini-card foot-card">
-              <div className="mini-card-header">
-                <Zap size={14} className="text-lime" />
-                <span>BỘ PHÁP DI CHUYỂN:</span>
-              </div>
-              <div className="mini-card-body">
-                {activeVar?.footMovement.subTitle || position.footMovement.subTitle}
-              </div>
-            </div>
-          </div>
-
-          {/* Coaching Tip */}
-          <div className="coaching-callout">
-            <Lightbulb size={18} className="callout-icon text-amber" />
-            <p><strong>Mẹo HLV:</strong> {movementData.coachingTip}</p>
-          </div>
-        </div>
-
-        {/* Bottom Interactive Trigger Bar: Click / Touch or Spacebar */}
+        {/* Bottom Interactive Trigger Bar */}
         <div 
-          className="overlay-action-trigger" 
+          className="clean-bottom-trigger"
           onClick={(e) => {
             e.stopPropagation();
             onCompleteAction?.();
           }}
-          role="button"
-          tabIndex={0}
         >
-          <div className="action-trigger-content">
-            <CheckCircle size={20} className="trigger-icon-check" />
-            <span className="trigger-hint-text">
-              TẬP XONG: <strong>BẤM PHÍM CÁCH</strong> HOẶC <strong>CHẠM VÀO ĐÂY</strong> ĐỂ SANG BÀI KHÁC
+          <div className="trigger-left">
+            <CheckCircle size={22} className="trigger-check-icon" />
+            <span className="trigger-main-text">
+              TẬP XONG: <strong>BẤM PHÍM CÁCH</strong> HOẶC <strong>CHẠM VÀO ĐÂY</strong> ĐỂ TIẾP TỤC
             </span>
-            <div className="trigger-pill-btn">
-              <span>TIẾP THEO</span>
-              <ArrowRight size={16} />
-            </div>
+          </div>
+          <div className="trigger-right-btn">
+            <span>BÀI TIẾP</span>
+            <ArrowRight size={18} />
           </div>
         </div>
       </div>

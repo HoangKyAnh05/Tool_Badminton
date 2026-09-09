@@ -49,10 +49,15 @@ function createWindow() {
 
   const isDev = process.env.NODE_ENV !== 'production' && !app.isPackaged;
 
+  mainWindow.webContents.on('did-fail-load', () => {
+    console.log('[ELECTRON] Failed to load dev URL, falling back to local build dist/index.html...');
+    mainWindow.loadFile(path.join(__dirname, '../dist/index.html'));
+  });
+
   if (isDev) {
-    mainWindow.loadURL('http://localhost:5188');
-    // Open DevTools in dev mode if needed
-    // mainWindow.webContents.openDevTools();
+    mainWindow.loadURL('http://127.0.0.1:5188').catch(() => {
+      mainWindow.loadFile(path.join(__dirname, '../dist/index.html'));
+    });
   } else {
     mainWindow.loadFile(path.join(__dirname, '../dist/index.html'));
   }

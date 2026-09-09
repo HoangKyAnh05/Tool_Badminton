@@ -9,7 +9,8 @@ echo.
 
 cd /d "%~dp0"
 
-set "TARGET_BAT=%~dp0run.bat"
+set "TARGET_LAUNCHER=wscript.exe"
+set "ARG_VBS=%~dp0launch.vbs"
 set "ICON_FILE=%~dp0public\icon.ico"
 set "SHORTCUT_NAME=Badminton Pro Trainer.lnk"
 
@@ -17,7 +18,8 @@ powershell -NoProfile -ExecutionPolicy Bypass -Command ^
   "$ws = New-Object -ComObject WScript.Shell; " ^
   "$desktop = [System.Environment]::GetFolderPath('Desktop'); " ^
   "$s = $ws.CreateShortcut((Join-Path $desktop '%SHORTCUT_NAME%')); " ^
-  "$s.TargetPath = '%TARGET_BAT%'; " ^
+  "$s.TargetPath = '%TARGET_LAUNCHER%'; " ^
+  "$s.Arguments = '""%ARG_VBS%""'; " ^
   "$s.WorkingDirectory = '%~dp0'; " ^
   "$s.IconLocation = '%ICON_FILE%'; " ^
   "$s.Description = 'He Thong Luyen Phan Xa & Chien Thuat Cau Long'; " ^

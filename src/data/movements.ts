@@ -1,8 +1,8 @@
-import { GridPosition } from '../types';
+import { GridPosition } from "../types";
 
 export const BADMINTON_POSITIONS: GridPosition[] = [
   // ==========================================
-  // Ô 1: GÓC LƯỚI TRÁI (FRONT LEFT)
+  // Ô 1: GÓC LƯỚI TRÁI (NET LEFT)
   // ==========================================
   {
     id: 1,
@@ -11,204 +11,368 @@ export const BADMINTON_POSITIONS: GridPosition[] = [
     row: 1,
     col: 1,
     directionLabel: "Vị trí 1 - Góc lưới bên trái",
-    courtZone: 'front',
-    courtSide: 'left',
+    courtZone: "front",
+    courtSide: "left",
+    level: "Cơ bản",
+    videoUrl: "./videos/clips/pos_1_clip_1.mp4",
     handMovement: {
-      title: "Chặt Lưới / Vắt Cầu Trái Tay (Backhand Net Slice)",
-      subTitle: "Cổ tay thả lỏng, mặt vợt nghiêng 45°, miết nhẹ đầu quả cầu",
-      description: "Thực hiện cú chạm cầu tinh tế sát mép lưới đối phương. Điểm tiếp xúc cao nhất có thể.",
-      coachingTip: "Giữ cổ tay linh hoạt, ngón cái tì vào cạnh vát vợt để kiểm soát lực miết cầu lộn qua lưới."
+      title: "Đỡ Cầu & Kê Lưới Trái Tay",
+      subTitle: "Mặt vợt ngửa 45 độ, thả lỏng cổ tay đón cầu sát lưới",
+      description: "Đỡ Cầu & Kê Lưới Trái Tay tại LƯỚI TRÁI",
+      coachingTip: "Mặt vợt ngửa 45 độ, thả lỏng cổ tay đón cầu sát lưới"
     },
     footMovement: {
-      title: "Bước Chéo Tới Lưới Trái (Forecourt Lunge Left)",
-      subTitle: "Split-step trung tâm -> Bước đệm chân phải -> Chùng gối chân thuận",
-      description: "Khởi đầu từ tâm sân, bật nhẹ split-step, bước chân phải hướng thẳng góc 10h, gót chạm đất trước rồi hạ mũi.",
-      coachingTip: "Đầu gối chân trước không vượt quá mũi bàn chân, lưng giữ thẳng để hồi vị nhanh."
+      title: "Bộ pháp Ô 1",
+      subTitle: "Split-step -> Bước đệm chân phải hướng góc 10h",
+      description: "Di chuyển đến LƯỚI TRÁI",
+      coachingTip: "Split-step -> Bước đệm chân phải hướng góc 10h"
     },
     combinedMovement: {
-      title: "Phối Hợp: Đỡ Cầu Sát Lưới Trái Tay & Hồi Vị",
-      subTitle: "Lunge chân phải vươn dài + vẩy cổ tay trái chạm cầu + bật đẩy hồi tâm",
-      description: "Đồng thời chân phải chạm đất thì vợt chạm cầu ở đỉnh lưới, ngay sau đó chân phải bật đẩy cơ thể lùi về vị trí sẵn sàng số 5.",
-      coachingTip: "Đừng đứng nhìn cầu sau khi đánh; lực đẩy của chân trước chính là đà để hồi về tâm sân."
+      title: "Đỡ Cầu & Kê Lưới Trái Tay",
+      subTitle: "Mặt vợt ngửa 45 độ, thả lỏng cổ tay đón cầu sát lưới + Split-step -> Bước đệm chân phải hướng góc 10h",
+      description: "Đỡ Cầu & Kê Lưới Trái Tay tại LƯỚI TRÁI",
+      coachingTip: "Phối hợp tay và chân nhịp nhàng"
     },
     variations: [
       {
-        id: "pos1_var1",
-        shotName: "Gài Lưới / Nhỏ Cầu Trái Tay (Net Spin/Slice)",
-        shotType: "Bỏ nhỏ sát lưới",
+        id: "pos_1_var_1",
+        shotName: "Đỡ Cầu & Kê Lưới Trái Tay",
+        shotType: "Kê lưới",
+        level: "Cơ bản",
+        videoUrl: "./videos/clips/pos_1_clip_1.mp4",
         handMovement: {
-          title: "Chặt Lưới / Vắt Cầu Trái Tay (Backhand Net Slice)",
-          subTitle: "Cổ tay thả lỏng, mặt vợt nghiêng 45°, miết nhẹ đầu quả cầu",
-          description: "Thực hiện cú chạm cầu tinh tế sát mép lưới đối phương. Điểm tiếp xúc cao nhất có thể.",
-          coachingTip: "Giữ cổ tay linh hoạt, ngón cái tì vào cạnh vát vợt để kiểm soát lực miết cầu lộn qua lưới."
+          title: "Đỡ Cầu & Kê Lưới Trái Tay",
+          subTitle: "Mặt vợt ngửa 45 độ, thả lỏng cổ tay đón cầu sát lưới",
+          description: "Đỡ Cầu & Kê Lưới Trái Tay",
+          coachingTip: "Mặt vợt ngửa 45 độ, thả lỏng cổ tay đón cầu sát lưới"
         },
         footMovement: {
-          title: "Bước Chéo Tới Lưới Trái (Forecourt Lunge Left)",
-          subTitle: "Split-step trung tâm -> Bước đệm chân phải -> Chùng gối chân thuận",
-          description: "Khởi đầu từ tâm sân, bật nhẹ split-step, bước chân phải hướng thẳng góc 10h, gót chạm đất trước.",
-          coachingTip: "Đầu gối chân trước không vượt quá mũi bàn chân, lưng giữ thẳng để hồi vị nhanh."
+          title: "Bộ pháp Ô 1",
+          subTitle: "Split-step -> Bước đệm chân phải hướng góc 10h",
+          description: "Bộ pháp Ô 1",
+          coachingTip: "Split-step -> Bước đệm chân phải hướng góc 10h"
         },
         combinedMovement: {
-          title: "Gài Lưới Trái Tay Tinh Tế & Hồi Tâm",
-          subTitle: "Lunge chân phải vươn dài + miết cổ tay chạm cầu + bật đẩy lùi về tâm",
-          description: "Chân phải chạm đất đồng thời mặt vợt cắt chéo đầu quả cầu cho rơi sát mép lưới bên kia, lập tức rút chân hồi vị.",
-          coachingTip: "Lực miết bóng rất nhẹ, điểm rơi bóng càng sát vạch lưới càng làm đối thủ khó cứu."
+          title: "Đỡ Cầu & Kê Lưới Trái Tay",
+          subTitle: "Mặt vợt ngửa 45 độ, thả lỏng cổ tay đón cầu sát lưới + Split-step -> Bước đệm chân phải hướng góc 10h",
+          description: "Đỡ Cầu & Kê Lưới Trái Tay",
+          coachingTip: "Tập trung chuẩn xác động tác"
         }
       },
       {
-        id: "pos1_var2",
-        shotName: "Vồ Cầu / Chụp Lưới Góc Trái (Backhand Net Kill)",
+        id: "pos_1_var_2",
+        shotName: "Bước Lunge Đón Cầu Góc Lưới Trái",
+        shotType: "Bộ pháp",
+        level: "Cơ bản",
+        videoUrl: "./videos/clips/pos_1_clip_2.mp4",
+        handMovement: {
+          title: "Bước Lunge Đón Cầu Góc Lưới Trái",
+          subTitle: "Giơ vợt ổn định trước ngực giữ thăng bằng",
+          description: "Bước Lunge Đón Cầu Góc Lưới Trái",
+          coachingTip: "Giơ vợt ổn định trước ngực giữ thăng bằng"
+        },
+        footMovement: {
+          title: "Bộ pháp Ô 1",
+          subTitle: "Lunge chân phải vươn dài, gót chạm đất trước",
+          description: "Bộ pháp Ô 1",
+          coachingTip: "Lunge chân phải vươn dài, gót chạm đất trước"
+        },
+        combinedMovement: {
+          title: "Bước Lunge Đón Cầu Góc Lưới Trái",
+          subTitle: "Giơ vợt ổn định trước ngực giữ thăng bằng + Lunge chân phải vươn dài, gót chạm đất trước",
+          description: "Bước Lunge Đón Cầu Góc Lưới Trái",
+          coachingTip: "Tập trung chuẩn xác động tác"
+        }
+      },
+      {
+        id: "pos_1_var_3",
+        shotName: "Gài Lưới / Miết Cầu Xoáy Lộn Lưới",
+        shotType: "Bỏ nhỏ xoáy",
+        level: "Trung cấp",
+        videoUrl: "./videos/clips/pos_1_clip_3.mp4",
+        handMovement: {
+          title: "Gài Lưới / Miết Cầu Xoáy Lộn Lưới",
+          subTitle: "Miết nhẹ đầu quả cầu tạo độ xoáy lộn mép lưới",
+          description: "Gài Lưới / Miết Cầu Xoáy Lộn Lưới",
+          coachingTip: "Miết nhẹ đầu quả cầu tạo độ xoáy lộn mép lưới"
+        },
+        footMovement: {
+          title: "Bộ pháp Ô 1",
+          subTitle: "Chùng gối chân thuận hãm trọng tâm",
+          description: "Bộ pháp Ô 1",
+          coachingTip: "Chùng gối chân thuận hãm trọng tâm"
+        },
+        combinedMovement: {
+          title: "Gài Lưới / Miết Cầu Xoáy Lộn Lưới",
+          subTitle: "Miết nhẹ đầu quả cầu tạo độ xoáy lộn mép lưới + Chùng gối chân thuận hãm trọng tâm",
+          description: "Gài Lưới / Miết Cầu Xoáy Lộn Lưới",
+          coachingTip: "Tập trung chuẩn xác động tác"
+        }
+      },
+      {
+        id: "pos_1_var_4",
+        shotName: "Hất Cầu Bổng Sâu Góc Lưới Trái",
+        shotType: "Hất cầu sâu",
+        level: "Trung cấp",
+        videoUrl: "./videos/clips/pos_1_clip_4.mp4",
+        handMovement: {
+          title: "Hất Cầu Bổng Sâu Góc Lưới Trái",
+          subTitle: "Vung vợt từ dưới lên bung lực cẳng tay đẩy cầu sâu",
+          description: "Hất Cầu Bổng Sâu Góc Lưới Trái",
+          coachingTip: "Vung vợt từ dưới lên bung lực cẳng tay đẩy cầu sâu"
+        },
+        footMovement: {
+          title: "Bộ pháp Ô 1",
+          subTitle: "Bật đẩy chân phải tạo đà lùi về tâm",
+          description: "Bộ pháp Ô 1",
+          coachingTip: "Bật đẩy chân phải tạo đà lùi về tâm"
+        },
+        combinedMovement: {
+          title: "Hất Cầu Bổng Sâu Góc Lưới Trái",
+          subTitle: "Vung vợt từ dưới lên bung lực cẳng tay đẩy cầu sâu + Bật đẩy chân phải tạo đà lùi về tâm",
+          description: "Hất Cầu Bổng Sâu Góc Lưới Trái",
+          coachingTip: "Tập trung chuẩn xác động tác"
+        }
+      },
+      {
+        id: "pos_1_var_5",
+        shotName: "Vồ Cầu / Chụp Lưới Góc Trái",
         shotType: "Vồ cầu dứt điểm",
+        level: "Nâng cao",
+        videoUrl: "./videos/clips/pos_1_clip_5.mp4",
         handMovement: {
-          title: "Vồ Cầu / Bắt Lưới Trái Tay Chớp Nhoáng",
-          subTitle: "Đón cầu ngay trên đỉnh lưới, cổ tay giật nhanh dứt khoát",
-          description: "Đón lõng pha cầu đối phương trả non nổi trên mép lưới, gập cổ tay dùng lực ngón tay ấn cắm cầu xuống sàn.",
-          coachingTip: "Biên độ vung vợt thật ngắn, ngón cái tì thẳng vào gáy cán vợt giật dứt điểm."
+          title: "Vồ Cầu / Chụp Lưới Góc Trái",
+          subTitle: "Đón cầu đỉnh lưới, búng ngón cái giật gõ cắm sàn",
+          description: "Vồ Cầu / Chụp Lưới Góc Trái",
+          coachingTip: "Đón cầu đỉnh lưới, búng ngón cái giật gõ cắm sàn"
         },
         footMovement: {
-          title: "Bứt Tốc Lao Lưới Trái (Explosive Forward Lunge)",
-          subTitle: "Bật nhịp chân trái phóng dài chân phải lao vào góc lưới",
-          description: "Tăng tốc cực đại từ tâm sân, sải chân dài đón cầu tại thời điểm bóng vừa nhô qua mép lưới.",
-          coachingTip: "Hạ thấp vai để mắt ngang tầm lưới, quan sát rõ ràng góc cắm của quả cầu."
+          title: "Bộ pháp Ô 1",
+          subTitle: "Bứt tốc chân trái đẩy chân phải phóng dài",
+          description: "Bộ pháp Ô 1",
+          coachingTip: "Bứt tốc chân trái đẩy chân phải phóng dài"
         },
         combinedMovement: {
-          title: "Vồ Cầu Dứt Điểm Góc Lưới Trái",
-          subTitle: "Lao dũng mãnh + gõ cắm quả cầu + giơ vợt chặn tiếp",
-          description: "Vừa lướt tới là gõ cắm thẳng quả cầu xuống đất đối thủ, ngay sau đó giơ vợt trước ngực đề phòng phản xạ thủ.",
-          coachingTip: "Cực kỳ cảnh giác lỗi chạm lưới (net fault), đánh xong thu vợt lại tức thì."
+          title: "Vồ Cầu / Chụp Lưới Góc Trái",
+          subTitle: "Đón cầu đỉnh lưới, búng ngón cái giật gõ cắm sàn + Bứt tốc chân trái đẩy chân phải phóng dài",
+          description: "Vồ Cầu / Chụp Lưới Góc Trái",
+          coachingTip: "Tập trung chuẩn xác động tác"
         }
       },
       {
-        id: "pos1_var3",
-        shotName: "Hất Cầu Bổng Sâu Chéo Góc (Backhand Cross Net Lift)",
-        shotType: "Hất cầu bổng sâu",
+        id: "pos_1_var_6",
+        shotName: "Múa Vợt Đổi Hướng Chém Chéo Lưới",
+        shotType: "Đánh lừa",
+        level: "Nâng cao",
+        videoUrl: "./videos/clips/pos_1_clip_6.mp4",
         handMovement: {
-          title: "Hất Cầu Bổng Trái Tay Chéo Sân",
-          subTitle: "Mở mặt vợt từ dưới lên, bung hết lực cẳng tay và cổ tay",
-          description: "Đổi hướng từ thế bị ép sát lưới, bung cầu cao vọt qua đầu đối thủ về tận góc 9 phía sau.",
-          coachingTip: "Mặt vợt ngửa khoảng 60°, vung tay theo hình vòng cung từ dưới lên trên qua vai."
+          title: "Múa Vợt Đổi Hướng Chém Chéo Lưới",
+          subTitle: "Giả động tác đẩy thẳng rồi chém cổ tay chéo sân",
+          description: "Múa Vợt Đổi Hướng Chém Chéo Lưới",
+          coachingTip: "Giả động tác đẩy thẳng rồi chém cổ tay chéo sân"
         },
         footMovement: {
-          title: "Lunge Sâu Đỡ Cầu Sát Sàn (Deep Low Lunge)",
-          subTitle: "Chùng sâu gối chân phải cứu cầu khi bóng đã rơi dưới mép lưới",
-          description: "Khi đối thủ bỏ nhỏ hiểm, người phải hạ thật thấp, chân trái duỗi dài làm trụ hãm quán tính.",
-          coachingTip: "Tránh chúi đầu về phía trước; giữ lưng nghiêng nhẹ để có lực vung vợt lên cao."
+          title: "Bộ pháp Ô 1",
+          subTitle: "Giữ thăng bằng trên một chân rồi thu chân hồi vị",
+          description: "Bộ pháp Ô 1",
+          coachingTip: "Giữ thăng bằng trên một chân rồi thu chân hồi vị"
         },
         combinedMovement: {
-          title: "Cứu Cầu Sát Sàn & Hất Đổi Hướng Chéo Góc",
-          subTitle: "Lunge sâu đón cầu + bung lực hất cao sâu + bật người chạy lùi",
-          description: "Cứu quả cầu đang rơi sát mặt đất, hất bổng chéo góc 9 đối phương để đảo ngược thế trận bị động.",
-          coachingTip: "Sau cú hất bổng bạn có đủ thời gian để lùi về tâm sân chuẩn bị phòng thủ đập cầu."
+          title: "Múa Vợt Đổi Hướng Chém Chéo Lưới",
+          subTitle: "Giả động tác đẩy thẳng rồi chém cổ tay chéo sân + Giữ thăng bằng trên một chân rồi thu chân hồi vị",
+          description: "Múa Vợt Đổi Hướng Chém Chéo Lưới",
+          coachingTip: "Tập trung chuẩn xác động tác"
         }
       }
     ]
   },
-
   // ==========================================
-  // Ô 2: LƯỚI GIỮA (FRONT CENTER - T-JUNCTION)
+  // Ô 2: LƯỚI GIỮA (FRONT CENTER)
   // ==========================================
   {
     id: 2,
-    name: "Lưới Giữa (Net Center)",
+    name: "Lưới Giữa (Front Center)",
     zoneName: "LƯỚI GIỮA",
     row: 1,
     col: 2,
-    directionLabel: "Vị trí 2 - Sát lưới trung tâm (chữ T)",
-    courtZone: 'front',
-    courtSide: 'center',
+    directionLabel: "Vị trí 2 - Trung lộ mép lưới (chữ T)",
+    courtZone: "front",
+    courtSide: "center",
+    level: "Cơ bản",
+    videoUrl: "./videos/clips/pos_2_clip_1.mp4",
     handMovement: {
-      title: "Vồ Cầu / Gõ Cầu Nhanh (Net Kill / Tap)",
-      subTitle: "Động tác ngắn dứt khoát, dùng lực ngón tay gập vợt cắm xuống",
-      description: "Bắt cầu nổi trên mép lưới. Giật vợt bằng các ngón tay để cầu cắm xuống nhanh, không chạm lưới.",
-      coachingTip: "Tránh vung vợt biên độ rộng vì dễ bị lỗi vợt chạm lưới (net fault). Rút vợt lại ngay sau khi gõ."
+      title: "Chặn Đẩy Cầu Thẳng Mặt Lưới",
+      subTitle: "Đẩy mặt vợt thẳng hướng quả cầu rơi",
+      description: "Chặn Đẩy Cầu Thẳng Mặt Lưới tại LƯỚI GIỮA",
+      coachingTip: "Đẩy mặt vợt thẳng hướng quả cầu rơi"
     },
     footMovement: {
-      title: "Bật Thẳng Lưới Giữa (Forward Direct Step)",
-      subTitle: "Bước bật nhanh 1 nhịp bằng chân thuận tiếp cận sát T-junction",
-      description: "Từ tâm sân lao thẳng lên chữ T lưới với 1 bước đệm và 1 bước với chân thuận dứt khoát.",
-      coachingTip: "Hạ trọng tâm thấp để mắt nhìn ngang tầm mép lưới, chuẩn bị gõ cầu dứt điểm."
+      title: "Bộ pháp Ô 2",
+      subTitle: "Bước thẳng chân phải vào vạch chữ T",
+      description: "Di chuyển đến LƯỚI GIỮA",
+      coachingTip: "Bước thẳng chân phải vào vạch chữ T"
     },
     combinedMovement: {
-      title: "Phối Hợp: Bắt Cầu Nổi Đỉnh Lưới & Phản Đòn",
-      subTitle: "Lao dứt khoát lên chữ T + gõ nhanh mũi vợt + giơ vợt chặn tiếp",
-      description: "Đón lõng pha cầu đối phương trả non, lao lên gõ cầu cắm thẳng xuống đất đối thủ.",
-      coachingTip: "Cực kỳ dứt khoát, sau khi gõ vẫn giơ cao đầu vợt đề phòng đối thủ thủ được."
+      title: "Chặn Đẩy Cầu Thẳng Mặt Lưới",
+      subTitle: "Đẩy mặt vợt thẳng hướng quả cầu rơi + Bước thẳng chân phải vào vạch chữ T",
+      description: "Chặn Đẩy Cầu Thẳng Mặt Lưới tại LƯỚI GIỮA",
+      coachingTip: "Phối hợp tay và chân nhịp nhàng"
     },
     variations: [
       {
-        id: "pos2_var1",
-        shotName: "Vồ Cầu / Gõ Cầu Cắm Sàn (Fast Net Kill)",
-        shotType: "Vồ cầu dứt điểm",
+        id: "pos_2_var_1",
+        shotName: "Chặn Đẩy Cầu Thẳng Mặt Lưới",
+        shotType: "Chặn đẩy",
+        level: "Cơ bản",
+        videoUrl: "./videos/clips/pos_2_clip_1.mp4",
         handMovement: {
-          title: "Vồ Cầu / Gõ Cầu Nhanh Chữ T",
-          subTitle: "Động tác ngắn dứt khoát, dùng lực ngón tay gập vợt cắm xuống",
-          description: "Bắt cầu nổi trên mép lưới. Giật vợt bằng các ngón tay để cầu cắm xuống nhanh, không chạm lưới.",
-          coachingTip: "Tránh vung vợt biên độ rộng vì dễ bị lỗi vợt chạm lưới (net fault). Rút vợt lại ngay sau khi gõ."
+          title: "Chặn Đẩy Cầu Thẳng Mặt Lưới",
+          subTitle: "Đẩy mặt vợt thẳng hướng quả cầu rơi",
+          description: "Chặn Đẩy Cầu Thẳng Mặt Lưới",
+          coachingTip: "Đẩy mặt vợt thẳng hướng quả cầu rơi"
         },
         footMovement: {
-          title: "Bật Thẳng Lưới Giữa (Forward Direct Step)",
-          subTitle: "Bước bật nhanh 1 nhịp bằng chân thuận tiếp cận sát T-junction",
-          description: "Từ tâm sân lao thẳng lên chữ T lưới với 1 bước đệm và 1 bước với chân thuận dứt khoát.",
-          coachingTip: "Hạ trọng tâm thấp để mắt nhìn ngang tầm mép lưới, chuẩn bị gõ cầu dứt điểm."
+          title: "Bộ pháp Ô 2",
+          subTitle: "Bước thẳng chân phải vào vạch chữ T",
+          description: "Bộ pháp Ô 2",
+          coachingTip: "Bước thẳng chân phải vào vạch chữ T"
         },
         combinedMovement: {
-          title: "Lao Chữ T & Gõ Cầu Cắm Sàn",
-          subTitle: "Lao dứt khoát lên chữ T + gõ nhanh mũi vợt + giơ vợt sẵn sàng",
-          description: "Đón lõng pha cầu đối phương trả non, lao lên gõ cầu cắm thẳng xuống đất đối thủ.",
-          coachingTip: "Cực kỳ dứt khoát, sau khi gõ vẫn giơ cao đầu vợt đề phòng đối thủ thủ được."
+          title: "Chặn Đẩy Cầu Thẳng Mặt Lưới",
+          subTitle: "Đẩy mặt vợt thẳng hướng quả cầu rơi + Bước thẳng chân phải vào vạch chữ T",
+          description: "Chặn Đẩy Cầu Thẳng Mặt Lưới",
+          coachingTip: "Tập trung chuẩn xác động tác"
         }
       },
       {
-        id: "pos2_var2",
-        shotName: "Bỏ Nhỏ Tinh Tế Đổi Hướng (Tumble Net Drop)",
-        shotType: "Bỏ nhỏ tinh tế",
+        id: "pos_2_var_2",
+        shotName: "Kê Cầu Chữ T Đổi Nhịp",
+        shotType: "Kê lưới",
+        level: "Cơ bản",
+        videoUrl: "./videos/clips/pos_2_clip_2.mp4",
         handMovement: {
-          title: "Bỏ Nhỏ Xoay Đầu Cầu Chữ T",
-          subTitle: "Mặt vợt phẳng, đệm nhẹ nhàng triệt tiêu xung lực",
-          description: "Đỡ cầu êm ái khi đối phương tạt nhẹ, cho cầu lộn nhào qua mép lưới và rơi cắm sát vạch phát cầu.",
-          coachingTip: "Thả lỏng cổ tay tối đa, chạm nhẹ như nhung vào đáy quả cầu."
+          title: "Kê Cầu Chữ T Đổi Nhịp",
+          subTitle: "Thả lỏng cổ tay triệt tiêu lực quả cầu",
+          description: "Kê Cầu Chữ T Đổi Nhịp",
+          coachingTip: "Thả lỏng cổ tay triệt tiêu lực quả cầu"
         },
         footMovement: {
-          title: "Lướt Nhẹ Tiếp Cận Chữ T (Smooth Approach)",
-          subTitle: "2 bước đệm êm ái giữ thân trên thăng bằng tuyệt đối",
-          description: "Di chuyển nhịp nhàng không gây xáo trộn trọng tâm cơ thể, đảm bảo tay cầm vợt hoàn toàn tĩnh.",
-          coachingTip: "Bước chân êm ái giúp tay điều khiển mặt vợt đạt độ chuẩn xác từng milimet."
+          title: "Bộ pháp Ô 2",
+          subTitle: "Chân thuận tiếp đất vững chắc",
+          description: "Bộ pháp Ô 2",
+          coachingTip: "Chân thuận tiếp đất vững chắc"
         },
         combinedMovement: {
-          title: "Đệm Cầu Bỏ Nhỏ Sát Lưới & Kéo Lưới",
-          subTitle: "Tiếp cận êm + vuốt nhẹ quả cầu + giữ thế rình vồ tiếp",
-          description: "Thả cầu rơi sát mép lưới buộc đối thủ phải hất cầu bổng, tạo cơ hội cho bản thân hoặc đồng đội đập cầu.",
-          coachingTip: "Sau cú bỏ nhỏ đứng rình ngay trước lưới, không vội lùi về."
+          title: "Kê Cầu Chữ T Đổi Nhịp",
+          subTitle: "Thả lỏng cổ tay triệt tiêu lực quả cầu + Chân thuận tiếp đất vững chắc",
+          description: "Kê Cầu Chữ T Đổi Nhịp",
+          coachingTip: "Tập trung chuẩn xác động tác"
         }
       },
       {
-        id: "pos2_var3",
-        shotName: "Đẩy Cầu Nhanh Vào Nách Đối Thủ (Push to Body)",
-        shotType: "Đẩy cầu nhanh ép nách",
+        id: "pos_2_var_3",
+        shotName: "Đè Lưới / Phản Tạt Nhanh Giữa Sân",
+        shotType: "Đè lưới",
+        level: "Trung cấp",
+        videoUrl: "./videos/clips/pos_2_clip_3.mp4",
         handMovement: {
-          title: "Đẩy Cầu Phẳng Nhanh Ngang Ngực",
-          subTitle: "Đẩy thẳng mặt vợt, búng lực cổ tay đưa cầu bay xiết vào thân người",
-          description: "Giả vờ bỏ nhỏ nhưng bất ngờ đẩy cầu phẳng bay nhanh vào nách hoặc hông tay cầm vợt của đối phương.",
-          coachingTip: "Đổi nhịp bất ngờ ở 0.1s cuối cùng để đối phương bị giật mình không kịp phản xạ."
+          title: "Đè Lưới / Phản Tạt Nhanh Giữa Sân",
+          subTitle: "Gập cổ tay chớp nhoáng đẩy cầu đi căng thấp",
+          description: "Đè Lưới / Phản Tạt Nhanh Giữa Sân",
+          coachingTip: "Gập cổ tay chớp nhoáng đẩy cầu đi căng thấp"
         },
         footMovement: {
-          title: "Bước Đệm Nhử Lưới (Deceptive Forward Step)",
-          subTitle: "Lao lên làm bộ bỏ nhỏ rồi dậm chân giữ đà đẩy cầu",
-          description: "Bước chân dài uy lực tạo áp lực thị giác khiến đối thủ lùi lại, sau đó búng cầu vào vị trí họ vừa di chuyển.",
-          coachingTip: "Trọng tâm hơi ngả về sau một chút lúc búng cầu để không bị trôi người vào lưới."
+          title: "Bộ pháp Ô 2",
+          subTitle: "Nhịp bật lướt đón cầu ngang tầm mắt",
+          description: "Bộ pháp Ô 2",
+          coachingTip: "Nhịp bật lướt đón cầu ngang tầm mắt"
         },
         combinedMovement: {
-          title: "Nhử Lưới & Búng Cầu Ép Nách Bất Ngờ",
-          subTitle: "Lướt lên chữ T + giật cổ tay đẩy cầu phẳng + thủ phản tạt",
-          description: "Lia quả cầu tốc độ cao xuyên thẳng qua người đứng lưới đối phương khiến họ đỡ hỏng.",
-          coachingTip: "Đường cầu bay xiết ngang tầm ngực là khó đỡ nhất trong đánh đôi."
+          title: "Đè Lưới / Phản Tạt Nhanh Giữa Sân",
+          subTitle: "Gập cổ tay chớp nhoáng đẩy cầu đi căng thấp + Nhịp bật lướt đón cầu ngang tầm mắt",
+          description: "Đè Lưới / Phản Tạt Nhanh Giữa Sân",
+          coachingTip: "Tập trung chuẩn xác động tác"
+        }
+      },
+      {
+        id: "pos_2_var_4",
+        shotName: "Bung Cầu Bổng Sang Hai Góc",
+        shotType: "Bung bổng",
+        level: "Trung cấp",
+        videoUrl: "./videos/clips/pos_2_clip_4.mp4",
+        handMovement: {
+          title: "Bung Cầu Bổng Sang Hai Góc",
+          subTitle: "Bung lực cổ tay hất cao bổng sang góc trống",
+          description: "Bung Cầu Bổng Sang Hai Góc",
+          coachingTip: "Bung lực cổ tay hất cao bổng sang góc trống"
+        },
+        footMovement: {
+          title: "Bộ pháp Ô 2",
+          subTitle: "Hạ thấp trọng tâm cứu cầu sát sàn",
+          description: "Bộ pháp Ô 2",
+          coachingTip: "Hạ thấp trọng tâm cứu cầu sát sàn"
+        },
+        combinedMovement: {
+          title: "Bung Cầu Bổng Sang Hai Góc",
+          subTitle: "Bung lực cổ tay hất cao bổng sang góc trống + Hạ thấp trọng tâm cứu cầu sát sàn",
+          description: "Bung Cầu Bổng Sang Hai Góc",
+          coachingTip: "Tập trung chuẩn xác động tác"
+        }
+      },
+      {
+        id: "pos_2_var_5",
+        shotName: "Búng Cổ Tay Chụp Lưới Dứt Điểm",
+        shotType: "Vồ cầu",
+        level: "Nâng cao",
+        videoUrl: "./videos/clips/pos_2_clip_5.mp4",
+        handMovement: {
+          title: "Búng Cổ Tay Chụp Lưới Dứt Điểm",
+          subTitle: "Đón đỉnh lưới gõ cắm thẳng xuống đất đối thủ",
+          description: "Búng Cổ Tay Chụp Lưới Dứt Điểm",
+          coachingTip: "Đón đỉnh lưới gõ cắm thẳng xuống đất đối thủ"
+        },
+        footMovement: {
+          title: "Bộ pháp Ô 2",
+          subTitle: "Bật rướn nhanh chặn đầu quả cầu",
+          description: "Bộ pháp Ô 2",
+          coachingTip: "Bật rướn nhanh chặn đầu quả cầu"
+        },
+        combinedMovement: {
+          title: "Búng Cổ Tay Chụp Lưới Dứt Điểm",
+          subTitle: "Đón đỉnh lưới gõ cắm thẳng xuống đất đối thủ + Bật rướn nhanh chặn đầu quả cầu",
+          description: "Búng Cổ Tay Chụp Lưới Dứt Điểm",
+          coachingTip: "Tập trung chuẩn xác động tác"
+        }
+      },
+      {
+        id: "pos_2_var_6",
+        shotName: "Giả Bỏ Nhỏ Gạt Cầu Sát Vách Lưới",
+        shotType: "Đánh lừa",
+        level: "Nâng cao",
+        videoUrl: "./videos/clips/pos_2_clip_6.mp4",
+        handMovement: {
+          title: "Giả Bỏ Nhỏ Gạt Cầu Sát Vách Lưới",
+          subTitle: "Giữ nhịp vợt tĩnh (Hold) rồi gạt nhanh đổi hướng",
+          description: "Giả Bỏ Nhỏ Gạt Cầu Sát Vách Lưới",
+          coachingTip: "Giữ nhịp vợt tĩnh (Hold) rồi gạt nhanh đổi hướng"
+        },
+        footMovement: {
+          title: "Bộ pháp Ô 2",
+          subTitle: "Trụ vững chân trước, cơ thể ổn định",
+          description: "Bộ pháp Ô 2",
+          coachingTip: "Trụ vững chân trước, cơ thể ổn định"
+        },
+        combinedMovement: {
+          title: "Giả Bỏ Nhỏ Gạt Cầu Sát Vách Lưới",
+          subTitle: "Giữ nhịp vợt tĩnh (Hold) rồi gạt nhanh đổi hướng + Trụ vững chân trước, cơ thể ổn định",
+          description: "Giả Bỏ Nhỏ Gạt Cầu Sát Vách Lưới",
+          coachingTip: "Tập trung chuẩn xác động tác"
         }
       }
     ]
   },
-
   // ==========================================
-  // Ô 3: GÓC LƯỚI PHẢI (FRONT RIGHT)
+  // Ô 3: GÓC LƯỚI PHẢI (NET RIGHT)
   // ==========================================
   {
     id: 3,
@@ -217,99 +381,181 @@ export const BADMINTON_POSITIONS: GridPosition[] = [
     row: 1,
     col: 3,
     directionLabel: "Vị trí 3 - Góc lưới bên phải",
-    courtZone: 'front',
-    courtSide: 'right',
+    courtZone: "front",
+    courtSide: "right",
+    level: "Cơ bản",
+    videoUrl: "./videos/clips/pos_3_clip_1.mp4",
     handMovement: {
-      title: "Vồ Cầu / Đè Lưới Thuận Tay (Forehand Net Tap)",
-      subTitle: "Mặt vợt úp nhẹ, vẩy cổ tay dứt điểm cắm vào góc chữ V",
-      description: "Đón đánh cầu phía trên mép lưới. Dùng lực gập cổ tay và ngón trỏ siết chặt cán vợt.",
-      coachingTip: "Mở mặt vợt sớm trước khi chân chạm đất để chớp cơ hội tiếp xúc cầu ở điểm cao nhất."
+      title: "Kê Cầu Thuận Tay Sát Lưới",
+      subTitle: "Mặt vợt mở nhẹ thuận tay đón cầu êm",
+      description: "Kê Cầu Thuận Tay Sát Lưới tại LƯỚI PHẢI",
+      coachingTip: "Mặt vợt mở nhẹ thuận tay đón cầu êm"
     },
     footMovement: {
-      title: "Lunge Thuận Tay Lưới Phải (Forehand Net Lunge)",
-      subTitle: "Xoay mũi chân phải hướng góc 2h -> Bước sải dài dồn trọng tâm",
-      description: "Bật split-step, bước chân phải dài về góc lưới phải, đầu gối chùng tạo thành góc vuông 90°.",
-      coachingTip: "Chân trái duỗi dài phía sau, má trong bàn chân trái miết sàn giữ thăng bằng."
+      title: "Bộ pháp Ô 3",
+      subTitle: "Bước đệm chân phải hướng góc 2h",
+      description: "Di chuyển đến LƯỚI PHẢI",
+      coachingTip: "Bước đệm chân phải hướng góc 2h"
     },
     combinedMovement: {
-      title: "Phối Hợp: Bắt Lưới Thuận Tay & Đẩy Cầu Nhanh",
-      subTitle: "Lunge chân phải + đè vợt gõ cắm cầu + đạp gót chân hồi vị",
-      description: "Đồng bộ tuyệt đối: vừa dậm gót chân phải xuống đất là mặt vợt va chạm quả cầu tại đỉnh lưới.",
-      coachingTip: "Giữ đầu vợt luôn ở phía trước ngực trong suốt quá trình di chuyển lên và rút về."
+      title: "Kê Cầu Thuận Tay Sát Lưới",
+      subTitle: "Mặt vợt mở nhẹ thuận tay đón cầu êm + Bước đệm chân phải hướng góc 2h",
+      description: "Kê Cầu Thuận Tay Sát Lưới tại LƯỚI PHẢI",
+      coachingTip: "Phối hợp tay và chân nhịp nhàng"
     },
     variations: [
       {
-        id: "pos3_var1",
-        shotName: "Vồ Cầu / Đè Lưới Thuận Tay (Forehand Net Kill)",
-        shotType: "Vồ cầu dứt điểm",
+        id: "pos_3_var_1",
+        shotName: "Kê Cầu Thuận Tay Sát Lưới",
+        shotType: "Kê lưới",
+        level: "Cơ bản",
+        videoUrl: "./videos/clips/pos_3_clip_1.mp4",
         handMovement: {
-          title: "Vồ Cầu / Đè Lưới Thuận Tay",
-          subTitle: "Mặt vợt úp nhẹ, vẩy cổ tay dứt điểm cắm vào góc chữ V",
-          description: "Đón đánh cầu phía trên mép lưới. Dùng lực gập cổ tay và ngón trỏ siết chặt cán vợt.",
-          coachingTip: "Mở mặt vợt sớm trước khi chân chạm đất để chớp cơ hội tiếp xúc cầu ở điểm cao nhất."
+          title: "Kê Cầu Thuận Tay Sát Lưới",
+          subTitle: "Mặt vợt mở nhẹ thuận tay đón cầu êm",
+          description: "Kê Cầu Thuận Tay Sát Lưới",
+          coachingTip: "Mặt vợt mở nhẹ thuận tay đón cầu êm"
         },
         footMovement: {
-          title: "Lunge Thuận Tay Lưới Phải (Forehand Net Lunge)",
-          subTitle: "Xoay mũi chân phải hướng góc 2h -> Bước sải dài dồn trọng tâm",
-          description: "Bật split-step, bước chân phải dài về góc lưới phải, đầu gối chùng tạo thành góc vuông 90°.",
-          coachingTip: "Chân trái duỗi dài phía sau, má trong bàn chân trái miết sàn giữ thăng bằng."
+          title: "Bộ pháp Ô 3",
+          subTitle: "Bước đệm chân phải hướng góc 2h",
+          description: "Bộ pháp Ô 3",
+          coachingTip: "Bước đệm chân phải hướng góc 2h"
         },
         combinedMovement: {
-          title: "Lao Lưới Phải & Đè Vợt Cắm Góc",
-          subTitle: "Lunge chân phải + đè vợt gõ cắm cầu + đạp gót chân hồi vị",
-          description: "Vừa dậm gót chân phải xuống đất là mặt vợt va chạm quả cầu tại đỉnh lưới, dứt điểm chớp nhoáng.",
-          coachingTip: "Giữ đầu vợt luôn ở phía trước ngực trong suốt quá trình di chuyển lên và rút về."
+          title: "Kê Cầu Thuận Tay Sát Lưới",
+          subTitle: "Mặt vợt mở nhẹ thuận tay đón cầu êm + Bước đệm chân phải hướng góc 2h",
+          description: "Kê Cầu Thuận Tay Sát Lưới",
+          coachingTip: "Tập trung chuẩn xác động tác"
         }
       },
       {
-        id: "pos3_var2",
-        shotName: "Gài Lưới Chéo Góc Thuận Tay (Cross Net Spin)",
-        shotType: "Gài lưới chéo góc",
+        id: "pos_3_var_2",
+        shotName: "Bước Lunge Chân Thuận Góc Phải",
+        shotType: "Bộ pháp",
+        level: "Cơ bản",
+        videoUrl: "./videos/clips/pos_3_clip_2.mp4",
         handMovement: {
-          title: "Cắt Cầu Xoáy Chéo Lưới Thuận Tay",
-          subTitle: "Kéo mặt vợt cắt chéo từ phải qua trái dưới đáy quả cầu",
-          description: "Tạo độ xoáy lốc cho quả cầu bay sát sạt qua mép lưới và rơi sang góc lưới bên trái của đối phương.",
-          coachingTip: "Đổi góc mặt vợt ở khoảnh khắc cuối cùng để đối phương bị phân vân hướng di chuyển."
+          title: "Bước Lunge Chân Thuận Góc Phải",
+          subTitle: "Tay mở rộng giữ cân bằng trọng tâm",
+          description: "Bước Lunge Chân Thuận Góc Phải",
+          coachingTip: "Tay mở rộng giữ cân bằng trọng tâm"
         },
         footMovement: {
-          title: "Bước Lunge Góc Mở (Open Stance Lunge)",
-          subTitle: "Bước chân phải dài, thân trên hơi nghiêng mở góc chéo",
-          description: "Tạo không gian cho cánh tay vung từ phải sang trái mà không bị vướng vào cơ thể.",
-          coachingTip: "Giữ chân trụ trái vững chãi để hãm toàn bộ quán tính lao người."
+          title: "Bộ pháp Ô 3",
+          subTitle: "Lunge dài chân phải, đùi song song mặt sàn",
+          description: "Bộ pháp Ô 3",
+          coachingTip: "Lunge dài chân phải, đùi song song mặt sàn"
         },
         combinedMovement: {
-          title: "Cắt Cầu Chéo Góc Hiểm Hóc & Hồi Tâm",
-          subTitle: "Lunge dài + xoay cổ tay cắt chéo + bật lùi về trung tâm",
-          description: "Đánh lừa đối thủ đang chờ ở góc phải, đưa quả cầu bay chéo sang góc 1 bên kia lưới.",
-          coachingTip: "Đường cầu chéo bay qua lưới phải thật thấp, nếu cao sẽ bị đối phương bắt bài vồ lại."
+          title: "Bước Lunge Chân Thuận Góc Phải",
+          subTitle: "Tay mở rộng giữ cân bằng trọng tâm + Lunge dài chân phải, đùi song song mặt sàn",
+          description: "Bước Lunge Chân Thuận Góc Phải",
+          coachingTip: "Tập trung chuẩn xác động tác"
         }
       },
       {
-        id: "pos3_var3",
-        shotName: "Hất Cầu Cao Sâu Thuận Tay (Forehand High Lift)",
-        shotType: "Hất cầu bổng sâu",
+        id: "pos_3_var_3",
+        shotName: "Miết Cầu Xoáy Lộn Lưới Thuận Tay",
+        shotType: "Bỏ nhỏ xoáy",
+        level: "Trung cấp",
+        videoUrl: "./videos/clips/pos_3_clip_3.mp4",
         handMovement: {
-          title: "Hất Cầu Thuận Tay Dọc Biên Sâu Đáy Sân",
-          subTitle: "Hạ thấp vợt, vung hết biên độ từ dưới lên trên qua đầu",
-          description: "Giải tỏa áp lực khi bị đối thủ ép sát lưới phải, đưa quả cầu bổng sâu sát vạch cuối sân đối phương.",
-          coachingTip: "Dùng lực ngón tay và cẳng tay phối hợp, đánh cầu chạm mặt vợt ở điểm căng nhất."
+          title: "Miết Cầu Xoáy Lộn Lưới Thuận Tay",
+          subTitle: "Xoay cổ tay miết mép ngoài quả cầu lộn lưới",
+          description: "Miết Cầu Xoáy Lộn Lưới Thuận Tay",
+          coachingTip: "Xoay cổ tay miết mép ngoài quả cầu lộn lưới"
         },
         footMovement: {
-          title: "Chùng Gối Sâu Cứu Cầu Thấp (Low Forecourt Recovery)",
-          subTitle: "Hạ trọng tâm gần sát sàn, vươn dài chân phải",
-          description: "Cứu những quả cầu rơi sát đất, giữ thăng bằng cơ thể bằng cánh tay trái giang ngang.",
-          coachingTip: "Không cúi gập lưng, dùng sức mạnh của cơ đùi để đỡ và đẩy cơ thể lên."
+          title: "Bộ pháp Ô 3",
+          subTitle: "Chân trụ hãm đà quán tính",
+          description: "Bộ pháp Ô 3",
+          coachingTip: "Chân trụ hãm đà quán tính"
         },
         combinedMovement: {
-          title: "Cứu Cầu Lưới Phải & Hất Sâu Đảo Thế Trận",
-          subTitle: "Lunge sâu cứu cầu + bung lực hất cao + chạy lùi về thế thủ",
-          description: "Đưa cầu bay bổng chạm trần về góc 7 đối phương, lập tức chạy lùi 2 bước về vị trí số 5.",
-          coachingTip: "Hất cầu xong lập tức nhìn hướng cầu và lùi chân, không đứng ngắm đường cầu."
+          title: "Miết Cầu Xoáy Lộn Lưới Thuận Tay",
+          subTitle: "Xoay cổ tay miết mép ngoài quả cầu lộn lưới + Chân trụ hãm đà quán tính",
+          description: "Miết Cầu Xoáy Lộn Lưới Thuận Tay",
+          coachingTip: "Tập trung chuẩn xác động tác"
+        }
+      },
+      {
+        id: "pos_3_var_4",
+        shotName: "Hất Cầu Bổng Sâu Thuận Tay",
+        shotType: "Hất cầu sâu",
+        level: "Trung cấp",
+        videoUrl: "./videos/clips/pos_3_clip_4.mp4",
+        handMovement: {
+          title: "Hất Cầu Bổng Sâu Thuận Tay",
+          subTitle: "Vung hết biên độ hất cầu cao về đáy góc 7",
+          description: "Hất Cầu Bổng Sâu Thuận Tay",
+          coachingTip: "Vung hết biên độ hất cầu cao về đáy góc 7"
+        },
+        footMovement: {
+          title: "Bộ pháp Ô 3",
+          subTitle: "Bật lùi hồi vị ngay sau chạm cầu",
+          description: "Bộ pháp Ô 3",
+          coachingTip: "Bật lùi hồi vị ngay sau chạm cầu"
+        },
+        combinedMovement: {
+          title: "Hất Cầu Bổng Sâu Thuận Tay",
+          subTitle: "Vung hết biên độ hất cầu cao về đáy góc 7 + Bật lùi hồi vị ngay sau chạm cầu",
+          description: "Hất Cầu Bổng Sâu Thuận Tay",
+          coachingTip: "Tập trung chuẩn xác động tác"
+        }
+      },
+      {
+        id: "pos_3_var_5",
+        shotName: "Chụp Lưới / Đè Cầu Dứt Điểm Góc Phải",
+        shotType: "Đè lưới",
+        level: "Nâng cao",
+        videoUrl: "./videos/clips/pos_3_clip_5.mp4",
+        handMovement: {
+          title: "Chụp Lưới / Đè Cầu Dứt Điểm Góc Phải",
+          subTitle: "Lao vào gõ cắm thẳng góc biên",
+          description: "Chụp Lưới / Đè Cầu Dứt Điểm Góc Phải",
+          coachingTip: "Lao vào gõ cắm thẳng góc biên"
+        },
+        footMovement: {
+          title: "Bộ pháp Ô 3",
+          subTitle: "Bứt tốc bước dài áp sát mép lưới",
+          description: "Bộ pháp Ô 3",
+          coachingTip: "Bứt tốc bước dài áp sát mép lưới"
+        },
+        combinedMovement: {
+          title: "Chụp Lưới / Đè Cầu Dứt Điểm Góc Phải",
+          subTitle: "Lao vào gõ cắm thẳng góc biên + Bứt tốc bước dài áp sát mép lưới",
+          description: "Chụp Lưới / Đè Cầu Dứt Điểm Góc Phải",
+          coachingTip: "Tập trung chuẩn xác động tác"
+        }
+      },
+      {
+        id: "pos_3_var_6",
+        shotName: "Giả Động Tác Chém Chéo Góc Lưới",
+        shotType: "Đánh lừa",
+        level: "Nâng cao",
+        videoUrl: "./videos/clips/pos_3_clip_6.mp4",
+        handMovement: {
+          title: "Giả Động Tác Chém Chéo Góc Lưới",
+          subTitle: "Vung giả đẩy thẳng rồi bẻ cổ tay cắt chéo",
+          description: "Giả Động Tác Chém Chéo Góc Lưới",
+          coachingTip: "Vung giả đẩy thẳng rồi bẻ cổ tay cắt chéo"
+        },
+        footMovement: {
+          title: "Bộ pháp Ô 3",
+          subTitle: "Trọng tâm vững vàng hồi tâm sân",
+          description: "Bộ pháp Ô 3",
+          coachingTip: "Trọng tâm vững vàng hồi tâm sân"
+        },
+        combinedMovement: {
+          title: "Giả Động Tác Chém Chéo Góc Lưới",
+          subTitle: "Vung giả đẩy thẳng rồi bẻ cổ tay cắt chéo + Trọng tâm vững vàng hồi tâm sân",
+          description: "Giả Động Tác Chém Chéo Góc Lưới",
+          coachingTip: "Tập trung chuẩn xác động tác"
         }
       }
     ]
   },
-
   // ==========================================
   // Ô 4: TRUNG TÂM TRÁI (MIDCOURT LEFT)
   // ==========================================
@@ -319,203 +565,367 @@ export const BADMINTON_POSITIONS: GridPosition[] = [
     zoneName: "TRUNG TÂM TRÁI",
     row: 2,
     col: 1,
-    directionLabel: "Vị trí 4 - Trung tâm mép biên trái",
-    courtZone: 'mid',
-    courtSide: 'left',
+    directionLabel: "Vị trí 4 - Trung lộ cánh trái",
+    courtZone: "mid",
+    courtSide: "left",
+    level: "Cơ bản",
+    videoUrl: "./videos/clips/pos_4_clip_1.mp4",
     handMovement: {
-      title: "Phản Tạt Trái Tay (Backhand Drive)",
-      subTitle: "Ngón cái tì lưng cán vợt, vẩy cổ tay ngang ngực tạo đường cầu phẳng",
-      description: "Đánh trả các pha tạt cầu tốc độ cao. Giữ đường cầu đi sát mép lưới với quỹ đạo cắm thẳng.",
-      coachingTip: "Không vung vợt quá rộng ra sau lưng. Động tác giật ngắn (compact stroke) để kịp nhịp cầu nhanh."
+      title: "Thủ Cầu Ngang Hông Trái Tay",
+      subTitle: "Ngón cái tì cán vợt, mở mặt vợt đỡ trước hông",
+      description: "Thủ Cầu Ngang Hông Trái Tay tại TRUNG TÂM TRÁI",
+      coachingTip: "Ngón cái tì cán vợt, mở mặt vợt đỡ trước hông"
     },
     footMovement: {
-      title: "Bước Trượt Ngang Trái (Side Chassé Left)",
-      subTitle: "Bước đệm ngang chân trái -> Bước chân phải chéo qua đón cầu",
-      description: "Di chuyển ngang từ tâm sân số 5 sang vị trí số 4 với 1 bước trượt nhanh và 1 bước chéo chân phải đón cầu.",
-      coachingTip: "Hạ thấp hông, giữ 2 chân mở rộng hơn vai để phản xạ 2 bên sườn linh hoạt."
+      title: "Bộ pháp Ô 4",
+      subTitle: "Hạ thấp trọng tâm, hai chân mở rộng",
+      description: "Di chuyển đến TRUNG TÂM TRÁI",
+      coachingTip: "Hạ thấp trọng tâm, hai chân mở rộng"
     },
     combinedMovement: {
-      title: "Phối Hợp: Bắt Tốc Độ Trái Tay Ngang Hông",
-      subTitle: "Trượt ngang + dậm chân phải xoay hông + giật cổ tay tạt cầu",
-      description: "Đồng thời chân phải dậm xuống sàn là điểm tiếp xúc cầu ngang hông trái, đẩy cầu cắm về nách đối phương.",
-      coachingTip: "Phản tạt đòi hỏi mắt theo sát cầu và siết ngón cái đúng thời điểm bóng chạm mặt vợt."
+      title: "Thủ Cầu Ngang Hông Trái Tay",
+      subTitle: "Ngón cái tì cán vợt, mở mặt vợt đỡ trước hông + Hạ thấp trọng tâm, hai chân mở rộng",
+      description: "Thủ Cầu Ngang Hông Trái Tay tại TRUNG TÂM TRÁI",
+      coachingTip: "Phối hợp tay và chân nhịp nhàng"
     },
     variations: [
       {
-        id: "pos4_var1",
-        shotName: "Phản Tạt Trái Tay Ngang Lưới (Backhand Flat Drive)",
-        shotType: "Phản tạt tốc độ cao",
+        id: "pos_4_var_1",
+        shotName: "Thủ Cầu Ngang Hông Trái Tay",
+        shotType: "Thủ cầu",
+        level: "Cơ bản",
+        videoUrl: "./videos/clips/pos_4_clip_1.mp4",
         handMovement: {
-          title: "Phản Tạt Trái Tay Ngang Ngực",
-          subTitle: "Ngón cái tì lưng cán vợt, vẩy cổ tay ngang ngực tạo đường cầu phẳng",
-          description: "Đánh trả các pha tạt cầu tốc độ cao. Giữ đường cầu đi sát mép lưới với quỹ đạo cắm thẳng.",
-          coachingTip: "Không vung vợt quá rộng ra sau lưng. Động tác giật ngắn (compact stroke) để kịp nhịp cầu nhanh."
+          title: "Thủ Cầu Ngang Hông Trái Tay",
+          subTitle: "Ngón cái tì cán vợt, mở mặt vợt đỡ trước hông",
+          description: "Thủ Cầu Ngang Hông Trái Tay",
+          coachingTip: "Ngón cái tì cán vợt, mở mặt vợt đỡ trước hông"
         },
         footMovement: {
-          title: "Bước Trượt Ngang Trái (Side Chassé Left)",
-          subTitle: "Bước đệm ngang chân trái -> Bước chân phải chéo qua đón cầu",
-          description: "Di chuyển ngang từ tâm sân số 5 sang vị trí số 4 với 1 bước trượt nhanh và 1 bước chéo chân phải đón cầu.",
-          coachingTip: "Hạ thấp hông, giữ 2 chân mở rộng hơn vai để phản xạ 2 bên sườn linh hoạt."
+          title: "Bộ pháp Ô 4",
+          subTitle: "Hạ thấp trọng tâm, hai chân mở rộng",
+          description: "Bộ pháp Ô 4",
+          coachingTip: "Hạ thấp trọng tâm, hai chân mở rộng"
         },
         combinedMovement: {
-          title: "Trượt Ngang & Tạt Cầu Trái Tay Nhanh",
-          subTitle: "Trượt ngang + dậm chân phải + giật cổ tay tạt cầu chìm",
-          description: "Đồng thời chân phải dậm xuống sàn là điểm tiếp xúc cầu ngang hông trái, đẩy cầu cắm về nách đối phương.",
-          coachingTip: "Phản tạt đòi hỏi mắt theo sát cầu và siết ngón cái đúng thời điểm bóng chạm mặt vợt."
+          title: "Thủ Cầu Ngang Hông Trái Tay",
+          subTitle: "Ngón cái tì cán vợt, mở mặt vợt đỡ trước hông + Hạ thấp trọng tâm, hai chân mở rộng",
+          description: "Thủ Cầu Ngang Hông Trái Tay",
+          coachingTip: "Tập trung chuẩn xác động tác"
         }
       },
       {
-        id: "pos4_var2",
-        shotName: "Thủ Cầu Ngắn Sát Lưới Trái Tay (Backhand Net Block)",
-        shotType: "Phòng thủ hãm lực",
+        id: "pos_4_var_2",
+        shotName: "Bước Trượt Ngang Đón Cầu Trái",
+        shotType: "Bộ pháp",
+        level: "Cơ bản",
+        videoUrl: "./videos/clips/pos_4_clip_2.mp4",
         handMovement: {
-          title: "Thủ Hãm Lực Cú Đập Của Đối Phương",
-          subTitle: "Thả lỏng cổ tay, ngửa nhẹ mặt vợt hấp thụ toàn bộ lực smash",
-          description: "Đón đỡ cú đập cắm thẳng từ đối thủ, triệt tiêu lực giúp quả cầu rơi êm ái sát mép lưới bên kia.",
-          coachingTip: "Không đẩy tay ra trước; giữ mặt vợt êm như một tấm đệm nhung."
+          title: "Bước Trượt Ngang Đón Cầu Trái",
+          subTitle: "Vợt giơ ngang ngực sẵn sàng",
+          description: "Bước Trượt Ngang Đón Cầu Trái",
+          coachingTip: "Vợt giơ ngang ngực sẵn sàng"
         },
         footMovement: {
-          title: "Trụ Vững Phòng Thủ (Low Defensive Base)",
-          subTitle: "Chân mở rộng gấp rưỡi vai, gối chùng 45°, trọng tâm cực thấp",
-          description: "Tạo bệ đỡ vững chắc để mắt nhìn thẳng vào quỹ đạo cầu lao xuống với tốc độ 300+ km/h.",
-          coachingTip: "Nhón nhẹ gót chân để cơ thể linh hoạt sẵn sàng nhao lên theo quả cầu trả ngắn."
+          title: "Bộ pháp Ô 4",
+          subTitle: "Bước trượt ngang Chasse sang trái",
+          description: "Bộ pháp Ô 4",
+          coachingTip: "Bước trượt ngang Chasse sang trái"
         },
         combinedMovement: {
-          title: "Hóa Giải Đập Cầu & Bỏ Nhỏ Phòng Thủ",
-          subTitle: "Chùng gối đón smash + giữ êm mặt vợt + nhao lên bắt lưới",
-          description: "Biến cú đập sấm sét của đối thủ thành đường cầu rơi sát lưới, tước đoạt quyền tấn công của họ.",
-          coachingTip: "Ngay sau khi đỡ cầu rơi êm, lập tức bước lên 1 bước đón bắt đòn trả cầu tiếp theo."
+          title: "Bước Trượt Ngang Đón Cầu Trái",
+          subTitle: "Vợt giơ ngang ngực sẵn sàng + Bước trượt ngang Chasse sang trái",
+          description: "Bước Trượt Ngang Đón Cầu Trái",
+          coachingTip: "Tập trung chuẩn xác động tác"
         }
       },
       {
-        id: "pos4_var3",
-        shotName: "Bung Cầu Thủ Bổng Cuối Sân (Backhand Defensive Lift)",
-        shotType: "Bung cầu phòng thủ",
+        id: "pos_4_var_3",
+        shotName: "Phản Tạt Ngang Lưới Trái Tay",
+        shotType: "Phản tạt",
+        level: "Trung cấp",
+        videoUrl: "./videos/clips/pos_4_clip_3.mp4",
         handMovement: {
-          title: "Bung Cầu Cao Sâu Trái Tay Bằng Ngón Cái",
-          subTitle: "Ngón cái ấn mạnh vào gáy cán vợt, vung vợt bổng vút lên cao",
-          description: "Khi đối thủ đập cầu quá hiểm sát sàn, bung hết lực ngón cái đưa cầu bay cao sát trần về vạch đáy sân.",
-          coachingTip: "Dùng lực xoay của cẳng tay kết hợp búng ngón cái để tạo lực đẩy tối đa."
+          title: "Phản Tạt Ngang Lưới Trái Tay",
+          subTitle: "Vung ngang mặt vợt tạt thẳng mép lưới",
+          description: "Phản Tạt Ngang Lưới Trái Tay",
+          coachingTip: "Vung ngang mặt vợt tạt thẳng mép lưới"
         },
         footMovement: {
-          title: "Bật Chéo Cứu Cầu Biên Trái (Deep Lateral Recovery)",
-          subTitle: "Bật chân phải chéo sang trái, thân nghiêng đón đường cầu cắm",
-          description: "Rướn người tối đa cứu pha cầu cắm sát vạch biên dọc bên trái.",
-          coachingTip: "Sau khi bung cầu, dùng lực bật của chân phải đẩy cơ thể quay về giữa sân."
+          title: "Bộ pháp Ô 4",
+          subTitle: "Xoay hông nhẹ dồn lực vào quả tạt",
+          description: "Bộ pháp Ô 4",
+          coachingTip: "Xoay hông nhẹ dồn lực vào quả tạt"
         },
         combinedMovement: {
-          title: "Cứu Cầu Smash Cắm Sàn & Bung Cao Sâu",
-          subTitle: "Bật chéo chân + bung ngón cái hất bổng + lùi về thế thủ",
-          description: "Giải vây ngoạn mục khi bị đối phương tấn công dồn dập, tạo thời gian tái lập thế trận.",
-          coachingTip: "Đường cầu phải đủ cao để đối phương không thể nhảy đập bồi liên hoàn."
+          title: "Phản Tạt Ngang Lưới Trái Tay",
+          subTitle: "Vung ngang mặt vợt tạt thẳng mép lưới + Xoay hông nhẹ dồn lực vào quả tạt",
+          description: "Phản Tạt Ngang Lưới Trái Tay",
+          coachingTip: "Tập trung chuẩn xác động tác"
+        }
+      },
+      {
+        id: "pos_4_var_4",
+        shotName: "Thủ Cầu Chéo Góc Thoát Hiểm",
+        shotType: "Thủ chéo",
+        level: "Trung cấp",
+        videoUrl: "./videos/clips/pos_4_clip_4.mp4",
+        handMovement: {
+          title: "Thủ Cầu Chéo Góc Thoát Hiểm",
+          subTitle: "Nghiêng góc vợt đẩy cầu rơi chéo sân đối diện",
+          description: "Thủ Cầu Chéo Góc Thoát Hiểm",
+          coachingTip: "Nghiêng góc vợt đẩy cầu rơi chéo sân đối diện"
+        },
+        footMovement: {
+          title: "Bộ pháp Ô 4",
+          subTitle: "Chùng gối trái nhận lực",
+          description: "Bộ pháp Ô 4",
+          coachingTip: "Chùng gối trái nhận lực"
+        },
+        combinedMovement: {
+          title: "Thủ Cầu Chéo Góc Thoát Hiểm",
+          subTitle: "Nghiêng góc vợt đẩy cầu rơi chéo sân đối diện + Chùng gối trái nhận lực",
+          description: "Thủ Cầu Chéo Góc Thoát Hiểm",
+          coachingTip: "Tập trung chuẩn xác động tác"
+        }
+      },
+      {
+        id: "pos_4_var_5",
+        shotName: "Bung Phản Tạt Đè Góc Xa Trái Tay",
+        shotType: "Phản công",
+        level: "Nâng cao",
+        videoUrl: "./videos/clips/pos_4_clip_5.mp4",
+        handMovement: {
+          title: "Bung Phản Tạt Đè Góc Xa Trái Tay",
+          subTitle: "Bung hết lực ngón cái đè bóng sâu về góc trống",
+          description: "Bung Phản Tạt Đè Góc Xa Trái Tay",
+          coachingTip: "Bung hết lực ngón cái đè bóng sâu về góc trống"
+        },
+        footMovement: {
+          title: "Bộ pháp Ô 4",
+          subTitle: "Bật người đón cầu điểm cao nhất",
+          description: "Bộ pháp Ô 4",
+          coachingTip: "Bật người đón cầu điểm cao nhất"
+        },
+        combinedMovement: {
+          title: "Bung Phản Tạt Đè Góc Xa Trái Tay",
+          subTitle: "Bung hết lực ngón cái đè bóng sâu về góc trống + Bật người đón cầu điểm cao nhất",
+          description: "Bung Phản Tạt Đè Góc Xa Trái Tay",
+          coachingTip: "Tập trung chuẩn xác động tác"
+        }
+      },
+      {
+        id: "pos_4_var_6",
+        shotName: "Đỡ Smash Bỏ Nhỏ Đổi Nhịp",
+        shotType: "Hãm lực",
+        level: "Nâng cao",
+        videoUrl: "./videos/clips/pos_4_clip_6.mp4",
+        handMovement: {
+          title: "Đỡ Smash Bỏ Nhỏ Đổi Nhịp",
+          subTitle: "Thả lỏng cổ tay đón cú smash cho cầu rơi sát lưới",
+          description: "Đỡ Smash Bỏ Nhỏ Đổi Nhịp",
+          coachingTip: "Thả lỏng cổ tay đón cú smash cho cầu rơi sát lưới"
+        },
+        footMovement: {
+          title: "Bộ pháp Ô 4",
+          subTitle: "Đứng vững hai chân, giữ thân người tĩnh",
+          description: "Bộ pháp Ô 4",
+          coachingTip: "Đứng vững hai chân, giữ thân người tĩnh"
+        },
+        combinedMovement: {
+          title: "Đỡ Smash Bỏ Nhỏ Đổi Nhịp",
+          subTitle: "Thả lỏng cổ tay đón cú smash cho cầu rơi sát lưới + Đứng vững hai chân, giữ thân người tĩnh",
+          description: "Đỡ Smash Bỏ Nhỏ Đổi Nhịp",
+          coachingTip: "Tập trung chuẩn xác động tác"
         }
       }
     ]
   },
-
   // ==========================================
-  // Ô 5: TRUNG TÂM GIỮA (CENTER STANCE)
+  // Ô 5: TÂM SÂN (COURT CENTER)
   // ==========================================
   {
     id: 5,
-    name: "Trung Tâm Giữa (Center / Base)",
-    zoneName: "TRUNG TÂM GIỮA",
+    name: "Tâm Sân (Court Center)",
+    zoneName: "TÂM SÂN",
     row: 2,
     col: 2,
-    directionLabel: "Vị trí 5 - Tâm sân / Tư thế chuẩn bị",
-    courtZone: 'mid',
-    courtSide: 'center',
+    directionLabel: "Vị trí 5 - Trung tâm điều phối chiến thuật",
+    courtZone: "mid",
+    courtSide: "center",
+    level: "Cơ bản",
+    videoUrl: "./videos/clips/pos_5_clip_1.mp4",
     handMovement: {
-      title: "Thế Thủ Cầu Trung Tâm (Ready Defense Stance)",
-      subTitle: "Vợt giơ ngang cằm, khuỷu tay hơi mở, cổ tay sẵn sàng xoay 2 hướng",
-      description: "Tư thế đón cầu căn bản. Giữ đầu vợt luôn cao hơn cổ tay, sẵn sàng ứng phó với cả cú đập thẳng lẫn bỏ nhỏ.",
-      coachingTip: "Không hạ thấp đầu vợt xuống hông. Luôn giữ vợt phía trước mặt trong tầm mắt."
+      title: "Bật Nhẹ Split-Step Sẵn Sàng",
+      subTitle: "Vợt giơ ngang cằm, khuỷu tay mở rộng",
+      description: "Bật Nhẹ Split-Step Sẵn Sàng tại TÂM SÂN",
+      coachingTip: "Vợt giơ ngang cằm, khuỷu tay mở rộng"
     },
     footMovement: {
-      title: "Split-Step Cơ Động (Center Split-Step)",
-      subTitle: "Nhún 2 chân bật tách nhẹ đúng khoảnh khắc đối thủ tiếp xúc cầu",
-      description: "Đứng nhón gót tại tâm sân, bật nhẹ 2 chân tách ngang bằng vai để nạp thế năng sẵn sàng bứt tốc về mọi hướng.",
-      coachingTip: "Thời điểm split-step quyết định 80% tốc độ phản xạ: nhảy đúng lúc đối phương vung vợt chạm cầu."
+      title: "Bộ pháp Ô 5",
+      subTitle: "Bật nhảy hai chân tiếp đất bằng mũi chân",
+      description: "Di chuyển đến TÂM SÂN",
+      coachingTip: "Bật nhảy hai chân tiếp đất bằng mũi chân"
     },
     combinedMovement: {
-      title: "Phối Hợp: Nạp Năng Lượng & Sẵn Sàng Bứt Tốc",
-      subTitle: "Nhấp split-step chân + giơ cao đầu vợt + khóa mắt vào quả cầu",
-      description: "Hợp nhất cơ thể thành lò xo nén tại ô số 5: mắt đọc hướng cầu, chân nạp lực bứt phá, tay giữ vợt thăng bằng.",
-      coachingTip: "Tâm sân là gốc rễ của mọi pha cầu. Dù đánh ở góc nào xong cũng phải có ý thức hồi về ô 5."
+      title: "Bật Nhẹ Split-Step Sẵn Sàng",
+      subTitle: "Vợt giơ ngang cằm, khuỷu tay mở rộng + Bật nhảy hai chân tiếp đất bằng mũi chân",
+      description: "Bật Nhẹ Split-Step Sẵn Sàng tại TÂM SÂN",
+      coachingTip: "Phối hợp tay và chân nhịp nhàng"
     },
     variations: [
       {
-        id: "pos5_var1",
-        shotName: "Split-Step & Sẵn Sàng Cơ Động (Active Ready Base)",
-        shotType: "Tư thế chuẩn bị",
+        id: "pos_5_var_1",
+        shotName: "Bật Nhẹ Split-Step Sẵn Sàng",
+        shotType: "Bộ pháp cơ bản",
+        level: "Cơ bản",
+        videoUrl: "./videos/clips/pos_5_clip_1.mp4",
         handMovement: {
-          title: "Thế Thủ Căn Bản Sẵn Sàng 8 Hướng",
-          subTitle: "Vợt giơ ngang cằm, khuỷu tay hơi mở, cổ tay sẵn sàng xoay 2 hướng",
-          description: "Tư thế đón cầu căn bản. Giữ đầu vợt luôn cao hơn cổ tay, sẵn sàng ứng phó với cả cú đập thẳng lẫn bỏ nhỏ.",
-          coachingTip: "Không hạ thấp đầu vợt xuống hông. Luôn giữ vợt phía trước mặt trong tầm mắt."
+          title: "Bật Nhẹ Split-Step Sẵn Sàng",
+          subTitle: "Vợt giơ ngang cằm, khuỷu tay mở rộng",
+          description: "Bật Nhẹ Split-Step Sẵn Sàng",
+          coachingTip: "Vợt giơ ngang cằm, khuỷu tay mở rộng"
         },
         footMovement: {
-          title: "Split-Step Cơ Động (Center Split-Step)",
-          subTitle: "Nhún 2 chân bật tách nhẹ đúng khoảnh khắc đối thủ tiếp xúc cầu",
-          description: "Đứng nhón gót tại tâm sân, bật nhẹ 2 chân tách ngang bằng vai để nạp thế năng sẵn sàng bứt tốc về mọi hướng.",
-          coachingTip: "Thời điểm split-step quyết định 80% tốc độ phản xạ: nhảy đúng lúc đối phương chạm cầu."
+          title: "Bộ pháp Ô 5",
+          subTitle: "Bật nhảy hai chân tiếp đất bằng mũi chân",
+          description: "Bộ pháp Ô 5",
+          coachingTip: "Bật nhảy hai chân tiếp đất bằng mũi chân"
         },
         combinedMovement: {
-          title: "Nạp Thế Năng & Sẵn Sàng Bứt Tốc Về 8 Góc",
-          subTitle: "Nhấp split-step chân + giơ cao đầu vợt + khóa mắt vào cầu",
-          description: "Hợp nhất cơ thể thành lò xo nén tại ô số 5: mắt đọc hướng cầu, chân nạp lực bứt phá, tay giữ vợt thăng bằng.",
-          coachingTip: "Tâm sân là gốc rễ của mọi pha cầu. Luôn hồi tâm sau mỗi lượt đánh."
+          title: "Bật Nhẹ Split-Step Sẵn Sàng",
+          subTitle: "Vợt giơ ngang cằm, khuỷu tay mở rộng + Bật nhảy hai chân tiếp đất bằng mũi chân",
+          description: "Bật Nhẹ Split-Step Sẵn Sàng",
+          coachingTip: "Tập trung chuẩn xác động tác"
         }
       },
       {
-        id: "pos5_var2",
-        shotName: "Thủ Đập Thẳng Người (Body Defense Reflex)",
-        shotType: "Thủ cầu đập vào người",
+        id: "pos_5_var_2",
+        shotName: "Bộ Pháp Di Chuyển 4 Góc Từ Tâm",
+        shotType: "Bộ pháp 4 góc",
+        level: "Cơ bản",
+        videoUrl: "./videos/clips/pos_5_clip_2.mp4",
         handMovement: {
-          title: "Phản Xạ Chặn Cầu Đập Thẳng Ngực",
-          subTitle: "Co cùi chỏ, xoay cổ tay trái tay che chắn vùng ngực và mặt",
-          description: "Khi đối thủ smash cực mạnh nhắm thẳng vào ngực/bụng, dùng mặt trái tay giơ lên chặn phản xạ tức thời.",
-          coachingTip: "Ưu tiên dùng mặt trái tay phòng thủ thân mình vì góc che chắn rộng và nhanh hơn thuận tay."
+          title: "Bộ Pháp Di Chuyển 4 Góc Từ Tâm",
+          subTitle: "Phối hợp tay vợt linh hoạt theo hướng chạy",
+          description: "Bộ Pháp Di Chuyển 4 Góc Từ Tâm",
+          coachingTip: "Phối hợp tay vợt linh hoạt theo hướng chạy"
         },
         footMovement: {
-          title: "Trụ Chân Chống Trôi Trọng Tâm (Stable Center Plant)",
-          subTitle: "2 chân găm chặt xuống sàn, hơi nghiêng người mở góc đánh",
-          description: "Chống lại phản lực từ cú smash như búa bổ, giữ cơ thể không bị ngửa ra sau.",
-          coachingTip: "Hơi gập bụng và chùng gối để hấp thụ lực tác động."
+          title: "Bộ pháp Ô 5",
+          subTitle: "Bước chéo chân xuất phát nhanh đến 4 góc",
+          description: "Bộ pháp Ô 5",
+          coachingTip: "Bước chéo chân xuất phát nhanh đến 4 góc"
         },
         combinedMovement: {
-          title: "Chặn Đứng Cú Smash Thẳng Ngực Bất Ngờ",
-          subTitle: "Ghim chân trụ + giơ mặt trái tay gạt cầu + phản đòn",
-          description: "Biến pha tấn công trực diện hiểm hóc của đối thủ thành đường cầu trả bật ngược cắm sang sân đối diện.",
-          coachingTip: "Giữ ánh mắt không được chớp khi cầu lao thẳng về phía mặt."
+          title: "Bộ Pháp Di Chuyển 4 Góc Từ Tâm",
+          subTitle: "Phối hợp tay vợt linh hoạt theo hướng chạy + Bước chéo chân xuất phát nhanh đến 4 góc",
+          description: "Bộ Pháp Di Chuyển 4 Góc Từ Tâm",
+          coachingTip: "Tập trung chuẩn xác động tác"
         }
       },
       {
-        id: "pos5_var3",
-        shotName: "Cắt Cầu Ngang / Bắt Phản Tạt (Midcourt Intercept)",
-        shotType: "Bắt cầu phản tạt",
+        id: "pos_5_var_3",
+        shotName: "Bắt Bài Nhịp Cầu Nửa Sân",
+        shotType: "Bắt bài",
+        level: "Trung cấp",
+        videoUrl: "./videos/clips/pos_5_clip_3.mp4",
         handMovement: {
-          title: "Bắt Bài Cắt Cầu Tạt Ngang Sân",
-          subTitle: "Chặt vợt ngang sườn đón trước đường bay của đối thủ",
-          description: "Đọc trước ý đồ tạt cầu của đối phương, đưa vợt ra chặn ngang đường cầu trên không trung.",
-          coachingTip: "Chạm cầu ở điểm cao hơn mép lưới, ấn nhẹ đầu vợt để cầu cắm nhanh."
+          title: "Bắt Bài Nhịp Cầu Nửa Sân",
+          subTitle: "Giơ vợt đón đầu quả cầu bay lửng giữa sân",
+          description: "Bắt Bài Nhịp Cầu Nửa Sân",
+          coachingTip: "Giơ vợt đón đầu quả cầu bay lửng giữa sân"
         },
         footMovement: {
-          title: "Bước Lướt Ngang Cắt Cầu (Lateral Intercept Step)",
-          subTitle: "Bật 1 bước ngang đón đầu đường cầu trước khi nó bay qua người",
-          description: "Chủ động bước cắt đường bay thay vì đứng chờ cầu bay đến vị trí.",
-          coachingTip: "Phán đoán nhịp vung vợt của đối phương để xuất phát sớm nửa giây."
+          title: "Bộ pháp Ô 5",
+          subTitle: "Bật một bước cắt ngang đường cầu",
+          description: "Bộ pháp Ô 5",
+          coachingTip: "Bật một bước cắt ngang đường cầu"
         },
         combinedMovement: {
-          title: "Chặn Đứng Đôi Công & Chuyển Sang Tấn Công",
-          subTitle: "Bật cắt ngang + gõ nhanh quả cầu + cướp quyền chủ động",
-          description: "Chặn đứng pha đôi công qua lại, dứt điểm bất ngờ vào khoảng trống giữa 2 người đối thủ.",
-          coachingTip: "Động tác này là vũ khí lợi hại bậc nhất trong đánh đôi chuyên nghiệp."
+          title: "Bắt Bài Nhịp Cầu Nửa Sân",
+          subTitle: "Giơ vợt đón đầu quả cầu bay lửng giữa sân + Bật một bước cắt ngang đường cầu",
+          description: "Bắt Bài Nhịp Cầu Nửa Sân",
+          coachingTip: "Tập trung chuẩn xác động tác"
+        }
+      },
+      {
+        id: "pos_5_var_4",
+        shotName: "Xoay Hông Chuyển Trọng Tâm Nhanh",
+        shotType: "Hồi vị",
+        level: "Trung cấp",
+        videoUrl: "./videos/clips/pos_5_clip_4.mp4",
+        handMovement: {
+          title: "Xoay Hông Chuyển Trọng Tâm Nhanh",
+          subTitle: "Thu vợt về ngực sau mỗi pha đánh",
+          description: "Xoay Hông Chuyển Trọng Tâm Nhanh",
+          coachingTip: "Thu vợt về ngực sau mỗi pha đánh"
+        },
+        footMovement: {
+          title: "Bộ pháp Ô 5",
+          subTitle: "Xoay trục hông hồi vị ngay tâm ô số 5",
+          description: "Bộ pháp Ô 5",
+          coachingTip: "Xoay trục hông hồi vị ngay tâm ô số 5"
+        },
+        combinedMovement: {
+          title: "Xoay Hông Chuyển Trọng Tâm Nhanh",
+          subTitle: "Thu vợt về ngực sau mỗi pha đánh + Xoay trục hông hồi vị ngay tâm ô số 5",
+          description: "Xoay Hông Chuyển Trọng Tâm Nhanh",
+          coachingTip: "Tập trung chuẩn xác động tác"
+        }
+      },
+      {
+        id: "pos_5_var_5",
+        shotName: "Đón Cầu Trên Không Nhịp Một",
+        shotType: "Cắt cầu",
+        level: "Nâng cao",
+        videoUrl: "./videos/clips/pos_5_clip_5.mp4",
+        handMovement: {
+          title: "Đón Cầu Trên Không Nhịp Một",
+          subTitle: "Bật nhảy đón cầu trên không gõ cắm sàn",
+          description: "Đón Cầu Trên Không Nhịp Một",
+          coachingTip: "Bật nhảy đón cầu trên không gõ cắm sàn"
+        },
+        footMovement: {
+          title: "Bộ pháp Ô 5",
+          subTitle: "Bật thẳng hai chân giậm nhảy tiếp đất an toàn",
+          description: "Bộ pháp Ô 5",
+          coachingTip: "Bật thẳng hai chân giậm nhảy tiếp đất an toàn"
+        },
+        combinedMovement: {
+          title: "Đón Cầu Trên Không Nhịp Một",
+          subTitle: "Bật nhảy đón cầu trên không gõ cắm sàn + Bật thẳng hai chân giậm nhảy tiếp đất an toàn",
+          description: "Đón Cầu Trên Không Nhịp Một",
+          coachingTip: "Tập trung chuẩn xác động tác"
+        }
+      },
+      {
+        id: "pos_5_var_6",
+        shotName: "Đổi Hướng Đảo Chiều Đánh Lừa",
+        shotType: "Chiến thuật",
+        level: "Nâng cao",
+        videoUrl: "./videos/clips/pos_5_clip_6.mp4",
+        handMovement: {
+          title: "Đổi Hướng Đảo Chiều Đánh Lừa",
+          subTitle: "Giả động tác sang trái rồi vung sang phải",
+          description: "Đổi Hướng Đảo Chiều Đánh Lừa",
+          coachingTip: "Giả động tác sang trái rồi vung sang phải"
+        },
+        footMovement: {
+          title: "Bộ pháp Ô 5",
+          subTitle: "Đổi trụ chân tức thì đánh lừa phán đoán đối thủ",
+          description: "Bộ pháp Ô 5",
+          coachingTip: "Đổi trụ chân tức thì đánh lừa phán đoán đối thủ"
+        },
+        combinedMovement: {
+          title: "Đổi Hướng Đảo Chiều Đánh Lừa",
+          subTitle: "Giả động tác sang trái rồi vung sang phải + Đổi trụ chân tức thì đánh lừa phán đoán đối thủ",
+          description: "Đổi Hướng Đảo Chiều Đánh Lừa",
+          coachingTip: "Tập trung chuẩn xác động tác"
         }
       }
     ]
   },
-
   // ==========================================
   // Ô 6: TRUNG TÂM PHẢI (MIDCOURT RIGHT)
   // ==========================================
@@ -525,404 +935,758 @@ export const BADMINTON_POSITIONS: GridPosition[] = [
     zoneName: "TRUNG TÂM PHẢI",
     row: 2,
     col: 3,
-    directionLabel: "Vị trí 6 - Trung tâm mép biên phải",
-    courtZone: 'mid',
-    courtSide: 'right',
+    directionLabel: "Vị trí 6 - Trung lộ cánh phải",
+    courtZone: "mid",
+    courtSide: "right",
+    level: "Cơ bản",
+    videoUrl: "./videos/clips/pos_6_clip_1.mp4",
     handMovement: {
-      title: "Phản Tạt Thuận Tay (Forehand Flat Drive)",
-      subTitle: "Vung vợt ngang sườn phải, miết cẳng tay và cổ tay đưa cầu đi cắm",
-      description: "Đánh đối kháng tốc độ cao bên cánh thuận tay. Tận dụng lực mở vai để đưa cầu bay nhanh và chìm.",
-      coachingTip: "Điểm tiếp xúc cầu ở phía trước hông phải. Khóa chặt cổ tay đúng khoảnh khắc chạm cầu."
+      title: "Thủ Cầu Ngang Hông Thuận Tay",
+      subTitle: "Cổ tay mở, đón cầu ngang sườn phải",
+      description: "Thủ Cầu Ngang Hông Thuận Tay tại TRUNG TÂM PHẢI",
+      coachingTip: "Cổ tay mở, đón cầu ngang sườn phải"
     },
     footMovement: {
-      title: "Bước Đệm Ngang Phải (Side Step Right)",
-      subTitle: "Đạp chân trái đẩy người sang phải -> Tiếp đất chân phải chùng gối",
-      description: "Từ tâm sân bật trượt nhanh sang mép biên phải, dồn trọng tâm lên chân thuận để phát lực đánh ngang.",
-      coachingTip: "Mũi chân phải mở nhẹ góc 45° để bảo vệ khớp gối khi tiếp đất với tốc độ cao."
+      title: "Bộ pháp Ô 6",
+      subTitle: "Hạ thấp gối, trọng tâm dồn đều hai chân",
+      description: "Di chuyển đến TRUNG TÂM PHẢI",
+      coachingTip: "Hạ thấp gối, trọng tâm dồn đều hai chân"
     },
     combinedMovement: {
-      title: "Phối Hợp: Đôi Công Tốc Độ Cao Thuận Tay",
-      subTitle: "Bật ngang + vung vợt chém phẳng + hồi vị tâm sân",
-      description: "Chân phải chạm đất đồng bộ với cú vung vợt ngang ngực, tạo ra đường phản tạt xé gió sang phần sân trống.",
-      coachingTip: "Sau cú tạt không được buông thõng vợt; lập tức co tay thu vợt về tư thế phòng thủ số 5."
+      title: "Thủ Cầu Ngang Hông Thuận Tay",
+      subTitle: "Cổ tay mở, đón cầu ngang sườn phải + Hạ thấp gối, trọng tâm dồn đều hai chân",
+      description: "Thủ Cầu Ngang Hông Thuận Tay tại TRUNG TÂM PHẢI",
+      coachingTip: "Phối hợp tay và chân nhịp nhàng"
     },
     variations: [
       {
-        id: "pos6_var1",
-        shotName: "Phản Tạt Thuận Tay Chìm Lưới (Forehand Flat Drive)",
-        shotType: "Phản tạt thuận tay",
+        id: "pos_6_var_1",
+        shotName: "Thủ Cầu Ngang Hông Thuận Tay",
+        shotType: "Thủ cầu",
+        level: "Cơ bản",
+        videoUrl: "./videos/clips/pos_6_clip_1.mp4",
         handMovement: {
-          title: "Phản Tạt Thuận Tay Tốc Độ Cao",
-          subTitle: "Vung vợt ngang sườn phải, miết cẳng tay và cổ tay đưa cầu đi cắm",
-          description: "Đánh đối kháng tốc độ cao bên cánh thuận tay. Tận dụng lực mở vai để đưa cầu bay nhanh và chìm.",
-          coachingTip: "Điểm tiếp xúc cầu ở phía trước hông phải. Khóa chặt cổ tay đúng khoảnh khắc chạm cầu."
+          title: "Thủ Cầu Ngang Hông Thuận Tay",
+          subTitle: "Cổ tay mở, đón cầu ngang sườn phải",
+          description: "Thủ Cầu Ngang Hông Thuận Tay",
+          coachingTip: "Cổ tay mở, đón cầu ngang sườn phải"
         },
         footMovement: {
-          title: "Bước Đệm Ngang Phải (Side Step Right)",
-          subTitle: "Đạp chân trái đẩy người sang phải -> Tiếp đất chân phải chùng gối",
-          description: "Từ tâm sân bật trượt nhanh sang mép biên phải, dồn trọng tâm lên chân thuận để phát lực đánh ngang.",
-          coachingTip: "Mũi chân phải mở nhẹ góc 45° để bảo vệ khớp gối khi tiếp đất với tốc độ cao."
+          title: "Bộ pháp Ô 6",
+          subTitle: "Hạ thấp gối, trọng tâm dồn đều hai chân",
+          description: "Bộ pháp Ô 6",
+          coachingTip: "Hạ thấp gối, trọng tâm dồn đều hai chân"
         },
         combinedMovement: {
-          title: "Trượt Ngang & Tạt Cầu Thuận Tay Chìm Lưới",
-          subTitle: "Bật ngang + vung vợt chém phẳng + hồi vị tâm sân",
-          description: "Chân phải chạm đất đồng bộ với cú vung vợt ngang ngực, tạo ra đường phản tạt xé gió sang phần sân trống.",
-          coachingTip: "Sau cú tạt không được buông thõng vợt; lập tức co tay thu vợt về tư thế phòng thủ số 5."
+          title: "Thủ Cầu Ngang Hông Thuận Tay",
+          subTitle: "Cổ tay mở, đón cầu ngang sườn phải + Hạ thấp gối, trọng tâm dồn đều hai chân",
+          description: "Thủ Cầu Ngang Hông Thuận Tay",
+          coachingTip: "Tập trung chuẩn xác động tác"
         }
       },
       {
-        id: "pos6_var2",
-        shotName: "Thủ Cầu Ngắn Thuận Tay (Forehand Net Block)",
-        shotType: "Thủ cầu hãm lực",
+        id: "pos_6_var_2",
+        shotName: "Bước Trượt Ngang Đón Cầu Phải",
+        shotType: "Bộ pháp",
+        level: "Cơ bản",
+        videoUrl: "./videos/clips/pos_6_clip_2.mp4",
         handMovement: {
-          title: "Thủ Đỡ Đập Cầu Thuận Tay Sát Lưới",
-          subTitle: "Mở mặt vợt phẳng, dùng ngón tay ghìm lại lực đập dũng mãnh",
-          description: "Hãm lực cú smash sấm sét của đối thủ bên cánh phải, biến quả cầu thành pha thả lưới đổi hướng.",
-          coachingTip: "Mặt vợt ngửa êm ái, tiếp xúc cầu ở phía trước người không để bị trễ."
+          title: "Bước Trượt Ngang Đón Cầu Phải",
+          subTitle: "Vợt giơ sẵn sàng trước ngực",
+          description: "Bước Trượt Ngang Đón Cầu Phải",
+          coachingTip: "Vợt giơ sẵn sàng trước ngực"
         },
         footMovement: {
-          title: "Hạ Trọng Tâm Đón Cú Smash Phải (Forehand Defensive Base)",
-          subTitle: "Bước chân phải sang bên, hạ thấp đùi tạo điểm tựa chắc chắn",
-          description: "Trụ vững thân người trước áp lực quả cầu lao xuống với vận tốc cực lớn.",
-          coachingTip: "Mắt dõi theo từng chuyển động cổ tay của người đập cầu."
+          title: "Bộ pháp Ô 6",
+          subTitle: "Trượt ngang chân phải mở rộng sang sườn",
+          description: "Bộ pháp Ô 6",
+          coachingTip: "Trượt ngang chân phải mở rộng sang sườn"
         },
         combinedMovement: {
-          title: "Hãm Lực Smash & Trả Cầu Ngắn Chữ T",
-          subTitle: "Ghim chân đón smash + đệm mặt vợt trả ngắn + nhao lên bắt lưới",
-          description: "Đường cầu trả ngắn rơi cắm ngay vạch phát cầu khiến người vừa đập phải lao lên cứu trong tuyệt vọng.",
-          coachingTip: "Đây là tuyệt chiêu phản công sắc bén nhất khi bị đối phương tấn công liên tiếp."
+          title: "Bước Trượt Ngang Đón Cầu Phải",
+          subTitle: "Vợt giơ sẵn sàng trước ngực + Trượt ngang chân phải mở rộng sang sườn",
+          description: "Bước Trượt Ngang Đón Cầu Phải",
+          coachingTip: "Tập trung chuẩn xác động tác"
         }
       },
       {
-        id: "pos6_var3",
-        shotName: "Bật Nhảy Tạt Cầu Nách (Jump Drive Right)",
-        shotType: "Nhảy tạt tấn công",
+        id: "pos_6_var_3",
+        shotName: "Phản Tạt Thuận Tay Đè Lưới",
+        shotType: "Phản tạt",
+        level: "Trung cấp",
+        videoUrl: "./videos/clips/pos_6_clip_3.mp4",
         handMovement: {
-          title: "Bật Nhảy Tạt Cầu Tấn Công Trên Không",
-          subTitle: "Bật lên đón cầu ở điểm cao nhất, quất cổ tay chém cắm quả cầu",
-          description: "Tấn công chủ động khi bóng bay ngang tầm vai, nhảy lên tạt cắm thẳng vào người đối thủ đứng gần.",
-          coachingTip: "Tiếp xúc cầu càng cao thì góc đánh càng dốc và đối phương càng khó phản xạ."
+          title: "Phản Tạt Thuận Tay Đè Lưới",
+          subTitle: "Vung ngang vợt đè phẳng đường bay của cầu",
+          description: "Phản Tạt Thuận Tay Đè Lưới",
+          coachingTip: "Vung ngang vợt đè phẳng đường bay của cầu"
         },
         footMovement: {
-          title: "Bật Nhảy Lướt Ngang (Lateral Jump Step)",
-          subTitle: "Dậm chân phải bật lướt ngang sang bên, tiếp đất 2 chân thăng bằng",
-          description: "Sử dụng sức bật bùng nổ của cổ chân để nâng cơ thể lên bắt cầu sớm hơn nửa giây.",
-          coachingTip: "Tiếp đất bằng phần nửa trước bàn chân để giảm chấn cho khớp gối."
+          title: "Bộ pháp Ô 6",
+          subTitle: "Bước chân phải đón cầu, dồn lực tiến tới",
+          description: "Bộ pháp Ô 6",
+          coachingTip: "Bước chân phải đón cầu, dồn lực tiến tới"
         },
         combinedMovement: {
-          title: "Bật Nhảy Tạt Cầu Trên Không & Đè Ép Đối Thủ",
-          subTitle: "Bật nhảy lướt + quất cổ tay dứt điểm + tiếp đất sẵn sàng",
-          description: "Đòn đánh tốc độ cao bóp nghẹt thời gian suy nghĩ của đối thủ, ép họ phải nâng cầu bổng.",
-          coachingTip: "Ngay khi tiếp đất lập tức nhìn phản ứng của đối phương để vào thế vồ tiếp theo."
+          title: "Phản Tạt Thuận Tay Đè Lưới",
+          subTitle: "Vung ngang vợt đè phẳng đường bay của cầu + Bước chân phải đón cầu, dồn lực tiến tới",
+          description: "Phản Tạt Thuận Tay Đè Lưới",
+          coachingTip: "Tập trung chuẩn xác động tác"
+        }
+      },
+      {
+        id: "pos_6_var_4",
+        shotName: "Thủ Kê Cầu Sát Lưới Đổi Nhịp",
+        shotType: "Thủ mềm",
+        level: "Trung cấp",
+        videoUrl: "./videos/clips/pos_6_clip_4.mp4",
+        handMovement: {
+          title: "Thủ Kê Cầu Sát Lưới Đổi Nhịp",
+          subTitle: "Hãm xung lực cho bóng rơi sát vạch chữ T",
+          description: "Thủ Kê Cầu Sát Lưới Đổi Nhịp",
+          coachingTip: "Hãm xung lực cho bóng rơi sát vạch chữ T"
+        },
+        footMovement: {
+          title: "Bộ pháp Ô 6",
+          subTitle: "Giữ thăng bằng không bị chúi người",
+          description: "Bộ pháp Ô 6",
+          coachingTip: "Giữ thăng bằng không bị chúi người"
+        },
+        combinedMovement: {
+          title: "Thủ Kê Cầu Sát Lưới Đổi Nhịp",
+          subTitle: "Hãm xung lực cho bóng rơi sát vạch chữ T + Giữ thăng bằng không bị chúi người",
+          description: "Thủ Kê Cầu Sát Lưới Đổi Nhịp",
+          coachingTip: "Tập trung chuẩn xác động tác"
+        }
+      },
+      {
+        id: "pos_6_var_5",
+        shotName: "Đè Cầu Tấn Công Góc Nách",
+        shotType: "Tấn công",
+        level: "Nâng cao",
+        videoUrl: "./videos/clips/pos_6_clip_5.mp4",
+        handMovement: {
+          title: "Đè Cầu Tấn Công Góc Nách",
+          subTitle: "Bung lực cổ tay ép cầu cắm vào người đối thủ",
+          description: "Đè Cầu Tấn Công Góc Nách",
+          coachingTip: "Bung lực cổ tay ép cầu cắm vào người đối thủ"
+        },
+        footMovement: {
+          title: "Bộ pháp Ô 6",
+          subTitle: "Tiến nửa bước dồn ép không gian",
+          description: "Bộ pháp Ô 6",
+          coachingTip: "Tiến nửa bước dồn ép không gian"
+        },
+        combinedMovement: {
+          title: "Đè Cầu Tấn Công Góc Nách",
+          subTitle: "Bung lực cổ tay ép cầu cắm vào người đối thủ + Tiến nửa bước dồn ép không gian",
+          description: "Đè Cầu Tấn Công Góc Nách",
+          coachingTip: "Tập trung chuẩn xác động tác"
+        }
+      },
+      {
+        id: "pos_6_var_6",
+        shotName: "Bật Ngang Vợt Phản Tạt Chéo Biên",
+        shotType: "Phản tạt chéo",
+        level: "Nâng cao",
+        videoUrl: "./videos/clips/pos_6_clip_6.mp4",
+        handMovement: {
+          title: "Bật Ngang Vợt Phản Tạt Chéo Biên",
+          subTitle: "Chém xiên mặt vợt đưa cầu vút sang góc xa",
+          description: "Bật Ngang Vợt Phản Tạt Chéo Biên",
+          coachingTip: "Chém xiên mặt vợt đưa cầu vút sang góc xa"
+        },
+        footMovement: {
+          title: "Bộ pháp Ô 6",
+          subTitle: "Xoay người đẩy cơ thể hồi vị",
+          description: "Bộ pháp Ô 6",
+          coachingTip: "Xoay người đẩy cơ thể hồi vị"
+        },
+        combinedMovement: {
+          title: "Bật Ngang Vợt Phản Tạt Chéo Biên",
+          subTitle: "Chém xiên mặt vợt đưa cầu vút sang góc xa + Xoay người đẩy cơ thể hồi vị",
+          description: "Bật Ngang Vợt Phản Tạt Chéo Biên",
+          coachingTip: "Tập trung chuẩn xác động tác"
         }
       }
     ]
   },
-
   // ==========================================
   // Ô 7: CUỐI SÂN TRÁI (REAR LEFT)
   // ==========================================
   {
     id: 7,
     name: "Cuối Sân Trái (Rear Left)",
-    zoneName: "CUỐI SÂN TRÁI",
+    zoneName: "ĐÁY TRÁI",
     row: 3,
     col: 1,
-    directionLabel: "Vị trí 7 - Góc cuối sân bên trái (Vòng đầu)",
-    courtZone: 'rear',
-    courtSide: 'left',
+    directionLabel: "Vị trí 7 - Góc đáy cuối sân bên trái",
+    courtZone: "rear",
+    courtSide: "left",
+    level: "Cơ bản",
+    videoUrl: "./videos/clips/pos_7_clip_1.mp4",
     handMovement: {
-      title: "Đập Cầu Vòng Đầu (Round-the-Head Smash)",
-      subTitle: "Uốn lườn nghiêng sang trái, vung vợt vòng qua đầu đập chéo sân",
-      description: "Kỹ thuật tấn công đặc trưng khi cầu rơi góc trái cuối sân nhưng vẫn dùng tay thuận đánh qua đầu.",
-      coachingTip: "Nghiêng người tạo khoảng trống cho tay vung qua đầu, tiếp xúc cầu ở điểm cao nhất phía trên tai trái."
+      title: "Bộ Pháp Lùi Chéo Góc Trái",
+      subTitle: "Giơ vợt vòng qua đầu đón điểm rơi",
+      description: "Bộ Pháp Lùi Chéo Góc Trái tại ĐÁY TRÁI",
+      coachingTip: "Giơ vợt vòng qua đầu đón điểm rơi"
     },
     footMovement: {
-      title: "Chạy Lùi Bước Chéo Sang Trái (Rear Left Footwork)",
-      subTitle: "Bật xoay hông -> Bước chassé lùi -> Dậm chân trái bật nhảy đổi chân",
-      description: "Lùi nhanh 2-3 bước chéo về góc 7h, chân trái dậm trụ bật người lên không trung và đổi chân khi đánh.",
-      coachingTip: "Không chạy lùi thẳng lưng; xoay vai nghiêng người để mắt luôn quan sát được quả cầu."
+      title: "Bộ pháp Ô 7",
+      subTitle: "Bước chéo lùi chân đón bóng ở góc 8h",
+      description: "Di chuyển đến ĐÁY TRÁI",
+      coachingTip: "Bước chéo lùi chân đón bóng ở góc 8h"
     },
     combinedMovement: {
-      title: "Phối Hợp: Bật Nhảy Vòng Đầu Đập Cầu Sấm Sét",
-      subTitle: "Lùi bước chéo + bật nhảy uốn lườn + quất vợt đập cắm chéo sân",
-      description: "Tiếp đất bằng chân phải đồng thời hoàn tất cú vung vợt, cơ thể lao về phía trước hồi tâm.",
-      coachingTip: "Dồn lực từ hông và cơ bụng uốn lườn để tăng uy lực cho cú smash vòng đầu."
+      title: "Bộ Pháp Lùi Chéo Góc Trái",
+      subTitle: "Giơ vợt vòng qua đầu đón điểm rơi + Bước chéo lùi chân đón bóng ở góc 8h",
+      description: "Bộ Pháp Lùi Chéo Góc Trái tại ĐÁY TRÁI",
+      coachingTip: "Phối hợp tay và chân nhịp nhàng"
     },
     variations: [
       {
-        id: "pos7_var1",
-        shotName: "Đập Cầu Vòng Đầu Uy Lực (Round-the-Head Smash)",
-        shotType: "Đập cầu tấn công",
+        id: "pos_7_var_1",
+        shotName: "Bộ Pháp Lùi Chéo Góc Trái",
+        shotType: "Bộ pháp lùi",
+        level: "Cơ bản",
+        videoUrl: "./videos/clips/pos_7_clip_1.mp4",
         handMovement: {
-          title: "Đập Cầu Vòng Đầu Uốn Lườn",
-          subTitle: "Uốn lườn nghiêng sang trái, vung vợt vòng qua đầu đập chéo sân",
-          description: "Kỹ thuật tấn công đặc trưng khi cầu rơi góc trái cuối sân nhưng vẫn dùng tay thuận đánh qua đầu.",
-          coachingTip: "Nghiêng người tạo khoảng trống cho tay vung qua đầu, tiếp xúc cầu ở điểm cao nhất phía trên tai trái."
+          title: "Bộ Pháp Lùi Chéo Góc Trái",
+          subTitle: "Giơ vợt vòng qua đầu đón điểm rơi",
+          description: "Bộ Pháp Lùi Chéo Góc Trái",
+          coachingTip: "Giơ vợt vòng qua đầu đón điểm rơi"
         },
         footMovement: {
-          title: "Chạy Lùi Bước Chéo Sang Trái (Rear Left Footwork)",
-          subTitle: "Bật xoay hông -> Bước chassé lùi -> Dậm chân trái bật nhảy đổi chân",
-          description: "Lùi nhanh 2-3 bước chéo về góc 7h, chân trái dậm trụ bật người lên không trung và đổi chân khi đánh.",
-          coachingTip: "Không chạy lùi thẳng lưng; xoay vai nghiêng người để mắt luôn quan sát được quả cầu."
+          title: "Bộ pháp Ô 7",
+          subTitle: "Bước chéo lùi chân đón bóng ở góc 8h",
+          description: "Bộ pháp Ô 7",
+          coachingTip: "Bước chéo lùi chân đón bóng ở góc 8h"
         },
         combinedMovement: {
-          title: "Nhảy Uốn Lườn Đập Cầu Chéo Góc Sấm Sét",
-          subTitle: "Lùi bước chéo + bật nhảy uốn lườn + quất vợt đập cắm chéo",
-          description: "Tiếp đất bằng chân phải đồng thời hoàn tất cú vung vợt, cơ thể lao về phía trước hồi tâm.",
-          coachingTip: "Dồn lực từ hông và cơ bụng uốn lườn để tăng uy lực cho cú smash vòng đầu."
+          title: "Bộ Pháp Lùi Chéo Góc Trái",
+          subTitle: "Giơ vợt vòng qua đầu đón điểm rơi + Bước chéo lùi chân đón bóng ở góc 8h",
+          description: "Bộ Pháp Lùi Chéo Góc Trái",
+          coachingTip: "Tập trung chuẩn xác động tác"
         }
       },
       {
-        id: "pos7_var2",
-        shotName: "Chém Cầu Bỏ Nhỏ Vòng Đầu (Round-the-Head Drop)",
-        shotType: "Bỏ nhỏ lừa hướng",
+        id: "pos_7_var_2",
+        shotName: "Phông Cầu Vòng Đầu Thuận Tay",
+        shotType: "Phông cầu",
+        level: "Cơ bản",
+        videoUrl: "./videos/clips/pos_7_clip_2.mp4",
         handMovement: {
-          title: "Chém Cầu Cắt Góc Sát Lưới Vòng Đầu",
-          subTitle: "Lấy đà như đập cầu nhưng trượt mặt vợt cắt chéo quả cầu",
-          description: "Giả vờ tung đòn smash cực mạnh khiến đối thủ lùi sâu thủ, nhưng giây cuối cắt mặt vợt cho cầu rơi cắm sát lưới góc 1.",
-          coachingTip: "Tốc độ vung vợt phải giữ nguyên nhanh như đập để động tác giả đánh lừa thành công."
+          title: "Phông Cầu Vòng Đầu Thuận Tay",
+          subTitle: "Vung tay vòng qua đầu phông sâu cuối sân",
+          description: "Phông Cầu Vòng Đầu Thuận Tay",
+          coachingTip: "Vung tay vòng qua đầu phông sâu cuối sân"
         },
         footMovement: {
-          title: "Lùi Góc 7h Tiếp Đất Chủ Động (Controlled Rear Stance)",
-          subTitle: "Lùi nhanh về góc, tiếp đất chân phải chuẩn bị bứt tốc lên trước",
-          description: "Không dậm nhảy quá cao, giữ đôi chân chủ động để lao ngay lên lưới sau cú bỏ nhỏ.",
-          coachingTip: "Trọng tâm sẵn sàng đổ về phía trước ngay sau khi chạm cầu."
+          title: "Bộ pháp Ô 7",
+          subTitle: "Chân phải làm trụ bật đổi chân (Scissor kick)",
+          description: "Bộ pháp Ô 7",
+          coachingTip: "Chân phải làm trụ bật đổi chân (Scissor kick)"
         },
         combinedMovement: {
-          title: "Giả Đập Bỏ Nhỏ Sát Lưới Đổi Hướng",
-          subTitle: "Lấy đà smash + cắt mặt vợt phút chót + bứt tốc lên lưới",
-          description: "Quả cầu lộn nhào rơi cắm ngay vạch phát cầu góc trái đối phương, biến thế trận thành áp đảo hoàn toàn.",
-          coachingTip: "Động tác lừa này ghi điểm trực tiếp rất nhiều trong các trận đấu đỉnh cao."
+          title: "Phông Cầu Vòng Đầu Thuận Tay",
+          subTitle: "Vung tay vòng qua đầu phông sâu cuối sân + Chân phải làm trụ bật đổi chân (Scissor kick)",
+          description: "Phông Cầu Vòng Đầu Thuận Tay",
+          coachingTip: "Tập trung chuẩn xác động tác"
         }
       },
       {
-        id: "pos7_var3",
-        shotName: "Phông Cầu Cao Sâu Vòng Đầu (Round-the-Head Clear)",
-        shotType: "Phông cầu thoát hiểm",
+        id: "pos_7_var_3",
+        shotName: "Cắt Cầu Chéo Sân Vòng Đầu",
+        shotType: "Drop shot",
+        level: "Trung cấp",
+        videoUrl: "./videos/clips/pos_7_clip_3.mp4",
         handMovement: {
-          title: "Phông Cầu Vút Cao Chạm Trần Đáy Sân",
-          subTitle: "Bung lực toàn thân từ chân, hông, vai qua cẳng tay đẩy cầu bổng",
-          description: "Khi bị ép sâu ở góc trái, bung hết lực đẩy quả cầu bay hình parabol cao vút về góc 9 của đối phương.",
-          coachingTip: "Khóa cổ tay và đẩy thẳng mặt vợt lên trời, cầu phải sâu qua vạch giao cầu đôi."
+          title: "Cắt Cầu Chéo Sân Vòng Đầu",
+          subTitle: "Chém nghiêng mặt vợt cắt cầu rơi chéo mép lưới",
+          description: "Cắt Cầu Chéo Sân Vòng Đầu",
+          coachingTip: "Chém nghiêng mặt vợt cắt cầu rơi chéo mép lưới"
         },
         footMovement: {
-          title: "Chạy Lùi Bứt Phá Góc Sâu (Deep Corner Extraction)",
-          subTitle: "3 bước lùi nhanh, chân trái cắm trụ sâu nhất có thể",
-          description: "Đón bóng khi đã bay sát vạch biên cuối sân, giữ thăng bằng bằng chân phải phía trước.",
-          coachingTip: "Đạp mạnh chân trụ trái để mượn lực đẩy cơ thể về phía trước sau khi đánh."
+          title: "Bộ pháp Ô 7",
+          subTitle: "Tiếp đất chân phải rồi đẩy tiến về tâm",
+          description: "Bộ pháp Ô 7",
+          coachingTip: "Tiếp đất chân phải rồi đẩy tiến về tâm"
         },
         combinedMovement: {
-          title: "Phông Cầu Cao Sâu Thoát Pressing Cuối Sân Trái",
-          subTitle: "Lùi sâu đón bóng + bung hết lực phông bổng + chạy vội hồi tâm",
-          description: "Đưa cầu bay cao tạo đủ 3 giây quý giá để chạy ngược từ góc 7 về tâm sân chuẩn bị phòng ngự.",
-          coachingTip: "Đừng vội nhìn theo bóng, đánh xong phải lo chạy hồi vị trí ngay lập tức."
+          title: "Cắt Cầu Chéo Sân Vòng Đầu",
+          subTitle: "Chém nghiêng mặt vợt cắt cầu rơi chéo mép lưới + Tiếp đất chân phải rồi đẩy tiến về tâm",
+          description: "Cắt Cầu Chéo Sân Vòng Đầu",
+          coachingTip: "Tập trung chuẩn xác động tác"
+        }
+      },
+      {
+        id: "pos_7_var_4",
+        shotName: "Đập Cầu Vòng Đầu Tấn Công",
+        shotType: "Smash vòng đầu",
+        level: "Trung cấp",
+        videoUrl: "./videos/clips/pos_7_clip_4.mp4",
+        handMovement: {
+          title: "Đập Cầu Vòng Đầu Tấn Công",
+          subTitle: "Gập bụng và cổ tay smash uy lực",
+          description: "Đập Cầu Vòng Đầu Tấn Công",
+          coachingTip: "Gập bụng và cổ tay smash uy lực"
+        },
+        footMovement: {
+          title: "Bộ pháp Ô 7",
+          subTitle: "Bật nhịp chân thuận dứt điểm",
+          description: "Bộ pháp Ô 7",
+          coachingTip: "Bật nhịp chân thuận dứt điểm"
+        },
+        combinedMovement: {
+          title: "Đập Cầu Vòng Đầu Tấn Công",
+          subTitle: "Gập bụng và cổ tay smash uy lực + Bật nhịp chân thuận dứt điểm",
+          description: "Đập Cầu Vòng Đầu Tấn Công",
+          coachingTip: "Tập trung chuẩn xác động tác"
+        }
+      },
+      {
+        id: "pos_7_var_5",
+        shotName: "Phông Cầu Trái Tay Cuối Sân (Backhand Clear)",
+        shotType: "Phông trái tay",
+        level: "Nâng cao",
+        videoUrl: "./videos/clips/pos_7_clip_5.mp4",
+        handMovement: {
+          title: "Phông Cầu Trái Tay Cuối Sân (Backhand Clear)",
+          subTitle: "Xoay lưng, bung hết lực cẳng tay ngón cái",
+          description: "Phông Cầu Trái Tay Cuối Sân (Backhand Clear)",
+          coachingTip: "Xoay lưng, bung hết lực cẳng tay ngón cái"
+        },
+        footMovement: {
+          title: "Bộ pháp Ô 7",
+          subTitle: "Bước chân phải dài về góc, lưng xoay về lưới",
+          description: "Bộ pháp Ô 7",
+          coachingTip: "Bước chân phải dài về góc, lưng xoay về lưới"
+        },
+        combinedMovement: {
+          title: "Phông Cầu Trái Tay Cuối Sân (Backhand Clear)",
+          subTitle: "Xoay lưng, bung hết lực cẳng tay ngón cái + Bước chân phải dài về góc, lưng xoay về lưới",
+          description: "Phông Cầu Trái Tay Cuối Sân (Backhand Clear)",
+          coachingTip: "Tập trung chuẩn xác động tác"
+        }
+      },
+      {
+        id: "pos_7_var_6",
+        shotName: "Chém Cầu Trái Tay Rơi Lưới (Backhand Drop)",
+        shotType: "Chém trái tay",
+        level: "Nâng cao",
+        videoUrl: "./videos/clips/pos_7_clip_6.mp4",
+        handMovement: {
+          title: "Chém Cầu Trái Tay Rơi Lưới (Backhand Drop)",
+          subTitle: "Giả động tác phông sâu rồi chém nhẹ rơi lưới",
+          description: "Chém Cầu Trái Tay Rơi Lưới (Backhand Drop)",
+          coachingTip: "Giả động tác phông sâu rồi chém nhẹ rơi lưới"
+        },
+        footMovement: {
+          title: "Bộ pháp Ô 7",
+          subTitle: "Chân phải trụ vững, xoay người thu chân",
+          description: "Bộ pháp Ô 7",
+          coachingTip: "Chân phải trụ vững, xoay người thu chân"
+        },
+        combinedMovement: {
+          title: "Chém Cầu Trái Tay Rơi Lưới (Backhand Drop)",
+          subTitle: "Giả động tác phông sâu rồi chém nhẹ rơi lưới + Chân phải trụ vững, xoay người thu chân",
+          description: "Chém Cầu Trái Tay Rơi Lưới (Backhand Drop)",
+          coachingTip: "Tập trung chuẩn xác động tác"
+        }
+      },
+      {
+        id: "pos_7_var_7",
+        shotName: "Bật Nhảy Smash Vòng Đầu Dứt Điểm",
+        shotType: "Jump smash",
+        level: "Nâng cao",
+        videoUrl: "./videos/clips/pos_7_clip_7.mp4",
+        handMovement: {
+          title: "Bật Nhảy Smash Vòng Đầu Dứt Điểm",
+          subTitle: "Bật cao gập người đập cắm biên",
+          description: "Bật Nhảy Smash Vòng Đầu Dứt Điểm",
+          coachingTip: "Bật cao gập người đập cắm biên"
+        },
+        footMovement: {
+          title: "Bộ pháp Ô 7",
+          subTitle: "Bật nhảy 2 chân trên không tiếp đất an toàn",
+          description: "Bộ pháp Ô 7",
+          coachingTip: "Bật nhảy 2 chân trên không tiếp đất an toàn"
+        },
+        combinedMovement: {
+          title: "Bật Nhảy Smash Vòng Đầu Dứt Điểm",
+          subTitle: "Bật cao gập người đập cắm biên + Bật nhảy 2 chân trên không tiếp đất an toàn",
+          description: "Bật Nhảy Smash Vòng Đầu Dứt Điểm",
+          coachingTip: "Tập trung chuẩn xác động tác"
         }
       }
     ]
   },
-
   // ==========================================
   // Ô 8: CUỐI SÂN GIỮA (REAR CENTER)
   // ==========================================
   {
     id: 8,
     name: "Cuối Sân Giữa (Rear Center)",
-    zoneName: "CUỐI SÂN GIỮA",
+    zoneName: "ĐÁY GIỮA",
     row: 3,
     col: 2,
-    directionLabel: "Vị trí 8 - Cuối sân trung tâm",
-    courtZone: 'rear',
-    courtSide: 'center',
+    directionLabel: "Vị trí 8 - Đáy sân khu vực trung lộ",
+    courtZone: "rear",
+    courtSide: "center",
+    level: "Cơ bản",
+    videoUrl: "./videos/clips/pos_8_clip_1.mp4",
     handMovement: {
-      title: "Nhảy Đập Cuối Sân (Jump Smash Center)",
-      subTitle: "Bật cao tại đỉnh, gập bụng đập cắm quả cầu vào giữa 2 đối thủ",
-      description: "Vũ khí dứt điểm uy lực nhất. Đánh quả cầu ở điểm cao nhất phía trước trán, ép cầu đi dốc thẳng xuống sàn.",
-      coachingTip: "Thả lỏng cơ thể khi lấy đà, siết chặt toàn bộ cơ bắp vào 0.05s tiếp xúc cầu để tạo vận tốc tối đa."
+      title: "Bật Lùi Đón Cầu Đáy Giữa Sân",
+      subTitle: "Mở rộng vai, giơ vợt cao nhất có thể",
+      description: "Bật Lùi Đón Cầu Đáy Giữa Sân tại ĐÁY GIỮA",
+      coachingTip: "Mở rộng vai, giơ vợt cao nhất có thể"
     },
     footMovement: {
-      title: "Lùi Thẳng & Bật Nhảy Scissor Kick (Rear Jump Footwork)",
-      subTitle: "Chạy lùi 2 bước chéo -> Dậm nhảy chân phải -> Đổi chân trên không",
-      description: "Lùi thẳng từ tâm sân số 5 về số 8, dậm trụ chân phải bật nhảy lên không trung, hoán đổi chân trái ra trước khi tiếp đất.",
-      coachingTip: "Tiếp đất bằng chân không thuận (chân trái) trước để chuyển đà lao về phía trước đón cầu tiếp theo."
+      title: "Bộ pháp Ô 8",
+      subTitle: "Bước giật lùi nhanh đón cầu sau đầu",
+      description: "Di chuyển đến ĐÁY GIỮA",
+      coachingTip: "Bước giật lùi nhanh đón cầu sau đầu"
     },
     combinedMovement: {
-      title: "Phối Hợp: Bật Nhảy Scissor Kick Đập Cầu Cắm Sàn",
-      subTitle: "Lùi nhanh + dậm nhảy đổi chân trên không + gập bụng quất vợt",
-      description: "Đỉnh cao phối hợp: chân dậm nhảy, cơ bụng gập siết, cánh tay vung roi quất mạnh vào quả cầu ở đỉnh điểm.",
-      coachingTip: "Đập xong mượn đà tiếp đất của chân trước lao ngay lên trung tâm sân kiểm soát."
+      title: "Bật Lùi Đón Cầu Đáy Giữa Sân",
+      subTitle: "Mở rộng vai, giơ vợt cao nhất có thể + Bước giật lùi nhanh đón cầu sau đầu",
+      description: "Bật Lùi Đón Cầu Đáy Giữa Sân tại ĐÁY GIỮA",
+      coachingTip: "Phối hợp tay và chân nhịp nhàng"
     },
     variations: [
       {
-        id: "pos8_var1",
-        shotName: "Bật Nhảy Scissor Kick Đập Cầu (Jump Smash)",
-        shotType: "Đập cầu dứt điểm uy lực",
+        id: "pos_8_var_1",
+        shotName: "Bật Lùi Đón Cầu Đáy Giữa Sân",
+        shotType: "Bộ pháp",
+        level: "Cơ bản",
+        videoUrl: "./videos/clips/pos_8_clip_1.mp4",
         handMovement: {
-          title: "Bật Nhảy Gập Bụng Đập Cầu Cắm Sàn",
-          subTitle: "Bật cao tại đỉnh, gập bụng đập cắm quả cầu vào giữa 2 đối thủ",
-          description: "Vũ khí dứt điểm uy lực nhất. Đánh quả cầu ở điểm cao nhất phía trước trán, ép cầu đi dốc thẳng xuống sàn.",
-          coachingTip: "Thả lỏng cơ thể khi lấy đà, siết chặt toàn bộ cơ bắp vào 0.05s tiếp xúc cầu để tạo vận tốc tối đa."
+          title: "Bật Lùi Đón Cầu Đáy Giữa Sân",
+          subTitle: "Mở rộng vai, giơ vợt cao nhất có thể",
+          description: "Bật Lùi Đón Cầu Đáy Giữa Sân",
+          coachingTip: "Mở rộng vai, giơ vợt cao nhất có thể"
         },
         footMovement: {
-          title: "Lùi Thẳng & Bật Nhảy Scissor Kick (Rear Jump Footwork)",
-          subTitle: "Chạy lùi 2 bước chéo -> Dậm nhảy chân phải -> Đổi chân trên không",
-          description: "Lùi thẳng từ tâm sân số 5 về số 8, dậm trụ chân phải bật nhảy lên không trung, hoán đổi chân trái ra trước khi tiếp đất.",
-          coachingTip: "Tiếp đất bằng chân không thuận (chân trái) trước để chuyển đà lao về phía trước đón cầu tiếp theo."
+          title: "Bộ pháp Ô 8",
+          subTitle: "Bước giật lùi nhanh đón cầu sau đầu",
+          description: "Bộ pháp Ô 8",
+          coachingTip: "Bước giật lùi nhanh đón cầu sau đầu"
         },
         combinedMovement: {
-          title: "Bật Nhảy Đổi Chân Đập Cầu Sấm Sét",
-          subTitle: "Lùi nhanh + dậm nhảy đổi chân trên không + gập bụng quất vợt",
-          description: "Đỉnh cao phối hợp: chân dậm nhảy, cơ bụng gập siết, cánh tay vung roi quất mạnh vào quả cầu ở đỉnh điểm.",
-          coachingTip: "Đập xong mượn đà tiếp đất của chân trước lao ngay lên trung tâm sân kiểm soát."
+          title: "Bật Lùi Đón Cầu Đáy Giữa Sân",
+          subTitle: "Mở rộng vai, giơ vợt cao nhất có thể + Bước giật lùi nhanh đón cầu sau đầu",
+          description: "Bật Lùi Đón Cầu Đáy Giữa Sân",
+          coachingTip: "Tập trung chuẩn xác động tác"
         }
       },
       {
-        id: "pos8_var2",
-        shotName: "Chặt Cầu Nhanh Rơi Chữ T (Fast Slice Drop to T)",
-        shotType: "Chặt cầu chữ T",
+        id: "pos_8_var_2",
+        shotName: "Phông Cầu Bổng Sâu Đáy Sân",
+        shotType: "Phông cao sâu",
+        level: "Cơ bản",
+        videoUrl: "./videos/clips/pos_8_clip_2.mp4",
         handMovement: {
-          title: "Chặt Cầu Nhanh Cắm Thẳng Chữ T",
-          subTitle: "Cắt mặt vợt chéo góc 45° đưa cầu lướt nhanh là là mép lưới",
-          description: "Đường cầu bay nhanh như smash nhưng đột ngột chúc đầu cắm ngay ngã ba chữ T lưới, làm đối thủ phân vân.",
-          coachingTip: "Cắt mặt vợt vào sườn quả cầu để tạo quỹ đạo xoáy cắm."
+          title: "Phông Cầu Bổng Sâu Đáy Sân",
+          subTitle: "Phát lực trọn vẹn đưa cầu cao vút về vạch cuối",
+          description: "Phông Cầu Bổng Sâu Đáy Sân",
+          coachingTip: "Phát lực trọn vẹn đưa cầu cao vút về vạch cuối"
         },
         footMovement: {
-          title: "Nhảy Đệm Lùi 2 Nhịp (Quick Rhythm Backward Step)",
-          subTitle: "Lùi 2 nhịp nhanh, dậm nhảy nhẹ bằng cả 2 chân",
-          description: "Tạo nhịp đà giả như chuẩn bị smash hết lực, làm hàng thủ đối phương co cụm lùi lại.",
-          coachingTip: "Giữ đầu thẳng và không cúi gập người khi chuẩn bị chạm bóng."
+          title: "Bộ pháp Ô 8",
+          subTitle: "Đổi chân trên không đưa chân phải lên trước",
+          description: "Bộ pháp Ô 8",
+          coachingTip: "Đổi chân trên không đưa chân phải lên trước"
         },
         combinedMovement: {
-          title: "Giả Smash Chặt Cầu Rơi Chữ T Hiểm Hóc",
-          subTitle: "Bật nhảy lấy đà + trượt mặt vợt chém nhanh + lao theo cầu",
-          description: "Khi đối thủ co cụm lùi về sau chờ smash, quả cầu rơi cắm ngay chữ T trước mặt khiến họ không thể cứu.",
-          coachingTip: "Động tác phối hợp này là chìa khóa mở toang hàng phòng ngự đối phương."
+          title: "Phông Cầu Bổng Sâu Đáy Sân",
+          subTitle: "Phát lực trọn vẹn đưa cầu cao vút về vạch cuối + Đổi chân trên không đưa chân phải lên trước",
+          description: "Phông Cầu Bổng Sâu Đáy Sân",
+          coachingTip: "Tập trung chuẩn xác động tác"
         }
       },
       {
-        id: "pos8_var3",
-        shotName: "Phông Cầu Tấn Công Lướt Nhanh (Attacking Punch Clear)",
-        shotType: "Phông cầu tấn công",
+        id: "pos_8_var_3",
+        shotName: "Chém Cầu Thẳng Rơi Lưới (Straight Drop)",
+        shotType: "Drop shot",
+        level: "Trung cấp",
+        videoUrl: "./videos/clips/pos_8_clip_3.mp4",
         handMovement: {
-          title: "Búng Cầu Nhanh Sát Trần Qua Đầu Đối Thủ",
-          subTitle: "Đánh cầu thẳng quỹ đạo phẳng nhanh, bay vọt qua tầm với nhảy đập",
-          description: "Không đánh bổng lên trần cao; đâm thẳng quả cầu bay nhanh với trần thấp ép đối phương phải chạy giật lùi.",
-          coachingTip: "Mặt vợt hơi ngửa, búng cổ tay cực mạnh đẩy quả cầu lao đi như mũi tên."
+          title: "Chém Cầu Thẳng Rơi Lưới (Straight Drop)",
+          subTitle: "Chém vuốt cạnh quả cầu cho rơi sát lưới thẳng",
+          description: "Chém Cầu Thẳng Rơi Lưới (Straight Drop)",
+          coachingTip: "Chém vuốt cạnh quả cầu cho rơi sát lưới thẳng"
         },
         footMovement: {
-          title: "Bật Lùi Dậm Trụ Chân Phải (Power Plant Rear Step)",
-          subTitle: "Dậm trụ chân phải cực chắc, búng toàn bộ thân người về trước",
-          description: "Lùi nhanh và đứng vững chãi, mượn phản lực từ mặt sàn để đẩy quả cầu bay nhanh gấp đôi.",
-          coachingTip: "Chân phải làm lò xo đẩy cả cơ thể lao ngược về trước ngay sau cú đánh."
+          title: "Bộ pháp Ô 8",
+          subTitle: "Hạ đà tiến lên đón cầu tiếp theo",
+          description: "Bộ pháp Ô 8",
+          coachingTip: "Hạ đà tiến lên đón cầu tiếp theo"
         },
         combinedMovement: {
-          title: "Búng Cầu Tấn Công Xuyên Thủng Hàng Thủ",
-          subTitle: "Dậm trụ chân phải + búng cẳng tay lia cầu nhanh + tràn lên lưới",
-          description: "Đưa đối phương vào thế bị với tay ra sau lưng, ngay lập tức tràn lên lưới dứt điểm pha cầu tiếp theo.",
-          coachingTip: "Cú punch clear bất ngờ luôn tạo ra cơ hội dứt điểm ở nhịp đánh kế tiếp."
+          title: "Chém Cầu Thẳng Rơi Lưới (Straight Drop)",
+          subTitle: "Chém vuốt cạnh quả cầu cho rơi sát lưới thẳng + Hạ đà tiến lên đón cầu tiếp theo",
+          description: "Chém Cầu Thẳng Rơi Lưới (Straight Drop)",
+          coachingTip: "Tập trung chuẩn xác động tác"
+        }
+      },
+      {
+        id: "pos_8_var_4",
+        shotName: "Đập Cầu Cắm Sàn Giữa Sân",
+        shotType: "Smash",
+        level: "Trung cấp",
+        videoUrl: "./videos/clips/pos_8_clip_4.mp4",
+        handMovement: {
+          title: "Đập Cầu Cắm Sàn Giữa Sân",
+          subTitle: "Phát lực cổ tay cắm thẳng vào khe giữa hai đối thủ",
+          description: "Đập Cầu Cắm Sàn Giữa Sân",
+          coachingTip: "Phát lực cổ tay cắm thẳng vào khe giữa hai đối thủ"
+        },
+        footMovement: {
+          title: "Bộ pháp Ô 8",
+          subTitle: "Chân sau bật đưa về phía trước",
+          description: "Bộ pháp Ô 8",
+          coachingTip: "Chân sau bật đưa về phía trước"
+        },
+        combinedMovement: {
+          title: "Đập Cầu Cắm Sàn Giữa Sân",
+          subTitle: "Phát lực cổ tay cắm thẳng vào khe giữa hai đối thủ + Chân sau bật đưa về phía trước",
+          description: "Đập Cầu Cắm Sàn Giữa Sân",
+          coachingTip: "Tập trung chuẩn xác động tác"
+        }
+      },
+      {
+        id: "pos_8_var_5",
+        shotName: "Giả Phông Đập Chém Cầu Lỏng Tay",
+        shotType: "Đánh lừa",
+        level: "Nâng cao",
+        videoUrl: "./videos/clips/pos_8_clip_5.mp4",
+        handMovement: {
+          title: "Giả Phông Đập Chém Cầu Lỏng Tay",
+          subTitle: "Đà vung cực mạnh nhưng giảm tốc chạm bóng nhẹ",
+          description: "Giả Phông Đập Chém Cầu Lỏng Tay",
+          coachingTip: "Đà vung cực mạnh nhưng giảm tốc chạm bóng nhẹ"
+        },
+        footMovement: {
+          title: "Bộ pháp Ô 8",
+          subTitle: "Trụ cơ thể ổn định trên không",
+          description: "Bộ pháp Ô 8",
+          coachingTip: "Trụ cơ thể ổn định trên không"
+        },
+        combinedMovement: {
+          title: "Giả Phông Đập Chém Cầu Lỏng Tay",
+          subTitle: "Đà vung cực mạnh nhưng giảm tốc chạm bóng nhẹ + Trụ cơ thể ổn định trên không",
+          description: "Giả Phông Đập Chém Cầu Lỏng Tay",
+          coachingTip: "Tập trung chuẩn xác động tác"
+        }
+      },
+      {
+        id: "pos_8_var_6",
+        shotName: "Bật Nhảy Hai Chân Đập Dứt Điểm",
+        shotType: "Jump smash",
+        level: "Nâng cao",
+        videoUrl: "./videos/clips/pos_8_clip_6.mp4",
+        handMovement: {
+          title: "Bật Nhảy Hai Chân Đập Dứt Điểm",
+          subTitle: "Treo người trên không smash cực đại",
+          description: "Bật Nhảy Hai Chân Đập Dứt Điểm",
+          coachingTip: "Treo người trên không smash cực đại"
+        },
+        footMovement: {
+          title: "Bộ pháp Ô 8",
+          subTitle: "Bật lò xo hai chân tiếp đất gối chùng",
+          description: "Bộ pháp Ô 8",
+          coachingTip: "Bật lò xo hai chân tiếp đất gối chùng"
+        },
+        combinedMovement: {
+          title: "Bật Nhảy Hai Chân Đập Dứt Điểm",
+          subTitle: "Treo người trên không smash cực đại + Bật lò xo hai chân tiếp đất gối chùng",
+          description: "Bật Nhảy Hai Chân Đập Dứt Điểm",
+          coachingTip: "Tập trung chuẩn xác động tác"
         }
       }
     ]
   },
-
   // ==========================================
   // Ô 9: CUỐI SÂN PHẢI (REAR RIGHT)
   // ==========================================
   {
     id: 9,
     name: "Cuối Sân Phải (Rear Right)",
-    zoneName: "CUỐI SÂN PHẢI",
+    zoneName: "ĐÁY PHẢI",
     row: 3,
     col: 3,
-    directionLabel: "Vị trí 9 - Góc cuối sân bên phải (Thuận tay)",
-    courtZone: 'rear',
-    courtSide: 'right',
+    directionLabel: "Vị trí 9 - Góc đáy cuối sân bên phải",
+    courtZone: "rear",
+    courtSide: "right",
+    level: "Cơ bản",
+    videoUrl: "./videos/clips/pos_9_clip_1.mp4",
     handMovement: {
-      title: "Đập Cầu Thuận Tay Uy Lực (Forehand Power Smash)",
-      subTitle: "Mở rộng vai ngực, vung vợt từ sau lưng ra trước với tốc độ tối đa",
-      description: "Cú đập cầu kết liễu từ góc thuận tay. Sử dụng chuỗi động tác: đạp chân -> xoay hông -> xoay vai -> quất cẳng tay -> gập cổ tay.",
-      coachingTip: "Thả lỏng cổ tay khi đưa vợt ra sau lưng; chỉ siết chặt ngón tay vào thời điểm tiếp xúc cầu 0.01s."
+      title: "Bộ Pháp Lùi Góc Thuận Tay",
+      subTitle: "Mở góc vai phải, đưa vợt ra sau gáy chuẩn bị",
+      description: "Bộ Pháp Lùi Góc Thuận Tay tại ĐÁY PHẢI",
+      coachingTip: "Mở góc vai phải, đưa vợt ra sau gáy chuẩn bị"
     },
     footMovement: {
-      title: "Bộ Chân Lùi Chéo Góc Phải (Forehand Rear Footwork)",
-      subTitle: "Xoay hông hướng 5h -> Bước chéo chân trái qua trước -> Dậm chân phải bật nhảy",
-      description: "Chạy lùi 3 bước nhịp nhàng về góc 5h, chân phải đặt sát vạch đáy làm trụ bật nhảy lên đón cầu.",
-      coachingTip: "Chân phải tiếp đất trước sau đó chuyển trọng tâm sang chân trái để lao nhanh về tâm sân."
+      title: "Bộ pháp Ô 9",
+      subTitle: "Bước đuổi lùi chéo về góc 4h",
+      description: "Di chuyển đến ĐÁY PHẢI",
+      coachingTip: "Bước đuổi lùi chéo về góc 4h"
     },
     combinedMovement: {
-      title: "Phối Hợp: Bật Nhảy Đập Cầu Thuận Tay Dọc Biên",
-      subTitle: "Lùi góc 5h + bật nhảy đổi chân + quất vợt cắm biên phải",
-      description: "Toàn bộ sức mạnh cơ thể được dồn vào điểm tiếp xúc cầu trên không trung, đưa quả cầu bay dốc cắm sát vạch biên.",
-      coachingTip: "Cú đập chuẩn xác phải có tiếng nổ đanh gọn và quỹ đạo cắm dốc qua mép lưới."
+      title: "Bộ Pháp Lùi Góc Thuận Tay",
+      subTitle: "Mở góc vai phải, đưa vợt ra sau gáy chuẩn bị + Bước đuổi lùi chéo về góc 4h",
+      description: "Bộ Pháp Lùi Góc Thuận Tay tại ĐÁY PHẢI",
+      coachingTip: "Phối hợp tay và chân nhịp nhàng"
     },
     variations: [
       {
-        id: "pos9_var1",
-        shotName: "Đập Cầu Sấm Sét Thuận Tay (Full Power Smash)",
-        shotType: "Đập cầu kết liễu",
+        id: "pos_9_var_1",
+        shotName: "Bộ Pháp Lùi Góc Thuận Tay",
+        shotType: "Bộ pháp",
+        level: "Cơ bản",
+        videoUrl: "./videos/clips/pos_9_clip_1.mp4",
         handMovement: {
-          title: "Đập Cầu Thuận Tay Sấm Sét Dọc Biên",
-          subTitle: "Mở rộng vai ngực, vung vợt từ sau lưng ra trước với tốc độ tối đa",
-          description: "Cú đập cầu kết liễu từ góc thuận tay. Sử dụng chuỗi động tác: đạp chân -> xoay hông -> xoay vai -> quất cẳng tay -> gập cổ tay.",
-          coachingTip: "Thả lỏng cổ tay khi đưa vợt ra sau lưng; chỉ siết chặt ngón tay vào thời điểm tiếp xúc cầu 0.01s."
+          title: "Bộ Pháp Lùi Góc Thuận Tay",
+          subTitle: "Mở góc vai phải, đưa vợt ra sau gáy chuẩn bị",
+          description: "Bộ Pháp Lùi Góc Thuận Tay",
+          coachingTip: "Mở góc vai phải, đưa vợt ra sau gáy chuẩn bị"
         },
         footMovement: {
-          title: "Bộ Chân Lùi Chéo Góc Phải (Forehand Rear Footwork)",
-          subTitle: "Xoay hông hướng 5h -> Bước chéo chân trái qua trước -> Dậm chân phải bật nhảy",
-          description: "Chạy lùi 3 bước nhịp nhàng về góc 5h, chân phải đặt sát vạch đáy làm trụ bật nhảy lên đón cầu.",
-          coachingTip: "Chân phải tiếp đất trước sau đó chuyển trọng tâm sang chân trái để lao nhanh về tâm sân."
+          title: "Bộ pháp Ô 9",
+          subTitle: "Bước đuổi lùi chéo về góc 4h",
+          description: "Bộ pháp Ô 9",
+          coachingTip: "Bước đuổi lùi chéo về góc 4h"
         },
         combinedMovement: {
-          title: "Lùi Góc 5h & Bật Nhảy Đập Cầu Cháy Sân",
-          subTitle: "Lùi góc 5h + bật nhảy đổi chân + quất vợt cắm biên phải",
-          description: "Toàn bộ sức mạnh cơ thể được dồn vào điểm tiếp xúc cầu trên không trung, đưa quả cầu bay dốc cắm sát vạch biên.",
-          coachingTip: "Cú đập chuẩn xác phải có tiếng nổ đanh gọn và quỹ đạo cắm dốc qua mép lưới."
+          title: "Bộ Pháp Lùi Góc Thuận Tay",
+          subTitle: "Mở góc vai phải, đưa vợt ra sau gáy chuẩn bị + Bước đuổi lùi chéo về góc 4h",
+          description: "Bộ Pháp Lùi Góc Thuận Tay",
+          coachingTip: "Tập trung chuẩn xác động tác"
         }
       },
       {
-        id: "pos9_var2",
-        shotName: "Chém Cầu Bỏ Nhỏ Chéo Sân (Cross-court Drop Shot)",
-        shotType: "Bỏ nhỏ chéo góc",
+        id: "pos_9_var_2",
+        shotName: "Phông Cầu Cao Sâu Thuận Tay",
+        shotType: "Phông cầu",
+        level: "Cơ bản",
+        videoUrl: "./videos/clips/pos_9_clip_2.mp4",
         handMovement: {
-          title: "Cắt Chéo Mặt Vợt Đưa Cầu Rơi Góc 1",
-          subTitle: "Lấy đà như đập cầu mạnh nhưng xoay nghiêng mặt vợt chém nhẹ",
-          description: "Đánh lừa đối phương tưởng đập cầu dọc biên, bất ngờ chém mặt vợt đưa cầu lượn chéo góc rơi sát lưới bên trái.",
-          coachingTip: "Góc vợt nghiêng 45°, miết nhẹ sườn quả cầu tạo độ xoáy cuộn rơi nhanh."
+          title: "Phông Cầu Cao Sâu Thuận Tay",
+          subTitle: "Vung hết biên độ phông cầu bổng sâu",
+          description: "Phông Cầu Cao Sâu Thuận Tay",
+          coachingTip: "Vung hết biên độ phông cầu bổng sâu"
         },
         footMovement: {
-          title: "Lùi Chassé Góc 5h Chủ Động (Smooth Rear Approach)",
-          subTitle: "Bước lùi êm ái, giữ thân trên không bị ngửa quá đà",
-          description: "Tạo tư thế thoải mái để cánh tay có thể điều khiển góc mặt vợt biến hóa khôn lường.",
-          coachingTip: "Chân trái bước đệm vững vàng giúp kiểm soát điểm rơi quả cầu."
+          title: "Bộ pháp Ô 9",
+          subTitle: "Đổi chân bật kéo thân người về tâm",
+          description: "Bộ pháp Ô 9",
+          coachingTip: "Đổi chân bật kéo thân người về tâm"
         },
         combinedMovement: {
-          title: "Giả Smash Chém Cầu Chéo Góc 1 Lưới Trái",
-          subTitle: "Lùi góc 5h + vung tay giả smash + miết chéo mặt vợt",
-          description: "Kéo giãn tối đa cự ly di chuyển của đối phương, đưa họ vào thế bị động hoàn toàn trên sân đấu.",
-          coachingTip: "Quả cầu phải rơi sát mép lưới đối diện, không để cầu bay quá bổng."
+          title: "Phông Cầu Cao Sâu Thuận Tay",
+          subTitle: "Vung hết biên độ phông cầu bổng sâu + Đổi chân bật kéo thân người về tâm",
+          description: "Phông Cầu Cao Sâu Thuận Tay",
+          coachingTip: "Tập trung chuẩn xác động tác"
         }
       },
       {
-        id: "pos9_var3",
-        shotName: "Phông Cầu Cao Sâu Chuẩn BWF (High Deep Clear)",
-        shotType: "Phông cầu phòng thủ BWF",
+        id: "pos_9_var_3",
+        shotName: "Chém Cầu Xiên Góc Thuận Tay (Cross Drop)",
+        shotType: "Drop shot",
+        level: "Trung cấp",
+        videoUrl: "./videos/clips/pos_9_clip_3.mp4",
         handMovement: {
-          title: "Phông Cầu Bổng Chạm Trần Sâu Sát Vạch Đáy",
-          subTitle: "Vung vợt hình cánh cung, đưa quả cầu bay vút lên trần nhà",
-          description: "Đẩy đối thủ lùi sát tường ở góc 7 bên kia, tạo ra khoảng thời gian nghỉ 3-4 giây cho bản thân nạp lại thể lực.",
-          coachingTip: "Điểm tiếp xúc cầu ngay phía trên đỉnh đầu, tay vươn thẳng hết biên độ."
+          title: "Chém Cầu Xiên Góc Thuận Tay (Cross Drop)",
+          subTitle: "Cắt chéo mặt vợt đưa cầu rơi sát mép lưới đối diện",
+          description: "Chém Cầu Xiên Góc Thuận Tay (Cross Drop)",
+          coachingTip: "Cắt chéo mặt vợt đưa cầu rơi sát mép lưới đối diện"
         },
         footMovement: {
-          title: "Lùi Sâu & Đạp Đà Lao Lên (Deep Corner & Forward Drive)",
-          subTitle: "Lùi sâu tới vạch đáy, dậm chân phải rồi đạp cơ thể vọt lên",
-          description: "Vung vợt xong tận dụng lực đẩy của chân phải để bước 2 bước dài về ngay tâm sân số 5.",
-          coachingTip: "Luôn giữ thăng bằng lúc vung vợt để không bị ngã ngửa ra phía sau."
+          title: "Bộ pháp Ô 9",
+          subTitle: "Tiếp đất bằng chân phải, bật tiến",
+          description: "Bộ pháp Ô 9",
+          coachingTip: "Tiếp đất bằng chân phải, bật tiến"
         },
         combinedMovement: {
-          title: "Phông Cầu Cao Sâu Góc 9 & Đảo Ngược Thế Trận",
-          subTitle: "Lùi góc 5h + vung vợt đẩy bổng + đạp đà lao về tâm sân",
-          description: "Đưa quả cầu rơi theo phương thẳng đứng sát vạch cuối sân khiến đối thủ không thể tấn công nguy hiểm.",
-          coachingTip: "Cú clear chuẩn BWF luôn đưa bóng chạm vạch đáy 2 lớp của sân cầu lông."
+          title: "Chém Cầu Xiên Góc Thuận Tay (Cross Drop)",
+          subTitle: "Cắt chéo mặt vợt đưa cầu rơi sát mép lưới đối diện + Tiếp đất bằng chân phải, bật tiến",
+          description: "Chém Cầu Xiên Góc Thuận Tay (Cross Drop)",
+          coachingTip: "Tập trung chuẩn xác động tác"
+        }
+      },
+      {
+        id: "pos_9_var_4",
+        shotName: "Đập Cầu Dọc Biên Thuận Tay",
+        shotType: "Smash dọc biên",
+        level: "Trung cấp",
+        videoUrl: "./videos/clips/pos_9_clip_4.mp4",
+        handMovement: {
+          title: "Đập Cầu Dọc Biên Thuận Tay",
+          subTitle: "Smash cắm sát vạch biên đơn",
+          description: "Đập Cầu Dọc Biên Thuận Tay",
+          coachingTip: "Smash cắm sát vạch biên đơn"
+        },
+        footMovement: {
+          title: "Bộ pháp Ô 9",
+          subTitle: "Dồn trọng tâm chân phải bật tiến dứt khoát",
+          description: "Bộ pháp Ô 9",
+          coachingTip: "Dồn trọng tâm chân phải bật tiến dứt khoát"
+        },
+        combinedMovement: {
+          title: "Đập Cầu Dọc Biên Thuận Tay",
+          subTitle: "Smash cắm sát vạch biên đơn + Dồn trọng tâm chân phải bật tiến dứt khoát",
+          description: "Đập Cầu Dọc Biên Thuận Tay",
+          coachingTip: "Tập trung chuẩn xác động tác"
+        }
+      },
+      {
+        id: "pos_9_var_5",
+        shotName: "Nhảy Đập Jump Smash Uy Lực",
+        shotType: "Jump smash",
+        level: "Nâng cao",
+        videoUrl: "./videos/clips/pos_9_clip_5.mp4",
+        handMovement: {
+          title: "Nhảy Đập Jump Smash Uy Lực",
+          subTitle: "Bật cao điểm tiếp xúc tối đa, smash sấm sét",
+          description: "Nhảy Đập Jump Smash Uy Lực",
+          coachingTip: "Bật cao điểm tiếp xúc tối đa, smash sấm sét"
+        },
+        footMovement: {
+          title: "Bộ pháp Ô 9",
+          subTitle: "Bật nhảy chân thuận xoay hông trên không",
+          description: "Bộ pháp Ô 9",
+          coachingTip: "Bật nhảy chân thuận xoay hông trên không"
+        },
+        combinedMovement: {
+          title: "Nhảy Đập Jump Smash Uy Lực",
+          subTitle: "Bật cao điểm tiếp xúc tối đa, smash sấm sét + Bật nhảy chân thuận xoay hông trên không",
+          description: "Nhảy Đập Jump Smash Uy Lực",
+          coachingTip: "Tập trung chuẩn xác động tác"
+        }
+      },
+      {
+        id: "pos_9_var_6",
+        shotName: "Chém Cầu Xoáy Giả Động Tác Đập",
+        shotType: "Đánh lừa",
+        level: "Nâng cao",
+        videoUrl: "./videos/clips/pos_9_clip_6.mp4",
+        handMovement: {
+          title: "Chém Cầu Xoáy Giả Động Tác Đập",
+          subTitle: "Giả vung smash nhưng miết cạnh vợt xoáy rơi sát lưới",
+          description: "Chém Cầu Xoáy Giả Động Tác Đập",
+          coachingTip: "Giả vung smash nhưng miết cạnh vợt xoáy rơi sát lưới"
+        },
+        footMovement: {
+          title: "Bộ pháp Ô 9",
+          subTitle: "Hãm đà trên không và lao lên bắt lưới",
+          description: "Bộ pháp Ô 9",
+          coachingTip: "Hãm đà trên không và lao lên bắt lưới"
+        },
+        combinedMovement: {
+          title: "Chém Cầu Xoáy Giả Động Tác Đập",
+          subTitle: "Giả vung smash nhưng miết cạnh vợt xoáy rơi sát lưới + Hãm đà trên không và lao lên bắt lưới",
+          description: "Chém Cầu Xoáy Giả Động Tác Đập",
+          coachingTip: "Tập trung chuẩn xác động tác"
         }
       }
     ]

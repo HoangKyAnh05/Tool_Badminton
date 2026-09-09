@@ -13,6 +13,8 @@ export type SessionState =
   | 'PAUSED' 
   | 'COMPLETE';
 
+export type SkillLevel = 'Cơ bản' | 'Trung cấp' | 'Nâng cao';
+
 export interface GridPosition {
   id: number; // 1 to 9
   name: string; // e.g. "Lưới Trái (Backhand Net)"
@@ -22,6 +24,8 @@ export interface GridPosition {
   directionLabel: string; // e.g. "Góc Lưới Trái (P1)"
   courtZone: 'front' | 'mid' | 'rear';
   courtSide: 'left' | 'center' | 'right';
+  level?: SkillLevel;
+  videoUrl?: string;
   
   // Visual & movement data
   handMovement: MovementDetail;
@@ -43,6 +47,8 @@ export interface MovementVariation {
   id: string;
   shotName: string;
   shotType: string;
+  level?: SkillLevel;
+  videoUrl?: string;
   handMovement: MovementDetail;
   footMovement: MovementDetail;
   combinedMovement: MovementDetail;

@@ -15,7 +15,8 @@ import {
   ShieldAlert,
   Award,
   Scan,
-  Tv
+  Tv,
+  ExternalLink
 } from 'lucide-react';
 
 interface VideoPlayerModalProps {
@@ -313,9 +314,22 @@ export const VideoPlayerModal: React.FC<VideoPlayerModalProps> = ({
             <p className="theater-subtitle">{video.subTitle}</p>
           </div>
 
-          <button className="theater-close-btn" onClick={onClose} title="Đóng">
-            <X size={22} />
-          </button>
+          <div className="theater-header-actions" style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+            <button 
+              className="btn-theater-open-direct"
+              onClick={() => {
+                window.open(video.videoUrl, '_blank');
+                handleCompleteVideo();
+              }}
+              title="Mở link video trực tiếp trên trình duyệt"
+            >
+              <ExternalLink size={15} />
+              <span>Mở Link Trực Tiếp ({video.videoUrl.includes('tiktok') ? '🎵 TikTok' : youtubeId ? '▶️ YouTube' : '🌐 Trình duyệt'})</span>
+            </button>
+            <button className="theater-close-btn" onClick={onClose} title="Đóng">
+              <X size={22} />
+            </button>
+          </div>
         </div>
 
         {/* Video Canvas Container */}
@@ -357,6 +371,24 @@ export const VideoPlayerModal: React.FC<VideoPlayerModalProps> = ({
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowFullScreen
               />
+            </div>
+          ) : video.videoUrl.includes('tiktok.com') ? (
+            <div className="theater-tiktok-wrapper">
+              <div className="theater-tiktok-card">
+                <div className="theater-tiktok-icon">🎵</div>
+                <h3 className="theater-tiktok-title">VIDEO KỸ THUẬT CẦU LÔNG TIKTOK</h3>
+                <p className="theater-tiktok-sub">{video.title}</p>
+                <button 
+                  className="btn-theater-tiktok-open"
+                  onClick={() => {
+                    window.open(video.videoUrl, '_blank');
+                    handleCompleteVideo();
+                  }}
+                >
+                  <ExternalLink size={18} />
+                  <span>BẤM ĐỂ MỞ XEM TRỰC TIẾP TRÊN TIKTOK</span>
+                </button>
+              </div>
             </div>
           ) : (
             <>

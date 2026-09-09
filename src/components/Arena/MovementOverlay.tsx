@@ -11,7 +11,8 @@ import {
   CheckCircle, 
   ArrowRight,
   Sparkles,
-  Layers
+  Layers,
+  ExternalLink
 } from 'lucide-react';
 
 interface MovementOverlayProps {
@@ -75,17 +76,27 @@ export const MovementOverlay: React.FC<MovementOverlayProps> = ({
     }
   }, [position.id, variationIndex, variationsList.length]);
 
+  const getYouTubeId = (url?: string): string | null => {
+    if (!url) return null;
+    const regExp = /(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=|shorts\/))([\w-]{11})/;
+    const match = url.match(regExp);
+    return match ? match[1] : null;
+  };
+
   const currentVar = variationsList[activeIdx] || variationsList[0];
   const currentVideoUrl = currentVar.videoUrl || `./videos/clips/pos_${position.id}_clip_${activeIdx + 1}.mp4`;
+  const youtubeId = getYouTubeId(currentVideoUrl);
+  const isTikTok = currentVideoUrl?.includes('tiktok.com');
+  const isExternal = currentVideoUrl?.startsWith('http://') || currentVideoUrl?.startsWith('https://');
 
   // Autoplay video when clip changes
   useEffect(() => {
-    if (videoRef.current) {
+    if (videoRef.current && !youtubeId && !isTikTok) {
       videoRef.current.load();
       videoRef.current.play().catch(() => {});
       setIsPlaying(true);
     }
-  }, [currentVideoUrl]);
+  }, [currentVideoUrl, youtubeId, isTikTok]);
 
   const togglePlay = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -174,40 +185,94 @@ export const MovementOverlay: React.FC<MovementOverlayProps> = ({
 
         {/* Center: Full-Focus Real Video Player (No wall of text) */}
         <div className="clean-video-arena" onClick={(e) => e.stopPropagation()}>
-          <div className="clean-video-container" onClick={togglePlay}>
-            <video
-              ref={videoRef}
-              src={currentVideoUrl}
-              autoPlay
-              loop
-              muted={isMuted}
-              playsInline
-              className="clean-video-player"
-            />
+          {/* Direct Link Open Button */}
+          <div className="clean-link-action-bar">
+            <button 
+              className="clean-open-direct-btn"
+              onClick={(e) => {
+                e.stopPropagation();
+                if (currentVideoUrl) window.open(currentVideoUrl, '_blank');
+              }}
+              title="Bấm mở link trực tiếp trên trình duyệt"
+            >
+              <ExternalLink size={16} />
+              <span>MỞ LINK XEM TRỰC TIẾP ({isTikTok ? '🎵 TikTok' : youtubeId ? '▶️ YouTube' : '🌐 Trình duyệt'})</span>
+            </button>
+          </div>
 
-            {!isPlaying && (
-              <div className="clean-video-pause-overlay">
-                <Play size={44} className="pause-icon" />
+          <div 
+            className="clean-video-container" 
+            onClick={(e) => {
+              if (isExternal && !youtubeId) {
+                e.stopPropagation();
+                window.open(currentVideoUrl, '_blank');
+              } else if (!youtubeId) {
+                togglePlay(e);
+              }
+            }}
+          >
+            {youtubeId ? (
+              <iframe
+                src={`https://www.youtube-nocookie.com/embed/${youtubeId}?autoplay=1&mute=1&loop=1&playlist=${youtubeId}&controls=1`}
+                title={currentVar.shotName}
+                className="clean-youtube-iframe"
+                style={{ width: '100%', height: '100%', minHeight: '340px', border: 'none', borderRadius: '12px' }}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            ) : isTikTok ? (
+              <div 
+                className="clean-tiktok-card"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  window.open(currentVideoUrl, '_blank');
+                }}
+              >
+                <div className="tiktok-card-icon">🎵</div>
+                <h3 className="tiktok-card-title">VIDEO KỸ THUẬT CẦU LÔNG TIKTOK</h3>
+                <p className="tiktok-card-sub">{currentVar.shotName}</p>
+                <button className="tiktok-card-btn">
+                  <ExternalLink size={16} />
+                  <span>BẤM ĐỂ MỞ XEM TRỰC TIẾP TRÊN TIKTOK</span>
+                </button>
               </div>
-            )}
+            ) : (
+              <>
+                <video
+                  ref={videoRef}
+                  src={currentVideoUrl}
+                  autoPlay
+                  loop
+                  muted={isMuted}
+                  playsInline
+                  className="clean-video-player"
+                />
 
-            {/* Compact Floating Video Controls */}
-            <div className="clean-video-actions">
-              <button 
-                className="clean-vid-btn" 
-                onClick={togglePlay}
-                title={isPlaying ? 'Tạm dừng video' : 'Phát tiếp'}
-              >
-                {isPlaying ? <Pause size={16} /> : <Play size={16} />}
-              </button>
-              <button 
-                className="clean-vid-btn" 
-                onClick={toggleMute}
-                title={isMuted ? 'Bật âm thanh' : 'Tắt âm'}
-              >
-                {isMuted ? <VolumeX size={16} /> : <Volume2 size={16} />}
-              </button>
-            </div>
+                {!isPlaying && (
+                  <div className="clean-video-pause-overlay">
+                    <Play size={44} className="pause-icon" />
+                  </div>
+                )}
+
+                {/* Compact Floating Video Controls */}
+                <div className="clean-video-actions">
+                  <button 
+                    className="clean-vid-btn" 
+                    onClick={togglePlay}
+                    title={isPlaying ? 'Tạm dừng video' : 'Phát tiếp'}
+                  >
+                    {isPlaying ? <Pause size={16} /> : <Play size={16} />}
+                  </button>
+                  <button 
+                    className="clean-vid-btn" 
+                    onClick={toggleMute}
+                    title={isMuted ? 'Bật âm thanh' : 'Tắt âm'}
+                  >
+                    {isMuted ? <VolumeX size={16} /> : <Volume2 size={16} />}
+                  </button>
+                </div>
+              </>
+            )}
           </div>
 
           {/* Quick Technique Variation Selector (5-7 videos per position categorized by level) */}

@@ -6,20 +6,22 @@ import { VideoPlayerModal } from './VideoPlayerModal';
 import { EditYouTubeLinkModal, extractYouTubeId } from './EditYouTubeLinkModal';
 import { YouTubeGuideModal } from './YouTubeGuideModal';
 import { BatchImportExportModal } from './BatchImportExportModal';
+import { VideoAssignmentHubModal } from '../VideoHub/VideoAssignmentHubModal';
 import { 
   Tv, 
   Play, 
   CheckCircle2, 
   Plus, 
   Trash2, 
-  MapPin,
-  Search,
-  Layers,
-  Award,
-  HelpCircle,
-  FileJson,
-  Edit3,
-  Sparkles
+  MapPin, 
+  Search, 
+  Layers, 
+  Award, 
+  HelpCircle, 
+  FileJson, 
+  Edit3, 
+  Sparkles,
+  FolderSync
 } from 'lucide-react';
 import { Youtube } from './YoutubeIcon';
 
@@ -66,6 +68,7 @@ export const VideoSection: React.FC<VideoSectionProps> = ({ initialLevel }) => {
   const [editingVideo, setEditingVideo] = useState<TacticsVideo | null>(null);
   const [isGuideModalOpen, setIsGuideModalOpen] = useState<boolean>(false);
   const [isBatchModalOpen, setIsBatchModalOpen] = useState<boolean>(false);
+  const [isHubModalOpen, setIsHubModalOpen] = useState<boolean>(false);
 
   // New video form states
   const [newUrl, setNewUrl] = useState<string>('');
@@ -258,12 +261,21 @@ export const VideoSection: React.FC<VideoSectionProps> = ({ initialLevel }) => {
       <div className="youtube-management-bar">
         <div className="yt-mgmt-left">
           <button 
+            className="btn-yt-toolbar btn-videohub-direct"
+            onClick={() => setIsHubModalOpen(true)}
+            title="Mở bảng điều khiển gom tất cả vị trí và đẩy link YouTube vào"
+          >
+            <FolderSync size={15} className="text-cyan" />
+            <span>Trung Tâm Đẩy Video Vào Vị Trí</span>
+          </button>
+
+          <button 
             className="btn-yt-toolbar btn-guide-link"
             onClick={() => setIsGuideModalOpen(true)}
             title="Xem hướng dẫn cách tải video lên YouTube Unlisted"
           >
             <HelpCircle size={15} className="text-cyan" />
-            <span>Cách Up Video YouTube Unlisted (3 bước)</span>
+            <span>Cách Up Video YouTube (3 bước)</span>
           </button>
 
           <button 
@@ -607,6 +619,16 @@ export const VideoSection: React.FC<VideoSectionProps> = ({ initialLevel }) => {
         isOpen={isBatchModalOpen}
         onClose={() => setIsBatchModalOpen(false)}
         onDataChanged={() => {
+          refreshOverrides();
+          refreshCustomVideos();
+        }}
+      />
+
+      {/* Video Assignment Hub Modal */}
+      <VideoAssignmentHubModal
+        isOpen={isHubModalOpen}
+        onClose={() => {
+          setIsHubModalOpen(false);
           refreshOverrides();
           refreshCustomVideos();
         }}

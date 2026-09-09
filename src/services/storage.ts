@@ -327,17 +327,18 @@ export const storageService = {
     }, null, 2);
   },
 
-  importVideoOverrides(jsonString: string): { success: boolean; count: number; error?: string } {
+  importVideoOverrides(jsonString: string | object): { success: boolean; count: number; error?: string } {
     try {
-      const data = JSON.parse(jsonString);
+      const data = typeof jsonString === 'string' ? JSON.parse(jsonString) : jsonString;
       let count = 0;
-      if (data.overrides && typeof data.overrides === 'object') {
+      const targetOverrides = (data && data.overrides && typeof data.overrides === 'object') ? data.overrides : data;
+      if (targetOverrides && typeof targetOverrides === 'object') {
         const current = this.loadVideoOverrides();
-        Object.assign(current, data.overrides);
+        Object.assign(current, targetOverrides);
         localStorage.setItem('badminton_video_overrides_v1', JSON.stringify(current));
-        count += Object.keys(data.overrides).length;
+        count += Object.keys(targetOverrides).length;
       }
-      if (Array.isArray(data.customVideos)) {
+      if (Array.isArray(data?.customVideos)) {
         const existing = this.loadCustomVideos();
         data.customVideos.forEach((cv: TacticsVideo) => {
           if (!existing.some(x => x.id === cv.id)) {

@@ -3,6 +3,7 @@ import { BADMINTON_POSITIONS } from '../../data/movements';
 import { TACTICS_VIDEOS } from '../../data/videos';
 import { TacticsVideo, SkillLevel, VideoCategory } from '../../types';
 import { storageService } from '../../services/storage';
+import DEFAULT_OVERRIDES from '../../data/defaultOverrides.json';
 import { extractYouTubeId, extractTikTokId, isTikTokUrl } from '../Video/EditYouTubeLinkModal';
 import { YouTubeGuideModal } from '../Video/YouTubeGuideModal';
 import { BatchImportExportModal } from '../Video/BatchImportExportModal';
@@ -292,6 +293,15 @@ export const VideoAssignmentHubModal: React.FC<VideoAssignmentHubModalProps> = (
     });
   };
 
+  // Handle 1-click Auto-Fill All 130 TikTok Videos with titles matching badminton techniques
+  const handleAutoFillAllTikTok = () => {
+    if (window.confirm('Tự động điền tất cả 130 video TikTok chuẩn kỹ thuật cầu lông cho toàn bộ các ô và kỹ thuật?')) {
+      storageService.importVideoOverrides(DEFAULT_OVERRIDES);
+      refreshOverrides();
+      setStatusFilter('CONFIGURED');
+    }
+  };
+
   if (!isOpen) return null;
 
   return (
@@ -305,15 +315,31 @@ export const VideoAssignmentHubModal: React.FC<VideoAssignmentHubModalProps> = (
                 <FolderSync size={24} className="text-cyan" />
               </div>
               <div>
-                <h2 className="hub-title">TRUNG TÂM ĐẨY VIDEO VÀO VỊ TRÍ</h2>
-                <p className="hub-subtitle">
-                  Gom tất cả {totalSlots} vị trí ô sân & kỹ thuật vào một nơi. Bạn chỉ cần dán link YouTube tại đây là ra ngoài chỗ nào cũng tự động có video chuẩn!
+                <h2 className="hub-main-title">Trung Tâm Gán Video Tự Động & Thủ Công</h2>
+                <p className="hub-sub-title">
+                  Gom tất cả {totalSlots} vị trí ô sân & kỹ thuật vào một nơi. Bạn chỉ cần dán link tại đây là ra ngoài chỗ nào cũng tự động có video chuẩn!
                 </p>
               </div>
             </div>
           </div>
 
           <div className="hub-header-actions">
+            <button 
+              className="btn-hub-tool btn-autofill-tiktok"
+              onClick={handleAutoFillAllTikTok}
+              title="Tự động nạp 130 video TikTok cầu lông đã được khớp sẵn theo từng tiêu đề động tác"
+              style={{
+                background: 'linear-gradient(135deg, #00f2fe 0%, #4facfe 100%)',
+                color: '#000',
+                fontWeight: 800,
+                border: 'none',
+                boxShadow: '0 4px 14px rgba(0,242,254,0.35)'
+              }}
+            >
+              <Sparkles size={15} />
+              <span>Nạp 130 Video TikTok (1 Chạm)</span>
+            </button>
+
             <button 
               className="btn-hub-tool btn-guide-link"
               onClick={() => setIsGuideOpen(true)}

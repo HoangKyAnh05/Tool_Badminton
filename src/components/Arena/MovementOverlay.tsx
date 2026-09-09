@@ -68,7 +68,8 @@ export const MovementOverlay: React.FC<MovementOverlayProps> = ({
   const [videoOverrides, setVideoOverrides] = useState<Record<string, any>>(() => storageService.loadVideoOverrides());
   const [isEditingModalOpen, setIsEditingModalOpen] = useState<boolean>(false);
   const [localBlobUrl, setLocalBlobUrl] = useState<string | null>(null);
-  const [isFitCover, setIsFitCover] = useState<boolean>(false);
+  type ZoomMode = 'cover' | 'zoom140' | 'zoom180' | 'contain';
+  const [zoomMode, setZoomMode] = useState<ZoomMode>('cover');
   const [videoFallback, setVideoFallback] = useState<string | null>(null);
 
   // All 10 variations for this position
@@ -95,7 +96,7 @@ export const MovementOverlay: React.FC<MovementOverlayProps> = ({
   });
 
   const [isPlaying, setIsPlaying] = useState<boolean>(true);
-  const [isMuted, setIsMuted] = useState<boolean>(true);
+  const [isMuted, setIsMuted] = useState<boolean>(false);
   const videoRef = useRef<HTMLVideoElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -169,24 +170,32 @@ export const MovementOverlay: React.FC<MovementOverlayProps> = ({
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isEditingModalOpen, handlePrevVariation, handleNextVariation]);
 
-  // Autoplay video when clip changes
+  // Autoplay video with sound when clip changes
   useEffect(() => {
     if (!ytId && videoRef.current) {
-      videoRef.current.muted = true;
-      videoRef.current.defaultMuted = true;
+      videoRef.current.muted = isMuted;
+      videoRef.current.defaultMuted = isMuted;
+      videoRef.current.volume = 1.0;
       const playPromise = videoRef.current.play();
       if (playPromise !== undefined) {
         playPromise
           .then(() => setIsPlaying(true))
-          .catch(() => setIsPlaying(false));
+          .catch(() => {
+            // If browser blocked unmuted autoplay, retry muted
+            if (videoRef.current) {
+              videoRef.current.muted = true;
+              videoRef.current.play().then(() => setIsPlaying(true)).catch(() => setIsPlaying(false));
+            }
+          });
       }
     }
-  }, [currentVideoUrl, ytId, activeIdx]);
+  }, [currentVideoUrl, ytId, activeIdx, isMuted]);
 
   const togglePlay = (e: React.MouseEvent) => {
     e.stopPropagation();
     if (!videoRef.current) return;
     if (videoRef.current.paused) {
+      videoRef.current.muted = isMuted;
       videoRef.current.play().then(() => setIsPlaying(true)).catch(() => {});
     } else {
       videoRef.current.pause();
@@ -197,8 +206,22 @@ export const MovementOverlay: React.FC<MovementOverlayProps> = ({
   const toggleMute = (e: React.MouseEvent) => {
     e.stopPropagation();
     if (!videoRef.current) return;
-    videoRef.current.muted = !videoRef.current.muted;
-    setIsMuted(videoRef.current.muted);
+    const nextMuted = !isMuted;
+    videoRef.current.muted = nextMuted;
+    videoRef.current.volume = 1.0;
+    setIsMuted(nextMuted);
+    if (!nextMuted && videoRef.current.paused) {
+      videoRef.current.play().catch(() => {});
+    }
+  };
+
+  const cycleZoom = () => {
+    setZoomMode((prev) => {
+      if (prev === 'cover') return 'zoom140';
+      if (prev === 'zoom140') return 'zoom180';
+      if (prev === 'zoom180') return 'contain';
+      return 'cover';
+    });
   };
 
   const handleVideoError = () => {
@@ -473,7 +496,7 @@ export const MovementOverlay: React.FC<MovementOverlayProps> = ({
                   muted={isMuted}
                   playsInline
                   preload="auto"
-                  className={`clean-video-player ${isFitCover ? 'fit-cover' : ''}`}
+                  className={`clean-video-player fit-${zoomMode}`}
                   onClick={togglePlay}
                   onPlay={() => setIsPlaying(true)}
                   onPause={() => setIsPlaying(false)}
@@ -497,21 +520,24 @@ export const MovementOverlay: React.FC<MovementOverlayProps> = ({
                     {isPlaying ? <Pause size={16} /> : <Play size={16} />}
                   </button>
                   <button 
-                    className="clean-vid-btn" 
+                    className={`clean-vid-btn ${!isMuted ? 'active-cyan' : ''}`} 
                     onClick={toggleMute}
-                    title={isMuted ? 'Bật âm thanh' : 'Tắt âm'}
+                    title={isMuted ? 'Bật âm thanh (Đang tắt tiếng)' : 'Tắt âm thanh (Đang bật tiếng)'}
+                    style={{ color: !isMuted ? '#00f2fe' : '#ffffff' }}
                   >
                     {isMuted ? <VolumeX size={16} /> : <Volume2 size={16} />}
                   </button>
                   <button 
-                    className={`clean-vid-btn ${isFitCover ? 'active-cyan' : ''}`}
+                    className="clean-vid-btn active-cyan"
                     onClick={(e) => {
                       e.stopPropagation();
-                      setIsFitCover(!isFitCover);
+                      cycleZoom();
                     }}
-                    title={isFitCover ? 'Chế độ: Vừa khung hình (Fit)' : 'Chế độ: Phóng to đầy màn (Cover)'}
+                    title={`Chế độ thu phóng: ${zoomMode === 'cover' ? 'Phóng to đầy màn (Mặc định)' : zoomMode === 'zoom140' ? 'Phóng to 1.4x (Cắt viền đen)' : zoomMode === 'zoom180' ? 'Cận cảnh 1.8x' : 'Vừa khung (Fit)'} - Click để chuyển`}
+                    style={{ minWidth: '58px', width: 'auto', padding: '0 8px', gap: '4px', fontSize: '11px', fontWeight: 800 }}
                   >
-                    <Scan size={15} />
+                    <Scan size={14} />
+                    <span>{zoomMode === 'cover' ? 'Full' : zoomMode === 'zoom140' ? '1.4x' : zoomMode === 'zoom180' ? '1.8x' : 'Fit'}</span>
                   </button>
                   <button 
                     className="clean-vid-btn" 

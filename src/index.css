@@ -6802,10 +6802,29 @@ button {
   height: 100%;
   object-fit: contain;
   background: #000;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .clean-video-player.fit-cover {
   object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.clean-video-player.fit-zoom140 {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  transform: scale(1.4);
+  transform-origin: center center;
+}
+
+.clean-video-player.fit-zoom180 {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  transform: scale(1.85);
+  transform-origin: center center;
 }
 
 .clean-video-pause-overlay {

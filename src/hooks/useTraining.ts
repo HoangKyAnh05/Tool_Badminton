@@ -26,7 +26,8 @@ export function useTraining() {
     playGoSound, 
     playCorrect, 
     playIncorrect, 
-    playComplete 
+    playComplete,
+    speakVoiceCoach
   } = useSound(config.soundEnabled);
 
   // Refs for animation & precise timing loops
@@ -110,10 +111,22 @@ export function useTraining() {
       ? Number(Math.min(...physicalTimes).toFixed(2))
       : 0;
 
-    let accuracy = 100;
-    if (theoryTotalCount > 0) {
-      accuracy = Math.round((theoryCorrectCount / theoryTotalCount) * 100);
-    }
+    const accuracy = theoryTotalCount > 0 
+      ? Math.round((theoryCorrectCount / theoryTotalCount) * 100) 
+      : 100;
+
+    const zoneStats: Record<number, { count: number; totalTime: number; avgTime: number }> = {};
+    history.forEach(r => {
+      if (r.position && r.responseTime && r.responseTime > 0) {
+        const pId = r.position.id;
+        if (!zoneStats[pId]) {
+          zoneStats[pId] = { count: 0, totalTime: 0, avgTime: 0 };
+        }
+        zoneStats[pId].count += 1;
+        zoneStats[pId].totalTime += r.responseTime;
+        zoneStats[pId].avgTime = Number((zoneStats[pId].totalTime / zoneStats[pId].count).toFixed(2));
+      }
+    });
 
     const sessionStats: TrainingResultStats = {
       id: 'session_' + Date.now(),
@@ -133,7 +146,8 @@ export function useTraining() {
       modeBreakdown,
       theoryCorrectCount,
       theoryTotalCount,
-      historyRounds: history
+      historyRounds: history,
+      zoneStats
     };
 
     setResults(sessionStats);
@@ -141,6 +155,9 @@ export function useTraining() {
 
     // Audio & Confetti celebration
     playComplete();
+    if (configRef.current.voiceCoachEnabled) {
+      speakVoiceCoach('Hoàn thành xuất sắc bài tập!', true);
+    }
     try {
       confetti({
         particleCount: 120,
@@ -150,7 +167,7 @@ export function useTraining() {
     } catch {
       // Ignore if canvas blocked
     }
-  }, [playComplete]);
+  }, [playComplete, speakVoiceCoach]);
 
   // Start next round or end
   const startNextRoundOrFinish = useCallback(() => {
@@ -340,11 +357,17 @@ export function useTraining() {
       return;
     }
 
-    // Physical round: pick position first so player sees target position on 9-grid!
-    const pos = randomizer.getNextPosition();
+    // Physical round: pick position first according to targetZones
+    const pos = randomizer.getNextPosition(undefined, configRef.current.targetZones);
     const variations = pos.variations && pos.variations.length > 0 ? pos.variations : [];
     const varIdx = variations.length > 0 ? Math.floor(Math.random() * variations.length) : 0;
     const chosenVar = variations.length > 0 ? variations[varIdx] : undefined;
+
+    // Voice coach prompt
+    if (configRef.current.voiceCoachEnabled) {
+      const shotLabel = chosenVar?.shotName || pos.name;
+      speakVoiceCoach(`Ô ${pos.id}. ${pos.zoneName}. ${shotLabel}`, true);
+    }
 
     const now = performance.now();
     const roundData: ActiveRoundData = {

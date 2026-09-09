@@ -331,7 +331,7 @@ export const HomeDashboard: React.FC<HomeDashboardProps> = ({
       </div>
 
       {/* Video Course Section for Doubles Tactics */}
-      <VideoSection />
+      <VideoSection initialLevel={expLevel === 'BEGINNER' ? 'Cơ bản' : 'ALL'} />
 
       {/* 9-Zone Court Concept Info Box */}
       <div className="court-explainer-banner">

@@ -18,22 +18,27 @@ export class BadmintonRandomizer {
   }
 
   /**
-   * Selects a random grid position (1-9) while avoiding immediately repeated positions
+   * Selects a random grid position (1-9) matching targetZones while avoiding repeats
    */
-  public getNextPosition(excludeId?: number): GridPosition {
-    const pool = BADMINTON_POSITIONS.filter(p => {
-      // Exclude passed ID
-      if (excludeId !== undefined && p.id === excludeId) return false;
-      // Exclude recently picked positions if pool allows
+  public getNextPosition(excludeId?: number, targetZones?: number[]): GridPosition {
+    const validPositions = (targetZones && targetZones.length > 0)
+      ? BADMINTON_POSITIONS.filter(p => targetZones.includes(p.id))
+      : BADMINTON_POSITIONS;
+
+    const basePositions = validPositions.length > 0 ? validPositions : BADMINTON_POSITIONS;
+
+    const pool = basePositions.filter(p => {
+      if (basePositions.length > 1 && excludeId !== undefined && p.id === excludeId) return false;
       return !this.recentPositionIds.includes(p.id);
     });
 
-    const candidates = pool.length > 0 ? pool : BADMINTON_POSITIONS.filter(p => p.id !== excludeId);
-    const selected = candidates[Math.floor(Math.random() * candidates.length)];
+    const candidates = pool.length > 0 ? pool : basePositions.filter(p => basePositions.length <= 1 || p.id !== excludeId);
+    const finalCandidates = candidates.length > 0 ? candidates : basePositions;
+    const selected = finalCandidates[Math.floor(Math.random() * finalCandidates.length)];
 
     // Update recent history
     this.recentPositionIds.push(selected.id);
-    if (this.recentPositionIds.length > this.maxPositionHistory) {
+    if (this.recentPositionIds.length > Math.min(this.maxPositionHistory, Math.max(1, basePositions.length - 1))) {
       this.recentPositionIds.shift();
     }
 

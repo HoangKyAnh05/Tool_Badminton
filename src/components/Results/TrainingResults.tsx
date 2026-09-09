@@ -10,13 +10,17 @@ import {
   Clock, 
   Target, 
   Award,
-  BookOpen,
-  Calendar,
-  Flame,
-  Play,
-  ListOrdered,
-  CheckCircle2,
-  Camera
+  BookOpen, 
+  Calendar, 
+  Flame, 
+  Play, 
+  ListOrdered, 
+  CheckCircle2, 
+  Camera,
+  MapPin,
+  AlertTriangle,
+  TrendingUp,
+  Sparkles
 } from 'lucide-react';
 import { storageService, DailyChallengeProgress } from '../../services/storage';
 import { DAILY_PLAN_100, DailyWorkout } from '../../data/dailyPlan100';
@@ -47,9 +51,6 @@ export const TrainingResults: React.FC<TrainingResultsProps> = ({
   const isTodayCompleted = dailyProgress.completedDays.includes(todayWorkout.day);
 
   // Homework for the next day
-  const nextDayNumber = isTodayCompleted 
-    ? Math.min(100, todayWorkout.day + 1)
-    : Math.min(100, todayWorkout.day);
   const homeworkWorkout = DAILY_PLAN_100.find(w => w.day === (isTodayCompleted ? Math.min(100, todayWorkout.day + 1) : todayWorkout.day + 1)) || DAILY_PLAN_100[Math.min(99, todayWorkout.day)];
 
   const handleCompleteCurrentDay = () => {
@@ -58,6 +59,15 @@ export const TrainingResults: React.FC<TrainingResultsProps> = ({
   };
 
   const percent = Math.round((dailyProgress.completedDays.length / 100) * 100);
+
+  // Weakness Analysis
+  const zoneStats = stats.zoneStats || {};
+  const activeZoneEntries = Object.entries(zoneStats)
+    .map(([id, st]) => ({ id: Number(id), ...st }))
+    .sort((a, b) => b.avgTime - a.avgTime); // slowest first
+
+  const slowestZone = activeZoneEntries.length > 0 ? activeZoneEntries[0] : null;
+  const fastestZone = activeZoneEntries.length > 0 ? activeZoneEntries[activeZoneEntries.length - 1] : null;
 
   return (
     <div className="results-container animate-fade-in">
@@ -148,6 +158,96 @@ export const TrainingResults: React.FC<TrainingResultsProps> = ({
             </div>
           </div>
         </div>
+
+        {/* ==========================================================================
+            WEAKNESS ANALYSIS REPORT & 3x3 COURT HEATMAP
+            ========================================================================== */}
+        {activeZoneEntries.length > 0 && (
+          <div className="weakness-analysis-card animate-fade-in">
+            <div className="weakness-card-header">
+              <div className="flex-center-gap">
+                <Target size={20} className="text-cyan" />
+                <h3>BÁO CÁO PHÂN TÍCH ĐIỂM YẾU & TỐC ĐỘ 9 Ô SÂN</h3>
+              </div>
+              <span className="weakness-badge">HLV AI Đánh Giá</span>
+            </div>
+
+            <div className="weakness-content-grid">
+              {/* Left: 3x3 Heatmap */}
+              <div className="court-heatmap-wrapper">
+                <div className="heatmap-label">Bản đồ nhiệt phản xạ theo từng góc sân (ms):</div>
+                <div className="results-heatmap-grid">
+                  {[
+                    { id: 1, name: 'Lưới Trái' },
+                    { id: 2, name: 'Lưới Giữa' },
+                    { id: 3, name: 'Lưới Phải' },
+                    { id: 4, name: 'TT Trái' },
+                    { id: 5, name: 'Tâm Sân' },
+                    { id: 6, name: 'TT Phải' },
+                    { id: 7, name: 'Đáy Trái' },
+                    { id: 8, name: 'Đáy Giữa' },
+                    { id: 9, name: 'Đáy Phải' }
+                  ].map(pos => {
+                    const st = zoneStats[pos.id];
+                    const isSlowest = slowestZone && slowestZone.id === pos.id && activeZoneEntries.length > 1;
+                    const isFastest = fastestZone && fastestZone.id === pos.id && activeZoneEntries.length > 1;
+                    return (
+                      <div 
+                        key={pos.id} 
+                        className={`heatmap-cell ${isSlowest ? 'is-weakness' : isFastest ? 'is-strength' : st ? 'is-trained' : 'is-empty'}`}
+                      >
+                        <div className="heat-cell-top">
+                          <span className="heat-cell-id">{pos.id}</span>
+                          <span className="heat-cell-name">{pos.name}</span>
+                        </div>
+                        {st ? (
+                          <div className="heat-cell-time">{st.avgTime}s</div>
+                        ) : (
+                          <div className="heat-cell-time text-muted">--</div>
+                        )}
+                        {isSlowest && <span className="heat-tag-weak">⚠️ Chậm nhất</span>}
+                        {isFastest && <span className="heat-tag-strong">⚡ Nhanh nhất</span>}
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* Right: AI Coaching Advice */}
+              <div className="weakness-advice-box">
+                {slowestZone && activeZoneEntries.length > 1 ? (
+                  <div className="advice-inner-wrap">
+                    <div className="advice-header-row text-danger">
+                      <AlertTriangle size={18} />
+                      <strong>CẢNH BÁO ĐIỂM YẾU: Ô SỐ {slowestZone.id}</strong>
+                    </div>
+                    <p className="advice-text">
+                      Tốc độ phản xạ tại <strong>Ô {slowestZone.id}</strong> trung bình là <strong>{slowestZone.avgTime}s</strong> (chậm hơn {fastestZone ? Math.round(((slowestZone.avgTime - fastestZone.avgTime) / fastestZone.avgTime) * 100) : 30}% so với góc tốt nhất của bạn).
+                    </p>
+                    <div className="advice-tip-box">
+                      💡 <strong>Lời khuyên từ Huấn Luyện Viên:</strong> 
+                      {slowestZone.id === 7 ? (
+                        <span> Bạn bị chậm ở góc Ve trái tay cuối sân. Hãy vào phần <strong>Cấu hình</strong>, chọn <strong>Vùng sân tập trung: Chỉ Ô 7</strong> và luyện thêm 15 lượt bước lùi chéo chân.</span>
+                      ) : slowestZone.id <= 3 ? (
+                        <span> Bạn tiếp cận lưới chưa đủ nhanh. Hãy chuẩn bị sẵn mặt vợt trước ngực và bật split-step sớm hơn nửa nhịp.</span>
+                      ) : (
+                        <span> Hãy tập trung trọng tâm thấp ở giữa sân để bật lùi đón cầu góc này nhanh hơn.</span>
+                      )}
+                    </div>
+                  </div>
+                ) : (
+                  <div className="advice-good-box">
+                    <CheckCircle2 size={32} className="text-emerald" />
+                    <div>
+                      <strong>Tốc độ phản xạ rất đồng đều!</strong>
+                      <p>Bạn duy trì phản xạ tốt và cân bằng ở tất cả các vị trí góc sân trong hiệp này.</p>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* ==========================================================================
             HOMEWORK ASSIGNMENT / GIAO BÀI TẬP VỀ NHÀ (THỬ THÁCH 100 NGÀY)

@@ -15,6 +15,8 @@ export const DEFAULT_CONFIG: TrainingConfig = {
   prepDuration: 6,
   restDuration: 1.5,
   soundEnabled: true,
+  voiceCoachEnabled: true,
+  targetZones: [1, 2, 3, 4, 5, 6, 7, 8, 9],
   cameraEnabled: false
 };
 

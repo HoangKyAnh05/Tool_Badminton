@@ -156,12 +156,30 @@ export function useSound(enabled: boolean = true) {
       // Ignore
     }
   }, [enabled, getAudioContext]);
+  // Vietnamese Voice Coaching (Web Speech API)
+  const speakVoiceCoach = useCallback((text: string, voiceEnabled: boolean = true) => {
+    if (!enabled || !voiceEnabled) return;
+    try {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = 'vi-VN';
+        utterance.rate = 1.2;
+        utterance.pitch = 1.0;
+        utterance.volume = 1.0;
+        window.speechSynthesis.speak(utterance);
+      }
+    } catch {
+      // Ignore speech synthesis errors
+    }
+  }, [enabled]);
 
   return {
     playCountdownBeep,
     playGoSound,
     playCorrect,
     playIncorrect,
-    playComplete
+    playComplete,
+    speakVoiceCoach
   };
 }

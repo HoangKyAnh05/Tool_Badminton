@@ -1,5 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { GridPosition, MovementVariation, SkillLevel } from '../../types';
+import { storageService } from '../../services/storage';
+import { extractYouTubeId } from '../Video/EditYouTubeLinkModal';
 import { 
   Play, 
   Pause, 
@@ -11,8 +13,10 @@ import {
   CheckCircle, 
   ArrowRight,
   Award,
-  Layers
+  Layers,
+  ExternalLink
 } from 'lucide-react';
+import { Youtube } from '../Video/YoutubeIcon';
 
 interface MovementOverlayProps {
   position: GridPosition;
@@ -39,6 +43,9 @@ export const MovementOverlay: React.FC<MovementOverlayProps> = ({
   isUnlimited = false,
   onCompleteAction
 }) => {
+  // Load overrides from storage so user-customized YouTube videos play in Arena
+  const [videoOverrides] = useState<Record<string, any>>(() => storageService.loadVideoOverrides());
+
   // All variations for this position (6-7 real technique clips)
   const variationsList = position.variations && position.variations.length > 0 
     ? position.variations 
@@ -76,16 +83,22 @@ export const MovementOverlay: React.FC<MovementOverlayProps> = ({
   }, [position.id, variationIndex, variationsList.length]);
 
   const currentVar = variationsList[activeIdx] || variationsList[0];
-  const currentVideoUrl = currentVar.videoUrl || `./videos/clips/pos_${position.id}_clip_${activeIdx + 1}.mp4`;
+  
+  // Resolve override if user customized this position video
+  const overrideKey = `video-pos-${position.id}-${activeIdx + 1}`;
+  const customOverride = videoOverrides[overrideKey] || videoOverrides[currentVar.id];
+
+  const currentVideoUrl = customOverride?.videoUrl || currentVar.videoUrl || `./videos/clips/pos_${position.id}_clip_${activeIdx + 1}.mp4`;
+  const ytId = extractYouTubeId(currentVideoUrl);
 
   // Autoplay video when clip changes
   useEffect(() => {
-    if (videoRef.current) {
+    if (!ytId && videoRef.current) {
       videoRef.current.load();
       videoRef.current.play().catch(() => {});
       setIsPlaying(true);
     }
-  }, [currentVideoUrl]);
+  }, [currentVideoUrl, ytId]);
 
   const togglePlay = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -172,42 +185,61 @@ export const MovementOverlay: React.FC<MovementOverlayProps> = ({
           />
         </div>
 
-        {/* Center: Full-Focus Real Video Player (No wall of text) */}
+        {/* Center: Full-Focus Real Video Player (Supports YouTube & MP4) */}
         <div className="clean-video-arena" onClick={(e) => e.stopPropagation()}>
-          <div className="clean-video-container" onClick={togglePlay}>
-            <video
-              ref={videoRef}
-              src={currentVideoUrl}
-              autoPlay
-              loop
-              muted={isMuted}
-              playsInline
-              className="clean-video-player"
-            />
-
-            {!isPlaying && (
-              <div className="clean-video-pause-overlay">
-                <Play size={44} className="pause-icon" />
+          <div className="clean-video-container">
+            {ytId ? (
+              <div className="arena-youtube-iframe-wrap">
+                <iframe
+                  src={`https://www.youtube-nocookie.com/embed/${ytId}?autoplay=1&mute=1&loop=1&playlist=${ytId}&controls=1&rel=0&modestbranding=1`}
+                  title={currentVar.shotName}
+                  className="clean-youtube-player"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+                <div className="arena-yt-badge">
+                  <Youtube size={14} className="text-danger" />
+                  <span>YouTube Video</span>
+                </div>
               </div>
-            )}
+            ) : (
+              <>
+                <video
+                  ref={videoRef}
+                  src={currentVideoUrl}
+                  autoPlay
+                  loop
+                  muted={isMuted}
+                  playsInline
+                  className="clean-video-player"
+                  onClick={togglePlay}
+                />
 
-            {/* Compact Floating Video Controls */}
-            <div className="clean-video-actions">
-              <button 
-                className="clean-vid-btn" 
-                onClick={togglePlay}
-                title={isPlaying ? 'Tạm dừng video' : 'Phát tiếp'}
-              >
-                {isPlaying ? <Pause size={16} /> : <Play size={16} />}
-              </button>
-              <button 
-                className="clean-vid-btn" 
-                onClick={toggleMute}
-                title={isMuted ? 'Bật âm thanh' : 'Tắt âm'}
-              >
-                {isMuted ? <VolumeX size={16} /> : <Volume2 size={16} />}
-              </button>
-            </div>
+                {!isPlaying && (
+                  <div className="clean-video-pause-overlay" onClick={togglePlay}>
+                    <Play size={44} className="pause-icon" />
+                  </div>
+                )}
+
+                {/* Compact Floating Video Controls */}
+                <div className="clean-video-actions">
+                  <button 
+                    className="clean-vid-btn" 
+                    onClick={togglePlay}
+                    title={isPlaying ? 'Tạm dừng video' : 'Phát tiếp'}
+                  >
+                    {isPlaying ? <Pause size={16} /> : <Play size={16} />}
+                  </button>
+                  <button 
+                    className="clean-vid-btn" 
+                    onClick={toggleMute}
+                    title={isMuted ? 'Bật âm thanh' : 'Tắt âm'}
+                  >
+                    {isMuted ? <VolumeX size={16} /> : <Volume2 size={16} />}
+                  </button>
+                </div>
+              </>
+            )}
           </div>
 
           {/* Quick Technique Variation Selector (5-7 videos per position categorized by level) */}

@@ -8,13 +8,17 @@ import {
   Camera, 
   CameraOff, 
   Clock, 
-  Activity,
-  Target,
-  Footprints,
-  Zap,
-  BookOpen,
-  Layers,
-  Gauge
+  Activity, 
+  Target, 
+  Footprints, 
+  Zap, 
+  BookOpen, 
+  Layers, 
+  Gauge,
+  MapPin,
+  Mic,
+  MicOff,
+  Sparkles
 } from 'lucide-react';
 
 interface TrainingSetupProps {
@@ -80,11 +84,43 @@ export const TrainingSetup: React.FC<TrainingSetupProps> = ({
 
   const roundOptions = [10, 20, 30, 50, 100];
 
+  const activeZones = config.targetZones && config.targetZones.length > 0 
+    ? config.targetZones 
+    : [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
   const handleSpeedPresetSelect = (preset: SpeedPreset, duration: number) => {
     onUpdateConfig({
       speedPreset: preset,
       actionDuration: duration
     });
+  };
+
+  const handleToggleZone = (zoneId: number) => {
+    let next: number[];
+    if (activeZones.includes(zoneId)) {
+      next = activeZones.filter(id => id !== zoneId);
+      if (next.length === 0) {
+        next = [zoneId]; // Keep at least 1 zone
+      }
+    } else {
+      next = [...activeZones, zoneId].sort((a, b) => a - b);
+    }
+    onUpdateConfig({ targetZones: next });
+  };
+
+  const isAllZones = activeZones.length === 9;
+  const isCornersOnly = activeZones.length === 4 && [1, 3, 7, 9].every(z => activeZones.includes(z));
+  const isNetOnly = activeZones.length === 3 && [1, 2, 3].every(z => activeZones.includes(z));
+  const isMidOnly = activeZones.length === 3 && [4, 5, 6].every(z => activeZones.includes(z));
+  const isRearOnly = activeZones.length === 3 && [7, 8, 9].every(z => activeZones.includes(z));
+
+  const getZonePresetLabel = () => {
+    if (isAllZones) return 'Toàn sân (9 ô)';
+    if (isCornersOnly) return '4 Góc sân (1, 3, 7, 9)';
+    if (isNetOnly) return '3 Ô lưới (1, 2, 3)';
+    if (isMidOnly) return '3 Ô giữa sân (4, 5, 6)';
+    if (isRearOnly) return '3 Ô cuối sân (7, 8, 9)';
+    return `Tùy chọn ${activeZones.length} ô`;
   };
 
   return (
@@ -115,12 +151,14 @@ export const TrainingSetup: React.FC<TrainingSetupProps> = ({
                   actionDuration: 4.0,
                   prepDuration: 5,
                   totalRounds: 10,
-                  soundEnabled: true
+                  soundEnabled: true,
+                  voiceCoachEnabled: true,
+                  targetZones: [1, 3, 7, 9] // 4 corners for beginners
                 });
               }}
             >
               <Footprints size={15} />
-              <span>🔰 Người Mới (10 hiệp • 4.0s thoải mái • Bật âm thanh)</span>
+              <span>🔰 Người Mới (10 hiệp • 4.0s thoải mái • 4 Góc Sân)</span>
             </button>
             <button 
               type="button"
@@ -131,12 +169,14 @@ export const TrainingSetup: React.FC<TrainingSetupProps> = ({
                   actionDuration: 1.5,
                   prepDuration: 3,
                   totalRounds: 25,
-                  soundEnabled: true
+                  soundEnabled: true,
+                  voiceCoachEnabled: true,
+                  targetZones: [1, 2, 3, 4, 5, 6, 7, 8, 9]
                 });
               }}
             >
               <Zap size={15} />
-              <span>⚡ Thi Đấu Nâng Cao (25 hiệp • 1.5s bứt tốc)</span>
+              <span>⚡ Thi Đấu Nâng Cao (25 hiệp • 1.5s bứt tốc toàn sân)</span>
             </button>
           </div>
         </div>
@@ -165,10 +205,91 @@ export const TrainingSetup: React.FC<TrainingSetupProps> = ({
           </div>
         </div>
 
-        {/* 2. Speed & Response Time */}
+        {/* 2. Target Court Zones (Luyện tập theo vùng sân & điểm yếu) */}
         <div className="setup-section">
           <div className="section-label-row">
-            <label className="section-label">2. TỐC ĐỘ PHẢN XẠ</label>
+            <label className="section-label">2. VÙNG SÂN TẬP TRUNG ({activeZones.length}/9 Ô ĐƯỢC CHỌN)</label>
+            <span className="current-speed-tag">
+              <MapPin size={14} /> Điểm rơi: <strong>{getZonePresetLabel()}</strong>
+            </span>
+          </div>
+
+          {/* Quick Preset Buttons for Zones */}
+          <div className="zone-preset-row">
+            <button 
+              type="button" 
+              className={`zone-preset-btn ${isAllZones ? 'active' : ''}`}
+              onClick={() => onUpdateConfig({ targetZones: [1, 2, 3, 4, 5, 6, 7, 8, 9] })}
+            >
+              🌟 Toàn Sân (9 Ô)
+            </button>
+            <button 
+              type="button" 
+              className={`zone-preset-btn ${isCornersOnly ? 'active' : ''}`}
+              onClick={() => onUpdateConfig({ targetZones: [1, 3, 7, 9] })}
+            >
+              ⚡ 4 Góc Sân (1, 3, 7, 9)
+            </button>
+            <button 
+              type="button" 
+              className={`zone-preset-btn ${isNetOnly ? 'active' : ''}`}
+              onClick={() => onUpdateConfig({ targetZones: [1, 2, 3] })}
+            >
+              🏸 3 Ô Lưới (1, 2, 3)
+            </button>
+            <button 
+              type="button" 
+              className={`zone-preset-btn ${isMidOnly ? 'active' : ''}`}
+              onClick={() => onUpdateConfig({ targetZones: [4, 5, 6] })}
+            >
+              🛡️ 3 Ô Giữa Sân (4, 5, 6)
+            </button>
+            <button 
+              type="button" 
+              className={`zone-preset-btn ${isRearOnly ? 'active' : ''}`}
+              onClick={() => onUpdateConfig({ targetZones: [7, 8, 9] })}
+            >
+              💥 3 Ô Cuối Sân (7, 8, 9)
+            </button>
+          </div>
+
+          {/* Interactive Mini 3x3 Court Grid */}
+          <div className="mini-court-selector">
+            <div className="mini-court-label">Chạm vào ô để bật / tắt vị trí bạn muốn tập luyện:</div>
+            <div className="mini-court-grid">
+              {[
+                { id: 1, name: 'Lưới Trái' },
+                { id: 2, name: 'Lưới Giữa' },
+                { id: 3, name: 'Lưới Phải' },
+                { id: 4, name: 'TT Trái' },
+                { id: 5, name: 'Tâm Sân' },
+                { id: 6, name: 'TT Phải' },
+                { id: 7, name: 'Đáy Trái' },
+                { id: 8, name: 'Đáy Giữa' },
+                { id: 9, name: 'Đáy Phải' }
+              ].map(pos => {
+                const isSelected = activeZones.includes(pos.id);
+                return (
+                  <button
+                    key={pos.id}
+                    type="button"
+                    className={`mini-cell-btn ${isSelected ? 'is-selected' : 'is-off'}`}
+                    onClick={() => handleToggleZone(pos.id)}
+                    title={`Ô ${pos.id}: ${pos.name} (${isSelected ? 'Đang bật' : 'Đang tắt'})`}
+                  >
+                    <span className="mini-cell-num">{pos.id}</span>
+                    <span className="mini-cell-name">{pos.name}</span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+
+        {/* 3. Speed & Response Time */}
+        <div className="setup-section">
+          <div className="section-label-row">
+            <label className="section-label">3. TỐC ĐỘ PHẢN XẠ</label>
             <span className="current-speed-tag">
               <Clock size={14} /> Thời gian hành động: <strong>{config.speedPreset === 'unlimited' ? 'Không giới hạn (∞)' : `${config.actionDuration.toFixed(2)}s`}</strong>
             </span>
@@ -217,10 +338,10 @@ export const TrainingSetup: React.FC<TrainingSetupProps> = ({
           )}
         </div>
 
-        {/* 3. Preparation / Move-to-Position Duration (1s - 10s) */}
+        {/* 4. Preparation / Move-to-Position Duration (1s - 10s) */}
         <div className="setup-section">
           <div className="section-label-row">
-            <label className="section-label">3. THỜI GIAN DI CHUYỂN ĐẾN VỊ TRÍ (1s - 10s)</label>
+            <label className="section-label">4. THỜI GIAN DI CHUYỂN ĐẾN VỊ TRÍ (1s - 10s)</label>
             <span className="current-speed-tag">
               <Clock size={14} /> Chờ người học tới vị trí: <strong>{config.prepDuration ?? 3}s</strong>
             </span>
@@ -261,10 +382,10 @@ export const TrainingSetup: React.FC<TrainingSetupProps> = ({
           </div>
         </div>
 
-        {/* 4. Number of rounds & Rest times */}
+        {/* 5. Number of rounds & Rest times */}
         <div className="setup-grid-dual">
           <div className="setup-col">
-            <label className="section-label">4. SỐ LƯỢT TẬP (ROUNDS)</label>
+            <label className="section-label">5. SỐ LƯỢT TẬP (ROUNDS)</label>
             <div className="round-pills-row">
               {roundOptions.map((r) => (
                 <button
@@ -279,7 +400,7 @@ export const TrainingSetup: React.FC<TrainingSetupProps> = ({
           </div>
 
           <div className="setup-col">
-            <label className="section-label">5. THỜI GIAN NGHỈ GIỮA HIỆP</label>
+            <label className="section-label">6. THỜI GIAN NGHỈ GIỮA HIỆP</label>
             <div className="rest-pills-row">
               {[0.4, 0.8, 1.2, 2.0].map((sec) => (
                 <button
@@ -294,22 +415,31 @@ export const TrainingSetup: React.FC<TrainingSetupProps> = ({
           </div>
         </div>
 
-        {/* 4. Hardware & Toggles */}
+        {/* 7. Hardware & Audio Toggles */}
         <div className="setup-section toggles-row">
+          <button
+            className={`toggle-feature-btn ${config.soundEnabled ? 'is-active' : ''}`}
+            onClick={() => onUpdateConfig({ soundEnabled: !config.soundEnabled })}
+          >
+            {config.soundEnabled ? <Volume2 size={18} /> : <VolumeX size={18} />}
+            <span>{config.soundEnabled ? 'Âm thanh còi: BẬT' : 'Âm thanh: TẮT'}</span>
+          </button>
+
+          <button
+            className={`toggle-feature-btn ${config.voiceCoachEnabled !== false ? 'is-active' : ''}`}
+            onClick={() => onUpdateConfig({ voiceCoachEnabled: config.voiceCoachEnabled === false })}
+            title="Huấn luyện viên đọc to tên ô và động tác bằng giọng nói tiếng Việt"
+          >
+            {config.voiceCoachEnabled !== false ? <Mic size={18} className="text-cyan" /> : <MicOff size={18} />}
+            <span>{config.voiceCoachEnabled !== false ? 'HLV Giọng Nói (TTS): BẬT' : 'HLV Giọng Nói: TẮT'}</span>
+          </button>
+
           <button
             className={`toggle-feature-btn ${config.cameraEnabled ? 'is-active' : ''}`}
             onClick={() => onUpdateConfig({ cameraEnabled: !config.cameraEnabled })}
           >
             {config.cameraEnabled ? <Camera size={18} /> : <CameraOff size={18} />}
             <span>{config.cameraEnabled ? 'Camera: BẬT' : 'Camera: TẮT'}</span>
-          </button>
-
-          <button
-            className={`toggle-feature-btn ${config.soundEnabled ? 'is-active' : ''}`}
-            onClick={() => onUpdateConfig({ soundEnabled: !config.soundEnabled })}
-          >
-            {config.soundEnabled ? <Volume2 size={18} /> : <VolumeX size={18} />}
-            <span>{config.soundEnabled ? 'Âm thanh: BẬT' : 'Âm thanh: TẮT'}</span>
           </button>
         </div>
 

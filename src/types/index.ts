@@ -90,6 +90,8 @@ export interface TrainingConfig {
   prepDuration: number; // seconds (default 3s)
   restDuration: number; // seconds
   soundEnabled: boolean;
+  voiceCoachEnabled?: boolean;
+  targetZones?: number[]; // [1..9], e.g. [1, 3, 7, 9] for 4 corners
   cameraEnabled: boolean;
 }
 
@@ -125,6 +127,7 @@ export interface TrainingResultStats {
   theoryCorrectCount: number;
   theoryTotalCount: number;
   historyRounds: ActiveRoundData[];
+  zoneStats?: Record<number, { count: number; totalTime: number; avgTime: number }>;
 }
 
 export type VideoCategory = 

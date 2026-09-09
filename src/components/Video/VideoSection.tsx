@@ -46,7 +46,11 @@ const MATCH_CATEGORIES: { key: VideoCategory; label: string }[] = [
   { key: 'DOI_NU', label: 'Đôi Nữ' },
 ];
 
-export const VideoSection: React.FC = () => {
+interface VideoSectionProps {
+  initialLevel?: SkillLevel | 'ALL';
+}
+
+export const VideoSection: React.FC<VideoSectionProps> = ({ initialLevel }) => {
   const [groupTab, setGroupTab] = useState<GroupTab>('CORNERS');
   const [activeCategory, setActiveCategory] = useState<FilterCategory>('POS_1');
   const [levelFilter, setLevelFilter] = useState<LevelFilter>('ALL');
@@ -89,6 +93,12 @@ export const VideoSection: React.FC = () => {
     refreshCustomVideos();
     refreshOverrides();
   }, []);
+
+  useEffect(() => {
+    if (initialLevel) {
+      setLevelFilter(initialLevel);
+    }
+  }, [initialLevel]);
 
   // Merge predefined library with overrides and custom user-added videos
   const allVideos = useMemo(() => {

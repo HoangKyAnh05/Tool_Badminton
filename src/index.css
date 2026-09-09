@@ -7053,12 +7053,227 @@ button {
   box-shadow: 0 4px 12px rgba(16, 185, 129, 0.35);
 }
 
+/* ==========================================================================
+   MOBILE & TABLET/iPAD RESPONSIVE OPTIMIZATIONS
+   ========================================================================== */
+/* Touch targets global optimization */
+button, 
+.clean-var-chip, 
+.clean-bottom-trigger, 
+.btn-arena-control, 
+.nav-btn {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Phones (iPhone / Android) */
 @media (max-width: 640px) {
-  .clean-video-container {
-    height: 250px;
+  .movement-overlay-backdrop {
+    padding: 0;
+    align-items: stretch;
+    backdrop-filter: blur(14px);
   }
+
+  .movement-clean-modal {
+    width: 100vw;
+    height: 100dvh;
+    max-height: 100dvh;
+    border-radius: 0;
+    border: none;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .clean-overlay-header {
+    padding: 8px 12px 6px;
+  }
+
+  .header-meta-row {
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 6px;
+  }
+
+  .clean-pos-pill {
+    padding: 2px 8px 2px 4px;
+    font-size: 0.72rem;
+  }
+
+  .clean-pos-num {
+    width: 20px;
+    height: 20px;
+    font-size: 0.72rem;
+  }
+
+  .clean-level-badge {
+    padding: 2px 8px;
+    font-size: 0.7rem;
+  }
+
+  .clean-var-counter {
+    padding: 2px 8px;
+    font-size: 0.7rem;
+  }
+
+  .btn-arena-upload-yt {
+    padding: 3px 8px;
+    font-size: 0.72rem;
+  }
+
+  .clean-timer-group {
+    font-size: 0.72rem;
+  }
+
+  .clean-technique-title-wrap {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    width: 100%;
+  }
+
   .clean-technique-title {
-    font-size: 1.1rem;
+    font-size: 1.12rem;
+    line-height: 1.25;
+  }
+
+  .clean-video-arena {
+    padding: 6px 10px;
+    gap: 8px;
+    flex: 1;
+  }
+
+  .clean-video-container {
+    height: clamp(230px, 44vh, 340px);
+    border-radius: 12px;
+  }
+
+  .clean-video-actions {
+    bottom: 8px;
+    right: 8px;
+    gap: 6px;
+  }
+
+  .clean-vid-btn {
+    width: 36px;
+    height: 36px;
+  }
+
+  .variation-chips-scroll {
+    padding: 4px 0;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .clean-var-chip {
+    padding: 5px 10px;
+    font-size: 0.74rem;
+  }
+
+  .clean-bottom-trigger {
+    padding: 10px 12px;
+    padding-bottom: max(12px, env(safe-area-inset-bottom));
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .trigger-left {
+    justify-content: center;
+  }
+
+  .trigger-main-text {
+    font-size: 0.78rem;
+    text-align: center;
+  }
+
+  .trigger-right-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 10px 16px;
+    font-size: 0.88rem;
+  }
+
+  /* Arena top bar on mobile */
+  .arena-top-controls {
+    padding: 8px 10px;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  .arena-meta-group {
+    gap: 4px;
+    flex-wrap: wrap;
+  }
+
+  .arena-chip {
+    padding: 3px 8px;
+    font-size: 0.72rem;
+  }
+
+  .arena-buttons-group {
+    gap: 4px;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .btn-arena-control {
+    padding: 6px 10px;
+    font-size: 0.74rem;
+    flex: 1;
+    justify-content: center;
+  }
+
+  /* Navbar mobile */
+  .app-navbar {
+    padding: 6px 10px;
+  }
+
+  .navbar-actions {
+    gap: 4px;
+  }
+
+  .nav-btn {
+    padding: 5px 8px;
+    font-size: 0.72rem;
+  }
+
+  .nav-btn-text {
+    font-size: 0.72rem;
+  }
+}
+
+/* Tablets & iPads (iPad Mini, iPad Air, iPad Pro) */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .movement-overlay-backdrop {
+    padding: 12px;
+  }
+
+  .movement-clean-modal {
+    width: 95vw;
+    max-width: 900px;
+    max-height: 94vh;
+    border-radius: 20px;
+  }
+
+  .clean-video-container {
+    height: clamp(360px, 50vh, 520px);
+  }
+
+  .clean-technique-title {
+    font-size: 1.35rem;
+  }
+
+  .clean-bottom-trigger {
+    padding: 12px 18px;
+    padding-bottom: max(12px, env(safe-area-inset-bottom));
+  }
+
+  .trigger-right-btn {
+    padding: 10px 20px;
+    font-size: 0.88rem;
+  }
+
+  .clean-var-chip {
+    padding: 6px 12px;
+    font-size: 0.78rem;
   }
 }
 

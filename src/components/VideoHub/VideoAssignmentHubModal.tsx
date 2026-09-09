@@ -546,10 +546,39 @@ export const VideoAssignmentHubModal: React.FC<VideoAssignmentHubModalProps> = (
 
                     {/* Technique Title & Detailed Description */}
                     <div className="slot-technique-body">
-                      <h3 className="slot-technique-name">{slot.title}</h3>
-                      {slot.subTitle && (
-                        <p className="slot-technique-sub">{slot.subTitle}</p>
-                      )}
+                      <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: '10px', flexWrap: 'wrap' }}>
+                        <div>
+                          <h3 className="slot-technique-name">{slot.title}</h3>
+                          {slot.subTitle && (
+                            <p className="slot-technique-sub">{slot.subTitle}</p>
+                          )}
+                        </div>
+
+                        {/* Quick 1-click Search on TikTok and YouTube with exact "(cầu lông)" query */}
+                        <div style={{ display: 'flex', gap: '6px', alignItems: 'center', flexWrap: 'wrap' }}>
+                          <a 
+                            href={`https://www.tiktok.com/search?q=${encodeURIComponent(slot.title + ' (cầu lông)')}`}
+                            target="_blank"
+                            rel="noreferrer"
+                            style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', padding: '4px 10px', background: 'rgba(0, 242, 254, 0.1)', color: '#00f2fe', borderRadius: '6px', fontSize: '11px', fontWeight: 700, textDecoration: 'none', border: '1px solid rgba(0, 242, 254, 0.3)' }}
+                            title={`Mở TikTok và tự động tìm "${slot.title} (cầu lông)"`}
+                          >
+                            <ExternalLink size={12} />
+                            <span>🔍 Tìm trên TikTok</span>
+                          </a>
+
+                          <a 
+                            href={`https://www.youtube.com/results?search_query=${encodeURIComponent(slot.title + ' cầu lông')}`}
+                            target="_blank"
+                            rel="noreferrer"
+                            style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', padding: '4px 10px', background: 'rgba(239, 68, 68, 0.1)', color: '#ef4444', borderRadius: '6px', fontSize: '11px', fontWeight: 700, textDecoration: 'none', border: '1px solid rgba(239, 68, 68, 0.3)' }}
+                            title={`Mở YouTube và tự động tìm "${slot.title} cầu lông"`}
+                          >
+                            <Youtube size={12} />
+                            <span>🔍 Tìm YouTube</span>
+                          </a>
+                        </div>
+                      </div>
                       <p className="slot-technique-desc">{slot.description}</p>
                     </div>
 

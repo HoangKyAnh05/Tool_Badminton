@@ -29,12 +29,3 @@ scratch/
 release/
 dist_electron/
 
-# Media & Videos (stored as online links to keep repo lightweight)
-*.mp4
-*.m4v
-*.mov
-*.avi
-public/videos/
-dist/videos/
-
-

@@ -1,7 +1,7 @@
 import React from 'react';
 import { BADMINTON_POSITIONS } from '../../data/movements';
 import { GridPosition } from '../../types';
-import { CheckCircle2, Zap } from 'lucide-react';
+import { CheckCircle2, Zap, Footprints } from 'lucide-react';
 
 interface Grid9Props {
   activePositionId?: number;
@@ -81,9 +81,15 @@ export const Grid9: React.FC<Grid9Props> = ({
                 {isActive && isCountingDown && (
                   <div className="cell-active-indicator-tag animate-bounce-subtle">
                     {isArrived ? (
-                      <span className="tag-arrived">✅ ĐÃ ĐẾN VỊ TRÍ</span>
+                      <span className="tag-arrived">
+                        <CheckCircle2 size={12} />
+                        <span>ĐÃ TỚI VỊ TRÍ</span>
+                      </span>
                     ) : (
-                      <span className="tag-move-here">🏃 CHẠY ĐẾN ĐÂY</span>
+                      <span className="tag-move-here">
+                        <Footprints size={12} />
+                        <span>DI CHUYỂN ĐẾN ĐÂY</span>
+                      </span>
                     )}
                   </div>
                 )}

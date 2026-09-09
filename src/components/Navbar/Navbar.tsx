@@ -1,5 +1,5 @@
 import React from 'react';
-import { Volume2, VolumeX, History, Sparkles, Activity, Camera } from 'lucide-react';
+import { Volume2, VolumeX, History, Activity, Camera } from 'lucide-react';
 import { TrainingMode, SessionState } from '../../types';
 
 interface NavbarProps {

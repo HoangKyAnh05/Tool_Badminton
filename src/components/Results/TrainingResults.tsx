@@ -15,7 +15,6 @@ import {
   Flame,
   Play,
   ListOrdered,
-  Sparkles,
   CheckCircle2,
   Camera
 } from 'lucide-react';

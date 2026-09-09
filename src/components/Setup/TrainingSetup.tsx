@@ -1,6 +1,21 @@
 import React from 'react';
 import { TrainingConfig, TrainingMode, SpeedPreset } from '../../types';
-import { Play, ArrowLeft, Volume2, VolumeX, Camera, CameraOff, Clock, ShieldAlert, Sparkles, Activity } from 'lucide-react';
+import { 
+  Play, 
+  ArrowLeft, 
+  Volume2, 
+  VolumeX, 
+  Camera, 
+  CameraOff, 
+  Clock, 
+  Activity,
+  Target,
+  Footprints,
+  Zap,
+  BookOpen,
+  Layers,
+  Gauge
+} from 'lucide-react';
 
 interface TrainingSetupProps {
   config: TrainingConfig;
@@ -15,21 +30,51 @@ export const TrainingSetup: React.FC<TrainingSetupProps> = ({
   onStart,
   onBack
 }) => {
-  const modes: { id: TrainingMode; title: string; desc: string; icon: string }[] = [
-    { id: 'TAY', title: '✋ TAY', desc: 'Vợt & phản xạ thân trên', icon: '✋' },
-    { id: 'CHÂN', title: '🦶 CHÂN', desc: 'Bộ pháp & bước lướt', icon: '🦶' },
-    { id: 'TAY + CHÂN', title: '⚡ TAY + CHÂN', desc: 'Phối hợp toàn thân', icon: '⚡' },
-    { id: 'LÝ THUYẾT', title: '🧠 LÝ THUYẾT', desc: 'Chiến thuật 4 đáp án', icon: '🧠' },
-    { id: 'TOÀN BỘ', title: '🌐 TOÀN BỘ', desc: 'Xáo trộn ngẫu nhiên tất cả', icon: '🌐' }
+  const modes: { 
+    id: TrainingMode; 
+    title: string; 
+    desc: string; 
+    icon: React.ReactNode;
+  }[] = [
+    { 
+      id: 'TAY', 
+      title: 'KỸ THUẬT VỢT (TAY)', 
+      desc: 'Phản xạ tay, đón cầu trên lưới & phòng thủ', 
+      icon: <Target size={20} className="text-emerald" /> 
+    },
+    { 
+      id: 'CHÂN', 
+      title: 'BỘ PHÁP DI CHUYỂN (CHÂN)', 
+      desc: 'Split-step, lunge, di chuyển 9 ô và hồi tâm', 
+      icon: <Footprints size={20} className="text-sky" /> 
+    },
+    { 
+      id: 'TAY + CHÂN', 
+      title: 'PHỐI HỢP TAY & CHÂN', 
+      desc: 'Đồng bộ nhịp tiếp đất & điểm chạm cầu', 
+      icon: <Zap size={20} className="text-amber" /> 
+    },
+    { 
+      id: 'LÝ THUYẾT', 
+      title: 'LÝ THUYẾT CHIẾN THUẬT', 
+      desc: 'Tình huống xử lý điểm rơi & đọc hướng cầu', 
+      icon: <BookOpen size={20} className="text-purple" /> 
+    },
+    { 
+      id: 'TOÀN BỘ', 
+      title: 'BÀI TẬP TỔNG HỢP', 
+      desc: 'Xáo trộn ngẫu nhiên tất cả nội dung thực chiến', 
+      icon: <Layers size={20} className="text-emerald" /> 
+    }
   ];
 
   const speedPresets: { id: SpeedPreset; label: string; duration: number }[] = [
-    { id: 'unlimited', label: '♾️ Không giới hạn (Tự do)', duration: 0 },
-    { id: 'very_slow', label: '🐢 Siêu chậm (Newbie - 5.0s)', duration: 5.0 },
-    { id: 'slow', label: '🚶 Chậm (Cơ bản - 4.0s)', duration: 4.0 },
-    { id: 'normal', label: '⚡ Vừa phải (2.5s)', duration: 2.5 },
-    { id: 'fast', label: '🔥 Nhanh (1.5s)', duration: 1.5 },
-    { id: 'very_fast', label: '⚡ Siêu tốc (0.8s)', duration: 0.8 },
+    { id: 'unlimited', label: 'Không giới hạn (Tự do)', duration: 0 },
+    { id: 'very_slow', label: 'Mới bắt đầu (5.0s)', duration: 5.0 },
+    { id: 'slow', label: 'Cơ bản (4.0s)', duration: 4.0 },
+    { id: 'normal', label: 'Tiêu chuẩn (2.5s)', duration: 2.5 },
+    { id: 'fast', label: 'Nhanh (1.5s)', duration: 1.5 },
+    { id: 'very_fast', label: 'Tốc độ cao (0.8s)', duration: 0.8 },
     { id: 'custom', label: 'Tùy chỉnh', duration: config.actionDuration > 0 ? config.actionDuration : 4.0 }
   ];
 
@@ -104,7 +149,7 @@ export const TrainingSetup: React.FC<TrainingSetupProps> = ({
 
           {config.speedPreset === 'unlimited' ? (
             <div className="unlimited-notice-card animate-fade-in">
-              <Sparkles size={18} className="notice-icon" />
+              <Activity size={18} className="notice-icon text-emerald" />
               <div>
                 <strong>Chế độ không giới hạn thời gian đã chọn:</strong>
                 <p>Bài tập sẽ giữ nguyên cho đến khi bạn sẵn sàng. Khi hoàn thành động tác, chỉ cần <strong>bấm phím CÁCH</strong> hoặc <strong>chạm vào màn hình</strong> để chuyển ngay sang bài khác!</p>

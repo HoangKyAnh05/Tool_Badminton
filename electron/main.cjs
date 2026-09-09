@@ -8,7 +8,7 @@ if (typeof electron === 'string' || !electron.app) {
   return;
 }
 
-const { app, BrowserWindow, session, ipcMain, shell } = electron;
+const { app, BrowserWindow, session, ipcMain } = electron;
 const path = require('path');
 
 let mainWindow = null;
@@ -35,15 +35,6 @@ function createWindow() {
       backgroundThrottling: false
     },
     autoHideMenuBar: true
-  });
-
-  // Open external links directly in user default browser (Chrome/Edge)
-  mainWindow.webContents.setWindowOpenHandler(({ url }) => {
-    if (url.startsWith('http:') || url.startsWith('https:')) {
-      shell.openExternal(url);
-      return { action: 'deny' };
-    }
-    return { action: 'allow' };
   });
 
   // Automatically grant camera and microphone permissions in Electron

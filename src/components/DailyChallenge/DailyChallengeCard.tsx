@@ -8,7 +8,6 @@ import {
   Play, 
   Calendar, 
   ListOrdered, 
-  Sparkles, 
   RotateCcw,
   Zap,
   ArrowRight

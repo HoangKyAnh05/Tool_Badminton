@@ -67,7 +67,7 @@ export const MovementIllustration: React.FC<MovementIllustrationProps> = ({
   const posId = position.id;
   const isHand = mode === 'TAY';
   const isFoot = mode === 'CHÂN';
-  const primaryColor = isHand ? '#00f0ff' : isFoot ? '#39ff14' : '#ffb703';
+  const primaryColor = isHand ? '#0284c7' : isFoot ? '#10b981' : '#ffb703';
 
   // Automatically update video to match the new position when posId changes
   useEffect(() => {
@@ -186,13 +186,13 @@ export const MovementIllustration: React.FC<MovementIllustrationProps> = ({
             </linearGradient>
 
             <linearGradient id="athleteJersey" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#00f0ff" />
+              <stop offset="0%" stopColor="#0284c7" />
               <stop offset="100%" stopColor="#0284c7" />
             </linearGradient>
 
             <linearGradient id="glowRacket" x1="0%" y1="0%" x2="100%" y2="100%">
               <stop offset="0%" stopColor="#fef08a" />
-              <stop offset="50%" stopColor="#00f0ff" />
+              <stop offset="50%" stopColor="#0284c7" />
               <stop offset="100%" stopColor="#38bdf8" />
             </linearGradient>
 
@@ -207,15 +207,15 @@ export const MovementIllustration: React.FC<MovementIllustrationProps> = ({
 
           {/* Realistic Green Badminton Court Floor */}
           <polygon points="20,255 620,255 620,365 20,365" fill="url(#courtFloorGrad)" />
-          <line x1="20" y1="255" x2="620" y2="255" stroke="#39ff14" strokeWidth="2.5" strokeOpacity="0.8" filter="url(#glowEffect)" />
+          <line x1="20" y1="255" x2="620" y2="255" stroke="#10b981" strokeWidth="2.5" strokeOpacity="0.8" filter="url(#glowEffect)" />
           <line x1="120" y1="365" x2="200" y2="255" stroke="#ffffff" strokeWidth="2" strokeOpacity="0.5" />
           <line x1="320" y1="365" x2="320" y2="255" stroke="#ffffff" strokeWidth="2" strokeOpacity="0.5" />
           <line x1="520" y1="365" x2="440" y2="255" stroke="#ffffff" strokeWidth="2" strokeOpacity="0.5" />
 
           {/* Non-overlapping Top Corner Badge */}
           <g transform="translate(36, 28)">
-            <rect width="210" height="32" rx="16" fill="rgba(10, 20, 35, 0.92)" stroke="#00f0ff" strokeWidth="1.5" />
-            <circle cx="18" cy="16" r="10" fill="#00f0ff" />
+            <rect width="210" height="32" rx="16" fill="rgba(10, 20, 35, 0.92)" stroke="#0284c7" strokeWidth="1.5" />
+            <circle cx="18" cy="16" r="10" fill="#0284c7" />
             <text x="18" y="20" fill="#020812" fontSize="12" fontWeight="900" textAnchor="middle">{posId}</text>
             <text x="36" y="20" fill="#ffffff" fontSize="12" fontWeight="800">{position.zoneName}</text>
           </g>
@@ -225,8 +225,8 @@ export const MovementIllustration: React.FC<MovementIllustrationProps> = ({
 
           {/* Technical Guidance Cues Floating Overlay - High Contrast */}
           <g transform="translate(36, 290)">
-            <rect width="260" height="60" rx="10" fill="rgba(6, 15, 28, 0.95)" stroke="#00f0ff" strokeWidth="1.5" />
-            <text x="12" y="24" fill="#00f0ff" fontSize="11" fontWeight="900">
+            <rect width="260" height="60" rx="10" fill="rgba(6, 15, 28, 0.95)" stroke="#0284c7" strokeWidth="1.5" />
+            <text x="12" y="24" fill="#0284c7" fontSize="11" fontWeight="900">
               🎯 TIẾP XÚC CẦU ({posId <= 3 ? 'LƯỚI' : posId <= 6 ? 'TRUNG SÂN' : 'CUỐI SÂN'}):
             </text>
             <text x="12" y="44" fill="#ffffff" fontSize="12" fontWeight="700">
@@ -235,8 +235,8 @@ export const MovementIllustration: React.FC<MovementIllustrationProps> = ({
           </g>
 
           <g transform="translate(344, 290)">
-            <rect width="260" height="60" rx="10" fill="rgba(6, 15, 28, 0.95)" stroke="#39ff14" strokeWidth="1.5" />
-            <text x="12" y="24" fill="#39ff14" fontSize="11" fontWeight="900">
+            <rect width="260" height="60" rx="10" fill="rgba(6, 15, 28, 0.95)" stroke="#10b981" strokeWidth="1.5" />
+            <text x="12" y="24" fill="#10b981" fontSize="11" fontWeight="900">
               🦶 BỘ PHÁP CHÂN THỰC HIỆN:
             </text>
             <text x="12" y="44" fill="#ffffff" fontSize="12" fontWeight="700">
@@ -255,7 +255,7 @@ export const MovementIllustration: React.FC<MovementIllustrationProps> = ({
       case 1:
         return (
           <g transform="translate(180, 45)">
-            <line x1="220" y1="20" x2="220" y2="260" stroke="#00f0ff" strokeWidth="2.5" strokeDasharray="5 5" opacity="0.6" />
+            <line x1="220" y1="20" x2="220" y2="260" stroke="#0284c7" strokeWidth="2.5" strokeDasharray="5 5" opacity="0.6" />
             <text x="225" y="40" fill="#64748b" fontSize="11">LƯỚI</text>
             <g transform="translate(200, 70) rotate(35)">
               <ellipse cx="0" cy="0" rx="6" ry="9" fill="#ffffff" />
@@ -278,7 +278,7 @@ export const MovementIllustration: React.FC<MovementIllustrationProps> = ({
       case 2:
         return (
           <g transform="translate(180, 45)">
-            <line x1="220" y1="20" x2="220" y2="260" stroke="#00f0ff" strokeWidth="2.5" strokeDasharray="5 5" opacity="0.6" />
+            <line x1="220" y1="20" x2="220" y2="260" stroke="#0284c7" strokeWidth="2.5" strokeDasharray="5 5" opacity="0.6" />
             <text x="225" y="40" fill="#64748b" fontSize="11">LƯỚI CHỮ T</text>
             <g transform="translate(205, 55) rotate(-15)">
               <ellipse cx="0" cy="0" rx="6" ry="9" fill="#ffffff" />
@@ -301,7 +301,7 @@ export const MovementIllustration: React.FC<MovementIllustrationProps> = ({
       case 3:
         return (
           <g transform="translate(180, 45)">
-            <line x1="220" y1="20" x2="220" y2="260" stroke="#00f0ff" strokeWidth="2.5" strokeDasharray="5 5" opacity="0.6" />
+            <line x1="220" y1="20" x2="220" y2="260" stroke="#0284c7" strokeWidth="2.5" strokeDasharray="5 5" opacity="0.6" />
             <text x="225" y="40" fill="#64748b" fontSize="11">GÓC LƯỚI PHẢI</text>
             <g transform="translate(200, 75) rotate(-40)">
               <ellipse cx="0" cy="0" rx="6" ry="9" fill="#ffffff" />
@@ -329,15 +329,15 @@ export const MovementIllustration: React.FC<MovementIllustrationProps> = ({
               <polygon points="-7,2 -13,18 13,18 7,2" fill="#e2e8f0" stroke="#94a3b8" />
             </g>
             <circle cx="140" cy="85" r="20" fill="#fde047" stroke="#ca8a04" strokeWidth="2.5" />
-            <path d="M 120 83 Q 140 75 160 83" stroke="#00f0ff" strokeWidth="4" strokeLinecap="round" />
+            <path d="M 120 83 Q 140 75 160 83" stroke="#0284c7" strokeWidth="4" strokeLinecap="round" />
             <ellipse cx="140" cy="140" rx="25" ry="35" fill="url(#athleteJersey)" stroke="#38bdf8" strokeWidth="2.5" />
             <path d="M 130 130 L 105 135 L 85 130" fill="none" stroke="#fed7aa" strokeWidth="10" strokeLinecap="round" />
             <line x1="85" y1="130" x2="65" y2="130" stroke="#cbd5e1" strokeWidth="4.5" />
             <ellipse cx="48" cy="130" rx="16" ry="22" fill="none" stroke="url(#glowRacket)" strokeWidth="3.5" transform="rotate(-15 48 130)" />
             <path d="M 150 170 L 185 205 L 190 255" fill="none" stroke="#0284c7" strokeWidth="14" strokeLinecap="round" strokeLinejoin="round" />
-            <rect x="180" y="250" width="32" height="14" rx="5" fill="#ffffff" stroke="#39ff14" strokeWidth="2" />
+            <rect x="180" y="250" width="32" height="14" rx="5" fill="#ffffff" stroke="#10b981" strokeWidth="2" />
             <path d="M 130 170 L 95 205 L 90 255" fill="none" stroke="#0369a1" strokeWidth="14" strokeLinecap="round" strokeLinejoin="round" />
-            <rect x="78" y="250" width="32" height="14" rx="5" fill="#ffffff" stroke="#39ff14" strokeWidth="2" />
+            <rect x="78" y="250" width="32" height="14" rx="5" fill="#ffffff" stroke="#10b981" strokeWidth="2" />
           </g>
         );
 
@@ -345,7 +345,7 @@ export const MovementIllustration: React.FC<MovementIllustrationProps> = ({
       case 5:
         return (
           <g transform="translate(180, 40)">
-            <ellipse cx="140" cy="255" rx="80" ry="14" fill="none" stroke="#39ff14" strokeWidth="2.5" strokeDasharray="5 5" filter="url(#glowEffect)" />
+            <ellipse cx="140" cy="255" rx="80" ry="14" fill="none" stroke="#10b981" strokeWidth="2.5" strokeDasharray="5 5" filter="url(#glowEffect)" />
             <circle cx="140" cy="70" r="19" fill="#fbcfe8" stroke="#f43f5e" strokeWidth="2" />
             <ellipse cx="140" cy="130" rx="22" ry="34" fill="url(#athleteJersey)" />
             <path d="M 125 120 L 135 110 L 140 95" fill="none" stroke="#fbcfe8" strokeWidth="7" strokeLinecap="round" />
@@ -363,7 +363,7 @@ export const MovementIllustration: React.FC<MovementIllustrationProps> = ({
       case 6:
         return (
           <g transform="translate(180, 45)">
-            <line x1="140" y1="125" x2="260" y2="125" stroke="#00f0ff" strokeWidth="3" strokeDasharray="5 5" />
+            <line x1="140" y1="125" x2="260" y2="125" stroke="#0284c7" strokeWidth="3" strokeDasharray="5 5" />
             <g transform="translate(230, 125) rotate(-85)">
               <ellipse cx="0" cy="0" rx="6" ry="9" fill="#ffffff" />
               <polygon points="-6,2 -11,16 11,16 6,2" fill="#e2e8f0" stroke="#94a3b8" />
@@ -495,7 +495,7 @@ export const MovementIllustration: React.FC<MovementIllustrationProps> = ({
 
         {/* Net */}
         <rect x="50" y="20" width="500" height="38" fill="#000" fillOpacity="0.4" />
-        <line x1="50" y1="58" x2="550" y2="58" stroke="#00f0ff" strokeWidth="3" opacity="0.8" />
+        <line x1="50" y1="58" x2="550" y2="58" stroke="#0284c7" strokeWidth="3" opacity="0.8" />
         <text x="300" y="38" fill="#627d98" fontSize="13" fontWeight="bold" textAnchor="middle" letterSpacing="3">
           NET / LƯỚI THI ĐẤU
         </text>
@@ -637,7 +637,7 @@ export const MovementIllustration: React.FC<MovementIllustrationProps> = ({
   const renderCustomLinkForm = () => {
     return (
       <div className="movement-custom-link-panel" style={{ padding: '24px', background: 'rgba(10, 20, 35, 0.95)', borderRadius: '16px', border: '1px solid rgba(0, 240, 255, 0.3)' }}>
-        <h4 style={{ color: '#00f0ff', marginTop: 0, marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+        <h4 style={{ color: '#0284c7', marginTop: 0, marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '8px' }}>
           <LinkIcon size={18} /> GẮN LINK VIDEO CHO ĐỘNG TÁC: {position.zoneName}
         </h4>
         <p style={{ color: '#94a3b8', fontSize: '13px', lineHeight: 1.5 }}>
@@ -669,7 +669,7 @@ export const MovementIllustration: React.FC<MovementIllustrationProps> = ({
               style={{
                 padding: '9px 18px',
                 borderRadius: '8px',
-                background: '#00f0ff',
+                background: '#0284c7',
                 color: '#020812',
                 border: 'none',
                 fontWeight: 800,
@@ -699,7 +699,7 @@ export const MovementIllustration: React.FC<MovementIllustrationProps> = ({
             )}
 
             {savedSuccess && (
-              <span style={{ color: '#39ff14', fontSize: '13px', display: 'flex', alignItems: 'center', gap: '4px' }}>
+              <span style={{ color: '#10b981', fontSize: '13px', display: 'flex', alignItems: 'center', gap: '4px' }}>
                 <CheckCircle2 size={16} /> Đã lưu thành công!
               </span>
             )}

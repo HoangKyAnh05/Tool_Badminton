@@ -9,12 +9,10 @@ import {
   CheckCircle2, 
   Plus, 
   Trash2, 
-  Sparkles,
   MapPin,
   Search,
   Layers,
-  Award,
-  ExternalLink
+  Award
 } from 'lucide-react';
 
 type FilterCategory = 'ALL' | VideoCategory;
@@ -34,10 +32,10 @@ const CORNER_CATEGORIES: { key: VideoCategory; label: string; num: number }[] = 
 ];
 
 const MATCH_CATEGORIES: { key: VideoCategory; label: string }[] = [
-  { key: 'DON_NAM', label: '👤 Đơn Nam' },
-  { key: 'DOI_NAM', label: '👥 Đôi Nam' },
-  { key: 'DON_NU', label: '👩 Đơn Nữ' },
-  { key: 'DOI_NU', label: '👭 Đôi Nữ' },
+  { key: 'DON_NAM', label: 'Đơn Nam' },
+  { key: 'DOI_NAM', label: 'Đôi Nam' },
+  { key: 'DON_NU', label: 'Đơn Nữ' },
+  { key: 'DOI_NU', label: 'Đôi Nữ' },
 ];
 
 export const VideoSection: React.FC = () => {
@@ -135,15 +133,6 @@ export const VideoSection: React.FC = () => {
     setNewTitle('');
     setNewSubTitle('');
     setNewDesc('');
-  };
-
-  const handleOpenDirect = (video: TacticsVideo, e?: React.MouseEvent) => {
-    if (e) e.stopPropagation();
-    if (video.videoUrl) {
-      window.open(video.videoUrl, '_blank');
-      storageService.markVideoWatched(video.id);
-      refreshWatchedStatus();
-    }
   };
 
   const handleDeleteCustomVideo = (e: React.MouseEvent, id: string) => {
@@ -363,16 +352,11 @@ export const VideoSection: React.FC = () => {
                 ? 'badge-lvl-inter'
                 : 'badge-lvl-adv';
 
-            const isTikTok = video.videoUrl.includes('tiktok.com');
-            const isYouTube = video.videoUrl.includes('youtube.com') || video.videoUrl.includes('youtu.be');
-            const platformLabel = isTikTok ? '🎵 TikTok' : isYouTube ? '▶️ YouTube' : '🌐 Link Web';
-
             return (
               <div 
                 key={video.id}
                 className={`video-card animate-fade-in ${isWatched ? 'is-watched' : ''}`}
-                onClick={() => handleOpenDirect(video)}
-                title={`Bấm để mở video trực tiếp: ${video.title}`}
+                onClick={() => setSelectedVideo(video)}
               >
                 {/* Video Media Preview */}
                 <div className="video-card-media">
@@ -383,11 +367,6 @@ export const VideoSection: React.FC = () => {
                       className="video-thumb-img" 
                       loading="lazy" 
                     />
-                  ) : isTikTok ? (
-                    <div className="video-thumb-tiktok">
-                      <span className="thumb-tiktok-icon">🎵</span>
-                      <span className="thumb-tiktok-label">TikTok Video</span>
-                    </div>
                   ) : isMp4 ? (
                     <video 
                       src={video.videoUrl} 
@@ -410,8 +389,7 @@ export const VideoSection: React.FC = () => {
                   )}
 
                   <div className="video-play-hover-btn">
-                    <ExternalLink size={24} className="icon-play-card" />
-                    <span className="hover-link-txt">MỞ LINK TRỰC TIẾP</span>
+                    <Play size={28} className="icon-play-card" />
                   </div>
 
                   {/* Corner and Level Overlay Badges */}
@@ -421,14 +399,14 @@ export const VideoSection: React.FC = () => {
                     </span>
                     {video.level && (
                       <span className={`card-level-badge ${levelClass}`}>
-                        <Sparkles size={11} />
+                        <Award size={11} />
                         {video.level}
                       </span>
                     )}
                   </div>
 
-                  {/* Duration / Platform Text */}
-                  <span className="video-duration-pill">{platformLabel}</span>
+                  {/* Duration Text */}
+                  <span className="video-duration-pill">{video.durationText}</span>
 
                   {/* Watched Status */}
                   {isWatched && (
@@ -460,28 +438,6 @@ export const VideoSection: React.FC = () => {
                         <Trash2 size={14} />
                       </button>
                     )}
-                  </div>
-
-                  {/* Direct Link Open Button Bar */}
-                  <div className="video-card-action-bar">
-                    <button 
-                      className="btn-card-direct-open"
-                      onClick={(e) => handleOpenDirect(video, e)}
-                      title="Mở link video trực tiếp"
-                    >
-                      <ExternalLink size={14} />
-                      <span>Mở Link Trực Tiếp ({isTikTok ? 'TikTok' : isYouTube ? 'YouTube' : 'Web'})</span>
-                    </button>
-                    <button 
-                      className="btn-card-modal-preview"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        setSelectedVideo(video);
-                      }}
-                      title="Xem trong ứng dụng"
-                    >
-                      <Tv size={14} />
-                    </button>
                   </div>
                 </div>
               </div>

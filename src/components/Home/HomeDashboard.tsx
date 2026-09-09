@@ -6,11 +6,16 @@ import {
   Trophy, 
   Zap, 
   ArrowRight, 
-  Sparkles, 
   Compass, 
   Play, 
   CheckCircle2,
-  Camera
+  Camera,
+  Activity,
+  Target,
+  Footprints,
+  BookOpen,
+  Layers,
+  Award
 } from 'lucide-react';
 import { VideoSection } from '../Video/VideoSection';
 import { DailyChallengeCard } from '../DailyChallenge/DailyChallengeCard';
@@ -46,7 +51,6 @@ export const HomeDashboard: React.FC<HomeDashboardProps> = ({
 
   const trainingCards: {
     mode: TrainingMode;
-    emoji: string;
     title: string;
     tagline: string;
     desc: string;
@@ -55,48 +59,43 @@ export const HomeDashboard: React.FC<HomeDashboardProps> = ({
   }[] = [
     {
       mode: 'TAY',
-      emoji: '✋',
-      title: 'TAY (VỢT & THÂN TRÊN)',
-      tagline: 'Luyện phản xạ tay chớp nhoáng',
-      desc: 'Phản ứng với các đường cầu sát lưới, tạt cầu, vồ cầu và phòng thủ đập cầu.',
+      title: 'KỸ THUẬT VỢT (TAY)',
+      tagline: 'Phản xạ tay & tiếp xúc cầu',
+      desc: 'Rèn luyện phản xạ đón cầu trên lưới, tạt cầu ngang mặt, vồ cầu và phòng thủ đập.',
       colorClass: 'card-tay',
-      badge: 'Cơ bản & Nâng cao'
+      badge: 'Chuyên môn tay'
     },
     {
       mode: 'CHÂN',
-      emoji: '🦶',
-      title: 'CHÂN (FOOTWORK)',
-      tagline: 'Luyện bộ pháp & bước lướt',
-      desc: 'Bứt tốc split-step, bước lunge lên lưới, chạy lùi chéo góc và scissor kick.',
+      title: 'BỘ PHÁP DI CHUYỂN (CHÂN)',
+      tagline: 'Bộ chân & nhịp bước trên sân',
+      desc: 'Rèn luyện split-step, bước lunge dài lên lưới, bật lùi chéo góc và bước scissor kick.',
       colorClass: 'card-chan',
-      badge: 'Bộ pháp đỉnh cao'
+      badge: 'Bộ chân di chuyển'
     },
     {
       mode: 'TAY + CHÂN',
-      emoji: '⚡',
-      title: 'TAY + CHÂN (PHỐI HỢP)',
-      tagline: 'Đồng bộ động tác & bộ chân',
-      desc: 'Kết hợp nhịp nhàng chân chạm đất đồng thời tay vung vợt và tức tốc hồi tâm.',
+      title: 'PHỐI HỢP TAY & CHÂN',
+      tagline: 'Đồng bộ động tác & bộ vị',
+      desc: 'Đồng bộ nhịp tiếp đất chân thuận cùng thời điểm tiếp xúc cầu và nhanh chóng hồi tâm.',
       colorClass: 'card-tay-chan',
-      badge: 'Toàn diện thực chiến'
+      badge: 'Phối hợp nhịp nhàng'
     },
     {
       mode: 'LÝ THUYẾT',
-      emoji: '🧠',
       title: 'LÝ THUYẾT CHIẾN THUẬT',
-      tagline: 'Tư duy chiến thuật 4 phương án',
-      desc: '20+ tình huống thực tế: đánh đơn, đánh đôi, đọc hướng cầu, khắc chế điểm mù.',
+      tagline: 'Phân tích tình huống thi đấu',
+      desc: 'Bộ câu hỏi xử lý tình huống thực tế: đánh đơn, đánh đôi, đọc ý đồ đối phương.',
       colorClass: 'card-theory',
-      badge: 'Tư duy HLV'
+      badge: 'Tư duy chiến thuật'
     },
     {
       mode: 'TOÀN BỘ',
-      emoji: '🌐',
-      title: 'TOÀN BỘ (TỔNG HỢP)',
-      tagline: 'Trộn ngẫu nhiên liên tục cả 4 chế độ',
-      desc: 'Mô phỏng áp lực trận đấu thực thụ: vừa bung sức di chuyển vừa vận dụng trí óc.',
+      title: 'BÀI TẬP TỔNG HỢP',
+      tagline: 'Mô phỏng trận đấu thực tế',
+      desc: 'Trộn ngẫu nhiên kỹ thuật, bộ chân và phản xạ liên hoàn tạo áp lực như khi thi đấu.',
       colorClass: 'card-all',
-      badge: 'Thử thách tối thượng'
+      badge: 'Mô phỏng thi đấu'
     }
   ];
 
@@ -106,26 +105,26 @@ export const HomeDashboard: React.FC<HomeDashboardProps> = ({
       <div className="hero-banner">
         <div className="hero-content">
           <div className="hero-eyebrow">
-            <Sparkles size={16} className="text-lime" />
-            <span>HỆ THỐNG HUẤN LUYỆN CẦU LÔNG CHUYÊN NGHIỆP</span>
+            <Activity size={16} className="text-emerald" />
+            <span>HUẤN LUYỆN KỸ CHIẾN THUẬT CẦU LÔNG CHUYÊN NGHIỆP</span>
           </div>
           <h1 className="hero-title">
-            BẠN MUỐN LUYỆN TẬP GÌ <span className="highlight-text">HÔM NAY?</span>
+            CHƯƠNG TRÌNH HUẤN LUYỆN <span className="highlight-text">CẦU LÔNG</span>
           </h1>
           <p className="hero-desc">
-            Nâng cao tốc độ phản ứng, chuẩn hóa bộ chân di chuyển 9 ô và tôi luyện tư duy chiến thuật trên sân đấu.
+            Chuẩn hóa bộ pháp di chuyển 9 ô sân, tối ưu tốc độ phản xạ và nâng cao tư duy chiến thuật thi đấu.
           </p>
 
           <div className="hero-cta-group">
             <button className="btn-hero-start" onClick={onQuickStart}>
               <Play size={20} fill="currentColor" />
-              <span>VÀO PHÒNG TẬP NGAY</span>
+              <span>BẮT ĐẦU LUYỆN TẬP</span>
             </button>
 
             {onOpenRecorder && (
               <button className="btn-hero-record" onClick={onOpenRecorder}>
                 <Camera size={20} className="text-danger" />
-                <span>QUAY VIDEO TỰ LUYỆN</span>
+                <span>QUAY VIDEO ĐỘNG TÁC</span>
               </button>
             )}
           </div>
@@ -191,7 +190,13 @@ export const HomeDashboard: React.FC<HomeDashboardProps> = ({
               tabIndex={0}
             >
               <div className="card-top-row">
-                <span className="card-emoji">{c.emoji}</span>
+                <div className="card-mode-icon-wrap">
+                  {c.mode === 'TAY' && <Target size={22} className="text-cyan" />}
+                  {c.mode === 'CHÂN' && <Footprints size={22} className="text-lime" />}
+                  {c.mode === 'TAY + CHÂN' && <Zap size={22} className="text-amber" />}
+                  {c.mode === 'LÝ THUYẾT' && <BookOpen size={22} className="text-purple" />}
+                  {c.mode === 'TOÀN BỘ' && <Layers size={22} className="text-emerald" />}
+                </div>
                 <span className="card-badge">{c.badge}</span>
               </div>
 

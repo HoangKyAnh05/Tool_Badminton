@@ -9,7 +9,6 @@ import {
   Trophy, 
   Flame, 
   Target, 
-  Sparkles, 
   Calendar,
   Zap,
   Activity
@@ -169,7 +168,7 @@ export const DailyRoadmapModal: React.FC<DailyRoadmapModalProps> = ({
                       ) : isLocked ? (
                         <Lock size={14} className="text-muted" />
                       ) : (
-                        <Sparkles size={14} className="text-cyan animate-pulse" />
+                        <Flame size={14} className="text-amber" />
                       )}
                       <span>NGÀY {item.day}</span>
                     </span>

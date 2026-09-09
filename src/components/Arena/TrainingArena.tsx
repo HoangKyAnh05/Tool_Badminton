@@ -78,17 +78,17 @@ export const TrainingArena: React.FC<TrainingArenaProps> = ({
         <div className="arena-meta-group">
           <div className="arena-chip round-chip">
             <span className="chip-indicator" />
-            <span>LƯỢT <strong>{currentRound}</strong> / {config.totalRounds}</span>
+            <span>Lượt <strong>{currentRound}</strong>/{config.totalRounds}</span>
           </div>
 
           <div className="arena-chip speed-chip">
-            <TimerIcon size={16} />
-            <span>Tốc độ: <strong>{isUnlimited ? 'Không giới hạn (∞)' : `${config.actionDuration}s`}</strong></span>
+            <TimerIcon size={15} />
+            <span>{isUnlimited ? 'Tự do (∞)' : `${config.actionDuration}s`}</span>
           </div>
 
           {activeData && (
             <div className="arena-chip active-mode-chip">
-              <Zap size={16} />
+              <Zap size={15} />
               <span>Chế độ: <strong>{activeData.actualMode}</strong></span>
             </div>
           )}
@@ -97,31 +97,31 @@ export const TrainingArena: React.FC<TrainingArenaProps> = ({
         <div className="arena-buttons-group">
           {isActive && isPhysical && (
             <button 
-              className="btn-arena-control next-action-btn animate-pulse"
+              className="btn-arena-control next-action-btn"
               onClick={onCompleteAction}
-              title="Chuyển sang bài tiếp theo (hoặc bấm phím CÁCH)"
+              title="Chuyển sang bài tiếp theo (Phím Space / Cách)"
             >
-              <Zap size={18} />
-              <span>BÀI TIẾP (CÁCH)</span>
+              <Zap size={16} />
+              <span>Qua ô (Space)</span>
             </button>
           )}
 
           <button 
             className={`btn-arena-control ${isPaused ? 'resume' : 'pause'}`}
             onClick={onTogglePause}
-            title={isPaused ? 'Tiếp tục' : 'Tạm dừng'}
+            title={isPaused ? 'Tiếp tục bài tập' : 'Tạm dừng bài tập'}
           >
-            {isPaused ? <Play size={18} /> : <Pause size={18} />}
-            <span>{isPaused ? 'TIẾP TỤC' : 'TẠM DỪNG'}</span>
+            {isPaused ? <Play size={16} /> : <Pause size={16} />}
+            <span>{isPaused ? 'Tiếp tục' : 'Tạm dừng'}</span>
           </button>
 
           <button 
             className="btn-arena-control abort"
             onClick={onAbort}
-            title="Dừng bài tập và quay về"
+            title="Dừng bài tập và quay về trang chủ"
           >
-            <XSquare size={18} />
-            <span>DỪNG BÀI TẬP</span>
+            <XSquare size={16} />
+            <span>Dừng tập</span>
           </button>
         </div>
       </div>

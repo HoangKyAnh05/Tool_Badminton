@@ -294,13 +294,13 @@ export const MovementOverlay: React.FC<MovementOverlayProps> = ({
 
             {/* Level Badge */}
             <div className={`clean-level-badge ${levelColorClass}`}>
-              <Award size={14} />
+              <Award size={13} />
               <span>{currentVar.level || 'Cơ bản'}</span>
             </div>
 
             {/* Variation indicator */}
-            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', background: 'rgba(0, 242, 254, 0.1)', border: '1px solid rgba(0, 242, 254, 0.3)', borderRadius: '20px', padding: '4px 10px', fontSize: '12px', color: '#00f2fe', fontWeight: 800 }}>
-              <span>ĐỘNG TÁC {activeIdx + 1}/{variationsList.length}</span>
+            <div className="clean-var-counter">
+              <span>Động tác {activeIdx + 1}/{variationsList.length}</span>
             </div>
 
             {/* Live Upload Video Button */}
@@ -310,16 +310,15 @@ export const MovementOverlay: React.FC<MovementOverlayProps> = ({
                 e.stopPropagation();
                 setIsEditingModalOpen(true);
               }}
-              title="Đẩy video file từ máy hoặc gắn link video cho động tác này"
-              style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', background: 'linear-gradient(135deg, rgba(0, 242, 254, 0.2), rgba(79, 172, 254, 0.2))', border: '1px solid #00f2fe', color: '#fff', borderRadius: '8px', padding: '6px 12px', fontSize: '12px', fontWeight: 700, cursor: 'pointer' }}
+              title="Đổi video cho động tác này"
             >
               <UploadCloud size={14} className="text-cyan" />
-              <span>Đẩy Video / Gắn Link Động Tác Này</span>
+              <span>Đổi video</span>
             </button>
 
             {/* Round & Timer */}
             <div className="clean-timer-group">
-              <span className="clean-round-pill">LƯỢT {roundNumber}/{totalRounds}</span>
+              <span className="clean-round-pill">Lượt {roundNumber}/{totalRounds}</span>
               <span className="clean-timer-pill">
                 <TimerIcon size={14} />
                 <span>{remainingTime.toFixed(1)}s</span>
@@ -338,7 +337,7 @@ export const MovementOverlay: React.FC<MovementOverlayProps> = ({
                 <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
                   <span className="arena-custom-tag" style={{ background: 'rgba(16, 185, 129, 0.2)', color: '#10b981', border: '1px solid rgba(16, 185, 129, 0.4)', borderRadius: '6px', padding: '2px 8px', fontSize: '11px', fontWeight: 700, display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
                     <CheckCircle size={12} />
-                    <span>{localBlobUrl ? 'Video đã lưu trên máy' : 'Video tùy chỉnh'}</span>
+                    <span>{localBlobUrl ? 'Video trên máy' : 'Tùy chỉnh'}</span>
                   </span>
                   <button
                     type="button"
@@ -352,7 +351,7 @@ export const MovementOverlay: React.FC<MovementOverlayProps> = ({
                     title="Khôi phục video gốc mặc định"
                     style={{ background: 'rgba(239, 68, 68, 0.15)', border: '1px solid rgba(239, 68, 68, 0.4)', color: '#f87171', borderRadius: '6px', padding: '2px 8px', fontSize: '11px', fontWeight: 700, cursor: 'pointer' }}
                   >
-                    Khôi phục gốc
+                    Khôi phục
                   </button>
                 </div>
               )}
@@ -364,7 +363,7 @@ export const MovementOverlay: React.FC<MovementOverlayProps> = ({
                 type="button"
                 onClick={handlePrevVariation}
                 className="btn-arrow-nav"
-                style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', padding: '6px 12px', background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.2)', borderRadius: '8px', color: '#fff', fontSize: '12px', fontWeight: 700, cursor: 'pointer' }}
+                style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', padding: '6px 14px', background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.2)', borderRadius: '8px', color: '#fff', fontSize: '12px', fontWeight: 700, cursor: 'pointer' }}
                 title="Động tác trước (Phím mũi tên Trái ←)"
               >
                 <ChevronLeft size={16} />
@@ -375,7 +374,7 @@ export const MovementOverlay: React.FC<MovementOverlayProps> = ({
                 type="button"
                 onClick={handleNextVariation}
                 className="btn-arrow-nav"
-                style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', padding: '6px 12px', background: 'rgba(0, 242, 254, 0.15)', border: '1px solid #00f2fe', borderRadius: '8px', color: '#00f2fe', fontSize: '12px', fontWeight: 700, cursor: 'pointer' }}
+                style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', padding: '6px 14px', background: 'rgba(0, 242, 254, 0.15)', border: '1px solid #00f2fe', borderRadius: '8px', color: '#00f2fe', fontSize: '12px', fontWeight: 700, cursor: 'pointer' }}
                 title="Động tác tiếp theo (Phím mũi tên Phải →)"
               >
                 <span>Tiếp</span>
@@ -615,17 +614,17 @@ export const MovementOverlay: React.FC<MovementOverlayProps> = ({
             e.stopPropagation();
             onCompleteAction?.();
           }}
-          title="Bấm chuột vào đây hoặc gõ phím CÁCH (Space) để qua ô mới"
+          title="Bấm chuột hoặc gõ phím Space để qua bài tiếp theo"
         >
           <div className="trigger-left">
-            <MousePointerClick size={24} className="trigger-click-pulsing text-lime" />
+            <MousePointerClick size={20} className="trigger-click-pulsing text-lime" />
             <span className="trigger-main-text">
-              ĐÃ XONG ĐỘNG TÁC: <strong className="text-lime">CLICK CHUỘT VÀO MÀN HÌNH</strong> HOẶC <strong className="text-lime">BẤM PHÍM CÁCH [SPACE]</strong> ĐỂ QUA Ô MỚI
+              Chạm màn hình hoặc bấm phím <strong className="text-lime">SPACE</strong> để chuyển bài
             </span>
           </div>
           <div className="trigger-right-btn">
-            <span>QUA Ô TIẾP</span>
-            <ArrowRight size={18} />
+            <span>QUA Ô TIẾP (SPACE)</span>
+            <ArrowRight size={17} />
           </div>
         </div>
       </div>

@@ -53,11 +53,11 @@ export const Navbar: React.FC<NavbarProps> = ({
           <button 
             className="nav-btn nav-btn-videohub"
             onClick={onOpenVideoHub}
-            title="Trung tâm đẩy video vào đúng các vị trí ô sân & kỹ thuật"
-            aria-label="Đẩy Video Vào Vị Trí"
+            title="Trung tâm đổi video và gán link cho từng vị trí ô sân"
+            aria-label="Đổi Video"
           >
-            <FolderSync size={18} className="text-cyan" />
-            <span className="nav-btn-text">Đẩy Video Vào Vị Trí</span>
+            <FolderSync size={16} className="text-cyan" />
+            <span className="nav-btn-text">Đổi Video</span>
           </button>
 
           <button 
@@ -66,7 +66,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             title="Quay video bài tập và tự động lưu về máy"
             aria-label="Quay Video"
           >
-            <Camera size={18} className="text-danger" />
+            <Camera size={16} className="text-danger" />
             <span className="nav-btn-text">Quay Video</span>
           </button>
 

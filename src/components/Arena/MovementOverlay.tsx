@@ -69,6 +69,7 @@ export const MovementOverlay: React.FC<MovementOverlayProps> = ({
   const [isEditingModalOpen, setIsEditingModalOpen] = useState<boolean>(false);
   const [localBlobUrl, setLocalBlobUrl] = useState<string | null>(null);
   const [isFitCover, setIsFitCover] = useState<boolean>(false);
+  const [videoFallback, setVideoFallback] = useState<string | null>(null);
 
   // All 10 variations for this position
   const variationsList = position.variations && position.variations.length > 0 
@@ -100,6 +101,7 @@ export const MovementOverlay: React.FC<MovementOverlayProps> = ({
 
   // Sync index when variationIndex or position changes
   useEffect(() => {
+    setVideoFallback(null);
     if (variationIndex >= 0 && variationIndex < variationsList.length) {
       setActiveIdx(variationIndex);
     } else {
@@ -130,7 +132,7 @@ export const MovementOverlay: React.FC<MovementOverlayProps> = ({
     };
   }, [overrideKey]);
 
-  const rawVideoUrl = localBlobUrl || customOverride?.videoUrl || currentVar.videoUrl || `./videos/clips/pos_${position.id}_clip_${activeIdx + 1}.mp4`;
+  const rawVideoUrl = videoFallback || localBlobUrl || customOverride?.videoUrl || currentVar.videoUrl || `./videos/clips/pos_${position.id}_clip_${activeIdx + 1}.mp4`;
   const currentVideoUrl = localBlobUrl ? localBlobUrl : resolveTrainingVideoUrl(rawVideoUrl);
   const ytId = extractYouTubeId(currentVideoUrl);
   const tiktokId = !currentVideoUrl.endsWith('.mp4') ? extractTikTokId(currentVideoUrl) : null;
@@ -139,11 +141,13 @@ export const MovementOverlay: React.FC<MovementOverlayProps> = ({
   // Keyboard navigation for switching variations: Left Arrow & Right Arrow
   const handlePrevVariation = useCallback((e?: React.MouseEvent) => {
     if (e) e.stopPropagation();
+    setVideoFallback(null);
     setActiveIdx((prev) => (prev > 0 ? prev - 1 : variationsList.length - 1));
   }, [variationsList.length]);
 
   const handleNextVariation = useCallback((e?: React.MouseEvent) => {
     if (e) e.stopPropagation();
+    setVideoFallback(null);
     setActiveIdx((prev) => (prev < variationsList.length - 1 ? prev + 1 : 0));
   }, [variationsList.length]);
 
@@ -168,21 +172,25 @@ export const MovementOverlay: React.FC<MovementOverlayProps> = ({
   // Autoplay video when clip changes
   useEffect(() => {
     if (!ytId && videoRef.current) {
-      videoRef.current.load();
-      videoRef.current.play().catch(() => {});
-      setIsPlaying(true);
+      videoRef.current.muted = true;
+      videoRef.current.defaultMuted = true;
+      const playPromise = videoRef.current.play();
+      if (playPromise !== undefined) {
+        playPromise
+          .then(() => setIsPlaying(true))
+          .catch(() => setIsPlaying(false));
+      }
     }
   }, [currentVideoUrl, ytId, activeIdx]);
 
   const togglePlay = (e: React.MouseEvent) => {
     e.stopPropagation();
     if (!videoRef.current) return;
-    if (isPlaying) {
+    if (videoRef.current.paused) {
+      videoRef.current.play().then(() => setIsPlaying(true)).catch(() => {});
+    } else {
       videoRef.current.pause();
       setIsPlaying(false);
-    } else {
-      videoRef.current.play().catch(() => {});
-      setIsPlaying(true);
     }
   };
 
@@ -191,6 +199,14 @@ export const MovementOverlay: React.FC<MovementOverlayProps> = ({
     if (!videoRef.current) return;
     videoRef.current.muted = !videoRef.current.muted;
     setIsMuted(videoRef.current.muted);
+  };
+
+  const handleVideoError = () => {
+    console.warn('Video failed to load:', currentVideoUrl);
+    const fallbackPath = `./videos/clips/pos_${position.id}_clip_${activeIdx + 1}.mp4`;
+    if (currentVideoUrl !== fallbackPath) {
+      setVideoFallback(fallbackPath);
+    }
   };
 
   const toggleFullscreen = (e: React.MouseEvent) => {
@@ -296,10 +312,26 @@ export const MovementOverlay: React.FC<MovementOverlayProps> = ({
                 <span className="clean-technique-type">• {currentVar.shotType}</span>
               )}
               {(customOverride || localBlobUrl) && (
-                <span className="arena-custom-tag" style={{ background: 'rgba(16, 185, 129, 0.2)', color: '#10b981', border: '1px solid rgba(16, 185, 129, 0.4)', borderRadius: '6px', padding: '2px 8px', fontSize: '11px', fontWeight: 700, display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
-                  <CheckCircle size={12} />
-                  <span>{localBlobUrl ? 'Video đã lưu trên máy' : 'Video tùy chỉnh'}</span>
-                </span>
+                <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                  <span className="arena-custom-tag" style={{ background: 'rgba(16, 185, 129, 0.2)', color: '#10b981', border: '1px solid rgba(16, 185, 129, 0.4)', borderRadius: '6px', padding: '2px 8px', fontSize: '11px', fontWeight: 700, display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
+                    <CheckCircle size={12} />
+                    <span>{localBlobUrl ? 'Video đã lưu trên máy' : 'Video tùy chỉnh'}</span>
+                  </span>
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      storageService.removeVideoOverride(overrideKey);
+                      setVideoOverrides(storageService.loadVideoOverrides());
+                      setLocalBlobUrl(null);
+                      setVideoFallback(null);
+                    }}
+                    title="Khôi phục video gốc mặc định"
+                    style={{ background: 'rgba(239, 68, 68, 0.15)', border: '1px solid rgba(239, 68, 68, 0.4)', color: '#f87171', borderRadius: '6px', padding: '2px 8px', fontSize: '11px', fontWeight: 700, cursor: 'pointer' }}
+                  >
+                    Khôi phục gốc
+                  </button>
+                </div>
               )}
             </div>
 
@@ -435,17 +467,23 @@ export const MovementOverlay: React.FC<MovementOverlayProps> = ({
                 <video
                   ref={videoRef}
                   src={currentVideoUrl}
+                  poster={currentVar.thumbnailUrl || `./thumbnails/video-pos-${position.id}-${activeIdx + 1}.jpg`}
                   autoPlay
                   loop
                   muted={isMuted}
                   playsInline
+                  preload="auto"
                   className={`clean-video-player ${isFitCover ? 'fit-cover' : ''}`}
                   onClick={togglePlay}
+                  onPlay={() => setIsPlaying(true)}
+                  onPause={() => setIsPlaying(false)}
+                  onError={handleVideoError}
                 />
 
                 {!isPlaying && (
-                  <div className="clean-video-pause-overlay" onClick={togglePlay}>
-                    <Play size={44} className="pause-icon" />
+                  <div className="clean-video-pause-overlay" onClick={togglePlay} style={{ cursor: 'pointer', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px', background: 'rgba(2, 132, 199, 0.9)', width: 'auto', height: 'auto', padding: '16px 28px', borderRadius: '18px' }}>
+                    <Play size={36} className="pause-icon" />
+                    <span style={{ fontSize: '13px', fontWeight: 800, color: '#020812' }}>BẤM ĐỂ PHÁT VIDEO</span>
                   </div>
                 )}
 

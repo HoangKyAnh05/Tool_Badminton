@@ -20,9 +20,24 @@ import {
   Layers,
   Edit3,
   UploadCloud,
-  MousePointerClick
+  MousePointerClick,
+  Maximize2,
+  Scan
 } from 'lucide-react';
 import { Youtube } from '../Video/YoutubeIcon';
+
+// Helper to resolve TikTok URL or ID directly to local downloaded MP4 video
+const resolveTrainingVideoUrl = (url?: string): string => {
+  if (!url) return '';
+  if (url.startsWith('./videos/training/') || url.startsWith('/videos/training/')) {
+    return url;
+  }
+  const match = url.match(/(\d{15,22})/);
+  if (match && match[1]) {
+    return `./videos/training/${match[1]}.mp4`;
+  }
+  return url;
+};
 
 interface MovementOverlayProps {
   position: GridPosition;
@@ -53,6 +68,7 @@ export const MovementOverlay: React.FC<MovementOverlayProps> = ({
   const [videoOverrides, setVideoOverrides] = useState<Record<string, any>>(() => storageService.loadVideoOverrides());
   const [isEditingModalOpen, setIsEditingModalOpen] = useState<boolean>(false);
   const [localBlobUrl, setLocalBlobUrl] = useState<string | null>(null);
+  const [isFitCover, setIsFitCover] = useState<boolean>(false);
 
   // All 10 variations for this position
   const variationsList = position.variations && position.variations.length > 0 
@@ -80,6 +96,7 @@ export const MovementOverlay: React.FC<MovementOverlayProps> = ({
   const [isPlaying, setIsPlaying] = useState<boolean>(true);
   const [isMuted, setIsMuted] = useState<boolean>(true);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   // Sync index when variationIndex or position changes
   useEffect(() => {
@@ -114,10 +131,10 @@ export const MovementOverlay: React.FC<MovementOverlayProps> = ({
   }, [overrideKey]);
 
   const rawVideoUrl = localBlobUrl || customOverride?.videoUrl || currentVar.videoUrl || `./videos/clips/pos_${position.id}_clip_${activeIdx + 1}.mp4`;
-  const currentVideoUrl = rawVideoUrl;
+  const currentVideoUrl = localBlobUrl ? localBlobUrl : resolveTrainingVideoUrl(rawVideoUrl);
   const ytId = extractYouTubeId(currentVideoUrl);
-  const tiktokId = extractTikTokId(currentVideoUrl);
-  const isTikTok = isTikTokUrl(currentVideoUrl);
+  const tiktokId = !currentVideoUrl.endsWith('.mp4') ? extractTikTokId(currentVideoUrl) : null;
+  const isTikTok = !currentVideoUrl.endsWith('.mp4') ? isTikTokUrl(currentVideoUrl) : false;
 
   // Keyboard navigation for switching variations: Left Arrow & Right Arrow
   const handlePrevVariation = useCallback((e?: React.MouseEvent) => {
@@ -174,6 +191,17 @@ export const MovementOverlay: React.FC<MovementOverlayProps> = ({
     if (!videoRef.current) return;
     videoRef.current.muted = !videoRef.current.muted;
     setIsMuted(videoRef.current.muted);
+  };
+
+  const toggleFullscreen = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (videoRef.current) {
+      if (document.fullscreenElement) {
+        document.exitFullscreen().catch(() => {});
+      } else {
+        videoRef.current.requestFullscreen().catch(() => {});
+      }
+    }
   };
 
   // Prepare pseudo TacticsVideo for editing
@@ -411,7 +439,7 @@ export const MovementOverlay: React.FC<MovementOverlayProps> = ({
                   loop
                   muted={isMuted}
                   playsInline
-                  className="clean-video-player"
+                  className={`clean-video-player ${isFitCover ? 'fit-cover' : ''}`}
                   onClick={togglePlay}
                 />
 
@@ -436,6 +464,23 @@ export const MovementOverlay: React.FC<MovementOverlayProps> = ({
                     title={isMuted ? 'Bật âm thanh' : 'Tắt âm'}
                   >
                     {isMuted ? <VolumeX size={16} /> : <Volume2 size={16} />}
+                  </button>
+                  <button 
+                    className={`clean-vid-btn ${isFitCover ? 'active-cyan' : ''}`}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setIsFitCover(!isFitCover);
+                    }}
+                    title={isFitCover ? 'Chế độ: Vừa khung hình (Fit)' : 'Chế độ: Phóng to đầy màn (Cover)'}
+                  >
+                    <Scan size={15} />
+                  </button>
+                  <button 
+                    className="clean-vid-btn" 
+                    onClick={toggleFullscreen}
+                    title="Xem toàn màn hình"
+                  >
+                    <Maximize2 size={15} />
                   </button>
                   <button 
                     className="clean-vid-btn btn-change-link" 

@@ -288,7 +288,7 @@ export const storageService = {
         const cleaned: Record<string, Partial<TacticsVideo>> = {};
         let hasBad = false;
         for (const [k, v] of Object.entries(parsed)) {
-          const url = ((v as any)?.videoUrl || '') as string;
+          let url = ((v as any)?.videoUrl || '') as string;
           if (
             url.includes('8192839') || 
             url.includes('8293819') || 
@@ -303,6 +303,17 @@ export const storageService = {
             url.includes('7469819')
           ) {
             hasBad = true;
+          } else if (url.includes('tiktok.com')) {
+            const match = url.match(/(\d{15,22})/);
+            if (match && match[1]) {
+              cleaned[k] = {
+                ...(v as any),
+                videoUrl: `./videos/training/${match[1]}.mp4`
+              };
+              hasBad = true;
+            } else {
+              cleaned[k] = v as Partial<TacticsVideo>;
+            }
           } else {
             cleaned[k] = v as Partial<TacticsVideo>;
           }

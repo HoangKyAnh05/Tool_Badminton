@@ -121,12 +121,12 @@ export const EditYouTubeLinkModal: React.FC<EditYouTubeLinkModalProps> = ({
       >
         <div className="edit-modal-header">
           <div className="header-badge-title">
-            <div className="yt-icon-badge">
-              <Youtube size={20} className="text-danger" />
+            <div className="yt-icon-badge" style={{ background: 'rgba(0, 242, 254, 0.15)', color: '#00f2fe' }}>
+              <Sparkles size={20} />
             </div>
             <div>
-              <h3>Gắn Link Video YouTube Của Bạn</h3>
-              <p className="modal-subtext">Hỗ trợ YouTube Unlisted (Không công khai), Shorts hoặc Video thông thường</p>
+              <h3>Gắn Link Video TikTok / Clip Của Bạn</h3>
+              <p className="modal-subtext">Hỗ trợ link video TikTok (@user/video/...), YouTube, hoặc link trực tiếp</p>
             </div>
           </div>
           <button className="theater-close-btn" onClick={onClose}>
@@ -135,25 +135,32 @@ export const EditYouTubeLinkModal: React.FC<EditYouTubeLinkModalProps> = ({
         </div>
 
         <form onSubmit={handleSubmit} className="edit-modal-body">
-          {/* Quick Guide Trigger */}
-          {onOpenGuide && (
-            <div className="guide-banner-row" onClick={onOpenGuide}>
-              <HelpCircle size={16} className="text-cyan" />
-              <span>Chưa biết cách up video Unlisted lên YouTube? <strong>Xem hướng dẫn 3 bước tại đây</strong></span>
-            </div>
-          )}
+          {/* Quick 1-click TikTok search button */}
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '10px 14px', background: 'rgba(0, 242, 254, 0.08)', borderRadius: '10px', border: '1px solid rgba(0, 242, 254, 0.25)', marginBottom: '14px' }}>
+            <span style={{ fontSize: '12px', color: '#94a3b8' }}>
+              💡 Tìm nhanh video TikTok cho: <strong style={{ color: '#fff' }}>{video.title}</strong>
+            </span>
+            <a 
+              href={`https://www.tiktok.com/search?q=${encodeURIComponent(video.title + ' (cầu lông)')}`}
+              target="_blank"
+              rel="noreferrer"
+              style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', padding: '6px 12px', background: 'linear-gradient(135deg, #00f2fe 0%, #4facfe 100%)', color: '#000', borderRadius: '16px', fontSize: '11px', fontWeight: 800, textDecoration: 'none' }}
+            >
+              <ExternalLink size={12} /> <span>Mở TikTok Tìm Ngay</span>
+            </a>
+          </div>
 
-          {/* YouTube Link Field */}
+          {/* Video Link Field */}
           <div className="form-group">
             <label className="form-label">
-              <span className="required-star">*</span> Đường dẫn Video YouTube (URL)
+              <span className="required-star">*</span> Đường dẫn Video (TikTok URL / YouTube)
             </label>
             <div className="input-with-icon">
-              <Youtube size={18} className="input-icon text-danger" />
+              <Sparkles size={18} className="input-icon text-cyan" />
               <input 
                 type="text"
                 className="modal-text-input"
-                placeholder="Ví dụ: https://www.youtube.com/watch?v=... hoặc https://youtu.be/..."
+                placeholder="Dán link TikTok (ví dụ: https://www.tiktok.com/@.../video/...) hoặc YouTube"
                 value={url}
                 onChange={(e) => {
                   setUrl(e.target.value);

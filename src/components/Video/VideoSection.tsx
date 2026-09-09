@@ -483,11 +483,7 @@ export const VideoSection: React.FC<VideoSectionProps> = ({ initialLevel }) => {
                     />
                   ) : (
                     <div className="video-thumb-fallback">
-                      {isYt ? (
-                        <Youtube size={44} className="text-danger" />
-                      ) : (
-                        <Tv size={40} className="text-cyan" />
-                      )}
+                      <Tv size={38} className="text-cyan" />
                     </div>
                   )}
 
@@ -507,8 +503,8 @@ export const VideoSection: React.FC<VideoSectionProps> = ({ initialLevel }) => {
                       </span>
                     )}
                     {isCustomOrOverridden && (
-                      <span className="card-override-indicator" title="Video do bạn tự gắn link YouTube">
-                        <Youtube size={11} className="text-danger" />
+                      <span className="card-override-indicator" title="Video đã được gắn link">
+                        <Sparkles size={11} className="text-cyan" />
                         <span>Link của bạn</span>
                       </span>
                     )}
@@ -518,7 +514,7 @@ export const VideoSection: React.FC<VideoSectionProps> = ({ initialLevel }) => {
                   <button 
                     className="btn-card-quick-edit"
                     onClick={(e) => handleOpenEdit(e, video)}
-                    title="Gắn hoặc đổi link YouTube của bạn cho video này"
+                    title="Gắn hoặc đổi link TikTok của bạn cho video này"
                   >
                     <Edit3 size={13} />
                     <span>Gắn link</span>
@@ -552,10 +548,10 @@ export const VideoSection: React.FC<VideoSectionProps> = ({ initialLevel }) => {
                       <button 
                         className="btn-card-yt-link"
                         onClick={(e) => handleOpenEdit(e, video)}
-                        title="Chỉnh sửa hoặc đổi link YouTube"
+                        title="Gắn hoặc đổi link TikTok"
                       >
-                        <Youtube size={14} className="text-danger" />
-                        <span>Sửa link</span>
+                        <Sparkles size={14} className="text-cyan" />
+                        <span>Gắn link</span>
                       </button>
 
                       {video.isCustom && !TACTICS_VIDEOS.some(x => x.id === video.id) && (

@@ -14,7 +14,7 @@ export const BADMINTON_POSITIONS: GridPosition[] = [
     courtZone: "front",
     courtSide: "left",
     level: "Cơ bản",
-    videoUrl: "https://www.youtube.com/watch?v=J9C_0B3sU1Q",
+    videoUrl: "https://www.tiktok.com/search?q=G%C3%B3c+L%C6%B0%E1%BB%9Bi+Tr%C3%A1i+%28Net+Left%29+%28c%E1%BA%A7u+l%C3%B4ng%29",
     handMovement: {
       title: "Đỡ Cầu & Kê Lưới Trái Tay",
       subTitle: "Mặt vợt ngửa 45 độ, thả lỏng cổ tay đón cầu sát lưới",
@@ -39,7 +39,7 @@ export const BADMINTON_POSITIONS: GridPosition[] = [
         shotName: "Đỡ Cầu & Kê Lưới Trái Tay",
         shotType: "Kê lưới",
         level: "Cơ bản",
-        videoUrl: "https://www.youtube.com/watch?v=J9C_0B3sU1Q",
+        videoUrl: "https://www.tiktok.com/search?q=%C4%90%E1%BB%A1+C%E1%BA%A7u+%26+K%C3%AA+L%C6%B0%E1%BB%9Bi+Tr%C3%A1i+Tay+%28c%E1%BA%A7u+l%C3%B4ng%29",
         handMovement: {
           title: "Đỡ Cầu & Kê Lưới Trái Tay",
           subTitle: "Mặt vợt ngửa 45 độ, thả lỏng cổ tay đón cầu sát lưới",
@@ -64,7 +64,7 @@ export const BADMINTON_POSITIONS: GridPosition[] = [
         shotName: "Bước Lunge Đón Cầu Góc Lưới Trái",
         shotType: "Bộ pháp",
         level: "Cơ bản",
-        videoUrl: "https://www.youtube.com/watch?v=bF6s8K2Zp0U",
+        videoUrl: "https://www.tiktok.com/search?q=B%C6%B0%E1%BB%9Bc+Lunge+%C4%90%C3%B3n+C%E1%BA%A7u+G%C3%B3c+L%C6%B0%E1%BB%9Bi+Tr%C3%A1i+%28c%E1%BA%A7u+l%C3%B4ng%29",
         handMovement: {
           title: "Bước Lunge Đón Cầu Góc Lưới Trái",
           subTitle: "Giơ vợt ổn định trước ngực giữ thăng bằng",
@@ -89,7 +89,7 @@ export const BADMINTON_POSITIONS: GridPosition[] = [
         shotName: "Kê Cầu Vuốt Mép Lưới Đổi Nhịp",
         shotType: "Kê lưới",
         level: "Cơ bản",
-        videoUrl: "https://www.youtube.com/shorts/3X6b_0rQh2o",
+        videoUrl: "https://www.tiktok.com/search?q=K%C3%AA+C%E1%BA%A7u+Vu%E1%BB%91t+M%C3%A9p+L%C6%B0%E1%BB%9Bi+%C4%90%E1%BB%95i+Nh%E1%BB%8Bp+%28c%E1%BA%A7u+l%C3%B4ng%29",
         handMovement: {
           title: "Kê Cầu Vuốt Mép Lưới Đổi Nhịp",
           subTitle: "Vuốt nhẹ đầu vợt triệt tiêu quán tính quả cầu",
@@ -114,7 +114,7 @@ export const BADMINTON_POSITIONS: GridPosition[] = [
         shotName: "Gài Lưới / Miết Cầu Xoáy Lộn Lưới",
         shotType: "Bỏ nhỏ xoáy",
         level: "Trung cấp",
-        videoUrl: "https://www.tiktok.com/@badminton_training/video/7372888645730192658",
+        videoUrl: "https://www.tiktok.com/search?q=G%C3%A0i+L%C6%B0%E1%BB%9Bi+%2F+Mi%E1%BA%BFt+C%E1%BA%A7u+Xo%C3%A1y+L%E1%BB%99n+L%C6%B0%E1%BB%9Bi+%28c%E1%BA%A7u+l%C3%B4ng%29",
         handMovement: {
           title: "Gài Lưới / Miết Cầu Xoáy Lộn Lưới",
           subTitle: "Miết nhẹ đầu quả cầu tạo độ xoáy lộn mép lưới",
@@ -139,7 +139,7 @@ export const BADMINTON_POSITIONS: GridPosition[] = [
         shotName: "Hất Cầu Bổng Sâu Góc Lưới Trái",
         shotType: "Hất bổng",
         level: "Trung cấp",
-        videoUrl: "https://www.youtube.com/watch?v=9_nOaZ7UfLE",
+        videoUrl: "https://www.tiktok.com/search?q=H%E1%BA%A5t+C%E1%BA%A7u+B%E1%BB%95ng+S%C3%A2u+G%C3%B3c+L%C6%B0%E1%BB%9Bi+Tr%C3%A1i+%28c%E1%BA%A7u+l%C3%B4ng%29",
         handMovement: {
           title: "Hất Cầu Bổng Sâu Góc Lưới Trái",
           subTitle: "Vung vợt từ dưới lên bung lực cẳng tay đẩy cầu sâu",
@@ -164,7 +164,7 @@ export const BADMINTON_POSITIONS: GridPosition[] = [
         shotName: "Kéo Lưới Đổi Hướng Sang Biên Phải",
         shotType: "Kéo lưới",
         level: "Trung cấp",
-        videoUrl: "https://www.youtube.com/watch?v=zFhH2_4XgW0",
+        videoUrl: "https://www.tiktok.com/search?q=K%C3%A9o+L%C6%B0%E1%BB%9Bi+%C4%90%E1%BB%95i+H%C6%B0%E1%BB%9Bng+Sang+Bi%C3%AAn+Ph%E1%BA%A3i+%28c%E1%BA%A7u+l%C3%B4ng%29",
         handMovement: {
           title: "Kéo Lưới Đổi Hướng Sang Biên Phải",
           subTitle: "Nghiêng góc mặt vợt đưa cầu lướt ngang mép lưới",
@@ -189,7 +189,7 @@ export const BADMINTON_POSITIONS: GridPosition[] = [
         shotName: "Vồ Cầu / Chụp Lưới Góc Trái",
         shotType: "Vồ cầu",
         level: "Nâng cao",
-        videoUrl: "https://www.youtube.com/watch?v=D4jT-KjE5sM",
+        videoUrl: "https://www.tiktok.com/search?q=V%E1%BB%93+C%E1%BA%A7u+%2F+Ch%E1%BB%A5p+L%C6%B0%E1%BB%9Bi+G%C3%B3c+Tr%C3%A1i+%28c%E1%BA%A7u+l%C3%B4ng%29",
         handMovement: {
           title: "Vồ Cầu / Chụp Lưới Góc Trái",
           subTitle: "Đón cầu đỉnh lưới, búng ngón cái giật gõ cắm sàn",
@@ -214,7 +214,7 @@ export const BADMINTON_POSITIONS: GridPosition[] = [
         shotName: "Múa Vợt Đổi Hướng Chém Chéo Lưới",
         shotType: "Đánh lừa",
         level: "Nâng cao",
-        videoUrl: "https://www.youtube.com/shorts/bQ8CgN3_X4s",
+        videoUrl: "https://www.tiktok.com/search?q=M%C3%BAa+V%E1%BB%A3t+%C4%90%E1%BB%95i+H%C6%B0%E1%BB%9Bng+Ch%C3%A9m+Ch%C3%A9o+L%C6%B0%E1%BB%9Bi+%28c%E1%BA%A7u+l%C3%B4ng%29",
         handMovement: {
           title: "Múa Vợt Đổi Hướng Chém Chéo Lưới",
           subTitle: "Giả động tác đẩy thẳng rồi chém cổ tay chéo sân",
@@ -239,7 +239,7 @@ export const BADMINTON_POSITIONS: GridPosition[] = [
         shotName: "Giả Động Tác Đẩy Bổng Cắt Cầu Sát Lưới",
         shotType: "Kỹ xảo",
         level: "Nâng cao",
-        videoUrl: "https://www.tiktok.com/@badminton_training",
+        videoUrl: "https://www.tiktok.com/search?q=Gi%E1%BA%A3+%C4%90%E1%BB%99ng+T%C3%A1c+%C4%90%E1%BA%A9y+B%E1%BB%95ng+C%E1%BA%AFt+C%E1%BA%A7u+S%C3%A1t+L%C6%B0%E1%BB%9Bi+%28c%E1%BA%A7u+l%C3%B4ng%29",
         handMovement: {
           title: "Giả Động Tác Đẩy Bổng Cắt Cầu Sát Lưới",
           subTitle: "Tạo đà vung bổng nhưng hãm vợt miết nhẹ mép cầu",
@@ -264,7 +264,7 @@ export const BADMINTON_POSITIONS: GridPosition[] = [
         shotName: "Bật Lướt Đón Cầu Dứt Điểm Mép Chữ T",
         shotType: "Bật lướt",
         level: "Nâng cao",
-        videoUrl: "https://www.youtube.com/watch?v=gT8w5Q8vQ6k",
+        videoUrl: "https://www.tiktok.com/search?q=B%E1%BA%ADt+L%C6%B0%E1%BB%9Bt+%C4%90%C3%B3n+C%E1%BA%A7u+D%E1%BB%A9t+%C4%90i%E1%BB%83m+M%C3%A9p+Ch%E1%BB%AF+T+%28c%E1%BA%A7u+l%C3%B4ng%29",
         handMovement: {
           title: "Bật Lướt Đón Cầu Dứt Điểm Mép Chữ T",
           subTitle: "Bật người trên không gõ cắm cầu trước khi qua lưới",
@@ -299,7 +299,7 @@ export const BADMINTON_POSITIONS: GridPosition[] = [
     courtZone: "front",
     courtSide: "center",
     level: "Cơ bản",
-    videoUrl: "https://www.youtube.com/watch?v=J9C_0B3sU1Q",
+    videoUrl: "https://www.tiktok.com/search?q=L%C6%B0%E1%BB%9Bi+Gi%E1%BB%AFa+%28Front+Center%29+%28c%E1%BA%A7u+l%C3%B4ng%29",
     handMovement: {
       title: "Chặn Đẩy Cầu Thẳng Mặt Lưới",
       subTitle: "Đẩy mặt vợt thẳng hướng quả cầu rơi",
@@ -324,7 +324,7 @@ export const BADMINTON_POSITIONS: GridPosition[] = [
         shotName: "Chặn Đẩy Cầu Thẳng Mặt Lưới",
         shotType: "Chặn đẩy",
         level: "Cơ bản",
-        videoUrl: "https://www.youtube.com/watch?v=J9C_0B3sU1Q",
+        videoUrl: "https://www.tiktok.com/search?q=Ch%E1%BA%B7n+%C4%90%E1%BA%A9y+C%E1%BA%A7u+Th%E1%BA%B3ng+M%E1%BA%B7t+L%C6%B0%E1%BB%9Bi+%28c%E1%BA%A7u+l%C3%B4ng%29",
         handMovement: {
           title: "Chặn Đẩy Cầu Thẳng Mặt Lưới",
           subTitle: "Đẩy mặt vợt thẳng hướng quả cầu rơi",
@@ -349,7 +349,7 @@ export const BADMINTON_POSITIONS: GridPosition[] = [
         shotName: "Kê Cầu Chữ T Đổi Nhịp",
         shotType: "Kê lưới",
         level: "Cơ bản",
-        videoUrl: "https://www.youtube.com/shorts/3X6b_0rQh2o",
+        videoUrl: "https://www.tiktok.com/search?q=K%C3%AA+C%E1%BA%A7u+Ch%E1%BB%AF+T+%C4%90%E1%BB%95i+Nh%E1%BB%8Bp+%28c%E1%BA%A7u+l%C3%B4ng%29",
         handMovement: {
           title: "Kê Cầu Chữ T Đổi Nhịp",
           subTitle: "Thả lỏng cổ tay triệt tiêu lực quả cầu",
@@ -374,7 +374,7 @@ export const BADMINTON_POSITIONS: GridPosition[] = [
         shotName: "Bước Thẳng Đón Cầu Chữ T",
         shotType: "Bộ pháp",
         level: "Cơ bản",
-        videoUrl: "https://www.youtube.com/watch?v=bF6s8K2Zp0U",
+        videoUrl: "https://www.tiktok.com/search?q=B%C6%B0%E1%BB%9Bc+Th%E1%BA%B3ng+%C4%90%C3%B3n+C%E1%BA%A7u+Ch%E1%BB%AF+T+%28c%E1%BA%A7u+l%C3%B4ng%29",
         handMovement: {
           title: "Bước Thẳng Đón Cầu Chữ T",
           subTitle: "Đưa vợt sớm trước mặt đón đầu quả cầu",
@@ -399,7 +399,7 @@ export const BADMINTON_POSITIONS: GridPosition[] = [
         shotName: "Đè Lưới / Phản Tạt Nhanh Giữa Sân",
         shotType: "Đè lưới",
         level: "Trung cấp",
-        videoUrl: "https://www.youtube.com/watch?v=v_t6Q4eBqRs",
+        videoUrl: "https://www.tiktok.com/search?q=%C4%90%C3%A8+L%C6%B0%E1%BB%9Bi+%2F+Ph%E1%BA%A3n+T%E1%BA%A1t+Nhanh+Gi%E1%BB%AFa+S%C3%A2n+%28c%E1%BA%A7u+l%C3%B4ng%29",
         handMovement: {
           title: "Đè Lưới / Phản Tạt Nhanh Giữa Sân",
           subTitle: "Gập cổ tay chớp nhoáng đẩy cầu đi căng thấp",
@@ -424,7 +424,7 @@ export const BADMINTON_POSITIONS: GridPosition[] = [
         shotName: "Bung Cầu Bổng Sang Hai Góc",
         shotType: "Bung bổng",
         level: "Trung cấp",
-        videoUrl: "https://www.youtube.com/watch?v=9_nOaZ7UfLE",
+        videoUrl: "https://www.tiktok.com/search?q=Bung+C%E1%BA%A7u+B%E1%BB%95ng+Sang+Hai+G%C3%B3c+%28c%E1%BA%A7u+l%C3%B4ng%29",
         handMovement: {
           title: "Bung Cầu Bổng Sang Hai Góc",
           subTitle: "Bung lực cổ tay hất cao bổng sang góc trống",
@@ -449,7 +449,7 @@ export const BADMINTON_POSITIONS: GridPosition[] = [
         shotName: "Tạt Cầu Ngang Đầu Vợt Ép Đối Phương",
         shotType: "Phản tạt",
         level: "Trung cấp",
-        videoUrl: "https://www.youtube.com/watch?v=v_t6Q4eBqRs",
+        videoUrl: "https://www.tiktok.com/search?q=T%E1%BA%A1t+C%E1%BA%A7u+Ngang+%C4%90%E1%BA%A7u+V%E1%BB%A3t+%C3%89p+%C4%90%E1%BB%91i+Ph%C6%B0%C6%A1ng+%28c%E1%BA%A7u+l%C3%B4ng%29",
         handMovement: {
           title: "Tạt Cầu Ngang Đầu Vợt Ép Đối Phương",
           subTitle: "Tạt phẳng cầu sát mép trên của lưới",
@@ -474,7 +474,7 @@ export const BADMINTON_POSITIONS: GridPosition[] = [
         shotName: "Búng Cổ Tay Chụp Lưới Dứt Điểm",
         shotType: "Vồ cầu",
         level: "Nâng cao",
-        videoUrl: "https://www.youtube.com/watch?v=D4jT-KjE5sM",
+        videoUrl: "https://www.tiktok.com/search?q=B%C3%BAng+C%E1%BB%95+Tay+Ch%E1%BB%A5p+L%C6%B0%E1%BB%9Bi+D%E1%BB%A9t+%C4%90i%E1%BB%83m+%28c%E1%BA%A7u+l%C3%B4ng%29",
         handMovement: {
           title: "Búng Cổ Tay Chụp Lưới Dứt Điểm",
           subTitle: "Đón đỉnh lưới gõ cắm thẳng xuống đất đối thủ",
@@ -499,7 +499,7 @@ export const BADMINTON_POSITIONS: GridPosition[] = [
         shotName: "Giả Bỏ Nhỏ Gạt Cầu Sát Vách Lưới",
         shotType: "Đánh lừa",
         level: "Nâng cao",
-        videoUrl: "https://www.youtube.com/shorts/bQ8CgN3_X4s",
+        videoUrl: "https://www.tiktok.com/search?q=Gi%E1%BA%A3+B%E1%BB%8F+Nh%E1%BB%8F+G%E1%BA%A1t+C%E1%BA%A7u+S%C3%A1t+V%C3%A1ch+L%C6%B0%E1%BB%9Bi+%28c%E1%BA%A7u+l%C3%B4ng%29",
         handMovement: {
           title: "Giả Bỏ Nhỏ Gạt Cầu Sát Vách Lưới",
           subTitle: "Giữ nhịp vợt tĩnh (Hold) rồi gạt nhanh đổi hướng",
@@ -524,7 +524,7 @@ export const BADMINTON_POSITIONS: GridPosition[] = [
         shotName: "Chớp Cơ Hội Bồi Cầu Cắm Sàn Chữ T",
         shotType: "Bồi cầu",
         level: "Nâng cao",
-        videoUrl: "https://www.youtube.com/watch?v=8428Kj0Zq4g",
+        videoUrl: "https://www.tiktok.com/search?q=Ch%E1%BB%9Bp+C%C6%A1+H%E1%BB%99i+B%E1%BB%93i+C%E1%BA%A7u+C%E1%BA%AFm+S%C3%A0n+Ch%E1%BB%AF+T+%28c%E1%BA%A7u+l%C3%B4ng%29",
         handMovement: {
           title: "Chớp Cơ Hội Bồi Cầu Cắm Sàn Chữ T",
           subTitle: "Đón quả cầu trả bổng của đối phương đập cắm sàn",
@@ -549,7 +549,7 @@ export const BADMINTON_POSITIONS: GridPosition[] = [
         shotName: "Bắt Bài Đường Cầu Tạt Ngang Đầu",
         shotType: "Cắt cầu",
         level: "Nâng cao",
-        videoUrl: "https://www.youtube.com/watch?v=gT8w5Q8vQ6k",
+        videoUrl: "https://www.tiktok.com/search?q=B%E1%BA%AFt+B%C3%A0i+%C4%90%C6%B0%E1%BB%9Dng+C%E1%BA%A7u+T%E1%BA%A1t+Ngang+%C4%90%E1%BA%A7u+%28c%E1%BA%A7u+l%C3%B4ng%29",
         handMovement: {
           title: "Bắt Bài Đường Cầu Tạt Ngang Đầu",
           subTitle: "Đưa vợt đón lõng trên không đánh chặn tức thì",
@@ -584,7 +584,7 @@ export const BADMINTON_POSITIONS: GridPosition[] = [
     courtZone: "front",
     courtSide: "right",
     level: "Cơ bản",
-    videoUrl: "https://www.youtube.com/watch?v=J9C_0B3sU1Q",
+    videoUrl: "https://www.tiktok.com/search?q=G%C3%B3c+L%C6%B0%E1%BB%9Bi+Ph%E1%BA%A3i+%28Net+Right%29+%28c%E1%BA%A7u+l%C3%B4ng%29",
     handMovement: {
       title: "Kê Cầu Thuận Tay Sát Lưới",
       subTitle: "Mặt vợt mở nhẹ thuận tay đón cầu êm",
@@ -609,7 +609,7 @@ export const BADMINTON_POSITIONS: GridPosition[] = [
         shotName: "Kê Cầu Thuận Tay Sát Lưới",
         shotType: "Kê lưới",
         level: "Cơ bản",
-        videoUrl: "https://www.youtube.com/watch?v=J9C_0B3sU1Q",
+        videoUrl: "https://www.tiktok.com/search?q=K%C3%AA+C%E1%BA%A7u+Thu%E1%BA%ADn+Tay+S%C3%A1t+L%C6%B0%E1%BB%9Bi+%28c%E1%BA%A7u+l%C3%B4ng%29",
         handMovement: {
           title: "Kê Cầu Thuận Tay Sát Lưới",
           subTitle: "Mặt vợt mở nhẹ thuận tay đón cầu êm",
@@ -634,7 +634,7 @@ export const BADMINTON_POSITIONS: GridPosition[] = [
         shotName: "Bước Lunge Chân Thuận Góc Phải",
         shotType: "Bộ pháp",
         level: "Cơ bản",
-        videoUrl: "https://www.youtube.com/watch?v=bF6s8K2Zp0U",
+        videoUrl: "https://www.tiktok.com/search?q=B%C6%B0%E1%BB%9Bc+Lunge+Ch%C3%A2n+Thu%E1%BA%ADn+G%C3%B3c+Ph%E1%BA%A3i+%28c%E1%BA%A7u+l%C3%B4ng%29",
         handMovement: {
           title: "Bước Lunge Chân Thuận Góc Phải",
           subTitle: "Tay mở rộng giữ cân bằng trọng tâm",
@@ -659,7 +659,7 @@ export const BADMINTON_POSITIONS: GridPosition[] = [
         shotName: "Kê Cầu Chéo Góc Thuận Tay",
         shotType: "Kê lưới",
         level: "Cơ bản",
-        videoUrl: "https://www.youtube.com/shorts/3X6b_0rQh2o",
+        videoUrl: "https://www.tiktok.com/search?q=K%C3%AA+C%E1%BA%A7u+Ch%C3%A9o+G%C3%B3c+Thu%E1%BA%ADn+Tay+%28c%E1%BA%A7u+l%C3%B4ng%29",
         handMovement: {
           title: "Kê Cầu Chéo Góc Thuận Tay",
           subTitle: "Nghiêng nhẹ mặt vợt đón cầu đưa sang góc đối diện",
@@ -684,7 +684,7 @@ export const BADMINTON_POSITIONS: GridPosition[] = [
         shotName: "Miết Cầu Xoáy Lộn Lưới Thuận Tay",
         shotType: "Bỏ nhỏ xoáy",
         level: "Trung cấp",
-        videoUrl: "https://www.tiktok.com/@badminton_training/video/7465697345355713799",
+        videoUrl: "https://www.tiktok.com/search?q=Mi%E1%BA%BFt+C%E1%BA%A7u+Xo%C3%A1y+L%E1%BB%99n+L%C6%B0%E1%BB%9Bi+Thu%E1%BA%ADn+Tay+%28c%E1%BA%A7u+l%C3%B4ng%29",
         handMovement: {
           title: "Miết Cầu Xoáy Lộn Lưới Thuận Tay",
           subTitle: "Xoay cổ tay miết mép ngoài quả cầu lộn lưới",
@@ -709,7 +709,7 @@ export const BADMINTON_POSITIONS: GridPosition[] = [
         shotName: "Hất Cầu Bổng Sâu Thuận Tay",
         shotType: "Hất sâu",
         level: "Trung cấp",
-        videoUrl: "https://www.youtube.com/watch?v=9_nOaZ7UfLE",
+        videoUrl: "https://www.tiktok.com/search?q=H%E1%BA%A5t+C%E1%BA%A7u+B%E1%BB%95ng+S%C3%A2u+Thu%E1%BA%ADn+Tay+%28c%E1%BA%A7u+l%C3%B4ng%29",
         handMovement: {
           title: "Hất Cầu Bổng Sâu Thuận Tay",
           subTitle: "Vung hết biên độ hất cầu cao về đáy góc 7",
@@ -734,7 +734,7 @@ export const BADMINTON_POSITIONS: GridPosition[] = [
         shotName: "Kéo Lưới Lừa Hướng Thuận Tay",
         shotType: "Kéo lưới",
         level: "Trung cấp",
-        videoUrl: "https://www.youtube.com/watch?v=v_t6Q4eBqRs",
+        videoUrl: "https://www.tiktok.com/search?q=K%C3%A9o+L%C6%B0%E1%BB%9Bi+L%E1%BB%ABa+H%C6%B0%E1%BB%9Bng+Thu%E1%BA%ADn+Tay+%28c%E1%BA%A7u+l%C3%B4ng%29",
         handMovement: {
           title: "Kéo Lưới Lừa Hướng Thuận Tay",
           subTitle: "Cắt chéo đường bay đưa cầu lướt dọc vạch trắng lưới",
@@ -759,7 +759,7 @@ export const BADMINTON_POSITIONS: GridPosition[] = [
         shotName: "Chụp Lưới / Đè Cầu Dứt Điểm Góc Phải",
         shotType: "Đè lưới",
         level: "Nâng cao",
-        videoUrl: "https://www.youtube.com/watch?v=D4jT-KjE5sM",
+        videoUrl: "https://www.tiktok.com/search?q=Ch%E1%BB%A5p+L%C6%B0%E1%BB%9Bi+%2F+%C4%90%C3%A8+C%E1%BA%A7u+D%E1%BB%A9t+%C4%90i%E1%BB%83m+G%C3%B3c+Ph%E1%BA%A3i+%28c%E1%BA%A7u+l%C3%B4ng%29",
         handMovement: {
           title: "Chụp Lưới / Đè Cầu Dứt Điểm Góc Phải",
           subTitle: "Lao vào gõ cắm thẳng góc biên",
@@ -784,7 +784,7 @@ export const BADMINTON_POSITIONS: GridPosition[] = [
         shotName: "Giả Động Tác Chém Chéo Góc Lưới",
         shotType: "Đánh lừa",
         level: "Nâng cao",
-        videoUrl: "https://www.youtube.com/shorts/bQ8CgN3_X4s",
+        videoUrl: "https://www.tiktok.com/search?q=Gi%E1%BA%A3+%C4%90%E1%BB%99ng+T%C3%A1c+Ch%C3%A9m+Ch%C3%A9o+G%C3%B3c+L%C6%B0%E1%BB%9Bi+%28c%E1%BA%A7u+l%C3%B4ng%29",
         handMovement: {
           title: "Giả Động Tác Chém Chéo Góc Lưới",
           subTitle: "Vung giả đẩy thẳng rồi bẻ cổ tay cắt chéo",
@@ -809,7 +809,7 @@ export const BADMINTON_POSITIONS: GridPosition[] = [
         shotName: "Đè Cầu Tấn Công Góc Biên Thuận Tay",
         shotType: "Tấn công",
         level: "Nâng cao",
-        videoUrl: "https://www.tiktok.com/@badminton_training",
+        videoUrl: "https://www.tiktok.com/search?q=%C4%90%C3%A8+C%E1%BA%A7u+T%E1%BA%A5n+C%C3%B4ng+G%C3%B3c+Bi%C3%AAn+Thu%E1%BA%ADn+Tay+%28c%E1%BA%A7u+l%C3%B4ng%29",
         handMovement: {
           title: "Đè Cầu Tấn Công Góc Biên Thuận Tay",
           subTitle: "Vung vợt biên độ hẹp gõ cắm sát vạch biên",
@@ -834,7 +834,7 @@ export const BADMINTON_POSITIONS: GridPosition[] = [
         shotName: "Bật Lao Người Chụp Cầu Mép Trên",
         shotType: "Chụp cầu",
         level: "Nâng cao",
-        videoUrl: "https://www.youtube.com/watch?v=gT8w5Q8vQ6k",
+        videoUrl: "https://www.tiktok.com/search?q=B%E1%BA%ADt+Lao+Ng%C6%B0%E1%BB%9Di+Ch%E1%BB%A5p+C%E1%BA%A7u+M%C3%A9p+Tr%C3%AAn+%28c%E1%BA%A7u+l%C3%B4ng%29",
         handMovement: {
           title: "Bật Lao Người Chụp Cầu Mép Trên",
           subTitle: "Vươn toàn thân đón cầu tầm cao dứt điểm",
@@ -869,7 +869,7 @@ export const BADMINTON_POSITIONS: GridPosition[] = [
     courtZone: "mid",
     courtSide: "left",
     level: "Cơ bản",
-    videoUrl: "https://www.youtube.com/watch?v=qW6_Z7b7m-M",
+    videoUrl: "https://www.tiktok.com/search?q=Trung+T%C3%A2m+Tr%C3%A1i+%28Midcourt+Left%29+%28c%E1%BA%A7u+l%C3%B4ng%29",
     handMovement: {
       title: "Thủ Cầu Ngang Hông Trái Tay",
       subTitle: "Ngón cái tì cán vợt, mở mặt vợt đỡ trước hông",
@@ -894,7 +894,7 @@ export const BADMINTON_POSITIONS: GridPosition[] = [
         shotName: "Thủ Cầu Ngang Hông Trái Tay",
         shotType: "Thủ cầu",
         level: "Cơ bản",
-        videoUrl: "https://www.youtube.com/watch?v=qW6_Z7b7m-M",
+        videoUrl: "https://www.tiktok.com/search?q=Th%E1%BB%A7+C%E1%BA%A7u+Ngang+H%C3%B4ng+Tr%C3%A1i+Tay+%28c%E1%BA%A7u+l%C3%B4ng%29",
         handMovement: {
           title: "Thủ Cầu Ngang Hông Trái Tay",
           subTitle: "Ngón cái tì cán vợt, mở mặt vợt đỡ trước hông",
@@ -919,7 +919,7 @@ export const BADMINTON_POSITIONS: GridPosition[] = [
         shotName: "Bước Trượt Ngang Đón Cầu Trái",
         shotType: "Bộ pháp",
         level: "Cơ bản",
-        videoUrl: "https://www.youtube.com/watch?v=v_t6Q4eBqRs",
+        videoUrl: "https://www.tiktok.com/search?q=B%C6%B0%E1%BB%9Bc+Tr%C6%B0%E1%BB%A3t+Ngang+%C4%90%C3%B3n+C%E1%BA%A7u+Tr%C3%A1i+%28c%E1%BA%A7u+l%C3%B4ng%29",
         handMovement: {
           title: "Bước Trượt Ngang Đón Cầu Trái",
           subTitle: "Vợt giơ ngang ngực sẵn sàng",
@@ -944,7 +944,7 @@ export const BADMINTON_POSITIONS: GridPosition[] = [
         shotName: "Đỡ Cầu Phản Xạ Tầm Trung",
         shotType: "Phòng thủ",
         level: "Cơ bản",
-        videoUrl: "https://www.youtube.com/watch?v=bF6s8K2Zp0U",
+        videoUrl: "https://www.tiktok.com/search?q=%C4%90%E1%BB%A1+C%E1%BA%A7u+Ph%E1%BA%A3n+X%E1%BA%A1+T%E1%BA%A7m+Trung+%28c%E1%BA%A7u+l%C3%B4ng%29",
         handMovement: {
           title: "Đỡ Cầu Phản Xạ Tầm Trung",
           subTitle: "Mặt vợt vững vàng chặn quả đập ngang sườn",
@@ -969,7 +969,7 @@ export const BADMINTON_POSITIONS: GridPosition[] = [
         shotName: "Phản Tạt Ngang Lưới Trái Tay",
         shotType: "Phản tạt",
         level: "Trung cấp",
-        videoUrl: "https://www.youtube.com/shorts/3X6b_0rQh2o",
+        videoUrl: "https://www.tiktok.com/search?q=Ph%E1%BA%A3n+T%E1%BA%A1t+Ngang+L%C6%B0%E1%BB%9Bi+Tr%C3%A1i+Tay+%28c%E1%BA%A7u+l%C3%B4ng%29",
         handMovement: {
           title: "Phản Tạt Ngang Lưới Trái Tay",
           subTitle: "Vung ngang mặt vợt tạt thẳng mép lưới",
@@ -994,7 +994,7 @@ export const BADMINTON_POSITIONS: GridPosition[] = [
         shotName: "Thủ Cầu Chéo Góc Thoát Hiểm",
         shotType: "Thủ chéo",
         level: "Trung cấp",
-        videoUrl: "https://www.youtube.com/watch?v=v_t6Q4eBqRs",
+        videoUrl: "https://www.tiktok.com/search?q=Th%E1%BB%A7+C%E1%BA%A7u+Ch%C3%A9o+G%C3%B3c+Tho%C3%A1t+Hi%E1%BB%83m+%28c%E1%BA%A7u+l%C3%B4ng%29",
         handMovement: {
           title: "Thủ Cầu Chéo Góc Thoát Hiểm",
           subTitle: "Nghiêng góc vợt đẩy cầu rơi chéo sân đối diện",
@@ -1019,7 +1019,7 @@ export const BADMINTON_POSITIONS: GridPosition[] = [
         shotName: "Chặn Cầu Ngang Hông Hãm Xung Lực",
         shotType: "Hãm lực",
         level: "Trung cấp",
-        videoUrl: "https://www.youtube.com/watch?v=qW6_Z7b7m-M",
+        videoUrl: "https://www.tiktok.com/search?q=Ch%E1%BA%B7n+C%E1%BA%A7u+Ngang+H%C3%B4ng+H%C3%A3m+Xung+L%E1%BB%B1c+%28c%E1%BA%A7u+l%C3%B4ng%29",
         handMovement: {
           title: "Chặn Cầu Ngang Hông Hãm Xung Lực",
           subTitle: "Thả lỏng ngón tay đón bóng làm bóng rơi sát lưới",
@@ -1044,7 +1044,7 @@ export const BADMINTON_POSITIONS: GridPosition[] = [
         shotName: "Bung Phản Tạt Đè Góc Xa Trái Tay",
         shotType: "Phản công",
         level: "Nâng cao",
-        videoUrl: "https://www.youtube.com/watch?v=8428Kj0Zq4g",
+        videoUrl: "https://www.tiktok.com/search?q=Bung+Ph%E1%BA%A3n+T%E1%BA%A1t+%C4%90%C3%A8+G%C3%B3c+Xa+Tr%C3%A1i+Tay+%28c%E1%BA%A7u+l%C3%B4ng%29",
         handMovement: {
           title: "Bung Phản Tạt Đè Góc Xa Trái Tay",
           subTitle: "Bung hết lực ngón cái đè bóng sâu về góc trống",
@@ -1069,7 +1069,7 @@ export const BADMINTON_POSITIONS: GridPosition[] = [
         shotName: "Đỡ Smash Bỏ Nhỏ Đổi Nhịp",
         shotType: "Hãm lực",
         level: "Nâng cao",
-        videoUrl: "https://www.youtube.com/shorts/bQ8CgN3_X4s",
+        videoUrl: "https://www.tiktok.com/search?q=%C4%90%E1%BB%A1+Smash+B%E1%BB%8F+Nh%E1%BB%8F+%C4%90%E1%BB%95i+Nh%E1%BB%8Bp+%28c%E1%BA%A7u+l%C3%B4ng%29",
         handMovement: {
           title: "Đỡ Smash Bỏ Nhỏ Đổi Nhịp",
           subTitle: "Thả lỏng cổ tay đón cú smash cho cầu rơi sát lưới",
@@ -1094,7 +1094,7 @@ export const BADMINTON_POSITIONS: GridPosition[] = [
         shotName: "Phản Công Đè Cầu Tấn Công Góc Nách",
         shotType: "Tấn công",
         level: "Nâng cao",
-        videoUrl: "https://www.tiktok.com/@badminton_training/video/7476759285720993040",
+        videoUrl: "https://www.tiktok.com/search?q=Ph%E1%BA%A3n+C%C3%B4ng+%C4%90%C3%A8+C%E1%BA%A7u+T%E1%BA%A5n+C%C3%B4ng+G%C3%B3c+N%C3%A1ch+%28c%E1%BA%A7u+l%C3%B4ng%29",
         handMovement: {
           title: "Phản Công Đè Cầu Tấn Công Góc Nách",
           subTitle: "Bật người đè cầu cắm sát nách đối phương",
@@ -1119,7 +1119,7 @@ export const BADMINTON_POSITIONS: GridPosition[] = [
         shotName: "Bật Vẩy Cổ Tay Trái Tay Ép Đáy",
         shotType: "Phát lực",
         level: "Nâng cao",
-        videoUrl: "https://www.youtube.com/watch?v=gT8w5Q8vQ6k",
+        videoUrl: "https://www.tiktok.com/search?q=B%E1%BA%ADt+V%E1%BA%A9y+C%E1%BB%95+Tay+Tr%C3%A1i+Tay+%C3%89p+%C4%90%C3%A1y+%28c%E1%BA%A7u+l%C3%B4ng%29",
         handMovement: {
           title: "Bật Vẩy Cổ Tay Trái Tay Ép Đáy",
           subTitle: "Búng cổ tay cực nhanh đưa cầu bay vút góc đáy đối diện",
@@ -1154,7 +1154,7 @@ export const BADMINTON_POSITIONS: GridPosition[] = [
     courtZone: "mid",
     courtSide: "center",
     level: "Cơ bản",
-    videoUrl: "https://www.youtube.com/watch?v=Z4u_13fO35I",
+    videoUrl: "https://www.tiktok.com/search?q=T%C3%A2m+S%C3%A2n+%28Court+Center%29+%28c%E1%BA%A7u+l%C3%B4ng%29",
     handMovement: {
       title: "Bật Nhẹ Split-Step Sẵn Sàng",
       subTitle: "Vợt giơ ngang cằm, khuỷu tay mở rộng",
@@ -1179,7 +1179,7 @@ export const BADMINTON_POSITIONS: GridPosition[] = [
         shotName: "Bật Nhẹ Split-Step Sẵn Sàng",
         shotType: "Bộ pháp",
         level: "Cơ bản",
-        videoUrl: "https://www.youtube.com/watch?v=Z4u_13fO35I",
+        videoUrl: "https://www.tiktok.com/search?q=B%E1%BA%ADt+Nh%E1%BA%B9+Split-Step+S%E1%BA%B5n+S%C3%A0ng+%28c%E1%BA%A7u+l%C3%B4ng%29",
         handMovement: {
           title: "Bật Nhẹ Split-Step Sẵn Sàng",
           subTitle: "Vợt giơ ngang cằm, khuỷu tay mở rộng",
@@ -1204,7 +1204,7 @@ export const BADMINTON_POSITIONS: GridPosition[] = [
         shotName: "Bộ Pháp Di Chuyển 4 Góc Từ Tâm",
         shotType: "Bộ pháp",
         level: "Cơ bản",
-        videoUrl: "https://www.youtube.com/watch?v=qW6_Z7b7m-M",
+        videoUrl: "https://www.tiktok.com/search?q=B%E1%BB%99+Ph%C3%A1p+Di+Chuy%E1%BB%83n+4+G%C3%B3c+T%E1%BB%AB+T%C3%A2m+%28c%E1%BA%A7u+l%C3%B4ng%29",
         handMovement: {
           title: "Bộ Pháp Di Chuyển 4 Góc Từ Tâm",
           subTitle: "Phối hợp tay vợt linh hoạt theo hướng chạy",
@@ -1229,7 +1229,7 @@ export const BADMINTON_POSITIONS: GridPosition[] = [
         shotName: "Nhịp Dừng Hồi Tâm Ổn Định",
         shotType: "Hồi vị",
         level: "Cơ bản",
-        videoUrl: "https://www.youtube.com/watch?v=bF6s8K2Zp0U",
+        videoUrl: "https://www.tiktok.com/search?q=Nh%E1%BB%8Bp+D%E1%BB%ABng+H%E1%BB%93i+T%C3%A2m+%E1%BB%94n+%C4%90%E1%BB%8Bnh+%28c%E1%BA%A7u+l%C3%B4ng%29",
         handMovement: {
           title: "Nhịp Dừng Hồi Tâm Ổn Định",
           subTitle: "Thu vợt trước ngực sẵn sàng đón nhịp tiếp theo",
@@ -1254,7 +1254,7 @@ export const BADMINTON_POSITIONS: GridPosition[] = [
         shotName: "Bắt Bài Nhịp Cầu Nửa Sân",
         shotType: "Bắt bài",
         level: "Trung cấp",
-        videoUrl: "https://www.youtube.com/watch?v=v_t6Q4eBqRs",
+        videoUrl: "https://www.tiktok.com/search?q=B%E1%BA%AFt+B%C3%A0i+Nh%E1%BB%8Bp+C%E1%BA%A7u+N%E1%BB%ADa+S%C3%A2n+%28c%E1%BA%A7u+l%C3%B4ng%29",
         handMovement: {
           title: "Bắt Bài Nhịp Cầu Nửa Sân",
           subTitle: "Giơ vợt đón đầu quả cầu bay lửng giữa sân",
@@ -1279,7 +1279,7 @@ export const BADMINTON_POSITIONS: GridPosition[] = [
         shotName: "Xoay Hông Chuyển Trọng Tâm Nhanh",
         shotType: "Hồi vị",
         level: "Trung cấp",
-        videoUrl: "https://www.youtube.com/watch?v=qW6_Z7b7m-M",
+        videoUrl: "https://www.tiktok.com/search?q=Xoay+H%C3%B4ng+Chuy%E1%BB%83n+Tr%E1%BB%8Dng+T%C3%A2m+Nhanh+%28c%E1%BA%A7u+l%C3%B4ng%29",
         handMovement: {
           title: "Xoay Hông Chuyển Trọng Tâm Nhanh",
           subTitle: "Thu vợt về ngực sau mỗi pha đánh",
@@ -1304,7 +1304,7 @@ export const BADMINTON_POSITIONS: GridPosition[] = [
         shotName: "Bước Đệm Đón Cầu Nửa Sân",
         shotType: "Bộ pháp",
         level: "Trung cấp",
-        videoUrl: "https://www.youtube.com/shorts/3X6b_0rQh2o",
+        videoUrl: "https://www.tiktok.com/search?q=B%C6%B0%E1%BB%9Bc+%C4%90%E1%BB%87m+%C4%90%C3%B3n+C%E1%BA%A7u+N%E1%BB%ADa+S%C3%A2n+%28c%E1%BA%A7u+l%C3%B4ng%29",
         handMovement: {
           title: "Bước Đệm Đón Cầu Nửa Sân",
           subTitle: "Đón cầu ngang ngực chuyển từ thủ sang công",
@@ -1329,7 +1329,7 @@ export const BADMINTON_POSITIONS: GridPosition[] = [
         shotName: "Đón Cầu Trên Không Nhịp Một",
         shotType: "Cắt cầu",
         level: "Nâng cao",
-        videoUrl: "https://www.youtube.com/watch?v=8428Kj0Zq4g",
+        videoUrl: "https://www.tiktok.com/search?q=%C4%90%C3%B3n+C%E1%BA%A7u+Tr%C3%AAn+Kh%C3%B4ng+Nh%E1%BB%8Bp+M%E1%BB%99t+%28c%E1%BA%A7u+l%C3%B4ng%29",
         handMovement: {
           title: "Đón Cầu Trên Không Nhịp Một",
           subTitle: "Bật nhảy đón cầu trên không gõ cắm sàn",
@@ -1354,7 +1354,7 @@ export const BADMINTON_POSITIONS: GridPosition[] = [
         shotName: "Đổi Hướng Đảo Chiều Đánh Lừa",
         shotType: "Chiến thuật",
         level: "Nâng cao",
-        videoUrl: "https://www.youtube.com/shorts/bQ8CgN3_X4s",
+        videoUrl: "https://www.tiktok.com/search?q=%C4%90%E1%BB%95i+H%C6%B0%E1%BB%9Bng+%C4%90%E1%BA%A3o+Chi%E1%BB%81u+%C4%90%C3%A1nh+L%E1%BB%ABa+%28c%E1%BA%A7u+l%C3%B4ng%29",
         handMovement: {
           title: "Đổi Hướng Đảo Chiều Đánh Lừa",
           subTitle: "Giả động tác sang trái rồi vung sang phải",
@@ -1379,7 +1379,7 @@ export const BADMINTON_POSITIONS: GridPosition[] = [
         shotName: "Chớp Thời Cơ Cắt Cầu Giữa Sân",
         shotType: "Tấn công",
         level: "Nâng cao",
-        videoUrl: "https://www.tiktok.com/@badminton_training/video/7495761376141397255",
+        videoUrl: "https://www.tiktok.com/search?q=Ch%E1%BB%9Bp+Th%E1%BB%9Di+C%C6%A1+C%E1%BA%AFt+C%E1%BA%A7u+Gi%E1%BB%AFa+S%C3%A2n+%28c%E1%BA%A7u+l%C3%B4ng%29",
         handMovement: {
           title: "Chớp Thời Cơ Cắt Cầu Giữa Sân",
           subTitle: "Cắt ngang đường bay quả cầu dứt điểm cắm sàn",
@@ -1404,7 +1404,7 @@ export const BADMINTON_POSITIONS: GridPosition[] = [
         shotName: "Hoán Đổi Vị Trí Công Thủ Linh Hoạt",
         shotType: "Đôi nam/nữ",
         level: "Nâng cao",
-        videoUrl: "https://www.youtube.com/watch?v=0k5iYhK7Plo",
+        videoUrl: "https://www.tiktok.com/search?q=Ho%C3%A1n+%C4%90%E1%BB%95i+V%E1%BB%8B+Tr%C3%AD+C%C3%B4ng+Th%E1%BB%A7+Linh+Ho%E1%BA%A1t+%28c%E1%BA%A7u+l%C3%B4ng%29",
         handMovement: {
           title: "Hoán Đổi Vị Trí Công Thủ Linh Hoạt",
           subTitle: "Phân công che chắn khu vực khi đồng đội dâng cao",
@@ -1439,7 +1439,7 @@ export const BADMINTON_POSITIONS: GridPosition[] = [
     courtZone: "mid",
     courtSide: "right",
     level: "Cơ bản",
-    videoUrl: "https://www.youtube.com/watch?v=qW6_Z7b7m-M",
+    videoUrl: "https://www.tiktok.com/search?q=Trung+T%C3%A2m+Ph%E1%BA%A3i+%28Midcourt+Right%29+%28c%E1%BA%A7u+l%C3%B4ng%29",
     handMovement: {
       title: "Thủ Cầu Ngang Hông Thuận Tay",
       subTitle: "Cổ tay mở, đón cầu ngang sườn phải",
@@ -1464,7 +1464,7 @@ export const BADMINTON_POSITIONS: GridPosition[] = [
         shotName: "Thủ Cầu Ngang Hông Thuận Tay",
         shotType: "Thủ cầu",
         level: "Cơ bản",
-        videoUrl: "https://www.youtube.com/watch?v=qW6_Z7b7m-M",
+        videoUrl: "https://www.tiktok.com/search?q=Th%E1%BB%A7+C%E1%BA%A7u+Ngang+H%C3%B4ng+Thu%E1%BA%ADn+Tay+%28c%E1%BA%A7u+l%C3%B4ng%29",
         handMovement: {
           title: "Thủ Cầu Ngang Hông Thuận Tay",
           subTitle: "Cổ tay mở, đón cầu ngang sườn phải",
@@ -1489,7 +1489,7 @@ export const BADMINTON_POSITIONS: GridPosition[] = [
         shotName: "Bước Trượt Ngang Đón Cầu Phải",
         shotType: "Bộ pháp",
         level: "Cơ bản",
-        videoUrl: "https://www.youtube.com/watch?v=v_t6Q4eBqRs",
+        videoUrl: "https://www.tiktok.com/search?q=B%C6%B0%E1%BB%9Bc+Tr%C6%B0%E1%BB%A3t+Ngang+%C4%90%C3%B3n+C%E1%BA%A7u+Ph%E1%BA%A3i+%28c%E1%BA%A7u+l%C3%B4ng%29",
         handMovement: {
           title: "Bước Trượt Ngang Đón Cầu Phải",
           subTitle: "Vợt giơ sẵn sàng trước ngực",
@@ -1514,7 +1514,7 @@ export const BADMINTON_POSITIONS: GridPosition[] = [
         shotName: "Đỡ Cầu Ngang Ngực Thuận Tay",
         shotType: "Phòng thủ",
         level: "Cơ bản",
-        videoUrl: "https://www.youtube.com/watch?v=bF6s8K2Zp0U",
+        videoUrl: "https://www.tiktok.com/search?q=%C4%90%E1%BB%A1+C%E1%BA%A7u+Ngang+Ng%E1%BB%B1c+Thu%E1%BA%ADn+Tay+%28c%E1%BA%A7u+l%C3%B4ng%29",
         handMovement: {
           title: "Đỡ Cầu Ngang Ngực Thuận Tay",
           subTitle: "Đỡ quả cầu đánh ép ngực phải đẩy đi an toàn",
@@ -1539,7 +1539,7 @@ export const BADMINTON_POSITIONS: GridPosition[] = [
         shotName: "Phản Tạt Thuận Tay Đè Lưới",
         shotType: "Phản tạt",
         level: "Trung cấp",
-        videoUrl: "https://www.youtube.com/shorts/3X6b_0rQh2o",
+        videoUrl: "https://www.tiktok.com/search?q=Ph%E1%BA%A3n+T%E1%BA%A1t+Thu%E1%BA%ADn+Tay+%C4%90%C3%A8+L%C6%B0%E1%BB%9Bi+%28c%E1%BA%A7u+l%C3%B4ng%29",
         handMovement: {
           title: "Phản Tạt Thuận Tay Đè Lưới",
           subTitle: "Vung ngang vợt đè phẳng đường bay của cầu",
@@ -1564,7 +1564,7 @@ export const BADMINTON_POSITIONS: GridPosition[] = [
         shotName: "Thủ Kê Cầu Sát Lưới Đổi Nhịp",
         shotType: "Thủ mềm",
         level: "Trung cấp",
-        videoUrl: "https://www.youtube.com/watch?v=v_t6Q4eBqRs",
+        videoUrl: "https://www.tiktok.com/search?q=Th%E1%BB%A7+K%C3%AA+C%E1%BA%A7u+S%C3%A1t+L%C6%B0%E1%BB%9Bi+%C4%90%E1%BB%95i+Nh%E1%BB%8Bp+%28c%E1%BA%A7u+l%C3%B4ng%29",
         handMovement: {
           title: "Thủ Kê Cầu Sát Lưới Đổi Nhịp",
           subTitle: "Hãm xung lực cho bóng rơi sát vạch chữ T",
@@ -1589,7 +1589,7 @@ export const BADMINTON_POSITIONS: GridPosition[] = [
         shotName: "Đẩy Cầu Nhanh Ngang Thân",
         shotType: "Phản tạt",
         level: "Trung cấp",
-        videoUrl: "https://www.youtube.com/watch?v=9_nOaZ7UfLE",
+        videoUrl: "https://www.tiktok.com/search?q=%C4%90%E1%BA%A9y+C%E1%BA%A7u+Nhanh+Ngang+Th%C3%A2n+%28c%E1%BA%A7u+l%C3%B4ng%29",
         handMovement: {
           title: "Đẩy Cầu Nhanh Ngang Thân",
           subTitle: "Đẩy nhanh mặt vợt đưa cầu đi sát người đối thủ",
@@ -1614,7 +1614,7 @@ export const BADMINTON_POSITIONS: GridPosition[] = [
         shotName: "Đè Cầu Tấn Công Góc Nách Thuận Tay",
         shotType: "Tấn công",
         level: "Nâng cao",
-        videoUrl: "https://www.youtube.com/watch?v=8428Kj0Zq4g",
+        videoUrl: "https://www.tiktok.com/search?q=%C4%90%C3%A8+C%E1%BA%A7u+T%E1%BA%A5n+C%C3%B4ng+G%C3%B3c+N%C3%A1ch+Thu%E1%BA%ADn+Tay+%28c%E1%BA%A7u+l%C3%B4ng%29",
         handMovement: {
           title: "Đè Cầu Tấn Công Góc Nách Thuận Tay",
           subTitle: "Bung lực cổ tay ép cầu cắm vào người đối thủ",
@@ -1639,7 +1639,7 @@ export const BADMINTON_POSITIONS: GridPosition[] = [
         shotName: "Bật Ngang Vợt Phản Tạt Chéo Biên",
         shotType: "Phản tạt chéo",
         level: "Nâng cao",
-        videoUrl: "https://www.youtube.com/shorts/bQ8CgN3_X4s",
+        videoUrl: "https://www.tiktok.com/search?q=B%E1%BA%ADt+Ngang+V%E1%BB%A3t+Ph%E1%BA%A3n+T%E1%BA%A1t+Ch%C3%A9o+Bi%C3%AAn+%28c%E1%BA%A7u+l%C3%B4ng%29",
         handMovement: {
           title: "Bật Ngang Vợt Phản Tạt Chéo Biên",
           subTitle: "Chém xiên mặt vợt đưa cầu vút sang góc xa",
@@ -1664,7 +1664,7 @@ export const BADMINTON_POSITIONS: GridPosition[] = [
         shotName: "Phản Đòn Smash Bằng Quả Tạt Cắm Sàn",
         shotType: "Phản công",
         level: "Nâng cao",
-        videoUrl: "https://www.tiktok.com/@badminton_training/video/7500378802141269256",
+        videoUrl: "https://www.tiktok.com/search?q=Ph%E1%BA%A3n+%C4%90%C3%B2n+Smash+B%E1%BA%B1ng+Qu%E1%BA%A3+T%E1%BA%A1t+C%E1%BA%AFm+S%C3%A0n+%28c%E1%BA%A7u+l%C3%B4ng%29",
         handMovement: {
           title: "Phản Đòn Smash Bằng Quả Tạt Cắm Sàn",
           subTitle: "Mượn lực cú smash tạt ngược lại cắm sàn đối phương",
@@ -1689,7 +1689,7 @@ export const BADMINTON_POSITIONS: GridPosition[] = [
         shotName: "Đỡ Cầu Bật Phản Công Dồn Dập",
         shotType: "Liên hoàn",
         level: "Nâng cao",
-        videoUrl: "https://www.youtube.com/watch?v=0k5iYhK7Plo",
+        videoUrl: "https://www.tiktok.com/search?q=%C4%90%E1%BB%A1+C%E1%BA%A7u+B%E1%BA%ADt+Ph%E1%BA%A3n+C%C3%B4ng+D%E1%BB%93n+D%E1%BA%ADp+%28c%E1%BA%A7u+l%C3%B4ng%29",
         handMovement: {
           title: "Đỡ Cầu Bật Phản Công Dồn Dập",
           subTitle: "Cứu cầu liên tục 2 nhịp chuyển thế trận chủ động",
@@ -1724,7 +1724,7 @@ export const BADMINTON_POSITIONS: GridPosition[] = [
     courtZone: "rear",
     courtSide: "left",
     level: "Cơ bản",
-    videoUrl: "https://www.youtube.com/watch?v=Xn5L5uR9_p4",
+    videoUrl: "https://www.tiktok.com/search?q=Cu%E1%BB%91i+S%C3%A2n+Tr%C3%A1i+%28Rear+Left%29+%28c%E1%BA%A7u+l%C3%B4ng%29",
     handMovement: {
       title: "Bộ Pháp Lùi Chéo Góc Trái",
       subTitle: "Giơ vợt vòng qua đầu đón điểm rơi",
@@ -1749,7 +1749,7 @@ export const BADMINTON_POSITIONS: GridPosition[] = [
         shotName: "Bộ Pháp Lùi Chéo Góc Trái",
         shotType: "Bộ pháp lùi",
         level: "Cơ bản",
-        videoUrl: "https://www.youtube.com/watch?v=Xn5L5uR9_p4",
+        videoUrl: "https://www.tiktok.com/search?q=B%E1%BB%99+Ph%C3%A1p+L%C3%B9i+Ch%C3%A9o+G%C3%B3c+Tr%C3%A1i+%28c%E1%BA%A7u+l%C3%B4ng%29",
         handMovement: {
           title: "Bộ Pháp Lùi Chéo Góc Trái",
           subTitle: "Giơ vợt vòng qua đầu đón điểm rơi",
@@ -1774,7 +1774,7 @@ export const BADMINTON_POSITIONS: GridPosition[] = [
         shotName: "Phông Cầu Vòng Đầu Thuận Tay",
         shotType: "Phông cầu",
         level: "Cơ bản",
-        videoUrl: "https://www.youtube.com/watch?v=bF6s8K2Zp0U",
+        videoUrl: "https://www.tiktok.com/search?q=Ph%C3%B4ng+C%E1%BA%A7u+V%C3%B2ng+%C4%90%E1%BA%A7u+Thu%E1%BA%ADn+Tay+%28c%E1%BA%A7u+l%C3%B4ng%29",
         handMovement: {
           title: "Phông Cầu Vòng Đầu Thuận Tay",
           subTitle: "Vung tay vòng qua đầu phông sâu cuối sân",
@@ -1799,7 +1799,7 @@ export const BADMINTON_POSITIONS: GridPosition[] = [
         shotName: "Đón Điểm Rơi Góc Trái Đáy Sân",
         shotType: "Phán đoán",
         level: "Cơ bản",
-        videoUrl: "https://www.youtube.com/watch?v=zFhH2_4XgW0",
+        videoUrl: "https://www.tiktok.com/search?q=%C4%90%C3%B3n+%C4%90i%E1%BB%83m+R%C6%A1i+G%C3%B3c+Tr%C3%A1i+%C4%90%C3%A1y+S%C3%A2n+%28c%E1%BA%A7u+l%C3%B4ng%29",
         handMovement: {
           title: "Đón Điểm Rơi Góc Trái Đáy Sân",
           subTitle: "Mở rộng vai đón quả cầu bổng sâu",
@@ -1824,7 +1824,7 @@ export const BADMINTON_POSITIONS: GridPosition[] = [
         shotName: "Cắt Cầu Chéo Sân Vòng Đầu",
         shotType: "Drop shot",
         level: "Trung cấp",
-        videoUrl: "https://www.youtube.com/watch?v=8428Kj0Zq4g",
+        videoUrl: "https://www.tiktok.com/search?q=C%E1%BA%AFt+C%E1%BA%A7u+Ch%C3%A9o+S%C3%A2n+V%C3%B2ng+%C4%90%E1%BA%A7u+%28c%E1%BA%A7u+l%C3%B4ng%29",
         handMovement: {
           title: "Cắt Cầu Chéo Sân Vòng Đầu",
           subTitle: "Chém nghiêng mặt vợt cắt cầu rơi chéo mép lưới",
@@ -1849,7 +1849,7 @@ export const BADMINTON_POSITIONS: GridPosition[] = [
         shotName: "Đập Cầu Vòng Đầu Tấn Công",
         shotType: "Smash vòng đầu",
         level: "Trung cấp",
-        videoUrl: "https://www.youtube.com/watch?v=Xn5L5uR9_p4",
+        videoUrl: "https://www.tiktok.com/search?q=%C4%90%E1%BA%ADp+C%E1%BA%A7u+V%C3%B2ng+%C4%90%E1%BA%A7u+T%E1%BA%A5n+C%C3%B4ng+%28c%E1%BA%A7u+l%C3%B4ng%29",
         handMovement: {
           title: "Đập Cầu Vòng Đầu Tấn Công",
           subTitle: "Gập bụng và cổ tay smash uy lực",
@@ -1874,7 +1874,7 @@ export const BADMINTON_POSITIONS: GridPosition[] = [
         shotName: "Phông Cao Sâu Ép Biên Trái",
         shotType: "Phông sâu",
         level: "Trung cấp",
-        videoUrl: "https://www.youtube.com/watch?v=v_t6Q4eBqRs",
+        videoUrl: "https://www.tiktok.com/search?q=Ph%C3%B4ng+Cao+S%C3%A2u+%C3%89p+Bi%C3%AAn+Tr%C3%A1i+%28c%E1%BA%A7u+l%C3%B4ng%29",
         handMovement: {
           title: "Phông Cao Sâu Ép Biên Trái",
           subTitle: "Phát lực cổ tay đưa cầu cao vút sát vạch biên",
@@ -1899,7 +1899,7 @@ export const BADMINTON_POSITIONS: GridPosition[] = [
         shotName: "Phông Cầu Trái Tay Cuối Sân (Backhand Clear)",
         shotType: "Phông trái tay",
         level: "Nâng cao",
-        videoUrl: "https://www.youtube.com/shorts/bQ8CgN3_X4s",
+        videoUrl: "https://www.tiktok.com/search?q=Ph%C3%B4ng+C%E1%BA%A7u+Tr%C3%A1i+Tay+Cu%E1%BB%91i+S%C3%A2n+%28Backhand+Clear%29+%28c%E1%BA%A7u+l%C3%B4ng%29",
         handMovement: {
           title: "Phông Cầu Trái Tay Cuối Sân (Backhand Clear)",
           subTitle: "Xoay lưng, bung hết lực cẳng tay ngón cái",
@@ -1924,7 +1924,7 @@ export const BADMINTON_POSITIONS: GridPosition[] = [
         shotName: "Chém Cầu Trái Tay Rơi Lưới (Backhand Drop)",
         shotType: "Chém trái tay",
         level: "Nâng cao",
-        videoUrl: "https://www.tiktok.com/@badminton_training/video/7501608184688299271",
+        videoUrl: "https://www.tiktok.com/search?q=Ch%C3%A9m+C%E1%BA%A7u+Tr%C3%A1i+Tay+R%C6%A1i+L%C6%B0%E1%BB%9Bi+%28Backhand+Drop%29+%28c%E1%BA%A7u+l%C3%B4ng%29",
         handMovement: {
           title: "Chém Cầu Trái Tay Rơi Lưới (Backhand Drop)",
           subTitle: "Giả động tác phông sâu rồi chém nhẹ rơi lưới",
@@ -1949,7 +1949,7 @@ export const BADMINTON_POSITIONS: GridPosition[] = [
         shotName: "Bật Nhảy Smash Vòng Đầu Dứt Điểm",
         shotType: "Jump smash",
         level: "Nâng cao",
-        videoUrl: "https://www.youtube.com/shorts/bQ8CgN3_X4s",
+        videoUrl: "https://www.tiktok.com/search?q=B%E1%BA%ADt+Nh%E1%BA%A3y+Smash+V%C3%B2ng+%C4%90%E1%BA%A7u+D%E1%BB%A9t+%C4%90i%E1%BB%83m+%28c%E1%BA%A7u+l%C3%B4ng%29",
         handMovement: {
           title: "Bật Nhảy Smash Vòng Đầu Dứt Điểm",
           subTitle: "Bật cao gập người đập cắm biên",
@@ -1974,7 +1974,7 @@ export const BADMINTON_POSITIONS: GridPosition[] = [
         shotName: "Giả Phông Chém Chéo Rơi Sát Mép Biên",
         shotType: "Đánh lừa",
         level: "Nâng cao",
-        videoUrl: "https://www.youtube.com/watch?v=8428Kj0Zq4g",
+        videoUrl: "https://www.tiktok.com/search?q=Gi%E1%BA%A3+Ph%C3%B4ng+Ch%C3%A9m+Ch%C3%A9o+R%C6%A1i+S%C3%A1t+M%C3%A9p+Bi%C3%AAn+%28c%E1%BA%A7u+l%C3%B4ng%29",
         handMovement: {
           title: "Giả Phông Chém Chéo Rơi Sát Mép Biên",
           subTitle: "Đà vung phông cực mạnh nhưng vuốt cạnh vợt cắt cầu",
@@ -2009,7 +2009,7 @@ export const BADMINTON_POSITIONS: GridPosition[] = [
     courtZone: "rear",
     courtSide: "center",
     level: "Cơ bản",
-    videoUrl: "https://www.youtube.com/watch?v=Xn5L5uR9_p4",
+    videoUrl: "https://www.tiktok.com/search?q=Cu%E1%BB%91i+S%C3%A2n+Gi%E1%BB%AFa+%28Rear+Center%29+%28c%E1%BA%A7u+l%C3%B4ng%29",
     handMovement: {
       title: "Bật Lùi Đón Cầu Đáy Giữa Sân",
       subTitle: "Mở rộng vai, giơ vợt cao nhất có thể",
@@ -2034,7 +2034,7 @@ export const BADMINTON_POSITIONS: GridPosition[] = [
         shotName: "Bật Lùi Đón Cầu Đáy Giữa Sân",
         shotType: "Bộ pháp",
         level: "Cơ bản",
-        videoUrl: "https://www.youtube.com/watch?v=Xn5L5uR9_p4",
+        videoUrl: "https://www.tiktok.com/search?q=B%E1%BA%ADt+L%C3%B9i+%C4%90%C3%B3n+C%E1%BA%A7u+%C4%90%C3%A1y+Gi%E1%BB%AFa+S%C3%A2n+%28c%E1%BA%A7u+l%C3%B4ng%29",
         handMovement: {
           title: "Bật Lùi Đón Cầu Đáy Giữa Sân",
           subTitle: "Mở rộng vai, giơ vợt cao nhất có thể",
@@ -2059,7 +2059,7 @@ export const BADMINTON_POSITIONS: GridPosition[] = [
         shotName: "Phông Cầu Bổng Sâu Đáy Sân",
         shotType: "Phông cao sâu",
         level: "Cơ bản",
-        videoUrl: "https://www.youtube.com/watch?v=bF6s8K2Zp0U",
+        videoUrl: "https://www.tiktok.com/search?q=Ph%C3%B4ng+C%E1%BA%A7u+B%E1%BB%95ng+S%C3%A2u+%C4%90%C3%A1y+S%C3%A2n+%28c%E1%BA%A7u+l%C3%B4ng%29",
         handMovement: {
           title: "Phông Cầu Bổng Sâu Đáy Sân",
           subTitle: "Phát lực trọn vẹn đưa cầu cao vút về vạch cuối",
@@ -2084,7 +2084,7 @@ export const BADMINTON_POSITIONS: GridPosition[] = [
         shotName: "Bộ Pháp Scissor Kick Đón Cầu Cao",
         shotType: "Bộ pháp",
         level: "Cơ bản",
-        videoUrl: "https://www.youtube.com/watch?v=8428Kj0Zq4g",
+        videoUrl: "https://www.tiktok.com/search?q=B%E1%BB%99+Ph%C3%A1p+Scissor+Kick+%C4%90%C3%B3n+C%E1%BA%A7u+Cao+%28c%E1%BA%A7u+l%C3%B4ng%29",
         handMovement: {
           title: "Bộ Pháp Scissor Kick Đón Cầu Cao",
           subTitle: "Bật đổi chân cắt kéo trên không",
@@ -2109,7 +2109,7 @@ export const BADMINTON_POSITIONS: GridPosition[] = [
         shotName: "Chém Cầu Thẳng Rơi Lưới (Straight Drop)",
         shotType: "Drop shot",
         level: "Trung cấp",
-        videoUrl: "https://www.youtube.com/watch?v=zFhH2_4XgW0",
+        videoUrl: "https://www.tiktok.com/search?q=Ch%C3%A9m+C%E1%BA%A7u+Th%E1%BA%B3ng+R%C6%A1i+L%C6%B0%E1%BB%9Bi+%28Straight+Drop%29+%28c%E1%BA%A7u+l%C3%B4ng%29",
         handMovement: {
           title: "Chém Cầu Thẳng Rơi Lưới (Straight Drop)",
           subTitle: "Chém vuốt cạnh quả cầu cho rơi sát lưới thẳng",
@@ -2134,7 +2134,7 @@ export const BADMINTON_POSITIONS: GridPosition[] = [
         shotName: "Đập Cầu Cắm Sàn Giữa Sân",
         shotType: "Smash",
         level: "Trung cấp",
-        videoUrl: "https://www.youtube.com/watch?v=Xn5L5uR9_p4",
+        videoUrl: "https://www.tiktok.com/search?q=%C4%90%E1%BA%ADp+C%E1%BA%A7u+C%E1%BA%AFm+S%C3%A0n+Gi%E1%BB%AFa+S%C3%A2n+%28c%E1%BA%A7u+l%C3%B4ng%29",
         handMovement: {
           title: "Đập Cầu Cắm Sàn Giữa Sân",
           subTitle: "Phát lực cổ tay cắm thẳng vào khe giữa hai đối thủ",
@@ -2159,7 +2159,7 @@ export const BADMINTON_POSITIONS: GridPosition[] = [
         shotName: "Phông Cầu Ép Sâu Vạch Cuối",
         shotType: "Phông sâu",
         level: "Trung cấp",
-        videoUrl: "https://www.youtube.com/watch?v=8428Kj0Zq4g",
+        videoUrl: "https://www.tiktok.com/search?q=Ph%C3%B4ng+C%E1%BA%A7u+%C3%89p+S%C3%A2u+V%E1%BA%A1ch+Cu%E1%BB%91i+%28c%E1%BA%A7u+l%C3%B4ng%29",
         handMovement: {
           title: "Phông Cầu Ép Sâu Vạch Cuối",
           subTitle: "Ép đối phương lùi sâu sát vách phông cầu",
@@ -2184,7 +2184,7 @@ export const BADMINTON_POSITIONS: GridPosition[] = [
         shotName: "Giả Phông Đập Chém Cầu Lỏng Tay",
         shotType: "Đánh lừa",
         level: "Nâng cao",
-        videoUrl: "https://www.youtube.com/watch?v=8428Kj0Zq4g",
+        videoUrl: "https://www.tiktok.com/search?q=Gi%E1%BA%A3+Ph%C3%B4ng+%C4%90%E1%BA%ADp+Ch%C3%A9m+C%E1%BA%A7u+L%E1%BB%8Fng+Tay+%28c%E1%BA%A7u+l%C3%B4ng%29",
         handMovement: {
           title: "Giả Phông Đập Chém Cầu Lỏng Tay",
           subTitle: "Đà vung cực mạnh nhưng giảm tốc chạm bóng nhẹ",
@@ -2209,7 +2209,7 @@ export const BADMINTON_POSITIONS: GridPosition[] = [
         shotName: "Bật Nhảy Hai Chân Đập Dứt Điểm",
         shotType: "Jump smash",
         level: "Nâng cao",
-        videoUrl: "https://www.youtube.com/shorts/bQ8CgN3_X4s",
+        videoUrl: "https://www.tiktok.com/search?q=B%E1%BA%ADt+Nh%E1%BA%A3y+Hai+Ch%C3%A2n+%C4%90%E1%BA%ADp+D%E1%BB%A9t+%C4%90i%E1%BB%83m+%28c%E1%BA%A7u+l%C3%B4ng%29",
         handMovement: {
           title: "Bật Nhảy Hai Chân Đập Dứt Điểm",
           subTitle: "Treo người trên không smash cực đại",
@@ -2234,7 +2234,7 @@ export const BADMINTON_POSITIONS: GridPosition[] = [
         shotName: "Smash Điểm Rơi Cắm Khe Chữ T",
         shotType: "Smash điểm",
         level: "Nâng cao",
-        videoUrl: "https://www.tiktok.com/@badminton_training/video/7567643845215669521",
+        videoUrl: "https://www.tiktok.com/search?q=Smash+%C4%90i%E1%BB%83m+R%C6%A1i+C%E1%BA%AFm+Khe+Ch%E1%BB%AF+T+%28c%E1%BA%A7u+l%C3%B4ng%29",
         handMovement: {
           title: "Smash Điểm Rơi Cắm Khe Chữ T",
           subTitle: "Gập cổ tay cắm bóng sát vạch chữ T đáy sân",
@@ -2259,7 +2259,7 @@ export const BADMINTON_POSITIONS: GridPosition[] = [
         shotName: "Chém Cầu Đảo Cánh Đánh Gục Bộ Pháp",
         shotType: "Chém cầu",
         level: "Nâng cao",
-        videoUrl: "https://www.youtube.com/shorts/3X6b_0rQh2o",
+        videoUrl: "https://www.tiktok.com/search?q=Ch%C3%A9m+C%E1%BA%A7u+%C4%90%E1%BA%A3o+C%C3%A1nh+%C4%90%C3%A1nh+G%E1%BB%A5c+B%E1%BB%99+Ph%C3%A1p+%28c%E1%BA%A7u+l%C3%B4ng%29",
         handMovement: {
           title: "Chém Cầu Đảo Cánh Đánh Gục Bộ Pháp",
           subTitle: "Chém xiên cắt ngang mặt cầu đổi góc 90 độ",
@@ -2294,7 +2294,7 @@ export const BADMINTON_POSITIONS: GridPosition[] = [
     courtZone: "rear",
     courtSide: "right",
     level: "Cơ bản",
-    videoUrl: "https://www.youtube.com/watch?v=8428Kj0Zq4g",
+    videoUrl: "https://www.tiktok.com/search?q=Cu%E1%BB%91i+S%C3%A2n+Ph%E1%BA%A3i+%28Rear+Right%29+%28c%E1%BA%A7u+l%C3%B4ng%29",
     handMovement: {
       title: "Bộ Pháp Lùi Góc Thuận Tay",
       subTitle: "Mở góc vai phải, đưa vợt ra sau gáy chuẩn bị",
@@ -2319,7 +2319,7 @@ export const BADMINTON_POSITIONS: GridPosition[] = [
         shotName: "Bộ Pháp Lùi Góc Thuận Tay",
         shotType: "Bộ pháp",
         level: "Cơ bản",
-        videoUrl: "https://www.youtube.com/watch?v=8428Kj0Zq4g",
+        videoUrl: "https://www.tiktok.com/search?q=B%E1%BB%99+Ph%C3%A1p+L%C3%B9i+G%C3%B3c+Thu%E1%BA%ADn+Tay+%28c%E1%BA%A7u+l%C3%B4ng%29",
         handMovement: {
           title: "Bộ Pháp Lùi Góc Thuận Tay",
           subTitle: "Mở góc vai phải, đưa vợt ra sau gáy chuẩn bị",
@@ -2344,7 +2344,7 @@ export const BADMINTON_POSITIONS: GridPosition[] = [
         shotName: "Phông Cầu Cao Sâu Thuận Tay",
         shotType: "Phông cầu",
         level: "Cơ bản",
-        videoUrl: "https://www.youtube.com/watch?v=bF6s8K2Zp0U",
+        videoUrl: "https://www.tiktok.com/search?q=Ph%C3%B4ng+C%E1%BA%A7u+Cao+S%C3%A2u+Thu%E1%BA%ADn+Tay+%28c%E1%BA%A7u+l%C3%B4ng%29",
         handMovement: {
           title: "Phông Cầu Cao Sâu Thuận Tay",
           subTitle: "Vung hết biên độ phông cầu bổng sâu",
@@ -2369,7 +2369,7 @@ export const BADMINTON_POSITIONS: GridPosition[] = [
         shotName: "Đón Cầu Góc Thuận Tay Ổn Định",
         shotType: "Căn bản",
         level: "Cơ bản",
-        videoUrl: "https://www.youtube.com/watch?v=Xn5L5uR9_p4",
+        videoUrl: "https://www.tiktok.com/search?q=%C4%90%C3%B3n+C%E1%BA%A7u+G%C3%B3c+Thu%E1%BA%ADn+Tay+%E1%BB%94n+%C4%90%E1%BB%8Bnh+%28c%E1%BA%A7u+l%C3%B4ng%29",
         handMovement: {
           title: "Đón Cầu Góc Thuận Tay Ổn Định",
           subTitle: "Đón điểm rơi đúng tầm với trước trán",
@@ -2394,7 +2394,7 @@ export const BADMINTON_POSITIONS: GridPosition[] = [
         shotName: "Chém Cầu Xiên Góc Thuận Tay (Cross Drop)",
         shotType: "Drop shot",
         level: "Trung cấp",
-        videoUrl: "https://www.youtube.com/watch?v=zFhH2_4XgW0",
+        videoUrl: "https://www.tiktok.com/search?q=Ch%C3%A9m+C%E1%BA%A7u+Xi%C3%AAn+G%C3%B3c+Thu%E1%BA%ADn+Tay+%28Cross+Drop%29+%28c%E1%BA%A7u+l%C3%B4ng%29",
         handMovement: {
           title: "Chém Cầu Xiên Góc Thuận Tay (Cross Drop)",
           subTitle: "Cắt chéo mặt vợt đưa cầu rơi sát mép lưới đối diện",
@@ -2419,7 +2419,7 @@ export const BADMINTON_POSITIONS: GridPosition[] = [
         shotName: "Đập Cầu Dọc Biên Thuận Tay",
         shotType: "Smash dọc biên",
         level: "Trung cấp",
-        videoUrl: "https://www.youtube.com/watch?v=8428Kj0Zq4g",
+        videoUrl: "https://www.tiktok.com/search?q=%C4%90%E1%BA%ADp+C%E1%BA%A7u+D%E1%BB%8Dc+Bi%C3%AAn+Thu%E1%BA%ADn+Tay+%28c%E1%BA%A7u+l%C3%B4ng%29",
         handMovement: {
           title: "Đập Cầu Dọc Biên Thuận Tay",
           subTitle: "Smash cắm sát vạch biên đơn",
@@ -2444,7 +2444,7 @@ export const BADMINTON_POSITIONS: GridPosition[] = [
         shotName: "Cắt Cầu Thẳng Rơi Sát Lưới",
         shotType: "Drop shot",
         level: "Trung cấp",
-        videoUrl: "https://www.youtube.com/watch?v=8428Kj0Zq4g",
+        videoUrl: "https://www.tiktok.com/search?q=C%E1%BA%AFt+C%E1%BA%A7u+Th%E1%BA%B3ng+R%C6%A1i+S%C3%A1t+L%C6%B0%E1%BB%9Bi+%28c%E1%BA%A7u+l%C3%B4ng%29",
         handMovement: {
           title: "Cắt Cầu Thẳng Rơi Sát Lưới",
           subTitle: "Cắt thẳng quả cầu rơi êm ái sát mép lưới đối diện",
@@ -2469,7 +2469,7 @@ export const BADMINTON_POSITIONS: GridPosition[] = [
         shotName: "Nhảy Đập Jump Smash Uy Lực",
         shotType: "Jump smash",
         level: "Nâng cao",
-        videoUrl: "https://www.youtube.com/watch?v=8428Kj0Zq4g",
+        videoUrl: "https://www.tiktok.com/search?q=Nh%E1%BA%A3y+%C4%90%E1%BA%ADp+Jump+Smash+Uy+L%E1%BB%B1c+%28c%E1%BA%A7u+l%C3%B4ng%29",
         handMovement: {
           title: "Nhảy Đập Jump Smash Uy Lực",
           subTitle: "Bật cao điểm tiếp xúc tối đa, smash sấm sét",
@@ -2494,7 +2494,7 @@ export const BADMINTON_POSITIONS: GridPosition[] = [
         shotName: "Chém Cầu Xoáy Giả Động Tác Đập",
         shotType: "Đánh lừa",
         level: "Nâng cao",
-        videoUrl: "https://www.youtube.com/shorts/bQ8CgN3_X4s",
+        videoUrl: "https://www.tiktok.com/search?q=Ch%C3%A9m+C%E1%BA%A7u+Xo%C3%A1y+Gi%E1%BA%A3+%C4%90%E1%BB%99ng+T%C3%A1c+%C4%90%E1%BA%ADp+%28c%E1%BA%A7u+l%C3%B4ng%29",
         handMovement: {
           title: "Chém Cầu Xoáy Giả Động Tác Đập",
           subTitle: "Giả vung smash nhưng miết cạnh vợt xoáy rơi sát lưới",
@@ -2519,7 +2519,7 @@ export const BADMINTON_POSITIONS: GridPosition[] = [
         shotName: "Đập Cầu Góc Nách Đối Phương",
         shotType: "Tấn công",
         level: "Nâng cao",
-        videoUrl: "https://www.tiktok.com/@badminton_training/video/7568145336158440724",
+        videoUrl: "https://www.tiktok.com/search?q=%C4%90%E1%BA%ADp+C%E1%BA%A7u+G%C3%B3c+N%C3%A1ch+%C4%90%E1%BB%91i+Ph%C6%B0%C6%A1ng+%28c%E1%BA%A7u+l%C3%B4ng%29",
         handMovement: {
           title: "Đập Cầu Góc Nách Đối Phương",
           subTitle: "Smash nhắm thẳng vào nách tay cầm vợt đối thủ",
@@ -2544,7 +2544,7 @@ export const BADMINTON_POSITIONS: GridPosition[] = [
         shotName: "Stick Smash Búng Cổ Tay Chớp Nhoáng",
         shotType: "Stick smash",
         level: "Nâng cao",
-        videoUrl: "https://www.youtube.com/watch?v=8428Kj0Zq4g",
+        videoUrl: "https://www.tiktok.com/search?q=Stick+Smash+B%C3%BAng+C%E1%BB%95+Tay+Ch%E1%BB%9Bp+Nho%C3%A1ng+%28c%E1%BA%A7u+l%C3%B4ng%29",
         handMovement: {
           title: "Stick Smash Búng Cổ Tay Chớp Nhoáng",
           subTitle: "Búng cổ tay cực nhanh góc cắm hiểm",

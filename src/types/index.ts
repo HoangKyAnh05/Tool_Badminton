@@ -127,18 +127,32 @@ export interface TrainingResultStats {
   historyRounds: ActiveRoundData[];
 }
 
-export type VideoCategory = 'DON_NAM' | 'DOI_NAM' | 'DON_NU' | 'DOI_NU';
+export type VideoCategory = 
+  | 'DON_NAM' 
+  | 'DOI_NAM' 
+  | 'DON_NU' 
+  | 'DOI_NU'
+  | 'POS_1'
+  | 'POS_2'
+  | 'POS_3'
+  | 'POS_4'
+  | 'POS_5'
+  | 'POS_6'
+  | 'POS_7'
+  | 'POS_8'
+  | 'POS_9';
 
 export interface TacticsVideo {
   id: string;
   category: VideoCategory;
+  positionId?: number; // 1 to 9
+  level?: SkillLevel; // 'Cơ bản' | 'Trung cấp' | 'Nâng cao'
   title: string;
   subTitle: string;
   description: string;
   videoUrl: string;
   thumbnailUrl?: string;
-  durationText?: string;
+  durationText: string;
   tags: string[];
   isCustom?: boolean;
 }
-

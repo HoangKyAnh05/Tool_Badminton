@@ -1,29 +1,49 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { TACTICS_VIDEOS } from '../../data/videos';
-import { TacticsVideo, VideoCategory } from '../../types';
+import { TacticsVideo, VideoCategory, SkillLevel } from '../../types';
 import { storageService } from '../../services/storage';
 import { VideoPlayerModal } from './VideoPlayerModal';
 import { 
   Tv, 
   Play, 
   CheckCircle2, 
-  ShieldCheck, 
-  BookOpen, 
   Plus, 
-  Link as LinkIcon, 
   Trash2, 
-  X, 
-  Users, 
-  User, 
   Sparkles,
-  ArrowRight,
-  ExternalLink
+  MapPin,
+  Search,
+  Layers,
+  Award
 } from 'lucide-react';
 
 type FilterCategory = 'ALL' | VideoCategory;
+type GroupTab = 'ALL' | 'CORNERS' | 'MATCHES';
+type LevelFilter = 'ALL' | SkillLevel;
+
+const CORNER_CATEGORIES: { key: VideoCategory; label: string; num: number }[] = [
+  { key: 'POS_1', label: 'Ô 1: Lưới Trái', num: 1 },
+  { key: 'POS_2', label: 'Ô 2: Lưới Giữa', num: 2 },
+  { key: 'POS_3', label: 'Ô 3: Lưới Phải', num: 3 },
+  { key: 'POS_4', label: 'Ô 4: TT Trái', num: 4 },
+  { key: 'POS_5', label: 'Ô 5: Tâm Sân', num: 5 },
+  { key: 'POS_6', label: 'Ô 6: TT Phải', num: 6 },
+  { key: 'POS_7', label: 'Ô 7: Đáy Trái', num: 7 },
+  { key: 'POS_8', label: 'Ô 8: Đáy Giữa', num: 8 },
+  { key: 'POS_9', label: 'Ô 9: Đáy Phải', num: 9 },
+];
+
+const MATCH_CATEGORIES: { key: VideoCategory; label: string }[] = [
+  { key: 'DON_NAM', label: '👤 Đơn Nam' },
+  { key: 'DOI_NAM', label: '👥 Đôi Nam' },
+  { key: 'DON_NU', label: '👩 Đơn Nữ' },
+  { key: 'DOI_NU', label: '👭 Đôi Nữ' },
+];
 
 export const VideoSection: React.FC = () => {
-  const [activeCategory, setActiveCategory] = useState<FilterCategory>('ALL');
+  const [groupTab, setGroupTab] = useState<GroupTab>('CORNERS');
+  const [activeCategory, setActiveCategory] = useState<FilterCategory>('POS_1');
+  const [levelFilter, setLevelFilter] = useState<LevelFilter>('ALL');
+  const [searchQuery, setSearchQuery] = useState<string>('');
   const [selectedVideo, setSelectedVideo] = useState<TacticsVideo | null>(null);
   const [watchedIds, setWatchedIds] = useState<string[]>([]);
   const [customVideos, setCustomVideos] = useState<TacticsVideo[]>([]);
@@ -33,7 +53,7 @@ export const VideoSection: React.FC = () => {
   const [newUrl, setNewUrl] = useState<string>('');
   const [newTitle, setNewTitle] = useState<string>('');
   const [newSubTitle, setNewSubTitle] = useState<string>('');
-  const [newCategory, setNewCategory] = useState<VideoCategory>('DON_NAM');
+  const [newCategory, setNewCategory] = useState<VideoCategory>('POS_1');
   const [newDesc, setNewDesc] = useState<string>('');
   const [newTags, setNewTags] = useState<string>('Thực chiến, Kỹ thuật');
 
@@ -55,21 +75,35 @@ export const VideoSection: React.FC = () => {
     return [...TACTICS_VIDEOS, ...customVideos];
   }, [customVideos]);
 
-  // Filtered list based on active tab
+  // Filter videos by category, level, and search query
   const filteredVideos = useMemo(() => {
-    if (activeCategory === 'ALL') return allVideos;
-    return allVideos.filter(v => v.category === activeCategory);
-  }, [allVideos, activeCategory]);
+    return allVideos.filter(v => {
+      // Category filter
+      if (activeCategory !== 'ALL' && v.category !== activeCategory) {
+        return false;
+      }
+      // Level filter
+      if (levelFilter !== 'ALL' && v.level !== levelFilter) {
+        return false;
+      }
+      // Search filter
+      if (searchQuery.trim()) {
+        const q = searchQuery.toLowerCase().trim();
+        const matchTitle = v.title.toLowerCase().includes(q);
+        const matchSub = v.subTitle?.toLowerCase().includes(q) || false;
+        const matchDesc = v.description?.toLowerCase().includes(q) || false;
+        const matchTag = v.tags?.some(t => t.toLowerCase().includes(q)) || false;
+        if (!matchTitle && !matchSub && !matchDesc && !matchTag) {
+          return false;
+        }
+      }
+      return true;
+    });
+  }, [allVideos, activeCategory, levelFilter, searchQuery]);
 
   const totalVideos = allVideos.length;
   const completedCount = allVideos.filter(v => watchedIds.includes(v.id)).length;
   const percentCompleted = totalVideos > 0 ? Math.round((completedCount / totalVideos) * 100) : 0;
-
-  // Counts by category
-  const countDonNam = allVideos.filter(v => v.category === 'DON_NAM').length;
-  const countDoiNam = allVideos.filter(v => v.category === 'DOI_NAM').length;
-  const countDonNu = allVideos.filter(v => v.category === 'DON_NU').length;
-  const countDoiNu = allVideos.filter(v => v.category === 'DOI_NU').length;
 
   const handleAddVideo = (e: React.FormEvent) => {
     e.preventDefault();
@@ -110,7 +144,7 @@ export const VideoSection: React.FC = () => {
     }
   };
 
-  // Helper to get YouTube thumbnail
+  // Helper to get YouTube thumbnail or video preview
   const getThumbnailSrc = (video: TacticsVideo) => {
     if (video.thumbnailUrl) return video.thumbnailUrl;
     const regExp = /(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=|shorts\/))([\w-]{11})/;
@@ -122,12 +156,11 @@ export const VideoSection: React.FC = () => {
   };
 
   const getCategoryLabel = (cat: VideoCategory) => {
-    switch (cat) {
-      case 'DON_NAM': return '👤 Đơn Nam';
-      case 'DOI_NAM': return '👥 Đôi Nam';
-      case 'DON_NU': return '👩 Đơn Nữ';
-      case 'DOI_NU': return '👭 Đôi Nữ';
-    }
+    const corner = CORNER_CATEGORIES.find(c => c.key === cat);
+    if (corner) return corner.label;
+    const match = MATCH_CATEGORIES.find(m => m.key === cat);
+    if (match) return match.label;
+    return cat;
   };
 
   return (
@@ -137,11 +170,11 @@ export const VideoSection: React.FC = () => {
         <div className="section-header-left">
           <div className="video-eyebrow">
             <Tv size={16} className="text-cyan" />
-            <span>KHO VIDEO GIÁO TRÌNH & CHIẾN THUẬT THỰC CHIẾN</span>
+            <span>KHO VIDEO GIÁO TRÌNH & CHIẾN THUẬT THỰC CHIẾN (10 VIDEO / CATEGORY)</span>
           </div>
-          <h2 className="section-title">VIDEO THỰC TẾ: ĐƠN NAM • ĐÔI NAM • ĐƠN NỮ • ĐÔI NỮ</h2>
+          <h2 className="section-title">HỆ THỐNG VIDEO THEO TỪNG GÓC SÂN & THỂ THỨC THI ĐẤU</h2>
           <p className="video-section-subtitle">
-            Học kỹ thuật di chuyển, điều cầu và chiến thuật đỉnh cao từ vận động viên thực tế. Hỗ trợ chạy mượt file video nội bộ và gắn link YouTube / Shorts không giới hạn dung lượng.
+            Khám phá 90 video chia đều cho 9 vị trí góc sân (mỗi ô 10 video từ Cơ bản đến Nâng cao) cùng 40 video chiến thuật chuyên sâu Đơn Nam, Đôi Nam, Đơn Nữ, Đôi Nữ.
           </p>
         </div>
 
@@ -162,64 +195,126 @@ export const VideoSection: React.FC = () => {
                 <CheckCircle2 size={14} /> Hoàn thành toàn bộ giáo trình
               </span>
             ) : (
-              <span>Cần xem xong {totalVideos - completedCount} video để hoàn thành</span>
+              <span>Đã xem {completedCount}/{totalVideos} video ({percentCompleted}%)</span>
             )}
           </div>
         </div>
       </div>
 
-      {/* Category Filter Tabs & Add Video Button */}
-      <div className="video-controls-toolbar" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: '12px', margin: '20px 0 24px' }}>
-        <div className="category-tabs-group" style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
-          <button
-            className={`btn-category-tab ${activeCategory === 'ALL' ? 'active' : ''}`}
-            onClick={() => setActiveCategory('ALL')}
+      {/* Main Group Selector & Search Bar */}
+      <div className="video-group-navigation-bar">
+        {/* Tier 1: Group Selector */}
+        <div className="group-tabs-switch">
+          <button 
+            className={`group-switch-btn ${groupTab === 'CORNERS' ? 'active' : ''}`}
+            onClick={() => {
+              setGroupTab('CORNERS');
+              setActiveCategory('POS_1');
+            }}
           >
-            🏸 Tất cả ({totalVideos})
+            <MapPin size={16} />
+            <span>9 VỊ TRÍ GÓC SÂN (90 Video)</span>
           </button>
-          <button
-            className={`btn-category-tab ${activeCategory === 'DON_NAM' ? 'active' : ''}`}
-            onClick={() => setActiveCategory('DON_NAM')}
+
+          <button 
+            className={`group-switch-btn ${groupTab === 'MATCHES' ? 'active' : ''}`}
+            onClick={() => {
+              setGroupTab('MATCHES');
+              setActiveCategory('DON_NAM');
+            }}
           >
-            👤 Đơn Nam ({countDonNam})
+            <Award size={16} />
+            <span>CHUYÊN MỤC THI ĐẤU (40 Video)</span>
           </button>
-          <button
-            className={`btn-category-tab ${activeCategory === 'DOI_NAM' ? 'active' : ''}`}
-            onClick={() => setActiveCategory('DOI_NAM')}
+
+          <button 
+            className={`group-switch-btn ${groupTab === 'ALL' ? 'active' : ''}`}
+            onClick={() => {
+              setGroupTab('ALL');
+              setActiveCategory('ALL');
+            }}
           >
-            👥 Đôi Nam ({countDoiNam})
+            <Layers size={16} />
+            <span>TẤT CẢ VIDEO ({totalVideos})</span>
           </button>
-          <button
-            className={`btn-category-tab ${activeCategory === 'DON_NU' ? 'active' : ''}`}
-            onClick={() => setActiveCategory('DON_NU')}
-          >
-            👩 Đơn Nữ ({countDonNu})
-          </button>
-          <button
-            className={`btn-category-tab ${activeCategory === 'DOI_NU' ? 'active' : ''}`}
-            onClick={() => setActiveCategory('DOI_NU')}
-          >
-            👭 Đôi Nữ ({countDoiNu})
-          </button>
+        </div>
+
+        {/* Search Input */}
+        <div className="video-search-box">
+          <Search size={16} className="search-icon" />
+          <input 
+            type="text"
+            placeholder="Tìm kiếm kỹ thuật, tên động tác..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="video-search-input"
+          />
+          {searchQuery && (
+            <button className="search-clear-btn" onClick={() => setSearchQuery('')}>×</button>
+          )}
+        </div>
+      </div>
+
+      {/* Tier 2: Category Filter Pills */}
+      <div className="category-pills-row">
+        {groupTab === 'CORNERS' && (
+          <div className="pills-scroll-wrap">
+            {CORNER_CATEGORIES.map(c => {
+              const count = allVideos.filter(v => v.category === c.key).length;
+              const isSelected = activeCategory === c.key;
+              return (
+                <button
+                  key={c.key}
+                  className={`btn-corner-pill ${isSelected ? 'is-active' : ''}`}
+                  onClick={() => setActiveCategory(c.key)}
+                >
+                  <span className="corner-num-badge">{c.num}</span>
+                  <span>{c.label}</span>
+                  <span className="pill-count-badge">({count})</span>
+                </button>
+              );
+            })}
+          </div>
+        )}
+
+        {groupTab === 'MATCHES' && (
+          <div className="pills-scroll-wrap">
+            {MATCH_CATEGORIES.map(m => {
+              const count = allVideos.filter(v => v.category === m.key).length;
+              const isSelected = activeCategory === m.key;
+              return (
+                <button
+                  key={m.key}
+                  className={`btn-match-pill ${isSelected ? 'is-active' : ''}`}
+                  onClick={() => setActiveCategory(m.key)}
+                >
+                  <span>{m.label}</span>
+                  <span className="pill-count-badge">({count})</span>
+                </button>
+              );
+            })}
+          </div>
+        )}
+      </div>
+
+      {/* Tier 3: Sub-filters (Skill Level) & Add Video Button */}
+      <div className="video-subfilter-toolbar">
+        <div className="level-filters-group">
+          <span className="filter-label">Cấp độ:</span>
+          {(['ALL', 'Cơ bản', 'Trung cấp', 'Nâng cao'] as const).map(lvl => (
+            <button
+              key={lvl}
+              className={`btn-level-filter ${levelFilter === lvl ? 'active' : ''} ${lvl !== 'ALL' ? `lvl-${lvl}` : ''}`}
+              onClick={() => setLevelFilter(lvl)}
+            >
+              {lvl === 'ALL' ? 'Tất cả cấp độ' : lvl}
+            </button>
+          ))}
         </div>
 
         <button
           className="btn-add-video-link"
           onClick={() => setIsAddModalOpen(true)}
-          style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: '8px',
-            padding: '10px 18px',
-            background: 'linear-gradient(135deg, #00f0ff 0%, #0284c7 100%)',
-            color: '#020812',
-            fontWeight: 800,
-            fontSize: '13px',
-            borderRadius: '10px',
-            border: 'none',
-            cursor: 'pointer',
-            boxShadow: '0 4px 15px rgba(0, 240, 255, 0.3)'
-          }}
         >
           <Plus size={16} />
           <span>GẮN LINK VIDEO MỚI</span>
@@ -229,179 +324,127 @@ export const VideoSection: React.FC = () => {
       {/* Video Cards Grid */}
       <div className="video-grid">
         {filteredVideos.length === 0 ? (
-          <div 
-            className="empty-video-category-card" 
-            style={{ 
-              textAlign: 'center', 
-              padding: '48px 24px', 
-              background: 'rgba(15, 23, 42, 0.6)', 
-              borderRadius: '20px', 
-              border: '1.5px dashed rgba(0, 240, 255, 0.3)', 
-              gridColumn: '1 / -1',
-              margin: '10px 0'
-            }}
-          >
-            <Tv size={48} style={{ color: '#00f0ff', opacity: 0.6, margin: '0 auto 14px' }} />
-            <h3 style={{ color: '#ffffff', fontSize: '1.2rem', marginBottom: '8px' }}>Chuyên mục này hiện chưa có video</h3>
-            <p style={{ color: '#94a3b8', fontSize: '0.9rem', maxWidth: '500px', margin: '0 auto 20px', lineHeight: 1.6 }}>
-              Hệ thống chỉ nạp chính xác các video thực tế bạn cung cấp (gồm 6 video Đơn Nam & 3 video Đôi Nam). Khi bạn có thêm video cho chuyên mục này, bạn có thể bấm nút bên dưới để gắn link bất cứ lúc nào!
+          <div className="empty-video-category-card">
+            <Tv size={48} className="empty-icon text-cyan" />
+            <h3>Không tìm thấy video phù hợp</h3>
+            <p>
+              Thử chọn danh mục khác hoặc xóa bộ lọc tìm kiếm để xem tất cả {totalVideos} video trong hệ thống.
             </p>
             <button
-              className="btn-add-video-link"
+              className="btn-reset-filter"
               onClick={() => {
-                if (activeCategory !== 'ALL') {
-                  setNewCategory(activeCategory);
-                }
-                setIsAddModalOpen(true);
-              }}
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '8px',
-                padding: '10px 22px',
-                background: 'linear-gradient(135deg, #00f0ff 0%, #0284c7 100%)',
-                color: '#020812',
-                fontWeight: 800,
-                borderRadius: '10px',
-                border: 'none',
-                cursor: 'pointer'
+                setActiveCategory('ALL');
+                setGroupTab('ALL');
+                setLevelFilter('ALL');
+                setSearchQuery('');
               }}
             >
-              <Plus size={16} />
-              <span>GẮN LINK VIDEO CHO MỤC NÀY</span>
+              Xem tất cả video ({totalVideos})
             </button>
           </div>
         ) : (
-          filteredVideos.map((video, idx) => {
+          filteredVideos.map(video => {
             const isWatched = watchedIds.includes(video.id);
             const thumbSrc = getThumbnailSrc(video);
             const isMp4 = video.videoUrl.endsWith('.mp4');
+            const levelClass = video.level === 'Cơ bản'
+              ? 'badge-lvl-basic'
+              : video.level === 'Trung cấp'
+                ? 'badge-lvl-inter'
+                : 'badge-lvl-adv';
 
-          return (
-            <div 
-              key={video.id}
-              className={`video-card ${isWatched ? 'card-completed' : ''}`}
-              onClick={() => setSelectedVideo(video)}
-              role="button"
-              tabIndex={0}
-            >
-              {/* Card Thumbnail / Preview */}
-              <div className="video-thumbnail-wrap">
-                {thumbSrc ? (
-                  <img 
-                    src={thumbSrc} 
-                    alt={video.title} 
-                    className="video-thumb-img"
-                    onError={(e) => {
-                      (e.target as HTMLElement).style.display = 'none';
-                    }}
-                  />
-                ) : isMp4 ? (
-                  <video
-                    src={`${video.videoUrl}#t=0.5`}
-                    preload="metadata"
-                    muted
-                    playsInline
-                    className="video-thumb-img video-mp4-preview"
-                  />
-                ) : (
-                  <div className="video-thumb-fallback">
-                    <Tv size={40} className="text-cyan opacity-40" />
-                  </div>
-                )}
-                <div className="video-thumb-overlay" />
-
-                {/* Big Center Play Icon */}
-                <div className="video-play-btn-circle">
-                  <Play size={24} fill="currentColor" className="play-icon-offset" />
-                </div>
-
-                {/* Status Badges Overlay */}
-                <div className="video-thumb-top-badges">
-                  <span className="video-lesson-tag">
-                    <BookOpen size={12} />
-                    <span>{video.durationText || `Bài 0${idx + 1}`}</span>
-                  </span>
-
-                  {isWatched ? (
-                    <span className="video-badge-watched">
-                      <CheckCircle2 size={14} />
-                      <span>ĐÃ XEM XONG</span>
-                    </span>
+            return (
+              <div 
+                key={video.id}
+                className={`video-card animate-fade-in ${isWatched ? 'is-watched' : ''}`}
+                onClick={() => setSelectedVideo(video)}
+              >
+                {/* Video Media Preview */}
+                <div className="video-card-media">
+                  {thumbSrc ? (
+                    <img 
+                      src={thumbSrc} 
+                      alt={video.title} 
+                      className="video-thumb-img" 
+                      loading="lazy" 
+                    />
+                  ) : isMp4 ? (
+                    <video 
+                      src={video.videoUrl} 
+                      className="video-mp4-preview" 
+                      muted 
+                      playsInline 
+                      preload="metadata"
+                    />
                   ) : (
-                    <span className="video-badge-unwatched">
-                      <Play size={12} fill="currentColor" />
-                      <span>CHƯA XEM</span>
+                    <div className="video-thumb-fallback">
+                      <Tv size={40} className="text-cyan" />
+                    </div>
+                  )}
+
+                  <div className="video-play-hover-btn">
+                    <Play size={28} className="icon-play-card" />
+                  </div>
+
+                  {/* Corner and Level Overlay Badges */}
+                  <div className="card-top-badges">
+                    <span className="card-cat-badge">
+                      {getCategoryLabel(video.category)}
                     </span>
+                    {video.level && (
+                      <span className={`card-level-badge ${levelClass}`}>
+                        <Sparkles size={11} />
+                        {video.level}
+                      </span>
+                    )}
+                  </div>
+
+                  {/* Duration Text */}
+                  <span className="video-duration-pill">{video.durationText}</span>
+
+                  {/* Watched Status */}
+                  {isWatched && (
+                    <div className="video-watched-badge">
+                      <CheckCircle2 size={13} />
+                      <span>ĐÃ XEM</span>
+                    </div>
                   )}
                 </div>
 
-                {/* Anti-Seek or Online Badge on Bottom of thumbnail */}
-                <div className="video-thumb-bottom-info">
-                  <span className="video-anti-seek-pill">
-                    <ShieldCheck size={12} />
-                    <span>{isMp4 ? 'Video thực tế • Chống tua' : 'Video Online • HD'}</span>
-                  </span>
-                </div>
+                {/* Video Info Content */}
+                <div className="video-card-content">
+                  <h3 className="video-card-title" title={video.title}>{video.title}</h3>
+                  <p className="video-card-desc">{video.subTitle || video.description}</p>
 
-                {/* Delete button if custom video */}
-                {video.isCustom && (
-                  <button
-                    className="btn-delete-custom-video"
-                    onClick={(e) => handleDeleteCustomVideo(e, video.id)}
-                    title="Xóa video tự thêm này"
-                    style={{
-                      position: 'absolute',
-                      bottom: '10px',
-                      right: '10px',
-                      background: 'rgba(239, 68, 68, 0.85)',
-                      color: '#fff',
-                      border: 'none',
-                      borderRadius: '6px',
-                      padding: '5px',
-                      cursor: 'pointer',
-                      zIndex: 10
-                    }}
-                  >
-                    <Trash2 size={13} />
-                  </button>
-                )}
-              </div>
+                  <div className="video-card-footer">
+                    <div className="video-tags-list">
+                      {video.tags?.slice(0, 3).map((tag, idx) => (
+                        <span key={idx} className="video-meta-tag">#{tag}</span>
+                      ))}
+                    </div>
 
-              {/* Card Content */}
-              <div className="video-card-body">
-                <div className="video-tags-row">
-                  <span className="video-chip chip-category" style={{ background: 'rgba(0, 240, 255, 0.15)', color: '#00f0ff', borderColor: '#00f0ff' }}>
-                    {getCategoryLabel(video.category)}
-                  </span>
-                  {video.tags.map(t => (
-                    <span key={t} className="video-chip">{t}</span>
-                  ))}
-                </div>
-
-                <h3 className="video-card-title">{video.title}</h3>
-                <p className="video-card-desc">{video.subTitle}</p>
-
-                <div className="video-card-footer">
-                  <span className={`action-link ${isWatched ? 'text-emerald' : 'text-cyan'}`}>
-                    {isWatched ? 'Xem lại bài học' : 'Bắt đầu học ngay'}
-                  </span>
-                  <div className="circle-arrow-video">
-                    <ArrowRight size={14} />
+                    {video.isCustom && (
+                      <button 
+                        className="btn-del-custom-video"
+                        onClick={(e) => handleDeleteCustomVideo(e, video.id)}
+                        title="Xóa video tự thêm"
+                      >
+                        <Trash2 size={14} />
+                      </button>
+                    )}
                   </div>
                 </div>
               </div>
-            </div>
-          );
-        }))}
+            );
+          })
+        )}
       </div>
 
-
-      {/* Video Modal Player */}
+      {/* Video Player Modal */}
       {selectedVideo && (
         <VideoPlayerModal
           video={selectedVideo}
-          isOpen={!!selectedVideo}
+          isOpen={true}
           onClose={() => setSelectedVideo(null)}
           onWatchedChanged={refreshWatchedStatus}
         />
@@ -412,48 +455,51 @@ export const VideoSection: React.FC = () => {
         <div className="custom-modal-backdrop" onClick={() => setIsAddModalOpen(false)}>
           <div className="custom-modal-card" onClick={(e) => e.stopPropagation()}>
             <div className="custom-modal-header">
-              <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                <LinkIcon size={20} className="text-cyan" />
-                <h3 style={{ margin: 0, fontSize: '18px', color: '#fff' }}>GẮN LINK VIDEO GIÁO TRÌNH MỚI</h3>
+              <div className="flex-center-gap">
+                <Tv size={20} className="text-cyan" />
+                <h3>Gắn Link Video Giáo Trình Mới</h3>
               </div>
-              <button className="btn-close-modal" onClick={() => setIsAddModalOpen(false)}>
-                <X size={20} />
-              </button>
+              <button className="btn-close-modal" onClick={() => setIsAddModalOpen(false)}>×</button>
             </div>
 
             <form onSubmit={handleAddVideo} className="custom-modal-form">
               <div className="form-group">
-                <label>Phân loại chuyên mục thi đấu:</label>
-                <select 
-                  value={newCategory} 
-                  onChange={(e) => setNewCategory(e.target.value as VideoCategory)}
-                  className="form-input"
-                >
-                  <option value="DON_NAM">👤 Đơn Nam</option>
-                  <option value="DOI_NAM">👥 Đôi Nam</option>
-                  <option value="DON_NU">👩 Đơn Nữ</option>
-                  <option value="DOI_NU">👭 Đôi Nữ</option>
-                </select>
-              </div>
-
-              <div className="form-group">
-                <label>Đường dẫn Video (Link YouTube / Shorts / Link MP4 / Đường dẫn file):</label>
+                <label>Đường dẫn Video (URL YouTube / Shorts / MP4)*</label>
                 <input
                   type="text"
-                  placeholder="Ví dụ: https://www.youtube.com/watch?v=... hoặc ./videos/ten_video.mp4"
+                  placeholder="https://www.youtube.com/watch?v=... hoặc link mp4"
                   value={newUrl}
                   onChange={(e) => setNewUrl(e.target.value)}
                   className="form-input"
                   required
                 />
-                <span className="form-hint">Dán link YouTube, YouTube Shorts hoặc link video MP4 online. Không giới hạn dung lượng!</span>
               </div>
 
               <div className="form-group">
-                <label>Tiêu đề bài học:</label>
+                <label>Chuyên mục Video*</label>
+                <select
+                  value={newCategory}
+                  onChange={(e) => setNewCategory(e.target.value as VideoCategory)}
+                  className="form-input"
+                >
+                  <optgroup label="9 Vị trí góc sân">
+                    {CORNER_CATEGORIES.map(c => (
+                      <option key={c.key} value={c.key}>{c.label}</option>
+                    ))}
+                  </optgroup>
+                  <optgroup label="Chuyên mục thi đấu">
+                    {MATCH_CATEGORIES.map(m => (
+                      <option key={m.key} value={m.key}>{m.label}</option>
+                    ))}
+                  </optgroup>
+                </select>
+              </div>
+
+              <div className="form-group">
+                <label>Tiêu đề Video*</label>
                 <input
                   type="text"
-                  placeholder="Ví dụ: Kỹ thuật đập smash cắm sân của Lin Dan"
+                  placeholder="Ví dụ: Kỹ thuật đập smash cắm sàn..."
                   value={newTitle}
                   onChange={(e) => setNewTitle(e.target.value)}
                   className="form-input"
@@ -462,45 +508,19 @@ export const VideoSection: React.FC = () => {
               </div>
 
               <div className="form-group">
-                <label>Mô tả ngắn kỹ thuật:</label>
+                <label>Mô tả ngắn gọn</label>
                 <input
                   type="text"
-                  placeholder="Ví dụ: Phân tích bộ pháp bật nhảy scissor kick và gập cổ tay"
+                  placeholder="Tóm tắt điểm mấu chốt của video"
                   value={newSubTitle}
                   onChange={(e) => setNewSubTitle(e.target.value)}
                   className="form-input"
                 />
               </div>
 
-              <div className="form-group">
-                <label>Thẻ từ khóa (ngăn cách bằng dấu phẩy):</label>
-                <input
-                  type="text"
-                  placeholder="Smash, Bước chân, Tấn công"
-                  value={newTags}
-                  onChange={(e) => setNewTags(e.target.value)}
-                  className="form-input"
-                />
-              </div>
-
-              <div className="form-group">
-                <label>Trọng điểm huấn luyện (chi tiết):</label>
-                <textarea
-                  placeholder="Ghi chú kỹ thuật, hướng dẫn học viên cách quan sát..."
-                  value={newDesc}
-                  onChange={(e) => setNewDesc(e.target.value)}
-                  className="form-input form-textarea"
-                  rows={3}
-                />
-              </div>
-
-              <div className="form-actions" style={{ display: 'flex', justifyContent: 'flex-end', gap: '10px', marginTop: '20px' }}>
-                <button type="button" className="btn-cancel" onClick={() => setIsAddModalOpen(false)}>
-                  Hủy bỏ
-                </button>
-                <button type="submit" className="btn-submit-save">
-                  ✓ Thêm Vào Giáo Trình
-                </button>
+              <div className="modal-actions" style={{ display: 'flex', justifyContent: 'flex-end', gap: '10px', marginTop: '20px' }}>
+                <button type="button" className="btn-cancel" onClick={() => setIsAddModalOpen(false)}>Hủy</button>
+                <button type="submit" className="btn-submit-save">LƯU VIDEO</button>
               </div>
             </form>
           </div>
